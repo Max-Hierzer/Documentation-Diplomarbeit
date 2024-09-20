@@ -1,7 +1,6 @@
 # Diplomarbeitsthema:
-Auftraggeber: politische Partei (LMP)
-
 ## Wahl- Abstimmungsapplikation für Organisationen mit Abstimmungsfunktion:
+Auftraggeber: politische Partei (LMP)
 ### Inhalt:
 Webinterface\
 Verschiedene Abstimmungsmodi(privat, öffentlich, Gruppenmässige Einteilung) oder Für und Gegenstimme, Anonyme Stimme aber auch öffentliche, Transparente oder undurchlässige Umfragen,\ 
