@@ -1,7 +1,7 @@
-#**Diplomarbeitsthema:**\
+#Diplomarbeitsthema:\
 Auftraggeber: politische Partei (LMP)\
 
-##**Inhalt:**\
+##Inhalt:\
 Wahl- Abstimmungsapplikation für Organisationen mit Abstimmungsfunktion\
 Webinterface, \
 Verschiedene Abstimmungsmodi(privat, öffentlich, Gruppenmässige Einteilung) oder Für und Gegenstimme, Anonyme Stimme aber auch öffentliche, Transparente oder undurchlässige Umfragen,\ 
@@ -10,13 +10,13 @@ Auf Handy und Laptop verfügbar, entweder als Website mit react oder bei Handy m
 Backend, Frontend(PC & Handy),\
 
 
-#**Andere Potentielle Themen:**\
-##**Plugin für KDevelop oder KATE:**\
+#Andere Potentielle Themen:\
+##Plugin für KDevelop oder KATE:\
 Vielleicht mit externen Betreuer\
-##**Inhalt:**\
+##Inhalt:\
 Plugin für Rasperry Pi Pico RP2040\
 Sicher C++,  vielleicht CuteScript\
-##**Funktionen:**\
+##Funktionen:\
 Es gibt ein Plugin für VSCode, davon abschauen\
 Autoverfolständigung spezifisch für verschiedene Biliotheken, uvm.\
 Interne Doku mit Tooltips\
