@@ -3,7 +3,7 @@
 Auftraggeber: politische Partei (LMP)
 ### Inhalt:
 Webinterface\
-Verschiedene Abstimmungsmodi(privat, öffentlich, Gruppenmässige Einteilung) oder Für und Gegenstimme, Anonyme Stimme aber auch öffentliche, Transparente oder undurchlässige Umfragen,\ 
+Verschiedene Abstimmungsmodi(privat, öffentlich, Gruppenmässige Einteilung) oder Für und Gegenstimme, Anonyme Stimme aber auch öffentliche, Transparente oder undurchlässige Umfragen\ 
 Abstimmungen werden dokumentiert und gespeichert\
 Auf Handy und Laptop verfügbar, entweder als Website mit react oder bei Handy mit richtiger App, oder PWA\
 Backend, Frontend(PC & Handy)
