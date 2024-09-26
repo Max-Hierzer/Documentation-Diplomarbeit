@@ -5,7 +5,7 @@
 ### Topic:
 Open Source Voting Web Application
 
-### Verordneter, spätester Abgabetermin
+### Prescribed latest delivery date
 15.05.2025
 
 ### Individual topics of the responsible students
@@ -35,6 +35,14 @@ React, Javascript, API, HTML, CSS, Python, SQL
   1. What essential features should the application include?
   1. How can the diclosing of the votes be implemented?
   1. Which types of voting should the application support?
+  1. How can the results be visualized?
+  1. How will the system manage the storage and integrity of voting records?
+  1. Should there be a backup system for the records?
+  1. Should the application support mobile devices?
+  1. How can we design a role-based access controll system that differentiates between various types of users?
+  1. Should the reports be exportable?
+  1. How should the application handle real-time voting updates?
+  1. What strategies can be used to ensure the results are updated in real time without compromising system performance or security?
 
 ### Objective:
 
