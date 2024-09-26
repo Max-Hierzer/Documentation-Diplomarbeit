@@ -25,7 +25,7 @@ There's no centralized platform where party members can easily participate in in
 
 #### Technical Requirements
 
-React, Javascript, API, HTML, CSS, Python, SQL
+React, Javascript, API, Node.js, HTML, CSS, Python, SQL
 
 
 ### Investigation concerns of the individual topics:
@@ -45,6 +45,8 @@ React, Javascript, API, HTML, CSS, Python, SQL
   1. What strategies can be used to ensure the results are updated in real time without compromising system performance or security?
 
 ### Objective:
+
+The objective of the project is to develop a user-friendly, open-source web application for online voting. \ The application will support customizable voting methods and provide a transparent and accessible voting process. \ It will focus on ease of use, flexibility, and efficient vote management for administrators.
 
 ### Planned result of the individual topics:
 
