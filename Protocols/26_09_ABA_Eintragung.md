@@ -59,7 +59,7 @@ The objective of the project is to develop a user-friendly, open-source web appl
 
 ### Milestones
 
-* Individual features as milestones *
+*Individual features as milestones*
 
 | Milestone | Date |
 | --- | --- |
