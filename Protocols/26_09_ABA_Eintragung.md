@@ -12,8 +12,10 @@ Open Source Voting Web Application
 
 | Schüler/in	| Individual topics	| Responsible Yes/No |
 | --- | --- | --- |
-| Gernot Fasching	| systemic consensus, (optionally weighted) multiple choice votes	|  |	
+| Gernot Fasching	| systemic consensus, (optionally weighted) multiple choice votes	|  |
+|---|---|---|---|
 | Max Martin Hierzer	| Login and single choice vote among multiple alternatives without disclosing choices	| Ja |
+|---|---|---|---|
 | Tobias Prasser	| Disclosing results (non-anonymous votes) and visualization of results	|  |	
 
 ### Mentor:
@@ -50,6 +52,19 @@ The objective of the project is to develop a user-friendly, open-source web appl
 
 ### Planned result of the individual topics:
 
-Intuitives UI
+  1. A real-time dashboard for administrators that displays voting progress (e.g., how many members have voted) and live results as votes are cast. 
+  1. Dynamic data visualization tools, such as charts and graphs, to provide a clear and up-to-date overview of voting trends.
+  1. The ability to export voting data in various formats (e.g., CSV, PDF) for further analysis or archiving purposes.
+  1. A fully responsive design that ensures the voting application works seamlessly on both desktop and mobile devices, adapting to different screen sizes and ensuring usability across various platforms (phones, tablets, laptops).
+  1. A secure administrative backend where party officials can create, edit, and manage voting events, including setting deadlines, voter eligibility and choose from different voting methods.
+  1. Archival functionality that securely stores completed voting, with read-only access to ensure the results cannot be tampered with after the voting period ends.
 
-Skalierbarkeit und flexibilität
+### Milestones
+
+| Milestone | Date |
+| Kick-Off Meeting mit LMP | 10.10.2024 |
+| --- | --- |
+|---|---|---|---|
+| Entwicklung hat begonnen | 20.11.2024 |
+| --- | --- |
+| --- | --- |
