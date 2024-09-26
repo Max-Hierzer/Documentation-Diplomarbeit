@@ -11,6 +11,7 @@ Open Source Voting Web Application
 ### Individual topics of the responsible students
 
 | Schüler/in	| Individual topics	| Responsible Yes/No |
+| --- | --- | --- |
 | Gernot Fasching	| systemic consensus, (optionally weighted) multiple choice votes	|  |
 | Max Martin Hierzer	| Login and single choice vote among multiple alternatives without disclosing choices	| Ja |
 | Tobias Prasser	| Disclosing results (non-anonymous votes) and visualization of results	|  |	
@@ -59,6 +60,7 @@ The objective of the project is to develop a user-friendly, open-source web appl
 ### Milestones
 
 | Milestone | Date |
+| --- | --- |
 | Kick-Off Meeting mit LMP | 10.10.2024 |
 | --- | --- |
 | Entwicklung hat begonnen | 20.11.2024 |
