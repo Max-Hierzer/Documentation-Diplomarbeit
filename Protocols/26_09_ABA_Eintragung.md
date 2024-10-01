@@ -61,10 +61,10 @@ The objective of the project is to develop a user-friendly, open-source web appl
 
 *Individual features as milestones*
 
-| Milestone | Date |
-| --- | --- |
-| Kick-Off Meeting mit LMP | 10.10.2024 |
-| --- | --- |
-| Entwicklung hat begonnen | 20.11.2024 |
-| --- | --- |
-| --- | --- |
+| Milestone                                                           | Date       |
+|---------------------------------------------------------------------|------------|
+| Kick-Off Meeting with LMP                                           | 10.10.2024 |
+| Development has begon                                               | 20.11.2024 |
+| Login and single & multiple choice vote + Visulization of Results   | 15.03.2025 |
+| systemic consensus & disclosing choice feature & disclosing results | 10.04.2025 |
+|---------------------------------------------------------------------|------------|
