@@ -39,16 +39,23 @@ user_roles = admin, mod, user
 
 - polls: id, name, fk_users_id, creation_date, publish_date, due_date, fk_poll_status_id
 
-- poll_status: id, status
-
 - poll_questions: id, fk_poll_id, fK_poll_question_types_id, question
 
 - poll_question_answers: id, fk_poll_question_id, answer
 
 - poll_question_types: id, type
 
-- user_roles: id, type
+- user_roles: id, role
 
 - user_polls: fk_users_id, fk_polls_id
 
-- user_poll_results: id
+- creator_polls: fk_user_id, fk_polls_id
+
+- user_answers: fk_user_id, fk_poll_question_answer_id
+
+### additional infos
+
+Problems:
+
+- user_answer connection is unclear
+- groupright have not been decided
