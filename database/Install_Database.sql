@@ -106,8 +106,3 @@ ALTER TABLE "creator_polls" ADD FOREIGN KEY ("polls_id") REFERENCES "polls" ("id
 ALTER TABLE "questions" ADD FOREIGN KEY ("question_type_id") REFERENCES "question_types" ("id");
 
 ALTER TABLE "questions" ADD FOREIGN KEY ("poll_id") REFERENCES "polls" ("id");
-
-INSERT INTO "user_roles" (id, role) VALUES
-(1, 'Admin'),
-(2, 'Moderator'),
-(3, 'Normal');
