@@ -1,6 +1,3 @@
-DROP DATABASE "PollsForYou" IF EXISTS;
-CREATE DATABASE "PollsForYou";
-
 CREATE TABLE "creator_polls" (
   "polls_id" integer,
   "users_id" integer
@@ -13,7 +10,7 @@ CREATE TABLE "user_groups" (
 
 CREATE TABLE "user_roles" (
   "id" integer PRIMARY KEY,
-  "role" number
+  "role" INTEGER
 );
 
 CREATE TABLE "groups" (
@@ -28,10 +25,10 @@ CREATE TABLE "group_polls" (
 
 CREATE TABLE "users" (
   "id" integer PRIMARY KEY,
-  "first_name" varchar2,
-  "last_name" varchar2,
-  "email" varchar2,
-  "password" varchar2,
+  "first_name" text,
+  "last_name" text,
+  "email" text,
+  "password" text,
   "created_at" timestamp,
   "user_role_id" integer
 );
@@ -42,7 +39,7 @@ CREATE TABLE "polls" (
   "creation_date" date,
   "publish_date" date,
   "due_date" date,
-  "status" number NOT NULL
+  "status" INTEGER NOT NULL
 );
 
 CREATE TABLE "polls_questions" (
@@ -59,7 +56,7 @@ CREATE TABLE "questions" (
 
 CREATE TABLE "question_types" (
   "id" integer PRIMARY KEY,
-  "type" varchar2
+  "type" text
 );
 
 CREATE TABLE "question_answers" (

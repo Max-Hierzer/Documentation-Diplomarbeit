@@ -18,7 +18,8 @@
 ## 2. Besprochene Themen
 ### 2.1 [Datenbank Testen]
 - **Zusammenfassung:**  
-  [Kurze Zusammenfassung des besprochenen Punktes]
+  First we installed the Database to start with and then set up the Database.
+  Struggling with the setup of it.
 - **Diskussion:**  
   [Wichtige Diskussionspunkte oder Meinungen]
 - **Ergebnis/Entscheidung:**  
