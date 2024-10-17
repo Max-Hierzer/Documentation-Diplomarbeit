@@ -1,1 +1,3 @@
-\i M:/PostgreSQL/17/SQL_Scripts/Prototype_database.sql
+Gernot
+\i M:/PostgreSQL/17/SQL_Scripts/Install_Database.sql
+\i M:/PostgreSQL/17/SQL_Scripts/Example_Data_Insert.sql
