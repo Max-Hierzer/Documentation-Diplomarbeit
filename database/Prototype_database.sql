@@ -1,3 +1,8 @@
+\c postgres
+DROP DATABASE IF EXISTS diplomarbeit;
+CREATE DATABASE diplomarbeit;
+\c diplomarbeit
+
 CREATE TABLE "creator_polls" (
   "polls_id" integer,
   "users_id" integer
@@ -9,12 +14,12 @@ CREATE TABLE "user_groups" (
 );
 
 CREATE TABLE "user_roles" (
-  "id" integer PRIMARY KEY,
-  "role" INTEGER
+  "id" SERIAL PRIMARY KEY,
+  "role" VARCHAR
 );
 
 CREATE TABLE "groups" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "group_name" varchar NOT NULL
 );
 
@@ -24,7 +29,7 @@ CREATE TABLE "group_polls" (
 );
 
 CREATE TABLE "users" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "first_name" text,
   "last_name" text,
   "email" text,
@@ -34,7 +39,7 @@ CREATE TABLE "users" (
 );
 
 CREATE TABLE "polls" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "title" varchar,
   "creation_date" date,
   "publish_date" date,
@@ -48,14 +53,14 @@ CREATE TABLE "polls_questions" (
 );
 
 CREATE TABLE "questions" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "question" text,
   "poll_id" integer,
   "question_type_id" integer
 );
 
 CREATE TABLE "question_types" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "type" text
 );
 
@@ -65,7 +70,7 @@ CREATE TABLE "question_answers" (
 );
 
 CREATE TABLE "answers" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "answer" text
 );
 
@@ -101,3 +106,8 @@ ALTER TABLE "creator_polls" ADD FOREIGN KEY ("polls_id") REFERENCES "polls" ("id
 ALTER TABLE "questions" ADD FOREIGN KEY ("question_type_id") REFERENCES "question_types" ("id");
 
 ALTER TABLE "questions" ADD FOREIGN KEY ("poll_id") REFERENCES "polls" ("id");
+
+INSERT INTO "user_roles" (id, role) VALUES
+(1, 'Admin'),
+(2, 'Moderator'),
+(3, 'Normal');
