@@ -1,24 +1,22 @@
-# Projektprotokoll: **[Projektname]**
+# Projektprotokoll: **[Diplomarbeit]**
 
-**Datum:** [TT.MM.JJJJ]  
+**Datum:** [17.10.2024]  
 **Teilnehmer:**  
-- [Name 1]  
-- [Name 2]  
-- [Name 3]  
-- [weitere Teilnehmer]
+- [Tobias Prasser]  
+- [Max Hierzer]  
+- [Gernot Fasching]  
 
 ---
 
 ## 1. Tagesordnung
-1. [Punkt 1]
-2. [Punkt 2]
-3. [Punkt 3]
-4. [weitere Punkte]
+1. [Datenbank Testen]
+2. [?]
+3. [?]
 
 ---
 
 ## 2. Besprochene Themen
-### 2.1 [Tagesordnungspunkt 1]
+### 2.1 [Datenbank Testen]
 - **Zusammenfassung:**  
   [Kurze Zusammenfassung des besprochenen Punktes]
 - **Diskussion:**  
@@ -34,13 +32,6 @@
 - **Ergebnis/Entscheidung:**  
   [Ergebnisse und Entscheidungen festhalten]
 
-### 2.3 [Tagesordnungspunkt 3]
-- **Zusammenfassung:**  
-  [Kurze Zusammenfassung des besprochenen Punktes]
-- **Diskussion:**  
-  [Wichtige Diskussionspunkte oder Meinungen]
-- **Ergebnis/Entscheidung:**  
-  [Ergebnisse und Entscheidungen festhalten]
 
 ---
 
@@ -62,4 +53,4 @@
 
 ---
 
-**Protokollführer:** [Name des Protokollführers]
+**Protokollführer:** [Gernot Fasching]
