@@ -28,3 +28,5 @@ The Milestones should mainly contain features added to the program. The reportin
 |---------------------------------------------------------------------|------------|
 
 
+## Durration of the meeting:
+ **2 Hours**

@@ -66,4 +66,9 @@
 
 ---
 
+## Durration of the meeting:
+ **3.5 Hours**
+
+---
+
 **Written by:** [Gernot Fasching]

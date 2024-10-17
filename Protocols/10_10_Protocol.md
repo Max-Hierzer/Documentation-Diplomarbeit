@@ -59,3 +59,6 @@ Problems:
 
 - user_answer connection is unclear
 - groupright have not been decided
+
+## Durration of the meeting:
+ **1.5 Hours**
