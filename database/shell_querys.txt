@@ -1,5 +1,5 @@
 SQL files müssen auf der selben Festplatte sein.
 
 Gernot
-\i M:/PostgreSQL/17/SQL_Scripts/Install_Database.sql
-\i M:/PostgreSQL/17/SQL_Scripts/Example_Data_Insert.sql
+\i M:/Diplomarbeit/database/Install_Database.sql
+\i M:/Diplomarbeit/database/Example_Data_Insert.sql
