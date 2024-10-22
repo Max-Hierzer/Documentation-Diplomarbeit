@@ -107,14 +107,14 @@ VALUES
     ('Jake', 'Warren', 'jake.warren89@example.com', 'password123', NOW(), 2),
     ('Karen', 'Reed', 'karen.reed90@example.com', 'password123', NOW(), 3);
 
--- Erstelle 2 test gruppen
+-- create two test groups
 
 INSERT INTO groups (group_name) 
 VALUES 
         ('Arbeiter'),
         ('Vorstand');
 
--- Einfügen von user in Gruppen
+-- add groups to users
 
 -- Zuweisung der Benutzer 1-10 zur Gruppe Vorstand
 INSERT INTO user_groups (groups_id, users_id)
@@ -131,17 +131,16 @@ VALUES
     (1, 9),
     (1, 10),
     -- Arbeiter
-    (2, 20),
-    (2, 21),
-    (2, 22),
-    (2, 23),
-    (2, 24),
-    (2, 25),
-    (2, 26),
-    (2, 27),
-    (2, 28),
-    (2, 29),
-    (2, 30);
+    (2, 11),
+    (2, 12),
+    (2, 13),
+    (2, 14),
+    (2, 15),
+    (2, 16),
+    (2, 17),
+    (2, 18),
+    (2, 19),
+    (2, 20);
 
 -- Erstellen von 2 neuen Polls
 
