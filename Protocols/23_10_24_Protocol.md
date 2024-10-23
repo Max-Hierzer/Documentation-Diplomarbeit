@@ -4,14 +4,14 @@
 **Participants:**  
 - [Tobias Prasser]  
 - [Max Hierzer]  
-- [Gernot Fasching]  
+- [Gernot Fasching] 
+- [Gerald Senarclens De Grancy] 
 
 ---
 
 ## 1. Agenda
 1. Discussing Progress and future changes with Senarclens
-2. 
-3. 
+2. Fixating to-doo's
 
 ---
 
@@ -44,39 +44,31 @@
   We recieved a example latek diplomarbeit.
 
 
-### 2.2 TOPIC2
+### 2.2 Fixating to-doo's
 - **Summary:**  
-  -- Text --
+  To-Does should be finished in 2 weeks
 - **Discussion:**  
-  -- Questions --
+  1. What features should be implemented?
+  2. Whats the gameplan?
 - **Results:**  
-  -- Answers --
-
-### 2.3 TOPIC3
-- **Summary:**  
-  -- Text --
-- **Discussion:**  
-  -- Questions --
-- **Results:**  
-  -- Answers --
+  1. Simple Hello World
+  2. See shared google docs.
 
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks                 | Responsible    | Deadline       | Status       |
-|-----------------------|----------------|----------------|--------------|
-| Decide upon tech stack| ALl            | in 2 weeks     | In Progress  |
-| Task1                 | Person         | Date/Unclear   | In Progress  |
-| Testing Database      | ALL            | Unclear        | In Progress  |
-| Improve ERD           | ALL            | Unclear        | In Progress  |
+**See shared Google docs**
 
 ---
 
 ## 4. Next Steps
 - **Upcoming appointment:** [24.10.2024]  
 - **Topics:**  
-  - Improvments of the Database
-  -   
+  - Researching for Tech stack
+  - Maybe deciding few requirements
+
+## Durration of the meeting:
+ **1 Hour**
 
 ---
 
