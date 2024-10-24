@@ -11,7 +11,7 @@
 ## 1. Agenda
 1. Discussing the tech-stack
 2. ORM discussion
-3. 
+3. Experimenting with Latex
 
 ---
 
@@ -22,16 +22,18 @@
   Linux
 
   Possible stacks:
-    1. React/NEXT.js + Express.js + Sequelize + PostgreSQL        --for javascript--
-    2. React/NEXT.js + Node.js + Sequelize + MongoDB              --for javascript--
-    3. React/NEXT.js + python(flask/django) + SQLAlchemy + MySQL  --for python--
-    4. React/NEXT.js + FastAPI + SQLAlchemy + SQLite              --for python--
+    1. React/NEXT.js + Express.js + Sequelize + PostgreSQL/MongoDB --for javascript--
+    2. React/NEXT.js + Node.js + Sequelize + MongoDB               --for javascript--
+    3. React/NEXT.js + python(flask/django) + SQLAlchemy + MySQL   --for python--
+    4. React/NEXT.js + FastAPI + SQLAlchemy + SQLite               --for python--
 - **Discussion:**  
-  Front-End: with or without framework?
-  Back-End: Framework(Django or fastAPI or Express.js or Node.js)
-  Database: ORM or static SQL?
+  1. Front-End: with or without framework?
+  2. Back-End: Framework(Django or fastAPI or Express.js or Node.js)
+  3. Database: ORM or static SQL?
 - **Results:**  
-  -- Answers --
+  1. We probably use HTML and CSS connected with React
+  2. The decision is not fixated but we have come to conclusion, that JavaScript would be easier because it would be the common denominator of the Projekt.
+  3. We decided to use an ORM.
 
 ### 2.2 ORM discussion
 - **Summary:**  
@@ -50,31 +52,38 @@
 - **Discussion:**  
   What ORM should we use if we even use one?
 - **Results:**  
-  -- Answers --
+  Not sure because we don't know for sure about the backend.
+  Preferably the highlighted ones. 
 
-### 2.3 TOPIC3
+### 2.3 Experimenting with Latex
 - **Summary:**  
-  -- Text --
+  We started creating small pages with sections, tableofcontents, lists, etc...
+
 - **Discussion:**  
-  -- Questions --
+  1. Can we get a template or even a finished diplomarbeit from our supervisor?
+  2. How do we create pdf?
 - **Results:**  
-  -- Answers --
+  1. Not sure yet.
+  2. pdfLatex or the default set "compiler".
 
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks              | Responsible    | Deadline       | Status       |
-|--------------------|----------------|----------------|--------------|
-| Task1              | Person         | Date/Unclear   | In Progress  |
-| Task1              | Person         | Date/Unclear   | In Progress  |
+| Tasks                      | Responsible    | Deadline       | Status       |
+|----------------------------|----------------|----------------|--------------|
+| Deciding upon tech-stack   | All            | 31.10.2024     | In Progress  |
+| Experimenting with Latex   | All            | Unclear        | In Progress  |
+| Hello world in tech-stack  | All            | 6.10.2024      | In Progress  |
+| Start write-up in LaTeX    | All            | 6.10.2024      | In Progress  |
 
 ---
 
 ## 4. Next Steps
-- **Upcoming appointment:** [TT.MM.JJJJ]  
+- **Upcoming appointment:** [31.10.2024]  
 - **Topics:**  
-  - 
-  -   
+  - Deciding upon tech-stack
+  - Hello world in tech-stack
+  - Start write-up in LaTeX
 
 ---
 
