@@ -1,0 +1,33 @@
+name: LaTeX Build
+
+on:
+  push:
+    branches:
+      - main # oder der Name des Branches, den du verwendest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install texlive-full
+
+      - name: Compile LaTeX
+        run: |
+          cd latex
+          pdflatex main.tex
+          biber main
+          pdflatex main.tex
+          pdflatex main.tex
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v2
+        with:
+          name: Diplomarbeit
+          path: latex/main.pdf
