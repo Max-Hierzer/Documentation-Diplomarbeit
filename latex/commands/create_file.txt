@@ -1,0 +1,5 @@
+pdflatex main.tex           --erstellt Document
+biber main                  --erstellt bibliography
+pdflatex main.tex           --fügt bibliography in Document ein
+
+Remove-Item *.aux, *.bbl, *.bcf, *.blg, *.log, *.lof, *.run.xml, *.toc -Force
