@@ -3,7 +3,7 @@ name: LaTeX Build
 on:
   push:
     branches:
-      - main # oder der Name des Branches, den du verwendest
+      - main 
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
           pdflatex main.tex
 
       - name: Upload PDF
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Diplomarbeit
           path: latex/main.pdf
