@@ -9,20 +9,20 @@
 ---
 
 ## 1. Agenda
-1. Deciding upon tech-stack
+1. Start write-up in LaTeX
 2. Hello world in tech-stack
-3. Start write-up in LaTeX
+3. 
 
 ---
 
 ## 2. Discussed Topics
-### 2.1 Deciding upon tech-stack
+### 2.1 Start write-up in LaTeX
 - **Summary:**  
-  -- Text --
+  We decided to base our documentation on the template on git repo.
 - **Discussion:**  
-  -- Questions --
+  no questions
 - **Results:**  
-  -- Answers --
+  We will get further informations from our supervisor.
 
 ### 2.2 Hello world in tech-stack
 - **Summary:**  
