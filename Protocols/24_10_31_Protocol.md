@@ -11,7 +11,6 @@
 ## 1. Agenda
 1. Start write-up in LaTeX
 2. Hello world in tech-stack
-3. 
 
 ---
 
@@ -26,40 +25,45 @@
 
 ### 2.2 Hello world in tech-stack
 - **Summary:**  
-  -- Text --
-- **Discussion:**  
-  -- Questions --
-- **Results:**  
-  -- Answers --
+  We started with a new project. We initialized our node project and downloaded the dependencies: dotenv, express, pg, pg-hstore, sequelize.
+  Configured the Database connection with enviroment file and database.js. 
+  Created Server.js to test connection and get response from express and tested the server with *node server.js*.
+  Created new React app and started little design.
+  To start React app: *npm start* in client directory.
+  When cloning the Dev-Repo we have to install the dependencies with *npm install*.
 
-### 2.3 Start write-up in LaTeX
-- **Summary:**  
-  -- Text --
+  We fetched a message from express and displayed it on react. 
 - **Discussion:**  
-  -- Questions --
+  1. How can we work on the same stack together?
+  2. When will we change to linux for development?
+  
 - **Results:**  
-  -- Answers --
+  1. Watch out for dependencies(especially the database).
+  2. We are considering staying on Windows.
+
 
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks              | Responsible    | Deadline       | Status       |
-|--------------------|----------------|----------------|--------------|
-| Task1              | Person         | Date/Unclear   | In Progress  |
-| Task1              | Person         | Date/Unclear   | In Progress  |
+| Tasks                        | Responsible    | Deadline       | Status       |
+|------------------------------|----------------|----------------|--------------|
+| Start write-up in LaTeX      | All            | 6.11.2024      | In Progress  |
+| Informing about Sequelize    | All            | 6.11.2024      | In Progress  |
+
+
 
 ---
 
 ## 4. Next Steps
 - **Upcoming appointment:** [07.11.2024]  
 - **Topics:**  
-  - Presenting the achievments of the project so far to supervisor
+  - Presenting the achievments of the project so far to the supervisor.
   - Discussing next features
 
 ---
 
 ## Durration of the meeting:
- **-num- Hours**
+ **3 Hours**
 
 ---
 

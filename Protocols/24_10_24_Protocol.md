@@ -73,8 +73,8 @@
 |----------------------------|----------------|----------------|--------------|
 | Deciding upon tech-stack   | All            | 31.10.2024     | In Progress  |
 | Experimenting with Latex   | All            | Unclear        | In Progress  |
-| Hello world in tech-stack  | All            | 6.10.2024      | In Progress  |
-| Start write-up in LaTeX    | All            | 6.10.2024      | In Progress  |
+| Hello world in tech-stack  | All            | 6.11.2024      | In Progress  |
+| Start write-up in LaTeX    | All            | 6.11.2024      | In Progress  |
 
 ---
 
