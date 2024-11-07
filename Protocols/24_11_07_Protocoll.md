@@ -9,52 +9,59 @@
 ---
 
 ## 1. Agenda
-1. Discussing next features
-2. 
-3. 
+1. Testing Google-Meet
+2. Summary of a simple project
+3. Discussing new features
 
 ---
 
 ## 2. Discussed Topics
-### 2.1 TOPIC1
+### 2.1 Testing Google-Meet
 - **Summary:**  
-  -- Text --
-- **Discussion:**  
-  -- Questions --
-- **Results:**  
-  -- Answers --
+  We tested it with a short meeting. Talking and Screensharing worked, Prasser has some Backround noise in his microphone.
 
-### 2.2 TOPIC2
+### 2.2 Summary of a simple project
+- **Summary:**  
+  We learned how the whole techstack works and how the parts are connected to each other.
+- **Discussion:**  
+  1. How does everything work so far?
+  2. How can we use SQL statements like update and delete in Sequelize?
+  3. How does the connection between front- and backend work?
+  4. How can we show/hide parts of our website?
+- **Results:**  
+  1. We went through the stack step by step to understand how everything is connected.
+  2. Statements like insert are done with the create method from sequelize, update and delete need more research.
+  3. We learned that the backend listenes for api requests. If it gets one it acts according to the kind of request.
+  4. We can use state-variables to save current state e.g. isLoggedIn.
+  
+### 2.3 Discussing new features
 - **Summary:**  
   -- Text --
 - **Discussion:**  
-  -- Questions --
+  1. How can we create relations in Sequelize to create our poll-system?
+  2. How should we arrange the frontend?
+  3. How can we manage different roles for our users?
 - **Results:**  
-  -- Answers --
-
-### 2.3 TOPIC3
-- **Summary:**  
-  -- Text --
-- **Discussion:**  
-  -- Questions --
-- **Results:**  
-  -- Answers --
+  1. Needs more research.
+  2. Rearrange the frontend, to have login and register separately.
+  3. Need to change current model in sequelize.
 
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks              | Responsible    | Deadline       | Status       |
-|--------------------|----------------|----------------|--------------|
-| Task1              | Person         | Date/Unclear   | In Progress  |
-| Task1              | Person         | Date/Unclear   | In Progress  |
-
+| Tasks                  | Responsible    | Deadline       | Status       |
+|------------------------|----------------|----------------|--------------|
+| Example get/post       | Gernot, Tobias | 14.11.2024     | In Progress  |
+| Single Choice create frontend | All            | 14.11.2024     | In Progress  |
+| Single Choice create backend  | All            | 14.11.2024     | In Progress  |
+| Role management        | All            | 14.11.2024     | In Progress  |
 ---
 
 ## 4. Next Steps
 - **Upcoming appointment:** [14.11.2024]  
 - **Topics:**  
+  - Discussing new features
   - 
-  -   
 
 ---
 
@@ -63,4 +70,4 @@
 
 ---
 
-**Written by:** [Gernot Fasching]
+**Written by:** [Max Hierzer]
