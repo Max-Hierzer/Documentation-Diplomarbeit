@@ -36,7 +36,7 @@
   
 ### 2.3 Discussing new features
 - **Summary:**  
-  -- Text --
+  We know how we want to design the frontend and need to do some research for sequelize.
 - **Discussion:**  
   1. How can we create relations in Sequelize to create our poll-system?
   2. How should we arrange the frontend?
@@ -49,24 +49,27 @@
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks                  | Responsible    | Deadline       | Status       |
-|------------------------|----------------|----------------|--------------|
-| Example get/post       | Gernot, Tobias | 14.11.2024     | In Progress  |
-| Single Choice create frontend | All            | 14.11.2024     | In Progress  |
-| Single Choice create backend  | All            | 14.11.2024     | In Progress  |
-| Role management        | All            | 14.11.2024     | In Progress  |
+| Tasks                         | Responsible    | Deadline       | Status       |
+|-------------------------------|----------------|----------------|--------------|
+| Example get/post              | Gernot, Tobias | 14.11.2024     | In Progress  |
+| Create poll 1 yes/no question | Tobias         | 14.11.2024     | In Progress  |
+| Vote                          | Gernot         | 14.11.2024     | In Progress  |
+| Display results, delete poll  | Max            | 14.11.2024     | In Progress  |
+| Role Management               | All            | 21.11.2024     | In Progress  |
+
+
 ---
 
 ## 4. Next Steps
 - **Upcoming appointment:** [14.11.2024]  
 - **Topics:**  
+  - Discussing progress
   - Discussing new features
-  - 
 
 ---
 
 ## Durration of the meeting:
- **-num- Hours**
+ **4 Hours**
 
 ---
 
