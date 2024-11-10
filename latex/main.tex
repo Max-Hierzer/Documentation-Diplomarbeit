@@ -35,9 +35,18 @@
 
 % Einleitung
 \chapter{Introduction}
-\lipsum[1]
+Link Gliederung: https://www.diplomarbeiten-bbs.at/durchfuehrung/gliederung-der-diplomarbeit-und-formale-vorgaben
+\section{Short description}
 
+The topic of this diploma thesis is creating a platform which supports different voting options like single, multiple or weighted choice. Additionally there should be a Login system with different roles to administer and create or delete polls and one where the user can simply vote for the polls he's included in. Furthermore there an option to disclose the results and who voted for which answers. The database should run on a remote server and be accessed by an API. \\
+The reason we chose this topic is because our supervisor is part of the LMP party and they couldn't find an appropriate platform to vote on party intern problems and topics. Hence he approached us and suggested we write our diploma thesis on a voting platform.
 
+\section{Description of performed work}
+Our aim is to provide a website where different organizations can create and publish polls for their members. Since our finished work will be open source, everyone who wants to create polls will benefit from our work. \\
+We chose to accept the LMP as our partner, because they brought up that there isn't a platform that supports all the features they need. Moreover can they give us feedback of the real life application so we can adjust the features to a user organization. During the development of our work we had monthly meetings with the LMP to discuss the progress. Because we decided to develop our software in an agile way the discussions we had with them also helped so we could focus on the more important features first and implement elements of lesser importance later.  
+
+\section{Methodology of the thesis}
+At first we had to decide on a tech stack. After careful consideration we decided upon a PostgreSQL database, a backend of node.js, sequelize to perform database operations and express to write APIs so we can connect with our frontend. Our frontend is based on React and we also included a PWA. After this decision we began with a simple input and output from front- to backend so ensure we all understood how each part is connected to each other. The next step was implementing the first features. We split the elements in different components so we could work separately and efficiently, e.g the single choice is split in create the poll, display the poll, vote, and show the results. Reasons we chose this tech stack and a thorough description of each function our work has will be in the main part.  
 % Beispielbild einfügen
 \begin{figure}[h!]
     \centering
@@ -48,14 +57,29 @@
 
 % Hauptteil
 \chapter{Main}
+\section{Tech Stack}
+\subsection{PostgreSQL}
+\subsection{node.js}
+\subsection{Sequelize}
+\subsection{express}
+\subsection{React}
+\subsection{PWA}
+\section{Database}
+\section{Login}
+\section{Single choice}
+\section{Multiple choice}
+\section{Weighted choice}
+\section{Disclosing votes}
+\section{Exporting results}
+
+\chapter{Summary}
 \lipsum[1]
 
 % Literaturverweis-Beispiel
 Hier ein Zitat aus einer Quelle \cite{author2023example}.
 
 % Zusammenfassung
-\chapter{Summary}
-\lipsum[1]
+
 
 % Literaturverzeichnis
 \printbibliography
