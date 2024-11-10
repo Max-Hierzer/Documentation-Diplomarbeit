@@ -1,0 +1,10 @@
+./latex/*.aux
+./latex/*.bbl
+./latex/*.bcf
+./latex/*.blg
+./latex/*.lof
+./latex/*.log
+./latex/*.run.xml
+./latex/*.synctex.gz
+./latex/*.toc
+
