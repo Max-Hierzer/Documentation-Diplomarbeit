@@ -36,7 +36,7 @@
 
 ### 2.3 The Meeting
 - **Summary:**  
-  
+  We talked about possible events that could occure during the meeting.
 - **Discussion:**  
   Ablauf vom Meeting?
 - **Results:**  
