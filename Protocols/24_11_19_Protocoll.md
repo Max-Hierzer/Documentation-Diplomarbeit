@@ -43,7 +43,7 @@
   Agenda des Meetings kann ausdiskutiert werden. Kein Bereich zu lange.
   1. Vorstellung
   2. Status quo
-  3. Vorstellung von LMP
+  3. Vorstellung von LMP und unsere Fragen zu den Wünschen.
   4. Neues Meeting ausmachen
   5. Was wird bis zum nächsten mal gefordert
   
