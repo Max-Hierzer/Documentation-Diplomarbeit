@@ -40,7 +40,7 @@ Gernot hat unseren derzeitigen Stand der Plattform vorgestellt
 
 ### 2.3 Vorstellungen von LMP
 Git hub repository geteilt. 
-ToDO: readme wie installiert man.
+ToDO: readme wie installiert man. wichtig!!
       Single Multiple Choice.
       Anonyme polls.
       Daten exportieren csv.
@@ -50,11 +50,19 @@ ToDO: readme wie installiert man.
       Bis nächste mal 
       Multiple Choice: mittlere priorität.
       Usermanagement 
-      admin (can create & edit users; can / edit create polls; can see stats etc)
-      power user (can create polls and edit own polls and add other users as co-creators)
+      admin (can create & edit users; can / edit create polls; can see stats etc/ löschen)
+      power user (can create polls and edit own polls and add other users as co-creators / eigene polls löschen ohne antworten)
       user (can vote wherever assign voting rights; power user can be a "flag" to the normal user)
-
-
+      edit nur wenn keine antworten? Nur administrator wenn schon gestartet? 
+      farbschemen? LMP farben. niedrig 
+    
+      bis nächstes mal:
+      readme
+      editieren von umfragen
+      berechtigungssystem
+      Multiple choice
+      
+      nöchster termin: in 2 wochen
 ### 2.4 Was wird bis zum nächsten mal gefordert
 
   
