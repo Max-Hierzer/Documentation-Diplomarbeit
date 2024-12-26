@@ -37,11 +37,13 @@
   How many tasks for each person?
 - **Results:**  
   - Tobias:
-    - 
+    - Link to Poll
+    - DateTime Picker
   - Max: 
-    - 
+    - Rolls(User Darstellung)
+    - Description field
   - Gernot:
-    - Rolls
+    - Rolls(Registration)
 
 ---
 
@@ -49,10 +51,10 @@
 | Tasks              | Responsible    | Deadline       | Status       |
 |--------------------|----------------|----------------|--------------|
 | Rolls              | Gernot         | 09.01.2025     | In Progress  |
-| Task1              | Person         | Date/Unclear   | In Progress  |
-| Rolls              | Gernot         | 09.01.2025     | In Progress  |
-| Rolls              | Gernot         | 09.01.2025     | In Progress  |
-| Rolls              | Gernot         | 09.01.2025     | In Progress  |
+| Rolls              | Max            | 09.01.2025     | In Progress  |
+| Description        | Max            | 09.01.2025     | In Progress  |
+| Link               | Tobias         | 09.01.2025     | In Progress  |
+| DateTime           | Tobias         | 09.01.2025     | In Progress  |
 
 ---
 
@@ -65,7 +67,7 @@
 ---
 
 ## Durration of the meeting:
- **-num- Hours**
+ **1 Hour**
 
 ---
 
