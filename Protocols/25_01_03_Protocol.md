@@ -22,7 +22,7 @@
 - **Discussion:**  
   What has been done?
 - **Results:**  
-  - Roles feature is implemented and functions as intended(waiting for further instructions from the clients).
+  - Roles feature is implemented and functions as intended  (waiting for further instructions from the clients).
   - Date-Time Picker is now compatable for all browser.
   - Link to voting of a Poll is created when a Poll is created and works as intendet.
   - Textarea for description of Poll is implemented.
