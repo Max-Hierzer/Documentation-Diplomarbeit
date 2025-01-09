@@ -34,11 +34,21 @@
       - Date/Time picker changes
     - Delete 
       - Delete the newly created poll
+    - Explain Roles
+      - Admin can do everything
+      - Switch to Poweruser
+      - Explain what poweruser can do
+      - Explain what normal user can do
     - Edit
       - Explain when polls can be edited
-      - 
+      - Edit the existing poll
     - Vote
+      - Explain when polls can be voted on
+      - Vote with different poweruser
+      - Switch to normal user and vote 
     - Results
+      - Explain when results can be viewed
+      - Show functions (disclose voters)
 
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
