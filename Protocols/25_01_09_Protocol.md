@@ -32,6 +32,7 @@
       - Create new poll
       - Description changes
       - Date/Time picker changes
+      - Show link functions
     - Delete 
       - Delete the newly created poll
     - Explain Roles
