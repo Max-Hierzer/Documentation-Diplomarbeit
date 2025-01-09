@@ -33,16 +33,16 @@
       - Description changes
       - Date/Time picker changes
       - Show link functions
-    - Edit
-      - Explain when polls can be edited
-      - Edit the existing poll
-    - Delete 
-      - Delete the newly created poll
     - Explain Roles
       - Admin can do everything
       - Switch to Poweruser
       - Explain what poweruser can do
       - Explain what normal user can do
+    - Edit
+      - Explain when polls can be edited
+      - Edit the existing poll
+    - Delete 
+      - Delete the newly created poll
     - Vote
       - Explain when polls can be voted on
       - Vote with different poweruser
