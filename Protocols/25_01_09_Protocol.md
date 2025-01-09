@@ -100,14 +100,14 @@
 ## 4. Next Steps
 - **Upcoming appointment:** [16.01.2025]  
 - **Topics:**  
-  - 
-  -   
+  - Progress
+  - Solution from Gerald
 
 ---
 
 ## Durration of the meeting:
- **-num- Hours**
+ **6 Hours**
 
 ---
 
-**Written by:** [Gernot Fasching]
+**Written by:** [Max Hierzer]
