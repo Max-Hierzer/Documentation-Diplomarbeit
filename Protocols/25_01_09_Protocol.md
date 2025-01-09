@@ -53,41 +53,36 @@
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
   - User anlegen kein passwort vergeben sondern user
-  - Poll löschen wenn abgestimmt ist?
   - Scrollbar nur eine und keine inneren
-  - Permalink später nochmal auslesen
-  - General public voting
-  - Gruppensystem
-  - Multiple Choice
-  - Farbschema
-  - Anonymisierung
-  - Weighted Choice
-  - Links hashen
+  - Permalink später nochmal auslesen 
+  - General public voting 
+  - Gruppensystem 
+  - Multiple Choice 
+  - Farbschema 
+  - Anonymisierung 
+  - Weighted Choice 
+  - Links hashen 
+  - Ergebnisse in Prozent oder andere darstellungen (chart) 
+  - CSV export 
+  - für public votes text input als antwort möglichkeit
+  - bestätigungswindow beim erstellen
 
 - **Prioritäten:**  
-  1. Hohe Priorität:
-    - 
-    - 
-    - 
-  
-  2. Mittlere Priorität:
-    - 
-    - 
-    - 
-  
-  3. Niedrige Priorität:
-    - 
-    - 
-    - 
+  Siehe project github
 
 
 ### 2.3 Aftermath
 - **Summary:**  
-  
+  Gerald fragen bei public mehrfach abstimmen und anonymisierung.  
+  Wir haben die todos verteilt.
 - **Discussion:**  
-  
+  1. Wie kann man verhindern das man bei einer public umfrage mehrfach abstimmen kann?
+  2. Anonymisierung wie gestalten?
+  3. Todos bis nächstes mal.
 - **Results:**  
-  
+  1. Keine ahnung
+  2. Keine ahnung
+  3. Siehe unten
 
 ---
 
