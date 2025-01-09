@@ -18,11 +18,27 @@
 ## 2. Discussed Topics
 ### 2.1 Discussing presentation
 - **Summary:**  
-  -- Text --
+  We chose the order -> see results.
 - **Discussion:**  
-  -- Questions --
+  We discussed the order in which we will present the new features. Depending on if the new listeners want an introduction to our work we will present it.
 - **Results:**  
-  -- Answers --
+  Order:
+    *For new members*
+    - Login
+    - Registration
+      - What the different roles do.
+      - Create new user
+    - Create poll
+      - Create new poll
+      - Description changes
+      - Date/Time picker changes
+    - Delete 
+      - Delete the newly created poll
+    - Edit
+      - Explain when polls can be edited
+      - 
+    - Vote
+    - Results
 
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
