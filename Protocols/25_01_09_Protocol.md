@@ -23,7 +23,6 @@
   We discussed the order in which we will present the new features. Depending on if the new listeners want an introduction to our work we will present it.
 - **Results:**  
   Order:
-    *For new members*
     - Login
     - Registration
       - What the different roles do.
@@ -53,12 +52,17 @@
 
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - User anlegen kein passwort vergeben sondern user
+  - Poll löschen wenn abgestimmt ist?
+  - Scrollbar nur eine und keine inneren
+  - Permalink später nochmal auslesen
+  - General public voting
+  - Gruppensystem
+  - Multiple Choice
+  - Farbschema
+  - Anonymisierung
+  - Weighted Choice
+  - Links hashen
 
 - **Prioritäten:**  
   1. Hohe Priorität:
