@@ -87,10 +87,13 @@
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks              | Responsible    | Deadline       | Status       |
-|--------------------|----------------|----------------|--------------|
-| Task1              | Person         | Date/Unclear   | In Progress  |
-| Task1              | Person         | Date/Unclear   | In Progress  |
+| Tasks                             | Responsible    | Deadline       | Status       |
+|-----------------------------------|----------------|----------------|--------------|
+| Public survey Personen Daten      | Max            | 16.01.2025     | In Progress  |
+| CSV Export                        | Gernot         | 16.01.2025     | In Progress  |
+| Public survey option beim createn | Tobias         | 16.01.2025     | In Progress  |
+| Link hashen                       | Tobias         | 16.01.2025     | In Progress  |
+| "Meine polls"                     | Tobias/Max     | 16.01.2025     | In Progress  |
 
 ---
 
