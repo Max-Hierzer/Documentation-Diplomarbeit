@@ -60,7 +60,7 @@
 ## 3. Open Points / To-Dos
 | Tasks              | Responsible    | Deadline       | Status       |
 |--------------------|----------------|----------------|--------------|
-| Task1              | Person         | Date/Unclear   | In Progress  |
+| Keine Ahnung       | Tobias         | 23.01.2025     | In Progress  |
 | Public Surveys     | Max            | 23.01.2025     | In Progress  |
 | CSV Export         | Gernot         | 23.01.2025     | In Progress  |
 
