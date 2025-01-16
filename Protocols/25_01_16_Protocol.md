@@ -69,13 +69,13 @@
 ## 4. Next Steps
 - **Upcoming appointment:** [23.01.2025]  
 - **Topics:**  
-  - 
-  -   
+  - Prepare Presenation
+  - Present Progress
 
 ---
 
 ## Durration of the meeting:
- **-num- Hours**
+ **1 Hours**
 
 ---
 
