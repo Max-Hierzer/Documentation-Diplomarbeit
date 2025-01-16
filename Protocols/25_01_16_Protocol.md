@@ -44,15 +44,16 @@
   1. Open tasks?
   2. Which need to be finished till next meeting?
 - **Results:**  
-  1. Gernot:
+  1. All in the backlog on github
+  2. Gernot:
      - CSV-Export
+     - Maybe a bit style.
 
      Tobias:
-     - 
+     - Make that work whats been done.
 
      Max:
-     - 
-  2. 
+     - try to make public surveys work with voting.
 
 ---
 
@@ -60,7 +61,7 @@
 | Tasks              | Responsible    | Deadline       | Status       |
 |--------------------|----------------|----------------|--------------|
 | Task1              | Person         | Date/Unclear   | In Progress  |
-| Task1              | Person         | Date/Unclear   | In Progress  |
+| Public Surveys     | Max            | 23.01.2025     | In Progress  |
 | CSV Export         | Gernot         | 23.01.2025     | In Progress  |
 
 ---
