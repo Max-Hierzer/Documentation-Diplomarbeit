@@ -32,13 +32,42 @@
 
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
+1. General Informationen
   - Public data:
     - your job with select(Schüler, Gesundheitswesen, Nichterwerbstätig, Pension ...)
-    - 
+    - Location
+    - Haushaltseinkommen
 
-  - Questionstypes
-   - 
+  - Public Polls general:
+    - Pool an standard Fragen
+
+  - Polls general:
+    - Bild unterhalb des Pollnamen/PollDescription.
+    - Endmessage für Poll
+    - Weiterleitung zum Newsletter
+
+  - Questions
+   - Default Werte für leer gelassene Antworten, damit man Fragen leer lassen kann.
+
+  - User update:
+    - assigned: 
+    - Hashen des Passwords in der Datenbank
+    - Registration: Userrole auswählen(User soll Username, Passwort, Email selbst anlegen können)
+    - User Data Select: Daten sollen nicht im Frontend alle geholt werden
+
+2. Wirklich im nächsten Sprint:
+  - Multiple Choice
+    - assigned: Tobias, Max, Gernot
+
+  - Weighted Choice
+    - assigned: Tobias, Gernot, Max
+    - Further infos on Github
+
+  - Farbschema
+    - assigned: 
+    - Farbcodes: Senarclens
   
+
 
 - **Prioritäten:**  
   Siehe project github
@@ -46,27 +75,21 @@
 
 ### 2.3 Aftermath
 - **Summary:**  
-  Gerald fragen bei public .  
   Wir haben die todos verteilt.
 - **Discussion:**  
-  1. Wie kann man verhindern das man bei einer public umfrage mehrfach abstimmen kann?
-  2. Anonymisierung wie gestalten?
-  3. Todos bis nächstes mal.
+  1. Todos bis nächstes mal.
 - **Results:**  
-  1. Keine ahnung
-  2. Keine ahnung
-  3. Siehe unten
+  1. Siehe unten
 
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks                             | Responsible    | Deadline       | Status       |
-|-----------------------------------|----------------|----------------|--------------|
-| Public survey Personen Daten      | Max            | 16.01.2025     | In Progress  |
-| CSV Export                        | Gernot         | 16.01.2025     | In Progress  |
-| Public survey option beim createn | Tobias         | 16.01.2025     | In Progress  |
-| Link hashen                       | Tobias         | 16.01.2025     | In Progress  |
-| "Meine polls"                     | Tobias/Max     | 16.01.2025     | In Progress  |
+| Tasks                             | Responsible       | Deadline       | Status       |
+|-----------------------------------|-------------------|----------------|--------------|
+| Multiple Choice                   | Gernot/Tobias     | 30.01.2025     | In Progress  |
+| Weighted Choice                   | Gernot/Max/Tobias | 06.02.2025     | In Progress  |
+| Default Seeder                    | Gernot            | 30.01.2025     | In Progress  |
+| Anonymous                         | Max               | 30.01.2025     | In Progress  |
 
 ---
 
@@ -78,7 +101,7 @@
 ---
 
 ## Durration of the meeting:
- **2**
+ **4 Hours**
 
 ---
 
