@@ -22,50 +22,23 @@
 - **Discussion:**  
   We discussed the order in which we will present the new features. Depending on if the new listeners want an introduction to our work we will present it.
 - **Results:**  
-  Order:
-    - Login
-    - Registration
-      - What the different roles do.
-      - Create new user
-    - Create poll
-      - Create new poll
-      - Description changes
-      - Date/Time picker changes
-      - Show link functions
-    - Explain Roles
-      - Admin can do everything
-      - Switch to Poweruser
-      - Explain what poweruser can do
-      - Explain what normal user can do
-    - Edit
-      - Explain when polls can be edited
-      - Edit the existing poll
-    - Delete 
-      - Delete the newly created poll
-    - Vote
-      - Explain when polls can be voted on
-      - Vote with different poweruser
-      - Switch to normal user and vote 
-    - Results
-      - Explain when results can be viewed
-      - Show functions (disclose voters)
+  Things to present:
+  - Anonymous Polls
+  - Public Polls
+  - MyPolls
+  - CSV-Export
+  - Design changes
+
 
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
-  - User anlegen kein passwort vergeben sondern user
-  - Scrollbar nur eine und keine inneren
-  - Permalink später nochmal auslesen 
-  - General public voting 
-  - Gruppensystem 
-  - Multiple Choice 
-  - Farbschema 
-  - Anonymisierung 
-  - Weighted Choice 
-  - Links hashen 
-  - Ergebnisse in Prozent oder andere darstellungen (chart) 
-  - CSV export 
-  - für public votes text input als antwort möglichkeit
-  - bestätigungswindow beim erstellen
+  - Public data:
+    - your job with select(Schüler, Gesundheitswesen, Nichterwerbstätig, Pension ...)
+    - 
+
+  - Questionstypes
+   - 
+  
 
 - **Prioritäten:**  
   Siehe project github
@@ -73,7 +46,7 @@
 
 ### 2.3 Aftermath
 - **Summary:**  
-  Gerald fragen bei public mehrfach abstimmen und anonymisierung.  
+  Gerald fragen bei public .  
   Wir haben die todos verteilt.
 - **Discussion:**  
   1. Wie kann man verhindern das man bei einer public umfrage mehrfach abstimmen kann?
@@ -98,16 +71,15 @@
 ---
 
 ## 4. Next Steps
-- **Upcoming appointment:** [16.01.2025]  
+- **Upcoming appointment:** [30.01.2025]  
 - **Topics:**  
   - Progress
-  - Solution from Gerald
 
 ---
 
 ## Durration of the meeting:
- **6 Hours**
+ **2**
 
 ---
 
-**Written by:** [Max Hierzer]
+**Written by:** [Gernot Fasching]
