@@ -36,10 +36,10 @@
 
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
-  - Ergebnissanzeige von Multiple Choice und Weighted Choice
-  - Poll Bild / Logo für eine Umfrage
-    - Logo soll zb links oben angezeigt.
-    - Poll Bild soll Titelbild für die Umfrage sein.
+  - Ergebnissanzeige von Multiple Choice und Weighted Choice     
+  - Poll Bild / Logo für eine Umfrage     
+    - Logo soll zb links oben angezeigt.     
+    - Poll Bild soll Titelbild für die Umfrage sein.     
 
   - Farbschema: Maybe modular mit Foreground/Background variablen von css3
   - 
@@ -72,19 +72,16 @@
 ## 3. Open Points / To-Dos
 | Tasks                             | Responsible    | Deadline       | Status       |
 |-----------------------------------|----------------|----------------|--------------|
-| Public survey Personen Daten      | Max            | 16.01.2025     | In Progress  |
-| CSV Export                        | Gernot         | 16.01.2025     | In Progress  |
-| Public survey option beim createn | Tobias         | 16.01.2025     | In Progress  |
-| Link hashen                       | Tobias         | 16.01.2025     | In Progress  |
-| "Meine polls"                     | Tobias/Max     | 16.01.2025     | In Progress  |
+|                                   | Max            | 13.02.2025     | In Progress  |
+|                                   | Gernot         | 13.02.2025     | In Progress  |
+|                                   | Tobias         | 13.02.2025     | In Progress  |
 
 ---
 
 ## 4. Next Steps
-- **Upcoming appointment:** [16.01.2025]  
+- **Upcoming appointment:** [13.02.2025]  
 - **Topics:**  
   - Progress
-  - Solution from Gerald
 
 ---
 
