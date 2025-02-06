@@ -46,12 +46,16 @@
 
 - **Prioritäten:**  
   Wichtig:
-  Layout bearbeiten, Farbschema,
+  Layout bearbeiten, 
+  Farbschema
 
   Medium:
   Ergebnisse von Multiple Choice und Weighted Choice richtig anzeigen, 
+  Poll Bild / Logo 
 
   Nicht so wichtig:
+  Öffentliche Fragen,
+  Gruppensystem
 
 
 
@@ -59,11 +63,9 @@
 - **Summary:**  
   We merged the publicPoll branch to main
 - **Discussion:**  
-  1. Wie kann man verhindern das man bei einer public umfrage mehrfach abstimmen kann?
-  2. Anonymisierung wie gestalten?
-  3. Todos bis nächstes mal.
+  1. Merge Probleme
 - **Results:**  
-  1. 
+  1. Merge Probleme gelöst
 
 ---
 
