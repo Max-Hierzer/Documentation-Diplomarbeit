@@ -30,7 +30,7 @@ The objective of the project is to develop a user-friendly, open-source web appl
 
 - [ ] **Anonymous Voting** – Es kann mit einem Nutzer abgestimmt werden ohne das der Nutzer zurückverfolgt werden kann.
 
-- [ ] **Abstimmungs-Zeit-Funktion** – Es gibt für eine Umfrage ein Start- und ein Enddatum, wann die Poll zur Abstimmung freigegeben wird und wann sie geschlossen ist. 
+- [ ] **Abstimmungs-Zeit-Funktion** – Es gibt für eine Umfrage ein Start- und ein Enddatum, wann die Umfrage zur Abstimmung freigegeben wird und wann sie geschlossen ist. 
 
 - [ ] **Gruppensystem** – Man kann Gruppen von Nutzern anlegen in denen man Umfragen teilt.
 
