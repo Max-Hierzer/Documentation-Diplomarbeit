@@ -4,13 +4,13 @@
 The objective of the project is to develop a user-friendly, open-source web application for online voting. The application will support customizable voting methods and provide a transparent and accessible voting process. It will focus on ease of use, flexibility, and efficient vote management for administrators.
 
 ## 🎯 Hauptfeatures
-- [ ] **Login** – User können sich anmelden.
+- [ ] **Login** – Nutzer können sich anmelden.
 
 - [ ] **Registration** – Nutzer können von einem Admin angelegt werden.
 
 - [ ] **Create Poll** – Umfragen können auf verschiedene Wege erstellt werden. 
 
-- [ ] **Edit Poll** – Verschiedene Polls können erstellt werden.
+- [ ] **Edit Poll** – Verschiedene Umfragen können erstellt werden.
 
 - [ ] **Delete Poll** – Umfragen können gelöscht werden.
 
