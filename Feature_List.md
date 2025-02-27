@@ -61,5 +61,5 @@ The objective of the project is to develop a user-friendly, open-source web appl
 - Zusätzliche Anmerkungen oder Ideen für zukünftige Features.
 
 ---
-*Letzte Aktualisierung: [12.02.2025]*
+*Letzte Aktualisierung: [26.02.2025]*
 

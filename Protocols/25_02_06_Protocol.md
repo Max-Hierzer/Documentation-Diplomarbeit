@@ -33,7 +33,8 @@
       3. Weighted Choice Wahlkabine Beispiel zeigen:
         - Frage: Sind Sie zufrieden mit unserem Service?
         - Antworten: Ja, Nein, Keine Aussage  
-
+        
+      - Present the overall design.
 ### 2.2 Meeting with clients
 - **Wünsche für die nächste Iteration**  
   - Ergebnissanzeige von Multiple Choice und Weighted Choice     
