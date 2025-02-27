@@ -5,6 +5,9 @@
 - [Tobias Prasser]  
 - [Max Hierzer]  
 - [Gernot Fasching]  
+- [Gerald Senarclens de Grancy]
+- [Erwin Thaler]
+- [Axel Puntigam]
 
 ---
 
@@ -34,21 +37,35 @@
         - Frage: Sind Sie zufrieden mit unserem Service?
         - Antworten: Ja, Nein, Keine Aussage  
 
+      - Präsentation des Designs
+
 ### 2.2 Meeting with clients
+- **Abseits von den Funktionalitäten:**
+  - Usability test von LMP oder Klasse vielleicht.
+
+- **Anmerkungen zu den bisher gemachten**
+  - Umfrage löschen Button ausgrauen und deaktivieren wenn Umfrage nicht gelöscht werden kann. 
+  - Nutzername vom aktuellen User.
+  - Labels für Eingabefelder
+
 - **Wünsche für die nächste Iteration**  
-  - 
+  - Hilfe Seite für eine kleine Anleitung für alles.
+  - Gruppensystem: Umfrage für bestimmte Personen berechtigen. E-Mail liste, zum kopieren von allen Gruppenmitgliedern. Gruppen einsehbar wer drinnen ist, hinzufügen, entfernen. 
+  - beim erstellen gleich Gruppe auswählen
 
 - **Prioritäten:**  
-  - 
-
-
-
-### 2.3 Aftermath
-- **Summary:**  
-
-- **Discussion:**  
-
-- **Results:**  
+  - High:
+    - Gruppensystem
+    - Anmerkungen umsetzen
+    - Poll Bild
+    - User Anlegen ohne Passwort
+    - CSV-Export fix
+  - Mid:
+    - Öffentliche Frage
+    - Offene Frage
+  - Low: 
+    - QR Code
+    - Accessibility Improvements
 
 
 ---
@@ -56,22 +73,25 @@
 ## 3. Open Points / To-Dos
 | Tasks              | Responsible    | Deadline       | Status       |
 |--------------------|----------------|----------------|--------------|
-|               | Gernot         | 06.03.2025   | In Progress  |
-|               | Tobias         | 06.03.2025   | In Progress  |
-|               | Prasser        | 06.03.2025   | In Progress  |
+| Gruppensystem      | All            | 06.03.2025     | In Progress  |
+| Poll Bild          | Gernot         | 13.03.2025     | In Progress  |
+| Anmerkungen        | Tobias         | 06.03.2025     | In Progress  |
+| Öffentliche Frage  | Max            | 13.03.2025     | In Progress  |
+| User anlegen       | All            | 13.03.2025     | In Progress  |
+| CSV-Export fix     | Gernot         | 06.03.2025     | In Progress  |
 
 ---
 
 ## 4. Next Steps
 - **Upcoming appointment:** [06.03.2025]  
 - **Topics:**  
-  - 
-  -   
+  - Gruppensystem fertigstellen
+  - Besprechung von folgenden 
 
 ---
 
 ## Durration of the meeting:
- **-num- Hours**
+ **1.5 + 1.5 Hours**
 
 ---
 

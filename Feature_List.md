@@ -34,6 +34,8 @@ The objective of the project is to develop a user-friendly, open-source web appl
 
 - [ ] **Gruppensystem** – Man kann Gruppen von Nutzern anlegen in denen man Umfragen teilt.
 
+- [ ] **Öffentliche Frage** - 
+
 
 ## 🔧 Geplante Features
 - [ ] **Gruppensystem** 
