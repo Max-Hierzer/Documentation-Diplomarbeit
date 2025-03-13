@@ -5,8 +5,11 @@
 - [Tobias Prasser]  
 - [Max Hierzer]  
 - [Gernot Fasching]  
-- [Gerald Senarclens de Grancy]
-- 
+- [Gerald Senarclens de Grancy]  
+- [Erwin Thaler]  
+- [Axel Puntigam]  
+- [Thomas Habenschuh]  
+- [Kyra Borchhardt]  
 
 ---
 
@@ -26,50 +29,46 @@
 - **Results:**  
   Order:
     **Presentation:**
-      1. Groupen
+      1. Gruppen
       2. Pollbild
       3. User Anlegen
 
 ### 2.2 Meeting with clients (19:00 - 20:00)
 - **Abseits von den Funktionalitäten:**
-  - 
+  - bei Diplomarbeit am handy vorzeigen
+  - prime react für styling
 
 - **Anmerkungen zu den bisher gemachten**
-  - 
-  - 
-  - 
+  - listbox für user löschen aus gruppe
+  - selects stylen
+  - pro frage anzahl der votes
 
 - **Wünsche für die nächste Iteration**  
-  - 
-  - 
-  - 
+  - alle user erfassen / anschaun wen es alles gibt
+  - Hilfe für Funktionen
+  - Anleitung für deployment oder fertiges setup
 
 - **Prioritäten:**  
   - High:
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Öffentliche Fragen
+    - Offene Frage
+    - Nach der Abstimmung (2 optionen, Danke für ihre stimme, Danke + weiterleitung)
   - Mid:
-    - 
-    - 
+    - QR-Code
   - Low: 
-    - 
-    - 
-
+    - Grafische Auswertung
 
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks              | Responsible    | Deadline       | Status       |
-|--------------------|----------------|----------------|--------------|
-|                    | All            | 20.03.2025     | In Progress  |
-|                    | All            | 20.03.2025     | In Progress  |
-|                    | All            | 20.03.2025     | In Progress  |
-|                    | All            | 20.03.2025     | In Progress  |
-|                    | All            | 20.03.2025     | In Progress  |
-|                    | All            | 20.03.2025     | In Progress  |
+| Tasks                                                     | Responsible    | Deadline       | Status       |
+|-----------------------------------------------------------|----------------|----------------|--------------|
+| Seeder Gruppe "Alle", "Admin"                             | All            | 20.03.2025     | In Progress  |
+| User wird beim erstlellen gleich Gruppe "Alle" zugeordnet | All            | 20.03.2025     | In Progress  |
+| Pollbild bei edit und resuls                              | All            | 20.03.2025     | In Progress  |
+|                          | All            | 20.03.2025     | In Progress  |
+|                                                           | All            | 20.03.2025     | In Progress  |
+|                                                           | All            | 20.03.2025     | In Progress  |
 
 ---
 
@@ -86,4 +85,4 @@
 
 ---
 
-**Written by:** [Gernot Fasching]
+**Written by:** [Max Hierzer]
