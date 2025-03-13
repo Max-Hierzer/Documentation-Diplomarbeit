@@ -18,7 +18,7 @@
 ---
 
 ## 2. Discussed Topics
-### 2.1 Discussing presentation
+### 2.1 Discussing presentation (14:00 - 15:30 + 18:15 - 19:00)
 - **Summary:**  
   We chose the order -> see results.
 - **Discussion:**  
@@ -30,7 +30,7 @@
       2. Pollbild
       3. User Anlegen
 
-### 2.2 Meeting with clients
+### 2.2 Meeting with clients (19:00 - 20:00)
 - **Abseits von den Funktionalitäten:**
   - 
 
@@ -65,11 +65,11 @@
 | Tasks              | Responsible    | Deadline       | Status       |
 |--------------------|----------------|----------------|--------------|
 |                    | All            | 20.03.2025     | In Progress  |
-|                    | All         | 20.03.2025     | In Progress  |
-|                    | All         | 20.03.2025     | In Progress  |
 |                    | All            | 20.03.2025     | In Progress  |
 |                    | All            | 20.03.2025     | In Progress  |
-|                    | All         | 20.03.2025     | In Progress  |
+|                    | All            | 20.03.2025     | In Progress  |
+|                    | All            | 20.03.2025     | In Progress  |
+|                    | All            | 20.03.2025     | In Progress  |
 
 ---
 
