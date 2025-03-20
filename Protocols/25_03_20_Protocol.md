@@ -11,59 +11,66 @@
 ## 1. Agenda
 1. Discussing issues 
 2. Further implementations
-3. 
+
 
 ---
 
 ## 2. Discussed Topics
 ### 2.1 Discussing issues
 - **Summary:**  
-  
+  We discussed the issues that are holding us for continouing further.
 - **Discussion:**  
+  1. What needs to be done?
+  2. Fix publicPolls?
+- **Results:** 
+  1. Results
+    - User wird beim erstlellen gleich Gruppe "Alle" zugeordnet
+    - Undefined bei user anlegen
+    - Usernames nicht zweimal
   
-- **Results:**  
-  
+  2. Is now fixed.
 
 ### 2.2 Further implementations
 - **Summary:**  
-  -- Text --
+  We discussed further implementations.
 - **Discussion:**  
-  -- Questions --
+  1. Offene Frage
+  2. Hilfe Anzeigen
+  3. Nach dem Abstimmen
+  4. Bugfixes
 - **Results:**  
-  -- Answers --
+  1. Entweder Frage als letzte option andere, oder eigener Questiontype(openQuestion).
+  2. Eigene Seite
+  3. Usestate nach vote auf publicPoll.
+  4. - bugfixes/usability für developer:
+      - Seeder Gruppe "Alle", "Admin"
+      - User wird beim erstlellen gleich Gruppe "Alle" zugeordnet
+      - Undefined bei user anlegen
+      - Usernames nicht zweimal
 
-### 2.3 TOPIC3
-- **Summary:**  
-  -- Text --
-- **Discussion:**  
-  -- Questions --
-- **Results:**  
-  -- Answers --
 
 ---
 
 ## 3. Open Points / To-Dos
-| Tasks              | Responsible    | Deadline       | Status       |
-|--------------------|----------------|----------------|--------------|
-| Gruppensystem      | All            | 06.03.2025     | In Progress  |
-| Poll Bild          | Gernot         | 13.03.2025     | In Progress  |
-| Anmerkungen        | Tobias         | 06.03.2025     | In Progress  |
-| Öffentliche Frage  | Max            | 13.03.2025     | In Progress  |
-| User anlegen       | All            | 13.03.2025     | In Progress  |
-
+| Tasks               | Responsible    | Deadline       | Status       |
+|---------------------|----------------|----------------|--------------|
+| Bugfixes            | All            | 27.03.2025     | In Progress  |
+| Öffentliche Frage   | Max            | 27.03.2025     | In Progress  |
+| Nach der Abstimmung | Gernot         | 27.03.2025     | In Progress  |
+| Deployment          | Tobias         | 27.03.2025     | In Progress  |
 
 ---
 
 ## 4. Next Steps
-- **Upcoming appointment:** [TT.MM.JJJJ]  
+- **Upcoming appointment:** [27.03.2025]  
 - **Topics:**  
-  - 
-  -   
+  - Preparing everything for final meeting
+  - Stress weil nix geht
 
 ---
 
 ## Durration of the meeting:
- **-num- Hours**
+ **1 Hours**
 
 ---
 
