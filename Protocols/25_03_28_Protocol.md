@@ -63,7 +63,9 @@
     - Code für Ergebnisse braucht man nicht über die Umfragetool. 
     - 
 
-  - Link oder QR-code durch redirect zu Ergebnisse, welche vielleicht auf der LMP-Ergebniss Seite.    
+  - Link oder QR-code durch redirect zu Ergebnisse, welche vielleicht auf der LMP-Ergebniss Seite.   
+
+  - Freitext überlegung wie lange Antworten möglich sind. 
 
   **Änderungen die noch schnell gehen schnell machen.**
 
@@ -90,7 +92,7 @@
 ---
 
 ## 4. Next Steps
-- **Upcoming appointment:** [20.03.2025]  
+- **Upcoming appointment:** [04.04.2025]  
 - **Topics:**  
   - Progress Report
   - 
