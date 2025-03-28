@@ -37,25 +37,43 @@
 
 ### 2.2 Meeting with clients (19:00 - 20:00)
 - **Abseits von den Funktionalitäten:**
-  - Umfrage von Kira:
-    -
+  - Deployment:
+    - Digital Ocean Droplets
+
+  - Testen für Umfrage bliebt bis jetzt noch aus.
+
+  - Frage für Thomas: 
+    - Kann es auf den aktuelsten Stand gebracht werden.
+
+  - Deploymentanleitung gut überarbeiten.
+
+  - Datenbank umstellung von Postgresql auf MySql
 
 - **Anmerkungen zu den bisher gemachten**
-  - 
+  - Bei Weighted Choice die Option ohne Auswahl.
+  - Ergebnislink funktioniert nicht bei PublicPoll welches noch nicht abgeschlossen ist.
+  - Demographische Fragen: 
+    - Verbindung von Poll export mit mit Demographic Export.
+    - Fragen erst am Ende bei Public Polls
+  - Wiederverwendung von Fragen:
+    - Nur wenn kleiner Aufwand
 
-- **Wünsche für die nächste Iteration**  
-  - 
+  - QR-Code: 
+    - Noch weitere Fragen oder Formular nach Umfrage, um vielleicht Zugang zu den Ergebnisse zu teilen. 
+    - Code für Ergebnisse braucht man nicht über die Umfragetool. 
+    - 
 
-- **Prioritäten:**  
-  - High:
-    - Öffentliche Fragen
-    - Offene Frage
-    - Nach der Abstimmung
-    - Deployment
-  - Mid:
-    - QR-Code
-  - Low: 
-    - Grafische Auswertung
+  - Link oder QR-code durch redirect zu Ergebnisse, welche vielleicht auf der LMP-Ergebniss Seite.    
+
+  **Änderungen die noch schnell gehen schnell machen.**
+
+- **Priorität:**
+  - high:
+    - Deploymentdoku ist fast am wichtigsten
+    - Bugfixing
+
+
+  - low:
 
 ---
 
