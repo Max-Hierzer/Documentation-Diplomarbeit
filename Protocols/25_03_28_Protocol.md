@@ -82,11 +82,11 @@
 ## 3. Open Points / To-Dos
 | Tasks               | Responsible    | Deadline       | Status       |
 |---------------------|----------------|----------------|--------------|
-| Bugfixes            | All            | 20.03.2025     | In Progress  |
-| Öffentliche Frage   | Max            | 20.03.2025     | In Progress  |
-| Nach der Abstimmung | Gernot         | 20.03.2025     | In Progress  |
-| QR-Code             | Gernot         | 20.03.2025     | In Progress  |
-| Deployment          | Tobias         | 20.03.2025     | In Progress  |
+| Bugfixes            | All            | 04.04.2025     | In Progress  |
+| Öffentliche Frage   | Max            | 04.04.2025     | In Progress  |
+| Nach der Abstimmung | Gernot         | 04.04.2025     | In Progress  |
+| QR-Code             | Gernot         | 04.04.2025     | In Progress  |
+| Deploymentdoku      | Tobias         | 04.04.2025     | In Progress  |
 
 
 ---
@@ -95,13 +95,12 @@
 - **Upcoming appointment:** [04.04.2025]  
 - **Topics:**  
   - Progress Report
-  - 
 
 ---
 
 ## Durration of the meeting:
- ** 1.5 Hours + 2 Hours**
+ **2 Hours**
 
 ---
 
-**Written by:** [Max Hierzer]
+**Written by:** [Gernot Fasching]
