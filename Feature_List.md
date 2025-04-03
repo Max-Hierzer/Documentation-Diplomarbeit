@@ -40,9 +40,8 @@ The objective of the project is to develop a user-friendly, open-source web appl
 ## 🔧 Geplante Features
 - [ ] **Gruppensystem** 
 
-## ✅ Bereits implementierte Features
-- ✅ **Login**  
-- ✅ **Login**  
+## ✅ Bereits implementierte Features 
+- ✅ **Login**   <! Test-->
 - ✅ **Create Poll**  
 - ✅ **Edit Poll**  
 - ✅ **Delete Poll**  
@@ -58,6 +57,9 @@ The objective of the project is to develop a user-friendly, open-source web appl
 - ✅ **Single Choice Questions**  
 - ✅ **Multiple Choice Questions**  
 - ✅ **Weighted Choice Questions** 
+- ✅ **Öffentliche Frage**  
+- ✅ **Gruppensystem** 
+- ✅ **Polllinks**  
 
 ## 📌 Notizen / Ideen
 - Zusätzliche Anmerkungen oder Ideen für zukünftige Features.
