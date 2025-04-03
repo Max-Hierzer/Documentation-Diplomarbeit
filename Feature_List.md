@@ -41,29 +41,35 @@ The objective of the project is to develop a user-friendly, open-source web appl
 - [ ] **Gruppensystem** 
 
 ## ✅ Bereits implementierte Features 
-- ✅ **Login**   <! Test-->
-- ✅ **Create Poll**  
-- ✅ **Edit Poll**  
-- ✅ **Delete Poll**  
-- ✅ **Voting**  
-- ✅ **Results**  
-- ✅ **MyPolls**  
-- ✅ **Polllink**  
-- ✅ **CSV-Export**  
-- ✅ **Roles**  
-- ✅ **Public Poll** 
-- ✅ **Anonymous Voting**  
-- ✅ **Abstimmungs-Zeit-Funktion**  
-- ✅ **Single Choice Questions**  
-- ✅ **Multiple Choice Questions**  
-- ✅ **Weighted Choice Questions** 
-- ✅ **Öffentliche Frage**  
-- ✅ **Gruppensystem** 
-- ✅ **Polllinks**  
+- ✅ **Login**   *Prasser*
+- ✅ **Create Poll**  *Prasser(Anfang), Hierzer, Fasching*
+- ✅ **Edit Poll**  *Hierzer(Anfang), Prasser(Kalender)*
+- ✅ **Delete Poll**  *Fasching(Anfang), Hierzer*
+- ✅ **Disclosed Voting**   *Hierzer/Fasching(Anfang), Prasser(Style)*
+- ✅ **Results**  *Hierzer(Anfang), Prasser(Style)*
+- ✅ **MyPolls**  *Prasser, Fasching(QR-Code)*
+- ✅ **Polllink**  *Prasser*
+- ✅ **CSV-Export**  *Fasching*
+- ✅ **Roles**    *Fasching(Anfang), Hierzer(Implementierung)*
+- ✅ **Public Poll**  *Hierzer(Anfang), Fasching(Style)*
+- ✅ **Anonymous Voting**    *Hierzer*
+- ✅ **Abstimmungs-Zeit-Funktion**   *Hierzer(Verwendung), Prasser(Einfügen)* 
+- ✅ **Single Choice Questions**    *Hierzer*
+- ✅ **Multiple Choice Questions**  *Fasching*
+- ✅ **Weighted Choice Questions**  *Prasser*
+- ✅ **Öffentliche Frage**    *Hierzer, Fasching(Style)*
+- ✅ **Gruppensystem**  *Hierzer*
+- ✅ **Pollbild**  *Fasching*
+- ✅ **Tooltips**  *Fasching*
+- ✅ **Style(generell)**  *Fasching*
+- ✅ **Individuelles Styling**  *Alle*
+- ✅ **Registration**  *Prasser*
+- ✅ **Deployment**  *Prasser*
+
 
 ## 📌 Notizen / Ideen
 - Zusätzliche Anmerkungen oder Ideen für zukünftige Features.
 
 ---
-*Letzte Aktualisierung: [26.02.2025]*
+*Letzte Aktualisierung: [03.04.2025]*
 
