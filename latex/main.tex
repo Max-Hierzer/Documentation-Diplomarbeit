@@ -8,6 +8,32 @@
 \usepackage{biblatex} % für Zitate und Literaturverzeichnis
 \addbibresource{bibliography.bib}
 
+\usepackage{minted}
+\usepackage[minted]{tcolorbox}
+
+% Custom JavaScript code box with black border
+\newtcblisting{jsminted}{
+	listing engine=minted,
+	colback=black!1,
+	colframe=black,
+	listing only,
+	minted language=javascript,
+	minted style=colorful,
+	minted options={
+		linenos,
+		fontsize=\small,
+		breaklines,
+		tabsize=2
+	},
+	boxrule=0.5pt,
+	arc=2pt,
+	left=5pt,
+	right=5pt,
+	top=5pt,
+	bottom=5pt,
+}
+
+
 % Dokumentenbeginn
 \begin{document}
 
@@ -64,6 +90,29 @@ At first we had to decide on a tech stack. After careful consideration we decide
 \section{React}
 \section{PWA}
 \chapter{Features}
+\begin{jsminted}
+useEffect(() => {
+	const linkParam = window.location.search.substring(1);
+	if (linkParam) {
+		const unhashed = atob(decodeURIComponent(linkParam));
+		const params = new URLSearchParams(unhashed);
+		const token = params.get('token');
+		if (token) {
+			setNewUserRegistration(1);
+			setNewUserToken(token);
+		} else {
+			const publicValue = params.get('public');
+			if (publicValue === "true") {
+				setIsPublic(1);
+			} else {
+				setIsPublic(0);
+			}
+		}
+	}
+}, []);
+\end{jsminted}
+
+
 \section{Login}
 \section{Registration}
 \subsection{Roles}
