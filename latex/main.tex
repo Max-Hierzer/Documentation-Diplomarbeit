@@ -15,8 +15,19 @@
 % Custom JavaScript code box with black border
 \newtcblisting{code}{
 	listing engine=minted,
+	listing only,
 	minted language=javascript,
-	minted style=colorful
+	minted style=colorful,
+	minted options={
+		linenos,
+		fontsize=\small,
+		breaklines,
+		tabsize=2,
+		bgcolor=lightgray!25,
+	},
+	boxrule=0pt,
+	top=0pt, bottom=0pt, left=2pt, right=2pt,
+	colback=lightgray!25,
 }
 
 % Dokumentenbeginn
@@ -75,6 +86,7 @@ At first we had to decide on a tech stack. After careful consideration we decide
 \section{React}
 \section{PWA}
 \chapter{Features}
+\begin{figure}[h!]
 \begin{code}
 useEffect(() => {
 	const linkParam = window.location.search.substring(1);
@@ -96,7 +108,34 @@ useEffect(() => {
 	}
 }, []);
 \end{code}
-
+	\caption{Hier ist ein Beispielcode}
+	\label{fig:beispielcode}
+\end{figure}
+\begin{figure}[h!]
+	\begin{code}
+		useEffect(() => {
+			const linkParam = window.location.search.substring(1);
+			if (linkParam) {
+				const unhashed = atob(decodeURIComponent(linkParam));
+				const params = new URLSearchParams(unhashed);
+				const token = params.get('token');
+				if (token) {
+					setNewUserRegistration(1);
+					setNewUserToken(token);
+				} else {
+					const publicValue = params.get('public');
+					if (publicValue === "true") {
+						setIsPublic(1);
+					} else {
+						setIsPublic(0);
+					}
+				}
+			}
+		}, []);
+	\end{code}
+	\caption{Hier ist ein Beispielcode}
+	\label{fig:beispielcode2}
+\end{figure}
 
 \section{Login}
 \section{Registration}
