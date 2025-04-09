@@ -1,19 +1,6 @@
-		useEffect(() => {
-			const linkParam = window.location.search.substring(1);
-			if (linkParam) {
-				const unhashed = atob(decodeURIComponent(linkParam));
-				const params = new URLSearchParams(unhashed);
-				const token = params.get('token');
-				if (token) {
-					setNewUserRegistration(1);
-					setNewUserToken(token);
-				} else {
-					const publicValue = params.get('public');
-					if (publicValue === "true") {
-						setIsPublic(1);
-					} else {
-						setIsPublic(0);
-					}
-				}
-			}
-		}, []);
+let [createdQuestion, created] = await PublicQuestions.findOrCreate({
+	where: {
+		name: question.name,
+		typeId: questionType.id,
+	}
+});

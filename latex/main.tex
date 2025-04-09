@@ -149,21 +149,41 @@ Implementing a role-based system with three distinct roles - "Admin," "Poweruser
 \subsubsection{Multiple Choice}
 \subsubsection{Weighted Choice}
 \subsection{Demographic Questions}
-To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls since the created user would be part of the organization using our project and therefore have the data already. If the users is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options for these questions are the ones described in the previous sections. 
+\paragraph{}
+To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls since the created user would be part of the organization using our project and therefore have the data already. If the users is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections. 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\textwidth]{pics/demographic_question_create.jpg}
+	\includegraphics[width=0.6\textwidth]{pics/demographic_question_create.jpg}
 	\caption{Create Demographic Question}
 	\label{fig:create_dem_que}
 \end{figure}
-\newline 
-The new part for this feature is the search bar. For this the "Select" component of "react-select" is used. With its controllable state props and modular architecture like "isMulti" or "isSearchable" it is an appropriate solution for this feature, which allows an ease to implement and already styled search bar in the project. \parencite{reactselect}
+\paragraph{}
+The new part for this feature is the search bar. For this the "Select" component of "react-select" is used. The components' controllable state props and modular architecture allows  "isMulti" to select multiple options or "isSearchable" to search. These features, allow easy implementation and an already styled search bar in the project. \parencite{reactselect}
+\paragraph{}
+The database structure for the demographic questions is similar to the standard ones. The table "PublicQuestions" is used to store the question specific data like name and type. To enable the reuse of questions on different polls "PublicQuestions" is in an many-to-many relationship with "Polls" through "PublicPollQuestions". Answers are stored within the table "PublicAnswers", which is connected to "PublicQuestions" via "PublicQuestionAnswers. This relation is also many-to-many since the options yes or no for example would be used in multiple questions. 
+\paragraph{}
+For the select every existing question with its answers is fetched from the database and stored within an array. The options are then mapped with the value being id and the label as name of each element. To display the selected options they are mapped through and use the same functions as the standard ones used for the poll. When saving these questions a problem arises, as the selected ones are already stored in the database and possibly changed. To handle this an findOrCreate \ref{fig:publicQuestions} is used to get the existing questions and answers or create new ones. This function also returns each instance found or the created one. With this the question and answer ids can be used for the many-to-many relationship. \parencite{sequelizedoku} 
+\begin{figure}[h!]
+\begin{code}
+let [createdQuestion, created] = await PublicQuestions.findOrCreate({
+	where: {
+		name: question.name,
+		typeId: questionType.id,
+	}
+});
+\end{code}
+	\caption{findOrCreate PublicQuestions}
+	\label{fig:publicQuestions}
+\end{figure}
+
 \section{Edit Polls}
 \section{Voting}
 \subsection{Disclosed Voting}
 \subsection{Anonymous Voting}
 \subsection{Public Voting}
-
+The public voting allows users without an account to vote. With this feature a wide range of people can be questioned via street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. \textcite{demographicdata} mentions trust, benefits of the demographic data and the ability to abstain. All of these factors have to be taken into ones account when creating these questions. The article also mentions, that at the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the author states it is best to put these questions at the end. 
+\subsubsection{Vote integrity}
+A major problem when having anonymity and no accounts is the data integrity. Without the ability to store information about a voter in the database to check for multiple votes, it is important to prevent them from voting multiple times.  
 
 what to write about:
 how to prevent multiple votes: 
