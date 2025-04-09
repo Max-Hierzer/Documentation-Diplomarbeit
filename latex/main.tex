@@ -5,7 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lipsum} % für Lorem Ipsum Beispieltext
 \usepackage{graphicx} % für Bilder
-\usepackage{biblatex} % für Zitate und Literaturverzeichnis
+\usepackage[backend=biber]{biblatex} % für Zitate und Literaturverzeichnis
 \addbibresource{bibliography.bib}
 
 \usepackage{minted}
@@ -72,7 +72,7 @@ At first we had to decide on a tech stack. After careful consideration we decide
 % Beispielbild einfügen
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{beispiel.jpg}
+    \includegraphics[width=0.5\textwidth]{pics/beispiel.jpg}
     \caption{Hier ist ein Bier}
     \label{fig:beispielbild}
 \end{figure}
@@ -148,19 +148,32 @@ Implementing a role-based system with three distinct roles - "Admin," "Poweruser
 \subsubsection{Single Choice}
 \subsubsection{Multiple Choice}
 \subsubsection{Weighted Choice}
+\subsection{Demographic Questions}
+To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls since the created user would be part of the organization using our project and therefore have the data already. If the users is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options for these questions are the ones described in the previous sections. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{pics/demographic_question_create.jpg}
+	\caption{Create Demographic Question}
+	\label{fig:create_dem_que}
+\end{figure}
+\newline 
+The new part for this feature is the search bar. For this the "Select" component of "react-select" is used. With its controllable state props and modular architecture like "isMulti" or "isSearchable" it is an appropriate solution for this feature, which allows an ease to implement and already styled search bar in the project. \parencite{reactselect}
 \section{Edit Polls}
 \section{Voting}
 \subsection{Disclosed Voting}
 \subsection{Anonymous Voting}
 \subsection{Public Voting}
+
+
 what to write about:
 how to prevent multiple votes: 
 - 	captcha against bots 
 -	cookies to prevent non techie users 
 -	users with knowledge almost impossible to prevent without storing ip or device fingerprints, 
-	problem with ip and device fp is probably legal reasons
-	
+problem with ip and device fp is probably legal reasons
+
 -	userData: which information is important for polls (gender, age, job, )
+
 \section{Results}
 \subsection{CSV-Export}
 \section{MyPolls}
