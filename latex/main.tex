@@ -138,6 +138,19 @@ useEffect(() => {
 \end{figure}
 
 \section{Login}
+The login feature is essential for our application, as users need a secure and reliable way to authenticate themselves and gain access to their accounts. It consists of two main functionalities: the login itself and also the logout. Additionally, we have implemented user-friendly error handling to enhance user experience as well as security.
+\subsection{Frontend}
+The frontend component of the login feature uses React's built-in useState hook in order to manage the input username and password and store them in the component's state temporarily. After submitting the login form, the input data is sent to the backend API via a POST request.\\\\
+The password is sent to the backend in plaintext over HTTPS. It is not encrypted on the client side, because HTTPS already provides built-in encryption and also protects against interception or man-in-the-middle attacks.
+\subsection{Backend}
+The backend receives the login request through a predefined API route that forwards the data to the handleFetchLogin function in the user controller. It extracts the username and password from the request body and passes them to the fetchLogin function in the user service.\\\\
+This function first checks if a user with the provided username even exists in the database. If no user is found, it returns an error message stating that either the username or password is invalid. We intentionally chose to not specify which of the two parts is incorrect in order to prevent attackers from being able to determine whether a username exists in the system. This provides protection against user enumeration attacks.\\\\
+If a user is found, the provided password is then compared to the hashed password stored in the database using bcrypt's comparison method, bcrypt.compare(). In case the passwords do not match, the same error message mentioned above is returned to the frontend.\\\\
+However, if the password is correct, the backend returns a response containing a success indicator, the user's unique ID (userId), their username, the assigned role ID (roleId), and the name of the role (roleName).
+\subsection{Error Handling and Security}
+Error handling is implemented consistently across both frontend and backend to ensure security and user-friendliness. If a login attempt fails, whether due to an incorrect username, password, or both, the system always returns the same general error message. This prevents attackers from determining whether a specific username exists in the system.\\\\
+Sensitive data like passwords is handled securely. Passwords are not stored in plain text. Instead they are hashed using bcrypt before being inserted into the database. Furthermore, communication between frontend and backend is encrypted through HTTPS. This ensures that all transmitted data remains private and protected from unauthorized access.
+
 \section{Registration}
 \subsection{Roles}
 Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are grated full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.
