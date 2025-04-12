@@ -30,6 +30,24 @@
 	colback=lightgray!25,
 }
 
+% Custom css code box with black border
+\newtcblisting{csscode}{
+	listing engine=minted,
+	listing only,
+	minted language=css,
+	minted style=colorful,
+	minted options={
+		linenos,
+		fontsize=\small,
+		breaklines,
+		tabsize=2,
+		bgcolor=lightgray!25,
+	},
+	boxrule=0pt,
+	top=0pt, bottom=0pt, left=2pt, right=2pt,
+	colback=lightgray!25,
+}
+
 % Dokumentenbeginn
 \begin{document}
 
@@ -212,10 +230,70 @@ problem with ip and device fp is probably legal reasons
 \section{MyPolls}
 \subsection{Polllink}
 \subsection{Delete Polls}
+The deletion of polls is crucial for two main reasons: first, to ensure that all associated data of a survey can be safely removed when necessary and second, to determine when a poll is still eligible for deletion. In this case, the deletion of polls is strictly limited to those that have not yet received any user votes. \\
+This constraint ensures the integrity of the data and avoids loss of user-generated information, which could distort statistical analysis or transparency within the system.\\
+To maintain data consistency, the deletion process is implemented as a transaction. This guarantees atomicity, meaning that either all steps of the deletion process succeed or none do - preventing partial data deletion and potential corruption. Sequelize's transaction management is used here to wrap the entire process in a rollback-safe structure. \parencite{sequelizedoku}
+
+\paragraph{}
+The deletion logic performs the following steps
+\begin{enumerate}
+	\item Validate that the poll exists.
+	\item Fetch all related questions and their IDs.
+	\item Check if any user answers exist for these questions. If so abort the operation with an error.
+	\item Remove the many-to-many relations between answers from the "QuestionAnswers" table.
+	\item Delete the associated answers.
+	\item Delete the questions.
+	\item Delete any group relations in the "PollGroups" table.
+	\item Finally, delete the poll itself.
+\end{enumerate}
+
+\begin{figure}[h!]
+\begin{code}
+	const deletePoll = async (pollId) => {
+		const transaction = await sequelize.transaction();
+		try {
+			...
+			await PollGroups.destroy({
+				where: { pollId },
+				transaction,
+			});
+			await Polls.destroy({
+				where: { id: pollId },
+				transaction,
+			});
+			await transaction.commit();
+			return { pollId, questionsDeleted: questionIds.length };
+		} catch (error) {
+			await transaction.rollback();
+			throw error;
+		}
+\end{code}
+\caption{Example for a Sequelize transaction}
+\label{fig:delete_poll_code}
+\end{figure}
+Using Sequelize’s transaction mechanism not only helps to avoid data inconsistency, but also ensures that no information is accidentally deleted once users have participated in a poll. This feature is particularly important in environments where transparency and trust are key, such as in political or organizational voting systems.
+
+
 \section{Accessibility}
 \subsection{Tooltips}
 \subsection{Screenreader}
 \section{Styling}
+\subsection{Generel styling}
+The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Purple. \\
+To ensure consistency of the palette user defined characteristics from CSS where used to assign variables for each main color. \parencite{csscolorvariables}
+\begin{figure}[h!]
+	\begin{csscode}
+		:root {
+			--primary-color: #51184e;
+			--secondary-color: #F9BB03;
+			--primary-hover-color: rgb(163, 131, 168);
+		}
+	\end{csscode}
+	\caption{Variables of the main colors}
+	\label{fig:user_defined_characteristics}
+\end{figure}
+
+Those variables where then used in each element of where it was needed. Therefore changing the color scheme to a different one is less afford for the end user.
 \chapter{Summary}
 \lipsum[1]
 

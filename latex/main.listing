@@ -1,6 +1,5 @@
-let [createdQuestion, created] = await PublicQuestions.findOrCreate({
-	where: {
-		name: question.name,
-		typeId: questionType.id,
-	}
-});
+		:root {
+			--primary-color: #51184e;
+			--secondary-color: #F9BB03;
+			--primary-hover-color: rgb(163, 131, 168);
+		}
