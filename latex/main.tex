@@ -294,6 +294,26 @@ To ensure consistency of the palette user defined characteristics from CSS where
 \end{figure}
 
 Those variables where then used in each element of where it was needed. Therefore changing the color scheme to a different one is less afford for the end user.
+
+The basic structure of the page is split into three sections: header with navigation, main with content and footer with imprint and privacy policy. The style is based on the client's homepage therefore the standard background is purple but of the content it still is white to ensure readability. \parencite{lmppage}
+
+\subsection{Responsive design}
+Responsive design is essential nowadays because users access websites from a wide variety of devices - phones, tablets, laptops and desktops - each with different screen sizes and resolutions. It ensures a seamless, user-friendly experience across all platforms, which improve engagement and accessibility.\\
+To ensure responsiveness in each section of the application, "@media CSS at-rule" was used to apply different styles based on the screen size or device characteristics. This approach allows the layout, font sizes and element spacing to adapt dynamically, creating a smoother experience for users on any device. The navigation bar was designed with media queries to transform into so-called "burger menu" when the screen width falls below a certain threshold. This ensures usability on smaller devices like smartphones because the elements within the navigation get displayed in the menu now.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{pics/navigation.png}
+	\caption{Navigation}
+	\label{fig:navigation}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.3\textwidth]{pics/burger_menu.png}
+	\caption{Burger menu}
+	\label{fig:burger_menu}
+\end{figure}
+
 \chapter{Summary}
 \lipsum[1]
 
