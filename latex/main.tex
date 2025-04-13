@@ -227,11 +227,17 @@ problem with ip and device fp is probably legal reasons
 
 \section{Results}
 \subsection{CSV-Export}
+To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics such as the number of votes per answer and the average weight for weighted questions.\\ \\
+The logic is handled in the \textbf{csvExportController.js} controller. Upon receiving a request, the system retrieves all relevant data for a given poll by its ID, including associated question, answers, and question types. The raw voting data is processed to count the number of responses per answer and to calculate the average weight if applicable. Special care is taken to distinguish between different types: for instance, "Single Choice" questions ensure that only one answer per user is counted, while "Weighted Choice" questions include the weight vale in the computation.\\ \\
+The processed data is then converted into a structured CSV format using the json2csv library. The final file includes columns such as Poll Name, Question, Question Type, Answer, Vote Count and Average Weight, and can be downloaded directly by the user. This feature ensures transparency and enables further statistical evaluation using external tools like Excel.\parencite{json2csv}
 \section{MyPolls}
 \subsection{Polllink}
+% Polllink beschreibung von Prasser
+
+To make sharing of the Surveys easier, a QR code generation was implemented. This was done using the React component "qrcode.react" which requires the link to the poll.\parencite{qrcode}
 \subsection{Delete Polls}
-The deletion of polls is crucial for two main reasons: first, to ensure that all associated data of a survey can be safely removed when necessary and second, to determine when a poll is still eligible for deletion. In this case, the deletion of polls is strictly limited to those that have not yet received any user votes. \\
-This constraint ensures the integrity of the data and avoids loss of user-generated information, which could distort statistical analysis or transparency within the system.\\
+The deletion of polls is crucial for two main reasons: first, to ensure that all associated data of a survey can be safely removed when necessary and second, to determine when a poll is still eligible for deletion. In this case, the deletion of polls is strictly limited to those that have not yet received any user votes. \\ \\
+This constraint ensures the integrity of the data and avoids loss of user-generated information, which could distort statistical analysis or transparency within the system.\\ \\
 To maintain data consistency, the deletion process is implemented as a transaction. This guarantees atomicity, meaning that either all steps of the deletion process succeed or none do - preventing partial data deletion and potential corruption. Sequelize's transaction management is used here to wrap the entire process in a rollback-safe structure. \parencite{sequelizedoku}
 
 \paragraph{}
@@ -279,7 +285,7 @@ Using Sequelize’s transaction mechanism not only helps to avoid data inconsist
 \subsection{Screenreader}
 \section{Styling}
 \subsection{Generel styling}
-The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Purple. \\
+The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Purple. \\ \\
 To ensure consistency of the palette user defined characteristics from CSS where used to assign variables for each main color. \parencite{csscolorvariables}
 \begin{figure}[h!]
 	\begin{csscode}
@@ -298,21 +304,21 @@ Those variables where then used in each element of where it was needed. Therefor
 The basic structure of the page is split into three sections: header with navigation, main with content and footer with imprint and privacy policy. The style is based on the client's homepage therefore the standard background is purple but of the content it still is white to ensure readability. \parencite{lmppage}
 
 \subsection{Responsive design}
-Responsive design is essential nowadays because users access websites from a wide variety of devices - phones, tablets, laptops and desktops - each with different screen sizes and resolutions. It ensures a seamless, user-friendly experience across all platforms, which improve engagement and accessibility.\\
+Responsive design is essential nowadays because users access websites from a wide variety of devices - phones, tablets, laptops and desktops - each with different screen sizes and resolutions. It ensures a seamless, user-friendly experience across all platforms, which improve engagement and accessibility.\\ \\
 To ensure responsiveness in each section of the application, "@media CSS at-rule" was used to apply different styles based on the screen size or device characteristics. This approach allows the layout, font sizes and element spacing to adapt dynamically, creating a smoother experience for users on any device. The navigation bar was designed with media queries to transform into so-called "burger menu" when the screen width falls below a certain threshold. This ensures usability on smaller devices like smartphones because the elements within the navigation get displayed in the menu now.
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\textwidth]{pics/navigation.png}
 	\caption{Navigation}
 	\label{fig:navigation}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{pics/burger_menu.png}
 	\caption{Burger menu}
 	\label{fig:burger_menu}
 \end{figure}
+\subsection{Individual styling}
 
 \chapter{Summary}
 \lipsum[1]
