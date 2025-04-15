@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		\PYG{k+kd}{let} \PYG{n+nx}{transporter} \PYG{o}{=} \PYG{n+nx}{nodemailer}\PYG{p}{.}\PYG{n+nx}{createTransport}\PYG{p}{(\PYGZob{}}
+			\PYG{n+nx}{host}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}smtp.mailersend.net\PYGZdq{}}\PYG{p}{,}
+			\PYG{n+nx}{port}\PYG{o}{:} \PYG{l+m+mf}{587}\PYG{p}{,}
+			\PYG{n+nx}{secure}\PYG{o}{:} \PYG{k+kc}{false}\PYG{p}{,}
+			\PYG{n+nx}{auth}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+				\PYG{n+nx}{user}\PYG{o}{:} \PYG{n+nx}{test}\PYG{p}{.}\PYG{n+nx}{email}\PYG{err}{@}\PYG{n+nx}{domain}\PYG{p}{.}\PYG{n+nx}{at}\PYG{p}{,}
+				\PYG{n+nx}{pass}\PYG{o}{:} \PYG{n+nx}{Password1}\PYG{p}{,}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{});}
+	
+\end{Verbatim}

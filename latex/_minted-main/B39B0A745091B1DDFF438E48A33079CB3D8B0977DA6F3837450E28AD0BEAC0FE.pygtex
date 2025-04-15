@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{k+kd}{const} \PYG{n+nx}{deletePoll} \PYG{o}{=} \PYG{k}{async} \PYG{p}{(}\PYG{n+nx}{pollId}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+		\PYG{k+kd}{const} \PYG{n+nx}{transaction} \PYG{o}{=} \PYG{k}{await} \PYG{n+nx}{sequelize}\PYG{p}{.}\PYG{n+nx}{transaction}\PYG{p}{();}
+		\PYG{k}{try} \PYG{p}{\PYGZob{}}
+			\PYG{p}{...}
+			\PYG{k}{await} \PYG{n+nx}{PollGroups}\PYG{p}{.}\PYG{n+nx}{destroy}\PYG{p}{(\PYGZob{}}
+				\PYG{n+nx}{where}\PYG{o}{:} \PYG{p}{\PYGZob{}} \PYG{n+nx}{pollId} \PYG{p}{\PYGZcb{},}
+				\PYG{n+nx}{transaction}\PYG{p}{,}
+			\PYG{p}{\PYGZcb{});}
+			\PYG{k}{await} \PYG{n+nx}{Polls}\PYG{p}{.}\PYG{n+nx}{destroy}\PYG{p}{(\PYGZob{}}
+				\PYG{n+nx}{where}\PYG{o}{:} \PYG{p}{\PYGZob{}} \PYG{n+nx}{id}\PYG{o}{:} \PYG{n+nx}{pollId} \PYG{p}{\PYGZcb{},}
+				\PYG{n+nx}{transaction}\PYG{p}{,}
+			\PYG{p}{\PYGZcb{});}
+			\PYG{k}{await} \PYG{n+nx}{transaction}\PYG{p}{.}\PYG{n+nx}{commit}\PYG{p}{();}
+			\PYG{k}{return} \PYG{p}{\PYGZob{}} \PYG{n+nx}{pollId}\PYG{p}{,} \PYG{n+nx}{questionsDeleted}\PYG{o}{:} \PYG{n+nx}{questionIds}\PYG{p}{.}\PYG{n+nx}{length} \PYG{p}{\PYGZcb{};}
+		\PYG{p}{\PYGZcb{}} \PYG{k}{catch} \PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{await} \PYG{n+nx}{transaction}\PYG{p}{.}\PYG{n+nx}{rollback}\PYG{p}{();}
+			\PYG{k}{throw} \PYG{n+nx}{error}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

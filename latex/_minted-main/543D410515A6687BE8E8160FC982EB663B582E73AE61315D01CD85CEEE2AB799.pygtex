@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{p}{:}\PYG{n+nd}{root}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nv}{\PYGZhy{}\PYGZhy{}primary\PYGZhy{}color}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mh}{\PYGZsh{}51184e}\PYG{p}{;}
+\PYG{+w}{			}\PYG{n+nv}{\PYGZhy{}\PYGZhy{}secondary\PYGZhy{}color}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mh}{\PYGZsh{}F9BB03}\PYG{p}{;}
+\PYG{+w}{			}\PYG{n+nv}{\PYGZhy{}\PYGZhy{}primary\PYGZhy{}hover\PYGZhy{}color}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nb}{rgb}\PYG{p}{(}\PYG{l+m+mi}{163}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{131}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{168}\PYG{p}{);}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}
+\end{Verbatim}
