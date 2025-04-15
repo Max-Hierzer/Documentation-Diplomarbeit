@@ -115,7 +115,7 @@ Sequelize was selected as the Object-Relational-Mapping(ORM) tool for this proje
 Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness.\parencite{sequelizegit}\\\\
 The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
 
-\paragraph{}
+As mentioned earlier, the migrations are useful in this case to populate the database to automate testing or at least make setting up the database easier. The Sequelize Command-Line Interface(CLI) was needed to create migrations and seeder. To generate a seeder, the command \texttt{npx sequelize-cli seed:generate --name demo-user} is used,\\ which creates a file looking like this: \texttt{XXXXXXXXXXXX-demo-user.js}. It follows the \textbf{up / down} semantics to apply and undo changes. For this project seeders where used to populate the "Roles" and "QuestionTypes" tables for default values, "Users" to have an admin user, "Groups" for a group where admin is a member of and "Polls" for testing purpose.\parencite{sequelizemigrations}
 
 \section{express}
 \section{React}
@@ -244,7 +244,9 @@ To use the MailerSend API, a transporter is created with "new MailerSend" and th
 \end{figure}
 The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
-Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are grated full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.
+Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
+This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and manged exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.
+%Max (UI behavior)
 \section{Group System}
 \section{Create Polls}
 \subsection{Start-/ Endtime}
@@ -350,15 +352,18 @@ The deletion logic performs the following steps
 \caption{Example for a Sequelize transaction}
 \label{fig:delete_poll_code}
 \end{figure}
-Using Sequelize’s transaction mechanism not only helps to avoid data inconsistency, but also ensures that no information is accidentally deleted once users have participated in a poll. This feature is particularly important in environments where transparency and trust are key, such as in political or organizational voting systems.
-
+Using Sequelize’s transaction mechanism not only helps to avoid data inconsistency, but also ensures that no information is accidentally deleted once users have participated in a poll. This feature is particularly important in environments where transparency and trust are key, such as in political or organizational voting systems.\\\\
+For additional security to prevent unauthorized polls from being deleted, the delete button has been grayed out if the poll has already been voted on, with an tooltip added to the button the user gets further information why they can not delete the survey anymore.
 
 \section{Accessibility}
 \subsection{Tooltips}
+To enhance the usability and user experience of the application, tooltips were integrated into all input field, providing users with contextual guidance and reducing the likelihood of input errors. For this purpose, the React library \textbf{react-tooltips} was utilized, offering a high degree of customizability in both design and behavior. This allowed for the implementation of consistent and informative tooltip elements throughout the interface.\parencite{tooltips}\\\\
+Each from element is assigned a unique \textbf{data-tool-id}, which serves as a reference key within the central \textbf{Tooltips.js} configuration file. This file defines the content, styling, and interaction logic for each tooltip, ensuring that the visual presentation and timing behavior are consistent across the application. To prevent the tooltips from becoming distracting during regular use, a delay of 1500 milliseconds was introduced before displaying the tooltip on hover.\\\\
+The overall purpose of this component was, to improve the intuitiveness of the application, especially for first-time users or those unfamiliar with specific input requirements.
 \subsection{Screenreader}
 \section{Styling}
 \subsection{Generel styling}
-The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Purple. \\ \\
+The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Blackberry. \\ \\
 To ensure consistency of the palette user defined characteristics from CSS where used to assign variables for each main color. \parencite{csscolorvariables}
 \begin{figure}[h!]
 	\begin{csscode}
