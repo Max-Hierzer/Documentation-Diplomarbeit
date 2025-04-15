@@ -87,17 +87,15 @@ We chose to accept the LMP as our partner, because they brought up that there is
 
 \section{Methodology of the thesis}
 At first we had to decide on a tech stack. After careful consideration we decided upon a PostgreSQL database, a backend of node.js, sequelize to perform database operations and express to write APIs so we can connect with our frontend. Our frontend is based on React and we also included a PWA. After this decision we began with a simple input and output from front- to backend so ensure we all understood how each part is connected to each other. The next step was implementing the first features. We split the elements in different components so we could work separately and efficiently, e.g the single choice is split in create the poll, display the poll, vote, and show the results. Reasons we chose this tech stack and a thorough description of each function our work has will be in the main part.  
-% Beispielbild einfügen
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{pics/beispiel.jpg}
-    \caption{Hier ist ein Bier}
-    \label{fig:beispielbild}
-\end{figure}
 
 % Hauptteil
 \chapter{Tech Stack}
 \section{PostgreSQL}
+\subsection{Generel}
+PostgreSQL was chosen as the relational database management system for this project due to its robustness, scalability and strong support for advanced data types and queries. The decision to utilize PostgreSQL was further supported by its user-friendly design, extensive and well-maintained documentation, and its widespread adoption as one of the leading open-source relational databases.\\
+The installation was also simple because of the detailed install guide provided by multiple sites like \textbf{w3schools}. Before the installation certain configuration had to be done such as: specify the storage directory, select a password, set the port the server should listen on. To create the first database the SQL shell of PostgreSQL was used in the beginning. But after that the preferred tool was \textbf{pgAdmin 4}, an popular and feature rich Open Source administration and development platform for PostgreSQL, to manipulate data or view schemes of the database.\parencite{pgsinstallation}\\
+For this project it was essential to have a stable and robust system in the backend that can handle a bigger amount of data efficiently. 
+\subsection{Scheme of the database}
 \section{node.js}
 \section{Sequelize}
 \section{express}
