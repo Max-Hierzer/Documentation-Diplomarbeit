@@ -3,7 +3,7 @@
 % Pakete einbinden
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lipsum} % für Lorem Ipsum Beispieltext
+
 \usepackage{graphicx} % für Bilder
 \usepackage[backend=biber]{biblatex} % für Zitate und Literaturverzeichnis
 \addbibresource{bibliography.bib}
@@ -53,19 +53,18 @@
 
 % Titelblatt
 \title{Titel der Diplomarbeit}
-\author{Tobias Prasser, Gernot Fasching, Max Martin Hierzer}
+\author{Dein Name}
+\date{\today}
 \maketitle
 
 % Abstract
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-\lipsum[1]
 \newpage
 
 % Abstract
 \chapter*{Kurzfassung}
 \addcontentsline{toc}{chapter}{Kurzfassung}
-\lipsum[1]
 \newpage
 
 % Inhaltsverzeichnis
@@ -91,86 +90,22 @@ At first we had to decide on a tech stack. After careful consideration we decide
 \chapter{Tech Stack}
 \section{PostgreSQL}
 \subsection{Generel}
-PostgreSQL was chosen as the relational database management system for this project due to its robustness, scalability and strong support for advanced data types and queries. The decision to utilize PostgreSQL was further supported by its user-friendly design, extensive and well-maintained documentation, and its widespread adoption as one of the leading open-source relational databases.\\\\
-The installation was also simple because of the detailed install guide provided by sites like \textbf{w3schools}. Before the installation certain configuration had to be done such as: specify the storage directory, select a password and setting the port the server should listen on. To create the first database the SQL shell of PostgreSQL was used in the beginning. But after that the preferred tool was \textbf{pgAdmin 4}, an popular and feature rich Open Source administration and development platform for PostgreSQL, to manipulate data or view schemes of the database.\parencite{pgsinstallation}\\\\
+PostgreSQL was chosen as the relational database management system for this project due to its robustness, scalability and strong support for advanced data types and queries. The decision to utilize PostgreSQL was further supported by its user-friendly design, extensive and well-maintained documentation, and its widespread adoption as one of the leading open-source relational databases.\\
+The installation was also simple because of the detailed install guide provided by multiple sites like \textbf{w3schools}. Before the installation certain configuration had to be done such as: specify the storage directory, select a password, set the port the server should listen on. To create the first database the SQL shell of PostgreSQL was used in the beginning. But after that the preferred tool was \textbf{pgAdmin 4}, an popular and feature rich Open Source administration and development platform for PostgreSQL, to manipulate data or view schemes of the database.\parencite{pgsinstallation}\\
 For this project it was essential to have a stable and robust system in the backend that can handle a bigger amount of data efficiently. 
 \subsection{Scheme of the database}
-The initial database scheme differed significantly from its current structure, primarily due to evolving client requirements. However, it was evident from the outset that the "Polls" and "Users" tables would serve as central components of the schema, as the majority of the data entities and relationships would reference or depend on these two core tables. For the Entity Relationship Diagrams tools like \textbf{draw.io} and \textbf{dbDiagramm} where used to create the visualization directly from SQL.
-The database consists of 13 tables, with "UserPolls", "UserAnswers", "PollGroups" and "QuestionAnswers" functioning as intermediary tables that facilitate many-to-many relationships between the core entities. 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.8\textwidth]{pics/new_ERD.png}
-	\caption{New Entity Relationship Diagram}
-	\label{fig:new_ERD}
-\end{figure}
 \section{node.js}
 \section{Sequelize}
-Sequelize was selected as the Object-Relational-Mapping(ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in project with complex data relationships and evolving schema requirements.\\\\
-Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness.\parencite{sequelizegit}\\\\
-The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
-
-As mentioned earlier, the migrations are useful in this case to populate the database to automate testing or at least make setting up the database easier. The Sequelize Command-Line Interface(CLI) was needed to create migrations and seeder. To generate a seeder, the command \texttt{npx sequelize-cli seed:generate --name demo-user} is used,\\ which creates a file looking like this: \texttt{XXXXXXXXXXXX-demo-user.js}. It follows the \textbf{up / down} semantics to apply and undo changes. For this project seeders where used to populate the "Roles" and "QuestionTypes" tables for default values, "Users" to have an admin user, "Groups" for a group where admin is a member of and "Polls" for testing purpose.\parencite{sequelizemigrations}
-
 \section{express}
 \section{React}
 \section{PWA}
 \chapter{Features}
-\begin{figure}[h!]
-\begin{code}
-useEffect(() => {
-	const linkParam = window.location.search.substring(1);
-	if (linkParam) {
-		const unhashed = atob(decodeURIComponent(linkParam));
-		const params = new URLSearchParams(unhashed);
-		const token = params.get('token');
-		if (token) {
-			setNewUserRegistration(1);
-			setNewUserToken(token);
-		} else {
-			const publicValue = params.get('public');
-			if (publicValue === "true") {
-				setIsPublic(1);
-			} else {
-				setIsPublic(0);
-			}
-		}
-	}
-}, []);
-\end{code}
-	\caption{Hier ist ein Beispielcode}
-	\label{fig:beispielcode}
-\end{figure}
-\begin{figure}[h!]
-	\begin{code}
-		useEffect(() => {
-			const linkParam = window.location.search.substring(1);
-			if (linkParam) {
-				const unhashed = atob(decodeURIComponent(linkParam));
-				const params = new URLSearchParams(unhashed);
-				const token = params.get('token');
-				if (token) {
-					setNewUserRegistration(1);
-					setNewUserToken(token);
-				} else {
-					const publicValue = params.get('public');
-					if (publicValue === "true") {
-						setIsPublic(1);
-					} else {
-						setIsPublic(0);
-					}
-				}
-			}
-		}, []);
-	\end{code}
-	\caption{Hier ist ein Beispielcode}
-	\label{fig:beispielcode2}
-\end{figure}
 
 \section{Login}
 The login feature is essential for our application, as users need a secure and reliable way to authenticate themselves and gain access to their accounts. It consists of two main functionalities: the login itself and also the logout. Additionally, we have implemented user-friendly error handling to enhance user experience as well as security.
 \subsection{Frontend}
 The frontend component of the login feature uses React's built-in useState hook in order to manage the input username and password and store them in the component's state temporarily. After submitting the login form, the input data is sent to the backend API via a POST request.\\\\
-The password is sent to the backend in plain text over HTTPS. It is not encrypted on the client side, because HTTPS already provides built-in encryption and also protects against interception or man-in-the-middle attacks.
+The password is sent to the backend in plaintext over HTTPS. It is not encrypted on the client side, because HTTPS already provides built-in encryption and also protects against interception or man-in-the-middle attacks.
 \subsection{Backend}
 The backend receives the login request through a predefined API route that forwards the data to the handleFetchLogin function in the user controller. It extracts the username and password from the request body and passes them to the fetchLogin function in the user service.\\\\
 This function first checks if a user with the provided username even exists in the database. If no user is found, it returns an error message stating that either the username or password is invalid. We intentionally chose to not specify which of the two parts is incorrect in order to prevent attackers from being able to determine whether a username exists in the system. This provides protection against user enumeration attacks.\\\\
@@ -181,66 +116,8 @@ Error handling is implemented consistently across both frontend and backend to e
 Sensitive data like passwords is handled securely. Passwords are not stored in plain text. Instead they are hashed using bcrypt before being inserted into the database. Furthermore, communication between frontend and backend is encrypted through HTTPS. This ensures that all transmitted data remains private and protected from unauthorized access.
 
 \section{Registration}
-The application features a controlled and secure registration. In order for users to be able to join the system, they first have to be invited. The registration consists of two main functionalities.
-\subsection{Function Admin}
-Only administrators are allowed to invite new users. They start the process by navigating to the registration tab and entering the user's email as well as their intended role. After submitting, the data gets sent to the "sendEmail" function in the backend through a POST request.\\\\
-The function checks if a user with the provided email address already exists in the database. If so, it returns a message indicating exactly that. In case the email is not found, an invitation email is sent and a new user entry with the provided email, role ID and a randomly generated token is created. The token is later used for verifying the legitimacy of the registration. If the process is successful the administrator is informed that the email was sent and the user was created successfully.
-\subsection{Function User}
-The email sent to the user contains a registration link consisting of the URL of the application and the previously mentioned token. By clicking the link, the user is redirected to a registration page on which they can enter a username and password.\\\\
-The page contains three fields. One for the username, one for the password and one for password validation. This approach was chosen in order to ensure a correct password input. If the contents of the two password fields do not match, an error message telling them about the mismatch is displayed. Similarly, if any of the fields are left blank, submission is disabled and the user is notified of the problem. If all inputs are valid the token extracted from the link, as well as username and password are sent to the backend using a PUT request. The password is sent in plain text over HTTPS, as explained in the login section above.\\\\
-The backend then passes the data to the "createUser" function. It first checks whether the token exists in the database and also if the username is already being used. In both cases, no token or existing username, the user receives an error message telling them the specific problem. If the username is the issue they can just change it and try again, but if it is the token it will never work no matter how often they retry. If both checks pass, the password is hashed using bcrypt's hash function. The database is then updated with the new username and hashed password. The token is set to null to prevent reuse. If everything is successful the function returns a success message is returned telling the user that the registration is complete. After five seconds they are redirected to the login page, where they can then log in and use the application.
-\subsection{Email}
-For automatic sending of the invitation emails, we implemented two different approaches. Therefore both will be explained below.
-\subsubsection{Nodemailer}
-The first approach uses "nodemailer" to send emails over SMTP. Firstly a transporter is created using nodemailer's "createTransport" function. There several options can be defined including the host, like gmail or a custom SMTP server, the port, secure option and also authentication credentials. 
-\begin{figure}[h!]
-	\begin{code}
-		let transporter = nodemailer.createTransport({
-			host: "smtp.mailersend.net",
-			port: 587,
-			secure: false,
-			auth: {
-				user: test.email@domain.at,
-				pass: Password1,
-			}
-		});
-	\end{code}
-	\caption{This is an example for the transporter using mailersend as the SMTP server}
-	\label{fig:beispielcode2}
-\end{figure}
-After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and general content of the email.
-\begin{figure}[h!]
-	\begin{code}
-    const mailOptions = {
-		from: "Tool" <test.email@domain.at>,
-		to: user@email.at,
-		subject: "Polling tool",
-		text: "Hello this is your invitation."
-	};
-	\end{code}
-	\caption{This is an example for the email options}
-	\label{fig:beispielcode2}
-\end{figure}
-Finally the email is sent using "transporter.sendMail(mailOptions)".
-\subsubsection{MailerSend API}
-The second approach uses the MailerSend API to send the invitation emails. This method was implemented because our deployment host blocks all SMTP ports.\\\\
-To use the MailerSend API, a transporter is created with "new MailerSend" and the API key. Just like int the first method mail options are created specifying the sender, recipient, subject and message.
-\begin{figure}[h!]
-	\begin{code}
-        const mailOptions = new EmailParams()
-			.setFrom(new Sender(test.email@domain.at, "Tool"))
-			.setTo([new Recipient(user@email.at)])
-			.setSubject("Polling tool")
-			.setText("Hello this is your invitation.");
-	\end{code}
-	\caption{This is an example for the email options for MailerSend}
-	\label{fig:beispielcode2}
-\end{figure}
-The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
-Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
-This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and manged exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.
-%Max (UI behavior)
+Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are grated full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.
 \section{Group System}
 \section{Create Polls}
 \subsection{Start-/ Endtime}
@@ -249,20 +126,19 @@ This functionality was implemented by introducing a "Roles" table, which maintai
 \subsubsection{Multiple Choice}
 \subsubsection{Weighted Choice}
 \subsection{Demographic Questions}
-\paragraph{}
-To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls since the created user would be part of the organization using our project and therefore have the data already. If the users is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections. 
+To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls since the created user would be part of the organization using our project and therefore have the data already. If the users is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections, with the difference that weighted is not an option, since demographic data is more like a fact less an opinion.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.6\textwidth]{pics/demographic_question_create.jpg}
+	\includegraphics[width=0.65\textwidth]{pics/demographic_question_create.jpg}
 	\caption{Create Demographic Question}
 	\label{fig:create_dem_que}
 \end{figure}
-\paragraph{}
+\\
 The new part for this feature is the search bar. For this the "Select" component of "react-select" is used. The components' controllable state props and modular architecture allows  "isMulti" to select multiple options or "isSearchable" to search. These features, allow easy implementation and an already styled search bar in the project. \parencite{reactselect}
-\paragraph{}
+\\ \\
 The database structure for the demographic questions is similar to the standard ones. The table "PublicQuestions" is used to store the question specific data like name and type. To enable the reuse of questions on different polls "PublicQuestions" is in an many-to-many relationship with "Polls" through "PublicPollQuestions". Answers are stored within the table "PublicAnswers", which is connected to "PublicQuestions" via "PublicQuestionAnswers. This relation is also many-to-many since the options yes or no for example would be used in multiple questions. 
-\paragraph{}
-For the select every existing question with its answers is fetched from the database and stored within an array. The options are then mapped with the value being id and the label as name of each element. To display the selected options they are mapped through and use the same functions as the standard ones used for the poll. When saving these questions a problem arises, as the selected ones are already stored in the database and possibly changed. To handle this an findOrCreate \ref{fig:publicQuestions} is used to get the existing questions and answers or create new ones. This function also returns each instance found or the created one. With this the question and answer ids can be used for the many-to-many relationship. \parencite{sequelizedoku} 
+\\ \\
+For the select every existing question with its answers is fetched from the database and stored within an array. The options are then mapped with the value being id and the label as name of each element. To display the selected options they are mapped through and use the same functions as the standard ones used for the poll. When saving these questions a problem arises, as the selected ones are already stored in the database and possibly changed. To handle this a findOrCreate \ref{fig:publicQuestions} is used to get the existing questions and answers or create new ones. This function also returns each instance found or the created one. With this the question and answer ids can be used for the many-to-many relationship. \parencite{sequelizedoku} 
 \begin{figure}[h!]
 \begin{code}
 let [createdQuestion, created] = await PublicQuestions.findOrCreate({
@@ -281,19 +157,55 @@ let [createdQuestion, created] = await PublicQuestions.findOrCreate({
 \subsection{Disclosed Voting}
 \subsection{Anonymous Voting}
 \subsection{Public Voting}
-The public voting allows users without an account to vote. With this feature a wide range of people can be questioned via street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. \textcite{demographicdata} mentions trust, benefits of the demographic data and the ability to abstain. All of these factors have to be taken into ones account when creating these questions. The article also mentions, that at the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the author states it is best to put these questions at the end. 
-\subsubsection{Vote integrity}
-A major problem when having anonymity and no accounts is the data integrity. Without the ability to store information about a voter in the database to check for multiple votes, it is important to prevent them from voting multiple times.  
-
-what to write about:
-how to prevent multiple votes: 
-- 	captcha against bots 
--	cookies to prevent non techie users 
--	users with knowledge almost impossible to prevent without storing ip or device fingerprints, 
-problem with ip and device fp is probably legal reasons
-
--	userData: which information is important for polls (gender, age, job, )
-
+The public voting allows users without an account to vote. With this feature a wide range of people can be questioned in street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. Römermann mentions trust, benefits of the demographic data and the ability to abstain. All of these factors have to be taken into ones account when creating these questions. The article also mentions, that at the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the author states it is best to put these questions at the end. \cite{demographicdata}
+\subsubsection{Poll Questions}
+In public voting, since users cannot select a poll themselves, it's important to handle cases where the poll is accessed via a direct link outside the allowed time frame. To keep things simple, a short message — "Poll not available" — is displayed in such cases. If the site is accessed within the designated start and end dates, the questions are shown, similar to those in disclosed and anonymous voting. The main difference in this voting method lies in the submit button. Its function is only to change the display so that demographic questions are shown.
+\subsubsection{Demographic Questions}
+After the poll is completed, the demographic questions linked to it are displayed. These questions follow the same visual style as those in the other sections. Once submitted, the submit button becomes greyed out and disabled. A short thank-you message, along with a link to the organization's website, is then shown. Similar to the poll questions, the key difference here lies in how the submit button behaves. Before sending the data, the system checks whether the user has already voted. If not, the responses to both the poll and demographic questions are sent to the backend API via a POST request. The service processes these answers and inserts them into the corresponding database tables.
+\subsubsection{Vote Integrity}
+A major problem when having anonymity and no accounts is the data integrity. Without the ability to store information about a voter in the database to check for multiple votes, it is important to prevent them from voting multiple times. Completely avoiding this problem is nearly impossible, but to ensure no problems arise we chose two different security measures. \\ \\
+To prevent fraudulent activity, spam, and abuse with bots, Google reCAPTCHA is integrated into the application. To implement this a key pair is generated, one for the site and a secret key. The site key is used to integrate the reCAPTCHA service into the frontend. The secret key facilitates secure communication between the backend server and the reCAPTCHA system to validate user responses. To maintain security the keys are stored in an env file. For this whole process the invisible option is checked to prevent the flow of the voting being disturbed.\parencite{recaptcha} \\ \\
+\ref{fig:recaptcha} shows how the backend handles the CAPTCHA request. The token, the site key, is sent from the frontend through the request body, while the secretKey is accessed via the prossess.env environment variable. To maintain readability, the URL is defined and the query string includes both keys. Then these parameters are sent to Googles endpoint to validate the user interaction. The score in Google’s response indicates how likely a user is human. Therefore, before returning a successful response to the frontend, the score is checked. The code also handles the cases where the request results in an error or the score is too low. \parencite{recaptcha}
+\begin{figure}[h!]
+	\begin{code}
+app.post('/verify-recaptcha', async (req, res) => {
+	const { token } = req.body;
+	const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+	const url = `https://www.google.com/recaptcha/api/
+	siteverify?secret=${secretKey}&response=${token}`;
+	try {
+		const response = await fetch(url, {
+			method: 'POST',
+		});
+		const data = await response.json();
+		if (data.success && data.score > 0.5) {
+			res.json({ success: true });
+		} else {
+			res.json({ success: false, message: 'Verification failed' });
+		}
+	} catch (error) {
+		console.error('Error verifying reCAPTCHA:', error);
+		res.status(500).json({ success: false, message: 'Server error' });
+	}
+});
+	\end{code}
+	\caption{reCAPTCHA backend}
+	\label{fig:recaptcha}
+\end{figure}
+\\ \\ \\ \\
+Cookies are small pieces of data stored locally on a user’s device by their browser. They are commonly used to save user-specific information, such as usernames or passwords, to enhance the web browsing experience. \\ \\
+ Other common use cases include:
+\begin{enumerate} \item Session Management: Allows a website to remember user behavior and preferences across sessions. \item Personalization: Enables websites to tailor content, such as language settings or recommended items, to individual users. \item Tracking: Often used in e-commerce to maintain a shopping cart while users navigate through different pages of a site. \end{enumerate}
+In all these scenarios, the data is stored locally on the user's device \parencite{cookies}.
+On this platform, however, cookies serve a more specific purpose: to store a boolean flag indicating whether a user has already voted. Figure~\ref{fig:cookie} illustrates how the cookie is stored in the browser. The cookie’s expiration is set to the poll’s end date, ensuring it is automatically removed once voting closes.
+\begin{figure}[h!] 
+	\centering 
+	\includegraphics[width=0.9\textwidth]{pics/cookie.png} 
+	\caption{Cookie stored in the browser} 
+	\label{fig:cookie} 
+\end{figure}\\ \\
+The cookie is set only after the voting request is successfully processed. This order is crucial, as vote submissions can occasionally result in errors. If the cookie were set before confirmation, users could be wrongly prevented from resubmitting. By storing the cookie only after a successful vote, users can correct and resubmit their answers when needed.\\ \\
+This method is not entirely secure. If someone knows where the cookie is stored and how to access it, they can delete it and vote again. Still, this setup addresses most common threats to the integrity of the poll.
 \section{Results}
 \subsection{CSV-Export}
 To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics such as the number of votes per answer and the average weight for weighted questions.\\ \\
@@ -346,18 +258,15 @@ The deletion logic performs the following steps
 \caption{Example for a Sequelize transaction}
 \label{fig:delete_poll_code}
 \end{figure}
-Using Sequelize’s transaction mechanism not only helps to avoid data inconsistency, but also ensures that no information is accidentally deleted once users have participated in a poll. This feature is particularly important in environments where transparency and trust are key, such as in political or organizational voting systems.\\\\
-For additional security to prevent unauthorized polls from being deleted, the delete button has been grayed out if the poll has already been voted on, with an tooltip added to the button the user gets further information why they can not delete the survey anymore.
+Using Sequelize’s transaction mechanism not only helps to avoid data inconsistency, but also ensures that no information is accidentally deleted once users have participated in a poll. This feature is particularly important in environments where transparency and trust are key, such as in political or organizational voting systems.
+
 
 \section{Accessibility}
 \subsection{Tooltips}
-To enhance the usability and user experience of the application, tooltips were integrated into all input field, providing users with contextual guidance and reducing the likelihood of input errors. For this purpose, the React library \textbf{react-tooltips} was utilized, offering a high degree of customizability in both design and behavior. This allowed for the implementation of consistent and informative tooltip elements throughout the interface.\parencite{tooltips}\\\\
-Each from element is assigned a unique \textbf{data-tool-id}, which serves as a reference key within the central \textbf{Tooltips.js} configuration file. This file defines the content, styling, and interaction logic for each tooltip, ensuring that the visual presentation and timing behavior are consistent across the application. To prevent the tooltips from becoming distracting during regular use, a delay of 1500 milliseconds was introduced before displaying the tooltip on hover.\\\\
-The overall purpose of this component was, to improve the intuitiveness of the application, especially for first-time users or those unfamiliar with specific input requirements.
 \subsection{Screenreader}
 \section{Styling}
 \subsection{Generel styling}
-The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Blackberry. \\ \\
+The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Purple. \\ \\
 To ensure consistency of the palette user defined characteristics from CSS where used to assign variables for each main color. \parencite{csscolorvariables}
 \begin{figure}[h!]
 	\begin{csscode}
@@ -393,13 +302,6 @@ To ensure responsiveness in each section of the application, "@media CSS at-rule
 \subsection{Individual styling}
 
 \chapter{Summary}
-\lipsum[1]
-
-% Literaturverweis-Beispiel
-Hier ein Zitat aus einer Quelle \cite{author2023example}.
-
-% Zusammenfassung
-
 
 % Literaturverzeichnis
 \printbibliography
