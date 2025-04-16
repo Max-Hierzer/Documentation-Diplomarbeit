@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{+w}{        }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{mailOptions}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{EmailParams}\PYG{p}{()}
-\PYG{+w}{			}\PYG{p}{.}\PYG{n+nx}{setFrom}\PYG{p}{(}\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{Sender}\PYG{p}{(}\PYG{n+nx}{test}\PYG{p}{.}\PYG{n+nx}{email}\PYG{err}{@}\PYG{n+nx}{domain}\PYG{p}{.}\PYG{n+nx}{at}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Tool\PYGZdq{}}\PYG{p}{))}
-\PYG{+w}{			}\PYG{p}{.}\PYG{n+nx}{setTo}\PYG{p}{([}\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{Recipient}\PYG{p}{(}\PYG{n+nx}{user}\PYG{err}{@}\PYG{n+nx}{email}\PYG{p}{.}\PYG{n+nx}{at}\PYG{p}{)])}
-\PYG{+w}{			}\PYG{p}{.}\PYG{n+nx}{setSubject}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Polling tool\PYGZdq{}}\PYG{p}{)}
-\PYG{+w}{			}\PYG{p}{.}\PYG{n+nx}{setText}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Hello this is your invitation.\PYGZdq{}}\PYG{p}{);}
-\end{Verbatim}

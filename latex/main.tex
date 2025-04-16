@@ -94,6 +94,13 @@ PostgreSQL was chosen as the relational database management system for this proj
 The installation was also simple because of the detailed install guide provided by multiple sites like \textbf{w3schools}. Before the installation certain configuration had to be done such as: specify the storage directory, select a password, set the port the server should listen on. To create the first database the SQL shell of PostgreSQL was used in the beginning. But after that the preferred tool was \textbf{pgAdmin 4}, an popular and feature rich Open Source administration and development platform for PostgreSQL, to manipulate data or view schemes of the database.\parencite{pgsinstallation}\\
 For this project it was essential to have a stable and robust system in the backend that can handle a bigger amount of data efficiently. 
 \subsection{Scheme of the database}
+The database consists of 13 tables, with "UserPolls" and "QuestionAnswers" funcitoning as intermediary tables that facilitate many-to-many relationships between the core entities. The design ensures scalability, maintainability and clear separation of concerns across different functional areas of the application.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.65\textwidth]{pics/new_ERD.png}
+	\caption{Entity Relationship Diagram}
+	\label{fig:ERD_DB}
+\end{figure}
 \section{node.js}
 \section{Sequelize}
 \section{express}
@@ -121,6 +128,7 @@ Implementing a role-based system with three distinct roles - "Admin," "Poweruser
 \section{Group System}
 \section{Create Polls}
 \subsection{Start-/ Endtime}
+\subsection{Poll Image}
 \subsection{Questions}
 \subsubsection{Single Choice}
 \subsubsection{Multiple Choice}
