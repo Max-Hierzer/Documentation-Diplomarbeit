@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{storage}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{multer}\PYG{p}{.}\PYG{n+nx}{diskStorage}\PYG{p}{(\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nx}{destination}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{req}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{file}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{cb}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{cb}\PYG{p}{(}\PYG{k+kc}{null}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}uploads\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{},}
+\PYG{+w}{			}\PYG{n+nx}{filename}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{req}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{file}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{cb}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{cb}\PYG{p}{(}\PYG{k+kc}{null}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{Date}\PYG{p}{.}\PYG{n+nx}{now}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nx}{path}\PYG{p}{.}\PYG{n+nx}{extname}\PYG{p}{(}\PYG{n+nx}{file}\PYG{p}{.}\PYG{n+nx}{originalname}\PYG{p}{));}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{});}
+\end{Verbatim}

@@ -129,6 +129,73 @@ Implementing a role-based system with three distinct roles - "Admin," "Poweruser
 \section{Create Polls}
 \subsection{Start-/ Endtime}
 \subsection{Poll Image}
+In response to client requirements, a feature was implemented allowing users to upload a title image for each poll. This image serves a purely atmospheric and aesthetic purpose, aiming to enhance the visual appeal of the poll and provide users with a more engaging and intuitive introduction to the survey topic. By incorporating visual context, the feature helps draw user attention and encourages participation, particularly in cases where the subject matter benefits from visual reinforcement.\\\\
+\subsubsection{Backend Implementation}
+On the backend, the image upload is handled using the \textbf{multer} middleware in the \textbf{imageRoutes.js} file. The storage engine is configured to save uploaded files in the \textbf{uploads} directory with a unique filename based on a timestamp and the original file extension. The file types are restricted to JPEG, PNG and GIF formats through a custom file filter to ensure consistency and security.\parencite{expressmulter}
+\begin{figure}[H]
+	\begin{code}
+		const storage = multer.diskStorage({
+			destination: (req, file, cb) => {
+				cb(null, 'uploads');
+			},
+			filename: (req, file, cb) => {
+				cb(null, Date.now() + path.extname(file.originalname));
+			}
+		});
+	\end{code}
+	\caption{Custom storage engine configuration for multer}
+	\label{fig:multer_config}
+\end{figure}
+The route \textbf{/api/upload-image} is exposed via the Express router and returns the public URL of the uploaded image on success. The image can later be used as part of the poll metadata.\\
+In \textbf{app.js}, static file serving is enabled for the \textbf{uploads} directory to make the images accessible to the frontend:
+\begin{figure}[H]
+	\begin{code}
+		app.use('/uploads', express.static('uploads'));
+	\end{code}
+	\caption{Static file serving enabled}
+	\label{fig:static_file_serving}
+\end{figure}
+\subsubsection{Frontend Integration}
+On the frontend, the image upload is handled within the \textbf{CreatePolls.js} component. When a user selects an image file, the \textbf{handleImageUpload} function is triggered. 
+\begin{figure}[H]
+	\begin{code}
+		const handleImageUpload = async (event) => {
+			const file = event.target.files[0];
+			if (!file) return; 
+			const previewUrl = URL.createObjectURL(file);
+			setImage(previewUrl);
+			const formData = new FormData();
+			formData.append("image", file);
+			try {
+				const res = await fetch(`${process.env.REACT_APP_API_URL}/api/upload-image`, {
+					method: 'POST',
+					body: formData,
+				});
+				const data = await res.json();
+				if (res.ok) {
+					setImageUrl(data.imageUrl); 
+				} else {
+					setResponse('Error uploading image');
+				}
+			} catch (error) {
+				console.error('Error uploading image:', error);
+				setResponse('Error uploading image');
+			}
+		};
+		
+	\end{code}
+	\caption{handleImageUpload function}
+	\label{fig:handleImageUpload}
+\end{figure}
+This function performs the following steps.
+\begin{enumerate}
+	\item A local preview of the selected image is created using the browser's \textbf{URL.createObjectURL()} method. This provides immediate feedback to the user by displaying the image in the form before it is uploaded.
+	\item To prepare the image for upload to the server, a new instance of the \textbf{FormData} object is created. This object is specifically designed to handle form submissions that include binary data such as files. The use of \textbf{FormData} is necessary because standard JSON-based payloads \textbf{application/json} do not support file transfers. The browser automatically sets the \textbf{Content-Type} to \textbf{multipart/form-data} when \textbf{FormData} is used, which is the appropriate MIME type for file uploads.
+	\item The image is uploaded to the backend by making a \textbf{POST} request to the endpoint \textbf{api/upload-image}. If the upload is successful, the backend responds with the relative path to the stored image, which is then saved in the component state \textbf{imageUrl} for use in the final poll submission.
+	\item The uploaded images's URL is included as part of the final poll payload when the user submits the form. This allows the backend to store the image reference in the database alongside the poll data.
+	\item Upon successful poll creation, the image preview, image URL and file input are all reset to ensure a clean state for subsequent poll creation actions.
+\end{enumerate}
+By combining real-time preview functionality with reliable backend integration, the image upload feature significantly improves the overall usability and aesthetic appeal of the application.
 \subsection{Questions}
 \subsubsection{Single Choice}
 \subsubsection{Multiple Choice}
