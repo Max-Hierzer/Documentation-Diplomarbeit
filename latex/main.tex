@@ -52,8 +52,8 @@
 \begin{document}
 
 % Titelblatt
-\title{Titel der Diplomarbeit}
-\author{Dein Name}
+\title{Open Source Voting Web Application}
+\author{Tobias Prasser, Max Martin Hierzer, Gernot Fasching}
 \date{\today}
 \maketitle
 
@@ -94,15 +94,19 @@ PostgreSQL was chosen as the relational database management system for this proj
 The installation was also simple because of the detailed install guide provided by multiple sites like \textbf{w3schools}. Before the installation certain configuration had to be done such as: specify the storage directory, select a password, set the port the server should listen on. To create the first database the SQL shell of PostgreSQL was used in the beginning. But after that the preferred tool was \textbf{pgAdmin 4}, an popular and feature rich Open Source administration and development platform for PostgreSQL, to manipulate data or view schemes of the database.\parencite{pgsinstallation}\\
 For this project it was essential to have a stable and robust system in the backend that can handle a bigger amount of data efficiently. 
 \subsection{Scheme of the database}
-The database consists of 13 tables, with "UserPolls" and "QuestionAnswers" funcitoning as intermediary tables that facilitate many-to-many relationships between the core entities. The design ensures scalability, maintainability and clear separation of concerns across different functional areas of the application.
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.65\textwidth]{pics/new_ERD.png}
-	\caption{Entity Relationship Diagram}
-	\label{fig:ERD_DB}
+The initial database scheme differed significantly from its current structure, primarily due to evolving client requirements. However, it was evident from the outset that the "Polls" and "Users" tables would serve as central components of the schema, as the majority of the data entities and relationships would reference or depend on these two core tables. For the Entity Relationship Diagrams tools like \textbf{draw.io} and \textbf{dbDiagramm} where used to create the visualization directly from SQL.
+The database consists of 13 tables, with "UserPolls", "UserAnswers", "PollGroups" and "QuestionAnswers" functioning as intermediary tables that facilitate many-to-many relationships between the core entities. 
+\begin{figure}[H]	
+	\centering	
+	\includegraphics[width=0.8\textwidth]{pics/new_ERD.png}	
+	\caption{New Entity Relationship Diagram}	
+	\label{fig:new_ERD}
 \end{figure}
 \section{node.js}
 \section{Sequelize}
+Sequelize was selected as the Object-Relational-Mapping(ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in project with complex data relationships and evolving schema requirements.\\\\
+Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness.\parencite{sequelizegit}\\\\
+The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
 \section{express}
 \section{React}
 \section{PWA}
@@ -124,7 +128,13 @@ Sensitive data like passwords is handled securely. Passwords are not stored in p
 
 \section{Registration}
 \subsection{Roles}
-Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are grated full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.
+Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
+
+
+This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and manged exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.\\\\
+
+
+%Max (UI behavior)
 \section{Group System}
 \section{Create Polls}
 \subsection{Start-/ Endtime}
@@ -338,10 +348,17 @@ Using Sequelize’s transaction mechanism not only helps to avoid data inconsist
 
 \section{Accessibility}
 \subsection{Tooltips}
+To enhance the usability and user experience of the application, tooltips were integrated into all input field, providing users with contextual guidance and reducing the likelihood of input errors. For this purpose, the React library \textbf{react-tooltips} was utilized, offering a high degree of customizability in both design and behavior. This allowed for the implementation of consistent and informative tooltip elements throughout the interface.\parencite{tooltips}\\\\
+
+
+Each from element is assigned a unique \textbf{data-tool-id}, which serves as a reference key within the central \textbf{Tooltips.js} configuration file. This file defines the content, styling, and interaction logic for each tooltip, ensuring that the visual presentation and timing behavior are consistent across the application. To prevent the tooltips from becoming distracting during regular use, a delay of 1500 milliseconds was introduced before displaying the tooltip on hover.\\\\
+
+
+The overall purpose of this component was, to improve the intuitiveness of the application, especially for first-time users or those unfamiliar with specific input requirements.
 \subsection{Screenreader}
 \section{Styling}
 \subsection{Generel styling}
-The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Purple. \\ \\
+The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Blackberry. \\ \\
 To ensure consistency of the palette user defined characteristics from CSS where used to assign variables for each main color. \parencite{csscolorvariables}
 \begin{figure}[h!]
 	\begin{csscode}
