@@ -194,6 +194,13 @@ This functionality was implemented by introducing a "Roles" table, which maintai
 \section{Group System}
 \section{Create Polls}
 \subsection{Start-/ Endtime}
+To make Polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
+\subsubsection{Setting The Times}
+The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type "datetime-local" was used. However it was not fully supported by every browser, including Firefox which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
+When a user clicks on the input field, a graphical selector appears, which allows the user to select both the date and time easily.\\\\
+Once the poll is submitted, the selected start and end times are sent to the "createPoll" function in the backend via a POST request. There, the received times are converted to JavaScript "Date" objects before being inserted into the database.
+\subsubsection{Utilizing The Times}
+Max
 \subsection{Poll Image}
 In response to client requirements, a feature was implemented allowing users to upload a title image for each poll. This image serves a purely atmospheric and aesthetic purpose, aiming to enhance the visual appeal of the poll and provide users with a more engaging and intuitive introduction to the survey topic. By incorporating visual context, the feature helps draw user attention and encourages participation, particularly in cases where the subject matter benefits from visual reinforcement.\\\\
 \subsubsection{Backend Implementation}
