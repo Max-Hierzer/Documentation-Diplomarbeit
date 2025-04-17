@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		\PYG{k+kd}{const} \PYG{n+nx}{handleImageUpload} \PYG{o}{=} \PYG{k}{async} \PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+			\PYG{k+kd}{const} \PYG{n+nx}{file} \PYG{o}{=} \PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{target}\PYG{p}{.}\PYG{n+nx}{files}\PYG{p}{[}\PYG{l+m+mf}{0}\PYG{p}{];}
+			\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{file}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;}
+			\PYG{k+kd}{const} \PYG{n+nx}{previewUrl} \PYG{o}{=} \PYG{n+nx}{URL}\PYG{p}{.}\PYG{n+nx}{createObjectURL}\PYG{p}{(}\PYG{n+nx}{file}\PYG{p}{);}
+			\PYG{n+nx}{setImage}\PYG{p}{(}\PYG{n+nx}{previewUrl}\PYG{p}{);}
+			\PYG{k+kd}{const} \PYG{n+nx}{formData} \PYG{o}{=} \PYG{o+ow}{new} \PYG{n+nx}{FormData}\PYG{p}{();}
+			\PYG{n+nx}{formData}\PYG{p}{.}\PYG{n+nx}{append}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}image\PYGZdq{}}\PYG{p}{,} \PYG{n+nx}{file}\PYG{p}{);}
+			\PYG{k}{try} \PYG{p}{\PYGZob{}}
+				\PYG{k+kd}{const} \PYG{n+nx}{res} \PYG{o}{=} \PYG{k}{await} \PYG{n+nx}{fetch}\PYG{p}{(}\PYG{l+s+sb}{`}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{process}\PYG{p}{.}\PYG{n+nx}{env}\PYG{p}{.}\PYG{n+nx}{REACT\PYGZus{}APP\PYGZus{}API\PYGZus{}URL}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{/api/upload\PYGZhy{}image`}\PYG{p}{,} \PYG{p}{\PYGZob{}}
+					\PYG{n+nx}{method}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}POST\PYGZsq{}}\PYG{p}{,}
+					\PYG{n+nx}{body}\PYG{o}{:} \PYG{n+nx}{formData}\PYG{p}{,}
+				\PYG{p}{\PYGZcb{});}
+				\PYG{k+kd}{const} \PYG{n+nx}{data} \PYG{o}{=} \PYG{k}{await} \PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{json}\PYG{p}{();}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{ok}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+					\PYG{n+nx}{setImageUrl}\PYG{p}{(}\PYG{n+nx}{data}\PYG{p}{.}\PYG{n+nx}{imageUrl}\PYG{p}{);}
+				\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+					\PYG{n+nx}{setResponse}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Error uploading image\PYGZsq{}}\PYG{p}{);}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}} \PYG{k}{catch} \PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{error}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Error uploading image:\PYGZsq{}}\PYG{p}{,} \PYG{n+nx}{error}\PYG{p}{);}
+				\PYG{n+nx}{setResponse}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Error uploading image\PYGZsq{}}\PYG{p}{);}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{};}
+		
+	
+\end{Verbatim}

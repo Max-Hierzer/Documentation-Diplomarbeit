@@ -127,6 +127,62 @@ Error handling is implemented consistently across both frontend and backend to e
 Sensitive data like passwords is handled securely. Passwords are not stored in plain text. Instead they are hashed using bcrypt before being inserted into the database. Furthermore, communication between frontend and backend is encrypted through HTTPS. This ensures that all transmitted data remains private and protected from unauthorized access.
 
 \section{Registration}
+The application features a controlled and secure registration. In order for users to be able to join the system, they first have to be invited. The registration consists of two main functionalities.
+\subsection{Admin Registration Process}
+Only administrators are allowed to invite new users. They start the process by navigating to the registration tab and entering the user's email as well as their intended role. After submitting, the data gets sent to the "sendEmail" function in the backend through a POST request.\\\\
+The function checks if a user with the provided email address already exists in the database. If so, it returns a message indicating exactly that. In case the email is not found, an invitation email is sent and a new user entry with the provided email, role ID and a randomly generated token is created. The token is later used for verifying the legitimacy of the registration. If the process is successful the administrator is informed that the email was sent and the user was created successfully.
+\subsection{User Registration Process}
+The email sent to the user contains a registration link consisting of the URL of the application and the previously mentioned token. By clicking the link, the user is redirected to a registration page on which they can enter a username and password.\\\\
+The page contains three fields. One for the username, one for the password and one for password validation. This approach was chosen in order to ensure a correct password input. If the contents of the two password fields do not match, an error message telling them about the mismatch is displayed. Similarly, if any of the fields are left blank, submission is disabled and the user is notified of the problem. If all inputs are valid the token extracted from the link, as well as username and password are sent to the backend using a PUT request. The password is sent in plain text over HTTPS, as explained in the login section above.\\\\
+The backend then passes the data to the "createUser" function. It first checks whether the token exists in the database and also if the username is already being used. In both cases, no token or existing username, the user receives an error message telling them the specific problem. If the username is the issue they can just change it and try again, but if it is the token it will never work no matter how often they retry. If both checks pass, the password is hashed using bcrypt's hash function. The database is then updated with the new username and hashed password. The token is set to null to prevent reuse. If everything is successful the function returns a success message is returned telling the user that the registration is complete. After five seconds they are redirected to the login page, where they can then log in and use the application.
+\subsection{Sending Invitation Emails}
+For automatic sending of the invitation emails, we implemented two different approaches. Therefore both will be explained below.
+\subsubsection{Nodemailer (SMTP)}
+The first approach uses "nodemailer" to send emails over SMTP. Firstly a transporter is created using nodemailer's "createTransport" function. There several options can be defined including the host, like gmail or a custom SMTP server, the port, secure option and also authentication credentials. 
+\begin{figure}[h!]
+	\begin{code}
+		let transporter = nodemailer.createTransport({
+			host: "smtp.mailersend.net",
+			port: 587,
+			secure: false,
+			auth: {
+				user: test.email@domain.at,
+				pass: Password1,
+			}
+		});
+	\end{code}
+	\caption{This is an example for the transporter using mailersend as the SMTP server}
+	\label{fig:beispielcode2}
+\end{figure}
+After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and general content of the email.
+\begin{figure}[h!]
+	\begin{code}
+		const mailOptions = {
+			from: "Tool" <test.email@domain.at>,
+			to: user@email.at,
+			subject: "Polling tool",
+			text: "Hello this is your invitation."
+		};
+	\end{code}
+	\caption{This is an example for the email options}
+	\label{fig:beispielcode2}
+\end{figure}
+Finally the email is sent using "transporter.sendMail(mailOptions)".
+\subsubsection{MailerSend API}
+The second approach uses the MailerSend API to send the invitation emails. This method was implemented because our deployment host blocks all SMTP ports.\\\\
+To use the MailerSend API, a transporter is created with "new MailerSend" and the API key. Just like int the first method mail options are created specifying the sender, recipient, subject and message.
+\begin{figure}[h!]
+	\begin{code}
+		const mailOptions = new EmailParams()
+		.setFrom(new Sender(test.email@domain.at, "Tool"))
+		.setTo([new Recipient(user@email.at)])
+		.setSubject("Polling tool")
+		.setText("Hello this is your invitation.");
+	\end{code}
+	\caption{This is an example for the email options for MailerSend}
+	\label{fig:beispielcode2}
+\end{figure}
+The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
 Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
 
