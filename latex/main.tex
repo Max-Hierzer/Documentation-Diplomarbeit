@@ -192,7 +192,10 @@ This functionality was implemented by introducing a "Roles" table, which maintai
 
 %Max (UI behavior)
 \section{Group System}
+
 \section{Create Polls}
+\subsection{Function}
+\subsection{Validation}
 \subsection{Start-/ Endtime}
 To make Polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
 \subsubsection{Setting The Times}
@@ -301,6 +304,7 @@ let [createdQuestion, created] = await PublicQuestions.findOrCreate({
 \end{figure}
 
 \section{Edit Polls}
+
 \section{Voting}
 \subsection{Disclosed Voting}
 \subsection{Anonymous Voting}
@@ -359,10 +363,13 @@ This method is not entirely secure. If someone knows where the cookie is stored 
 To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics such as the number of votes per answer and the average weight for weighted questions.\\ \\
 The logic is handled in the \textbf{csvExportController.js} controller. Upon receiving a request, the system retrieves all relevant data for a given poll by its ID, including associated question, answers, and question types. The raw voting data is processed to count the number of responses per answer and to calculate the average weight if applicable. Special care is taken to distinguish between different types: for instance, "Single Choice" questions ensure that only one answer per user is counted, while "Weighted Choice" questions include the weight vale in the computation.\\ \\
 The processed data is then converted into a structured CSV format using the json2csv library. The final file includes columns such as Poll Name, Question, Question Type, Answer, Vote Count and Average Weight, and can be downloaded directly by the user. This feature ensures transparency and enables further statistical evaluation using external tools like Excel.\parencite{json2csv}
-\section{MyPolls}
-\subsection{Polllink}
-% Polllink beschreibung von Prasser
 
+\section{MyPolls}
+\subsection{Purpose}
+The "MyPolls" section provides access to all polls a user created, they share links for those polls and also the option to delete them. It allows users to manage their polls from one central location.
+\subsection{Polllink}
+The Polllink for sharing the Polls is created by hashing key information with the "btoa" algorithm. In order to make the hash browser navigation compatible it is also encoded as an URI component with the same name(encodeURIComponent). The hash contains information about if the poll is public, if it is anonymous, about the mode and the poll's ID.\\\\
+When opening the Polllink the hash gets URI and "atob" decoded and depending on the mode the corresponding section in the dashboard and the poll with the right ID gets opened. Should the ID not exist in this specific mode, or in general, it just opens the right mode in the default state.\\\\
 To make sharing of the Surveys easier, a QR code generation was implemented. This was done using the React component "qrcode.react" which requires the link to the poll.\parencite{qrcode}
 \subsection{Delete Polls}
 The deletion of polls is crucial for two main reasons: first, to ensure that all associated data of a survey can be safely removed when necessary and second, to determine when a poll is still eligible for deletion. In this case, the deletion of polls is strictly limited to those that have not yet received any user votes. \\ \\
