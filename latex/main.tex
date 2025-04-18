@@ -307,7 +307,25 @@ let [createdQuestion, created] = await PublicQuestions.findOrCreate({
 
 \section{Voting}
 \subsection{Disclosed Voting}
+In disclosed voting, each voter can see who voted for which option. This level of openness can significantly shape how people vote, as choices are no longer private. As such, poll creators should carefully consider the implications and advantages of this approach.
+\paragraph{Transparency:}
+Can be a powerful tool especially in contexts where open discussion is encouraged. When voters are aware that their choices will be visible, and everyone has access to the same information, it creates a shared starting point for meaningful discussion.
+\paragraph{Analytics and Reporting:}
+Unlike anonymous voting, disclosed voting provides access to detailed, voter-specific data. This allows for more comprehensive analysis and reporting, making it easier to identify patterns, understand voter behavior, and repurpose the results for future decision making.
+\paragraph{Voter Trust:}
+Disclosed voting can also help increase trust in the voting process. Because individual votes can be traced back to their sources, it becomes much harder to commit fraud or manipulate the outcome. In contrast, anonymous voting may raise concerns about the system’s integrity, since there’s no way to independently verify the authenticity of each vote. \parencite{disvsanon}
+\subsubsection{Frontend}
+\subsubsection{Backend}
 \subsection{Anonymous Voting}
+This voting style keeps individual choices completely hidden, making it impossible to trace votes back to specific participants. While this limits the amount of data available for analysis, it comes with several key advantages that protect voters and promote fairness.
+\paragraph{Voter Freedom:}
+Because votes are not linked to identities, participants can express their opinions freely, without fear of judgment or consequences from others. This anonymity encourages honest responses, even on sensitive or controversial topics.
+\paragraph{Protect Against Intimidation:}
+In a disclosed voting system, participants could become targets of pressure, bullying, or even blackmail based on how they vote. Anonymous voting helps mitigate these risks by shielding voters from external influence, creating a safer environment for participation.
+\paragraph{Eliminate "Herd Mentality":}
+Herd mentality refers to the tendency of individuals to follow the majority, sometimes at the expense of their true opinions. While the platform already helps reduce this by showing results only after voting ends, anonymous voting further minimizes this effect. Even if a voter ends up being in the minority, their identity remains protected, encouraging more authentic and independent choices.  \parencite{disvsanon}
+\subsubsection{Frontend}
+\subsubsection{Backemd}
 \subsection{Public Voting}
 The public voting allows users without an account to vote. With this feature a wide range of people can be questioned in street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. Römermann mentions trust, benefits of the demographic data and the ability to abstain. All of these factors have to be taken into ones account when creating these questions. The article also mentions, that at the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the author states it is best to put these questions at the end. \cite{demographicdata}
 \subsubsection{Poll Questions}
