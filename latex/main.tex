@@ -324,14 +324,23 @@ Because votes are not linked to identities, participants can express their opini
 In a disclosed voting system, participants could become targets of pressure, bullying, or even blackmail based on how they vote. Anonymous voting helps mitigate these risks by shielding voters from external influence, creating a safer environment for participation.
 \paragraph{Eliminate "Herd Mentality":}
 Herd mentality refers to the tendency of individuals to follow the majority, sometimes at the expense of their true opinions. While the platform already helps reduce this by showing results only after voting ends, anonymous voting further minimizes this effect. Even if a voter ends up being in the minority, their identity remains protected, encouraging more authentic and independent choices.  \parencite{disvsanon}
+
 \subsubsection{Frontend}
-\subsubsection{Backemd}
+
+\subsubsection{Backend}
+In an anonymous voting system, preventing the ability to trace votes back to individual users is crucial. In contrast, for disclosed voting, the UserAnswers table stores each answer along with the corresponding user's ID.\\ \\
+To support anonymous voting, it's important that the user's ID is not traceable. Therefore, the userId field is configured with "allowNull: true". However, this creates a challenge: the system cannot verify whether a user has already submitted a vote.\\ \\
+To solve this, a many-to-many relationship is introduced between the Polls and Users tables, using an intermediate table that includes a hasVoted boolean field with a default value of true. When a user submits a vote, an entry is created in this table with hasVoted set to true. This allows the system to track whether a user has already voted in a specific poll without linking their vote to their identity.
+
 \subsection{Public Voting}
 The public voting allows users without an account to vote. With this feature a wide range of people can be questioned in street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. Römermann mentions trust, benefits of the demographic data and the ability to abstain. All of these factors have to be taken into ones account when creating these questions. The article also mentions, that at the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the author states it is best to put these questions at the end. \cite{demographicdata}
+
 \subsubsection{Poll Questions}
 In public voting, since users cannot select a poll themselves, it's important to handle cases where the poll is accessed via a direct link outside the allowed time frame. To keep things simple, a short message — "Poll not available" — is displayed in such cases. If the site is accessed within the designated start and end dates, the questions are shown, similar to those in disclosed and anonymous voting. The main difference in this voting method lies in the submit button. Its function is only to change the display so that demographic questions are shown.
+
 \subsubsection{Demographic Questions}
 After the poll is completed, the demographic questions linked to it are displayed. These questions follow the same visual style as those in the other sections. Once submitted, the submit button becomes greyed out and disabled. A short thank-you message, along with a link to the organization's website, is then shown. Similar to the poll questions, the key difference here lies in how the submit button behaves. Before sending the data, the system checks whether the user has already voted. If not, the responses to both the poll and demographic questions are sent to the backend API via a POST request. The service processes these answers and inserts them into the corresponding database tables.
+
 \subsubsection{Vote Integrity}
 A major problem when having anonymity and no accounts is the data integrity. Without the ability to store information about a voter in the database to check for multiple votes, it is important to prevent them from voting multiple times. Completely avoiding this problem is nearly impossible, but to ensure no problems arise we chose two different security measures. \\ \\
 To prevent fraudulent activity, spam, and abuse with bots, Google reCAPTCHA is integrated into the application. To implement this a key pair is generated, one for the site and a secret key. The site key is used to integrate the reCAPTCHA service into the frontend. The secret key facilitates secure communication between the backend server and the reCAPTCHA system to validate user responses. To maintain security the keys are stored in an env file. For this whole process the invisible option is checked to prevent the flow of the voting being disturbed.\parencite{recaptcha} \\ \\
