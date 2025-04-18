@@ -152,7 +152,7 @@ The first approach uses "nodemailer" to send emails over SMTP. Firstly a transpo
 		});
 	\end{code}
 	\caption{This is an example for the transporter using mailersend as the SMTP server}
-	\label{fig:beispielcode2}
+	\label{fig:beispielcode}
 \end{figure}
 After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and general content of the email.
 \begin{figure}[h!]
@@ -165,7 +165,7 @@ After setting up the transporter, the email options are defined. These include t
 		};
 	\end{code}
 	\caption{This is an example for the email options}
-	\label{fig:beispielcode2}
+	\label{fig:beispielcode1}
 \end{figure}
 Finally the email is sent using "transporter.sendMail(mailOptions)".
 \subsubsection{MailerSend API}
@@ -205,7 +205,32 @@ The first part involves setting the start and end time in the poll creation inte
 When a user clicks on the input field, a graphical selector appears, which allows the user to select both the date and time easily.\\\\
 Once the poll is submitted, the selected start and end times are sent to the "createPoll" function in the backend via a POST request. There, the received times are converted to JavaScript "Date" objects before being inserted into the database.
 \subsubsection{Utilizing The Times}
-Max
+These time-based conditions are the core feature used to differentiate between the various states of a poll: edit, voting, and results. To apply these conditions, three arrays are created—each corresponding to one of the states—and passed as props to their respective React components.  
+Figure~\ref{fig:timeuti} shows the code that performs this classification. The \texttt{data} variable contains all polls retrieved from the database via an API call. The \texttt{current\_datetime} is set using \texttt{new Date().toISOString()}. The function iterates through each poll, comparing its \texttt{publish\_date} and \texttt{end\_date} to the current time.
+
+A poll is:
+\begin{itemize}
+	\item pushed into the \texttt{edit} array if the current time is earlier than its \texttt{publish\_date},
+	\item added to the \texttt{vote} array if the current time is between \texttt{publish\_date} and \texttt{end\_date} and the poll is not public,
+	\item moved to the \texttt{results} array if it is public and its \texttt{end\_date} has already passed.
+\end{itemize}
+
+An important detail is how \textit{public polls} are handled. Since they are not intended to appear in the standard voting view, they are excluded from the vote array. In contrast, public polls may appear in the results view even before their end date, allowing creators and interested parties to observe the vote development in real time.
+
+
+\begin{figure}[H]
+	\begin{code}
+		data.forEach((poll) => {
+			if (poll.publish_date > current_datetime) edit.push(poll);
+			else if (poll.publish_date <= current_datetime 
+			&& poll.end_date >= current_datetime 
+			&& poll.public === false) vote.push(poll);
+			else if (poll.public === true && poll.end_date < current_datetime) results.push(poll);
+		})
+	\end{code}
+	\caption{Sorting the polls depending on time}
+	\label{fig:timeuti}
+\end{figure}
 \subsection{Poll Image}
 In response to client requirements, a feature was implemented allowing users to upload a title image for each poll. This image serves a purely atmospheric and aesthetic purpose, aiming to enhance the visual appeal of the poll and provide users with a more engaging and intuitive introduction to the survey topic. By incorporating visual context, the feature helps draw user attention and encourages participation, particularly in cases where the subject matter benefits from visual reinforcement.\\\\
 \subsubsection{Backend Implementation}

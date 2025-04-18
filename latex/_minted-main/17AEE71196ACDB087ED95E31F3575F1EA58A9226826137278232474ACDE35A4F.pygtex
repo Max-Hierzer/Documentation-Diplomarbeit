@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{n+nx}{data}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{poll}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{.}\PYG{n+nx}{publish\PYGZus{}date}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{current\PYGZus{}datetime}\PYG{p}{)}\PYG{+w}{ }\PYG{n+nx}{edit}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{);}
+\PYG{+w}{			}\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{.}\PYG{n+nx}{publish\PYGZus{}date}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{n+nx}{current\PYGZus{}datetime}
+\PYG{+w}{			}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{poll}\PYG{p}{.}\PYG{n+nx}{end\PYGZus{}date}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{n+nx}{current\PYGZus{}datetime}
+\PYG{+w}{			}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{poll}\PYG{p}{.}\PYG{k+kr}{public}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{)}\PYG{+w}{ }\PYG{n+nx}{vote}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{);}
+\PYG{+w}{			}\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{.}\PYG{k+kr}{public}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{poll}\PYG{p}{.}\PYG{n+nx}{end\PYGZus{}date}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nx}{current\PYGZus{}datetime}\PYG{p}{)}\PYG{+w}{ }\PYG{n+nx}{results}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{);}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{})}
+\end{Verbatim}
