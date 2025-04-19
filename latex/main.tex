@@ -9,6 +9,10 @@
 \addbibresource{bibliography.bib}
 
 \usepackage{minted}
+\usepackage{fancyvrb}
+\makeatletter
+\def\minted@verb@delim@a{\do\$}
+\makeatother
 \usepackage[minted]{tcolorbox}
 
 
@@ -29,6 +33,7 @@
 	top=0pt, bottom=0pt, left=2pt, right=2pt,
 	colback=lightgray!25,
 }
+
 
 % Custom css code box with black border
 \newtcblisting{csscode}{
@@ -139,7 +144,7 @@ The backend then passes the data to the "createUser" function. It first checks w
 For automatic sending of the invitation emails, we implemented two different approaches. Therefore both will be explained below.
 \subsubsection{Nodemailer (SMTP)}
 The first approach uses "nodemailer" to send emails over SMTP. Firstly a transporter is created using nodemailer's "createTransport" function. There several options can be defined including the host, like gmail or a custom SMTP server, the port, secure option and also authentication credentials. 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{code}
 		let transporter = nodemailer.createTransport({
 			host: "smtp.mailersend.net",
@@ -155,7 +160,7 @@ The first approach uses "nodemailer" to send emails over SMTP. Firstly a transpo
 	\label{fig:beispielcode}
 \end{figure}
 After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and general content of the email.
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{code}
 		const mailOptions = {
 			from: "Tool" <test.email@domain.at>,
@@ -171,7 +176,7 @@ Finally the email is sent using "transporter.sendMail(mailOptions)".
 \subsubsection{MailerSend API}
 The second approach uses the MailerSend API to send the invitation emails. This method was implemented because our deployment host blocks all SMTP ports.\\\\
 To use the MailerSend API, a transporter is created with "new MailerSend" and the API key. Just like int the first method mail options are created specifying the sender, recipient, subject and message.
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{code}
 		const mailOptions = new EmailParams()
 		.setFrom(new Sender(test.email@domain.at, "Tool"))
@@ -194,12 +199,12 @@ This functionality was implemented by introducing a "Roles" table, which maintai
 \section{Group System}
 
 \section{Create Polls}
-The Create Polls section depicts the poll creation interface of the system. It allows users to create customized polls based on their needs. Customization options include a poll name and description, setting different poll types, adding the poll to specific groups, a start and end date for the voting period, an image upload, a variable amount of questions with chosen question types and a variable amount of answers for each question.
-\subsection{Validation}
-To ensure a correct poll creation the Create Polls features validation in the frontend and also the backend.
+The \textbf{Create Polls} section represents the poll creation interface of the system. It allows users to create customized polls based on their needs. Customization options include entering a poll name and description, selecting different poll types, assigning the poll to specific groups, defining a start and end date for the voting period, uploading an image and dynamically adding questions with chosen question types and a variable number of answers per question.
+\subsection{Error Handling}
+To ensure that polls are created correctly and without missing information, the \textbf{Create Polls} section includes validation in the frontend and transaction in the backend.
 \subsubsection{Frontend}
-In the frontend the validation works through a separate file, \textbf{ValidatePolls.js}. It checks if any input field is left blank.
-\begin{figure}
+In the frontend, validation is handled by the \textbf{validatePollData} function located in a separate file, \textbf{ValidatePolls.js}. This function checks wether any required input fields are left empty. If a required field is empty, a specific message about which field is afflicted is returned, which is then displayed to the user. This improves the user experience and also prevents unnecessary API calls to the backend.
+\begin{figure}[H]
 	\begin{code}
 		validatePollData(poll, publishDate, endDate, questions) {
 			if (!poll) return `Poll name is required`;
@@ -209,15 +214,36 @@ In the frontend the validation works through a separate file, \textbf{ValidatePo
 			for (let questionIndex = 0; questionIndex < questions.length; questionIndex++) {
 				if (!questions[questionIndex].name) return `Question ${questionIndex + 1} requires text`;
 				for (let answerIndex = 0; answerIndex < questions[questionIndex].answers.length; answerIndex++) {
-					console.log(questions[questionIndex]);
 					if (!questions[questionIndex].answers[answerIndex].name) return `Answer ${answerIndex + 1} in Question ${questionIndex + 1} requires text`;
 				}
 			}
 			return null;
 		}
 	\end{code}
+	\caption{Frontend validation function for poll creation}
+	\label{fig:beispielcode2}
 \end{figure}
+
 \subsubsection{Backend}
+Even though validation already occurs in the frontend, the backend still needs to ensure that all database insertions are executed correctly. This is handled in the \textbf{createPoll} function. To maintain data integrity, database transactions are used.\\\\
+A transaction is created and used for all data operations involved in poll creation, including inserting the poll, its questions and all corresponding answers. Once all operations are completed successfully, the transaction is committed. If any error occurs during the process, the transaction is rolled back, undoing all previous changes made during that transaction. This ensures that no incomplete data is saved into the database.
+\begin{figure}[H]
+	\begin{code}
+		try {
+			const transaction = await sequelize.transaction();
+			const createdQuestion = await Question.create({
+				name: question.name,
+				pollId: createdPoll.id,
+				typeId: questionType.id,
+			}, { transaction });
+			await transaction.commit();
+		} catch (error) {
+			await transaction.rollback();
+		}
+	\end{code}
+	\caption{This is an example for the transaction usage}
+	\label{fig:beispielcode2}
+\end{figure} 
 \subsection{Start-/ Endtime}
 To make Polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
 \subsubsection{Setting The Times}
@@ -323,6 +349,9 @@ By combining real-time preview functionality with reliable backend integration, 
 \subsubsection{Single Choice}
 \subsubsection{Multiple Choice}
 \subsubsection{Weighted Choice}
+In weighted choice questions, users select one answer from a set of predefined options and assign an importance level to their choice using a scale from one to nine.\\\\
+This question type gives more insight into preferences than single or multiple choice questions, because poll participants not only select which answer they prefer, but also indicate how important it is for them. As a result, it becomes easier to decide wether an issue should be prioritized or not.\\\\
+The importance scale is implemented as a custom designed component consisting of nine buttons, each representing a value from one (least important) to nine (most important). If the question type is weighted choice, this scale is displayed along with the standard single choice option.\\\\
 \subsection{Demographic Questions}
 To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls since the created user would be part of the organization using our project and therefore have the data already. If the users is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections, with the difference that weighted is not an option, since demographic data is more like a fact less an opinion.
 \begin{figure}[h!]
@@ -440,7 +469,7 @@ The processed data is then converted into a structured CSV format using the json
 
 \section{MyPolls}
 \subsection{Purpose}
-The "MyPolls" section central location where users can view and manage all polls they have created. It provides access to the links for the polls as well as a delete option for them.
+The "MyPolls" section is a central location in which users can view and manage all polls they have created. It provides access to the links for the polls as well as a delete option for them.
 \subsection{Poll Link}
 The link used for sharing the polls is generated by encoding key information into a hash. This is done using the "btoa" function, which creates a Base64-encoded string. In order to ensure compatibility with the browser URLs, the hash is also encoded using the "encodeURIComponent" function. The generated hash contains information about wether the poll is public, wether it is anonymous, the poll's mode and its ID.\parencite{mdn-btoa}\parencite{mdn-encodeUriComponent}\\\\
 When a poll link is opened, the hash is first decoded using "decodeUriComponent" and then "atob". Depending on the mode specified in the url, the corresponding section in the dashboard is opened and the poll with the matching ID is loaded. Should the poll ID not exist in this specific mode, or in general, the system still opens the correct mode but in the default state without any poll selected.\parencite{mdn-atob}\parencite{mdn-decodeUriComponent}\\\\
