@@ -195,15 +195,35 @@ This functionality was implemented by introducing a "Roles" table, which maintai
 
 \section{Create Polls}
 The Create Polls section depicts the poll creation interface of the system. It allows users to create customized polls based on their needs. Customization options include a poll name and description, setting different poll types, adding the poll to specific groups, a start and end date for the voting period, an image upload, a variable amount of questions with chosen question types and a variable amount of answers for each question.
-\subsection{Functionality}
-
 \subsection{Validation}
+To ensure a correct poll creation the Create Polls features validation in the frontend and also the backend.
+\subsubsection{Frontend}
+In the frontend the validation works through a separate file, \textbf{ValidatePolls.js}. It checks if any input field is left blank.
+\begin{figure}
+	\begin{code}
+		validatePollData(poll, publishDate, endDate, questions) {
+			if (!poll) return `Poll name is required`;
+			if (!publishDate) return `Publish date is required`;
+			if (!endDate) return `End date is required`;
+			
+			for (let questionIndex = 0; questionIndex < questions.length; questionIndex++) {
+				if (!questions[questionIndex].name) return `Question ${questionIndex + 1} requires text`;
+				for (let answerIndex = 0; answerIndex < questions[questionIndex].answers.length; answerIndex++) {
+					console.log(questions[questionIndex]);
+					if (!questions[questionIndex].answers[answerIndex].name) return `Answer ${answerIndex + 1} in Question ${questionIndex + 1} requires text`;
+				}
+			}
+			return null;
+		}
+	\end{code}
+\end{figure}
+\subsubsection{Backend}
 \subsection{Start-/ Endtime}
 To make Polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
 \subsubsection{Setting The Times}
-The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type "datetime-local" was used. However it was not fully supported by every browser, including Firefox which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
+The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \textbf{datetime-local} was used. However it was not fully supported by every browser, including Firefox which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
 When a user clicks on the input field, a graphical selector appears, which allows the user to select both the date and time easily.\\\\
-Once the poll is submitted, the selected start and end times are sent to the "createPoll" function in the backend via a POST request. There, the received times are converted to JavaScript "Date" objects before being inserted into the database.
+Once the poll is submitted, the selected start and end times are sent to the \textbf{createPoll} function in the backend via a POST request. There, the received times are converted to JavaScript \textbf{Date} objects before being inserted into the database.
 \subsubsection{Utilizing The Times}
 These time-based conditions are the core feature used to differentiate between the various states of a poll: edit, voting, and results. To apply these conditions, three arrays are created—each corresponding to one of the states—and passed as props to their respective React components.  
 Figure~\ref{fig:timeuti} shows the code that performs this classification. The \texttt{data} variable contains all polls retrieved from the database via an API call. The \texttt{current\_datetime} is set using \texttt{new Date().toISOString()}. The function iterates through each poll, comparing its \texttt{publish\_date} and \texttt{end\_date} to the current time.
