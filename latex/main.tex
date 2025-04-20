@@ -53,6 +53,25 @@
 	colback=lightgray!25,
 }
 
+% Custom JavaScript code box with black border
+% Custom JavaScript code box with black border
+\newtcblisting{terminal}{
+	listing engine=minted,
+	listing only,
+	minted language=bash,
+	minted style=colorful,
+	minted options={
+		linenos,
+		fontsize=\small,
+		breaklines,
+		tabsize=2,
+		bgcolor=lightgray!25,
+	},
+	boxrule=0pt,
+	top=0pt, bottom=0pt, left=2pt, right=2pt,
+	colback=lightgray!25,
+}
+
 % Dokumentenbeginn
 \begin{document}
 
@@ -567,6 +586,45 @@ To ensure responsiveness in each section of the application, "@media CSS at-rule
 \subsection{Individual styling}
 
 \section{Deployment}
+This project was deployed to test how it behaves in a live environment and to ensure that the setup can be easily replicated on other systems. Deployment also helps to verify that all components work together correctly outside of the development environment 
+\subsection{Deployment Host}
+For hosting the deployment, DigitalOcean was chosen. It allows you to create "droplets", which are virtual machines that can be configured with custom storage, RAM and other specifications. These droplets behave like personal servers but are hosted on the cloud and can be accessed publicly.
+\subsubsection{Setup}
+In our case, we used Ubuntu 22.04 LTS as the operating system. The server was configured with 25 GB of storage and 1 GB of RAM. After creating the "droplet", DigitalOcean assigned ab IP address to it, which makes it reachable over the internet. To configure and manage the server, we used SSH, allowing us to execute commands and install the necessary software remotely.
+\subsection{Domain}
+To enable HTTPS we decided to use a domain. We eventually aquired the domain “togema.eu” from the provider Namecheap.\\\\
+On the Namecheap dashboard, a DNS record was added to point the domain name to the IP address of the "droplet" from DigitalOcean. After this configuration, the server is publicly accessible in any browser by using the domain name.
+\subsection{Main Components}
+Several core components were used to ensure that the server runs reliably, securely and efficiently. These components handle backend execution, traffic routing and HTTPS configuring.
+\subsubsection{PM2 - Backend Process Manager}
+To run the backend of the application on the server, we used \textbf{PM2}, a \textbf{Node.js} process manager. \textbf{PM2} ensures that the backend application continues running in the background even after the SSH session is closed, which is crucial for a web application, as you do not want to have to always maintain the session.\\\\
+\textbf{PM2} also offers automatic restarts in case of crashes due to errors or unexpected shutdowns. It can log errors and process information, making it easier to monitor and maintain the server over time.
+\subsubsection{Nginx- Web Server and Reverse Proxy}
+To handle incoming traffic and route it properly, we used \textbf{Nginx} as a reverse proxy server. All requests to our domain are forwarded to the backend server running on \textbf{http://localhost:5000}.\\\\
+Nginx also improves performance by efficiently managing multiple connections and reducing load on the backend. Additionally, it helps separate concerns by allowing us to manage routing, SSL, and load balancing in one place, while keeping the backend focused on application logic.
+\begin{figure}[h!]
+	\begin{terminal}
+		server {
+			listen 80;
+			server_name domain_name www.domain_name;
+			
+			location / {
+				proxy_pass http://localhost:5000;
+				proxy_http_version 1.1;
+				proxy_set_header Upgrade $http_upgrade;
+				proxy_set_header Connection 'upgrade';
+				proxy_set_header Host $host;
+				proxy_cache_bypass $http_upgrade;
+			}
+		}
+	\end{terminal}
+	\caption{Example Nginx setup}
+	\label{fig:user_defined_characteristics}
+\end{figure}
+
+\subsection{Certbot}
+To enable HTTPS and secure data transmission, we used Certbot in combination with Nginx. Certbot is a tool provided by "Let's Encrypt" that automatically generates and installs SSL certificates on the server.\\\\
+Once configured, Certbot not only sets up the SSL certificate but also updates the Nginx configuration to redirect HTTP traffic to HTTPS. This ensures that all communication between the client and the server is encrypted, improving both privacy and security for users accessing the application through the domain.
 
 \chapter{Summary}
 

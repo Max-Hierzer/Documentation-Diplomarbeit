@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		server \PYG{o}{\PYGZob{}}
+			listen \PYG{l+m}{80}\PYG{p}{;}
+			server\PYGZus{}name domain\PYGZus{}name www.domain\PYGZus{}name\PYG{p}{;}
+			
+			location / \PYG{o}{\PYGZob{}}
+				proxy\PYGZus{}pass http://localhost:5000\PYG{p}{;}
+				proxy\PYGZus{}http\PYGZus{}version \PYG{l+m}{1}.1\PYG{p}{;}
+				proxy\PYGZus{}set\PYGZus{}header Upgrade \PYG{n+nv}{\PYGZdl{}http\PYGZus{}upgrade}\PYG{p}{;}
+				proxy\PYGZus{}set\PYGZus{}header Connection \PYG{l+s+s1}{\PYGZsq{}upgrade\PYGZsq{}}\PYG{p}{;}
+				proxy\PYGZus{}set\PYGZus{}header Host \PYG{n+nv}{\PYGZdl{}host}\PYG{p}{;}
+				proxy\PYGZus{}cache\PYGZus{}bypass \PYG{n+nv}{\PYGZdl{}http\PYGZus{}upgrade}\PYG{p}{;}
+			\PYG{o}{\PYGZcb{}}
+		\PYG{o}{\PYGZcb{}}
+	
+\end{Verbatim}
