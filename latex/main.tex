@@ -208,7 +208,7 @@ To use the MailerSend API, a transporter is created with "new MailerSend" and th
 \end{figure}
 The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
-Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for te functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation an scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
+Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for the functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation and scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
 
 
 This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and manged exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.\\\\
@@ -367,6 +367,8 @@ By combining real-time preview functionality with reliable backend integration, 
 \subsection{Questions}
 \subsubsection{Single Choice}
 \subsubsection{Multiple Choice}
+Multiple Choice questions, also known as multiple response questions allow users to select one or several answers from a given list of options. This question format offers flexibility in collecting diverse user options, as participants are not restricted to a single choice. It is especially usefull when multiple options may be valid or relevant from a participant's perspective.\\\\
+In contrast to single choice questions, multiple choice provides a richer insight into the perspective of the user when more than one answers can be picked. In the application's voting interface, multiple selections are implemented by enabling checkboxes for each answer option. When this question type is rendered, users can check or uncheck any combination of available responses except unchecking all answers.\\\\
 \subsubsection{Weighted Choice}
 In weighted choice questions, users select one answer from a set of predefined options and assign an importance level to their choice using a scale from one to nine.\\\\
 This question type gives more insight into preferences than single or multiple choice questions, because poll participants not only select which answer they prefer, but also indicate how important it is for them. As a result, it becomes easier to decide wether an issue should be prioritized or not.\\\\
@@ -550,7 +552,8 @@ The overall purpose of this component was, to improve the intuitiveness of the a
 \subsection{Screenreader}
 \section{Styling}
 \subsection{Generel styling}
-The styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Blackberry. \\ \\
+At the beginning of the development process, a rough design was implemented to help visualize the overall concept of the future application. In order to maintain a clean and organized project structure, general styling files such as App.css, dashboard.css, voting.css, and others were placed within a dedicated styles directory.\\\\
+The official styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: Yellow and Blackberry. In addition to the existing project structure, custom components such as the header with navigation and the footer were introduced, each of which can be individually styled. These were integrated to establish a layout that conforms to standard design practices.\\\\
 To ensure consistency of the palette user defined characteristics from CSS where used to assign variables for each main color. \parencite{csscolorvariables}
 \begin{figure}[h!]
 	\begin{csscode}
