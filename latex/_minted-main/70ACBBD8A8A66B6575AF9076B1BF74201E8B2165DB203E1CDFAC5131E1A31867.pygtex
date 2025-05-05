@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}server\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{			}listen\PYG{+w}{ }\PYG{l+m}{80}\PYG{p}{;}
+\PYG{+w}{			}server\PYGZus{}name\PYG{+w}{ }domain\PYGZus{}name\PYG{+w}{ }www.domain\PYGZus{}name\PYG{p}{;}
+\PYG{+w}{			}
+\PYG{+w}{			}location\PYG{+w}{ }/\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{				}proxy\PYGZus{}pass\PYG{+w}{ }http://localhost:5000\PYG{p}{;}
+\PYG{+w}{				}proxy\PYGZus{}http\PYGZus{}version\PYG{+w}{ }\PYG{l+m}{1}.1\PYG{p}{;}
+\PYG{+w}{				}proxy\PYGZus{}set\PYGZus{}header\PYG{+w}{ }Upgrade\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}http\PYGZus{}upgrade}\PYG{p}{;}
+\PYG{+w}{				}proxy\PYGZus{}set\PYGZus{}header\PYG{+w}{ }Connection\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}upgrade\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{				}proxy\PYGZus{}set\PYGZus{}header\PYG{+w}{ }Host\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}host}\PYG{p}{;}
+\PYG{+w}{				}proxy\PYGZus{}cache\PYGZus{}bypass\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}http\PYGZus{}upgrade}\PYG{p}{;}
+\PYG{+w}{			}\PYG{o}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{o}{\PYGZcb{}}
+\end{Verbatim}
