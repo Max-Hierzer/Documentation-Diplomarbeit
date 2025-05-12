@@ -131,7 +131,39 @@ The database consists of 13 tables, with "UserPolls", "UserAnswers", "PollGroups
 Sequelize was selected as the Object-Relational-Mapping(ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in project with complex data relationships and evolving schema requirements.\\\\
 Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness.\parencite{sequelizegit}\\\\
 The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
-\section{express}
+\section{Express.js}
+Express.js is a flexible web framework for Node.js which is widely used for building RESTful APIs. It provides a middleware-based architecture that allows for clear routing, request handling, and modular code organization. In this application. Express serves as the backend framework that handles HTTP requests to handle communication between the frontend and the database. \cite{expr-base} \\ \\
+There are multiple alternative frameworks that were evaluated in the selection process:
+\paragraph{NestJS} provides a structured and scalable framework based on TypeScript. The ideal use for NestJS would be a large enterprise project, which this thesis is not. This adds complexity and a way steeper learning curve, which is why this option was not chosen. \cite{expr-comp}\cite{expr-comp2}\cite{nest-js}
+\paragraph{Fastify} is a performance-orientated alternative to Express.js, which even outperforms it. However, since this framework is less mature, there is less documentation and a smaller community for support in comparison to what Express.js is offering. Since the developers of this thesis had no real experience with APIs the more developer-friendly Express was chosen over Fastify. \cite{expr-comp} \cite{expr-comp2} \\ \\
+Another option is Hono, which is a new ultra-lightweight framework, but is still niche and lacks in support and documentation, which is why Express was favored. FeatherJS is built on Express, designed for real-time applications. Since real-time features were not needed for this platform, FeatherJS was not chosen. \cite{expr-comp} \cite{expr-comp2}
+\subsection{Architecture}
+The backend is organized into the following layers:
+\begin{itemize}
+	\item \textbf{Routing Layer:} This layer defines the application's HTTP endpoints and maps incoming requests to the appropriate controller functions. Routes are grouped thematically using \verb|express.Router| (e.g., \verb|/api/users|) to maintain modularity and logical organization.
+	
+	\item \textbf{Controller Layer:} Controllers serve as intermediaries between the routing layer and the business logic. They are responsible for extracting relevant data from incoming requests, invoking the necessary service functions, and constructing structured responses. This ensures that request handling remains concise and focused.
+	
+	\item \textbf{Service Layer:} This layer contains the main application logic and performs database operations using \texttt{Sequelize}. Each service function handles one use case, such as creating a user or poll. Data access is performed directly within the service layer.
+\end{itemize}
+\subsection{Error Handling}
+In the Express.js backend, the error handling for the application is integrated directly into the controllers. The controller interacts with the service layer and handles HTTP requests. 
+\begin{figure}[H]
+	\begin{code}
+		const editController = {
+			async updatePoll(req, res) {
+				try {
+					const updatedPoll = await editService.updatePoll(req.body);
+					res.json(updatedPoll);
+				} catch (error) {
+					res.status(500).json({ error: error.message });
+				}
+			},
+		};
+	\end{code}
+	\caption{Example of error handling in controller}
+	\label{fig:controller-err}
+\end{figure}
 \section{React}
 \section{PWA}
 \chapter{Features}
