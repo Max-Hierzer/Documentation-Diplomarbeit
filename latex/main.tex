@@ -170,7 +170,15 @@ In the application, CORS (Cross-Origin Resource Sharing) is managed using the co
 In this case, CORS is configured with the default settings, meaning that the backend allows cross-origin requests from any domain. This default setup permits all HTTP methods (like GET, POST, PUT, DELETE, etc.) and headers from any origin, making it very permissive. This configuration is helpful during the development phase, as it avoids the need for specifying which domains or methods are allowed. \\ \\
 However, while the default configuration is useful in development, it is not recommended for production environments due to security concerns. Allowing any origin to interact with the backend can expose the server to potentially malicious requests from untrusted sources. It is generally better to restrict CORS to specific trusted domains and limit the allowed HTTP methods and headers to only those necessary for the application. Therefore, this should be improved in the future. \cite{mdn-cors}
 
-\section{React}
+\section{React.js}
+React.js is a declarative. component-based JavaScript library, which is widely adopted in modern web development due to its modular structure and virtual DOM optimization. In this application, React is used as the frontend framework responsible for rendering the user interface, managing local and global state, and communicating with the backend API. \cite{react-docs}\\
+Several alternative frameworks were taken into consideration during the selection process:
+\paragraph{Vue.js} offers a simple and intuitive syntax that would lower the learning curve for new developers. However, since React has a larger ecosystem, widespread community support and a better compatibility with third-party libraries, it was chosen over Vue. \cite{react-docs} \cite{vue-docs} \\ \\
+\paragraph{Angular} is a comprehensive frontend framework with built-in support for routing and forms. While powerful, Angular is way more complex and is harder to learn which is why React was preferred for the scope of this project. \cite{angular-docs} \\
+Besides these two, smaller frameworks like Svelte were also considered, but due to smaller communities and less comprehensive documentation they were not chosen. Another reason why React was the preferred framework is because the developers were already familiar with the Syntax and used it for small exercises on various platforms like "freecodecamp.org".
+\subsection{Architecture}
+React.js is based on a component oriented architecture, where the user interface is broken down into small, reusable building blocks called components. Each of these is typically a function that returns a declarative description of how the UI should look like, using JavaScript XML (JSX). Every component also manages its own internal logic and state, responds to user interaction and renders the content dynamically. \\
+React components receive configuration and data through props, which are passed from the parent component. They can also manage they internal state using React's "Hooks API", such as "useState" and "useEffect" for handling effects like data fetching. \cite{react-docs} \cite{mdn-react}
 \section{PWA}
 \chapter{Features}
 
