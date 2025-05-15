@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		\PYG{k+kd}{const} \PYG{n+nx}{editController} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+			\PYG{k}{async} \PYG{n+nx}{updatePoll}\PYG{p}{(}\PYG{n+nx}{req}\PYG{p}{,} \PYG{n+nx}{res}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{k}{try} \PYG{p}{\PYGZob{}}
+					\PYG{k+kd}{const} \PYG{n+nx}{updatedPoll} \PYG{o}{=} \PYG{k}{await} \PYG{n+nx}{editService}\PYG{p}{.}\PYG{n+nx}{updatePoll}\PYG{p}{(}\PYG{n+nx}{req}\PYG{p}{.}\PYG{n+nx}{body}\PYG{p}{);}
+					\PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{json}\PYG{p}{(}\PYG{n+nx}{updatedPoll}\PYG{p}{);}
+				\PYG{p}{\PYGZcb{}} \PYG{k}{catch} \PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+					\PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{status}\PYG{p}{(}\PYG{l+m+mf}{500}\PYG{p}{).}\PYG{n+nx}{json}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{error}\PYG{o}{:} \PYG{n+nx}{error}\PYG{p}{.}\PYG{n+nx}{message} \PYG{p}{\PYGZcb{});}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{},}
+		\PYG{p}{\PYGZcb{};}
+	
+\end{Verbatim}

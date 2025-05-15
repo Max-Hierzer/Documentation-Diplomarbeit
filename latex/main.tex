@@ -140,12 +140,21 @@ To design and visualize the schema, tools such as \textbf{draw.io} and \textbf{d
 	\caption{New Entity Relationship Diagram}	
 	\label{fig:new_ERD}
 \end{figure}
-\section{node.js}
+
+\section{Node.js}
+For the backend \textbf{Node.js} was used. It is a \textbf{JavaScript} runtime environment, that allows the programming language to run on a server instead of the browser. \textbf{Node.js} is based on the V8 engine developed by Google, which compiles \textbf{JavaScript} into machine code for faster execution.\parencite{nodejs-intro}\\\\
+\subsection{Advantages}  
+One of the main advantages of \textbf{Node.js} is its non-blocking I/O model. This means it does not wait for certain processes, such as reading from a file or a database, to finish before continuing with other operations. Instead, it starts a process and immediately listens for the next event. When the initial process finishes, a callback function is executed. This makes it possible for \textbf{Node.js} to handle multiple operations concurrently, even though it is inherently single threaded. This results in high performance and responsiveness.\parencite{nodejs-nonblocking}\\\\
+Another advantage of \textbf{Node.js} is that it creates a \textbf{unified language environment} because both the frontend and the backend can be programmed in \textbf{JavaScript}. This simplifies the development process, improves code reusability, and reduces the learning curve, since developers do not need to learn an entirely different programming language for the backend.\\\\
+\textbf{Node.js} also has the \textbf{Node Package Manager} (\textbf{npm}) which provides access to a vast collection of reusable packages and modules. These include pre-built code solutions to simplify common requirements like encryption and also sending emails, both of which where used in this project.\parencite{mdn-express-nodejs}
+
+
 \section{Sequelize}
 Sequelize was selected as the Object-Relational-Mapping(ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in project with complex data relationships and evolving schema requirements.\\\\
 Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness.\parencite{sequelizegit}\\\\
 The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
 When compared to other ORMs like Prisma, Sequelize offers a mature and stable solution with wide database compatibility and a strong community. While Prisma provides a modern, type-safe approach with auto-generated types, Sequelize's straightforward API and extensive features make it a reliable choice for this project, because of its simplicity and flexibility.\parencite{Ormcomparemedium}\parencite{Ormcomparedhiwise}
+
 \section{Express.js}
 Express.js is a flexible web framework for Node.js which is widely used for building RESTful APIs. It provides a middleware-based architecture that allows for clear routing, request handling, and modular code organization. In this application. Express serves as the backend framework that handles HTTP requests to handle communication between the frontend and the database. \cite{expr-base} \\ \\
 There are multiple alternative frameworks that were evaluated in the selection process:
@@ -194,7 +203,18 @@ Besides these two, smaller frameworks like Svelte were also considered, but due 
 \subsection{Architecture}
 React.js is based on a component oriented architecture, where the user interface is broken down into small, reusable building blocks called components. Each of these is typically a function that returns a declarative description of how the UI should look like, using JavaScript XML (JSX). Every component also manages its own internal logic and state, responds to user interaction and renders the content dynamically. \\
 React components receive configuration and data through props, which are passed from the parent component. They can also manage they internal state using React's "Hooks API", such as "useState" and "useEffect" for handling effects like data fetching. \cite{react-docs} \cite{mdn-react}
+
 \section{PWA}
+The application is \textbf{PWA}, \textbf{Progressive Web App}, compatible.
+\subsection{Function}
+“A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.”
+This makes it possible to combine the best features of both websites and platform-specific apps.\parencite{mdn-pwa}\\\\
+\subsection{Function Platform-Specific}
+These types of applications are developed only for a particular operating system, which means that the code written can not be, at least not all of it, reused for other systems. The biggest target platforms for those applications are \textbf{Android} and \textbf{IOS}.\\\\
+Because they are tailored to the system they provide several advantages:
+
+Therefore \textbf{PWAs} can run on multiple platforms just like websites, but also retain the ability to run offline and in the background like platform-specific apps.
+
 \chapter{Features}
 
 \section{Login}
