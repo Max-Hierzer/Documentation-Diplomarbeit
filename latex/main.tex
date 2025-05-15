@@ -648,6 +648,18 @@ To ensure responsiveness in each section of the application, "@media CSS at-rule
 	\label{fig:burger_menu}
 \end{figure}
 \subsection{Individual styling}
+Some areas of the web application required additional styling efforts beyond the general layout to enhance usability, visual clarity and the overall aesthetic appearance. These areas were identified based on both internal testen and feedback from the client and were adapted to meet specific functional and visual needs.\\\\
+\paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in the \textbf{register.css} file for modularity and maintainability.\\\\ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{pics/register_view.jpg}
+\caption{Registrationform}
+\label{fig:register_view}
+\end{figure}
+\paragraph{Create Polls} allows users to configure and launch customized surveys. Due to the flexibility and number of inputs required, the styling and layout needed careful design considerations. The whole page has been divided into smaller parts, which are the metadata of the poll, surveytype and group selection, image upload and the questions at the very end as a seperat section. The Styling also had to be modular to support reusability in both the creation and editing interfaces.\\\\
+\paragraph{Public and disclosed voting} Gernot & Tobias
+\paragraph{Results} Tobias
+\paragraph{The Pollimage} enables users to create surveys with a title picture. It was styled to maintain visual harmony and responsiveness across Create, Voting, and Results views. The image container uses a flexbox layout to center the image horizontally, ensuring it looks balanced on all screen sizes. The image itself is limited to a maximum width of 90 percent of its container and a maximum height of 300 pixel to prevent oversized images from disrupting the layout. To preserve the original aspect ratio and avoid distortion, the \textbf{object-fit: contain} property is applied.\parencite{cssobjectfit}
 
 \section{Deployment}
 This project was deployed to test how it behaves in a live environment and to ensure that the setup can be easily replicated on other systems. Deployment also helps to verify that all components work together correctly outside of the development environment 
