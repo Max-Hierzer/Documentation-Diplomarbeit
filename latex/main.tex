@@ -104,32 +104,43 @@ The topic of this diploma thesis is creating a platform which supports different
 The reason we chose this topic is because our supervisor is part of the LMP party and they couldn't find an appropriate platform to vote on party intern problems and topics. Hence he approached us and suggested we write our diploma thesis on a voting platform.
 
 \section{Description of performed work}
-What did we do?
-Konzeption und Design, Implementierung, Einrichtung Github-Repo, Tests, Abstimmung mit Projektpartner
-
+The aim of this thesis project was to develop an open-source web application that enables organizations to create and mange secure online polls for their members. The platform is designed to be flexible and reusable, so that any group or association interested in running online votes, can benefit from the developed system.\\\\
+The Authors of the thesis partnered with Liste Madelein Petrovic(LMP), a political party in Austria, who expressed the need for a platform that offers features not currently available in existing solutions. Their input was especially valuable, as it allowed the team to tailor the application to the real-world needs of a user organization.\\\\
+The application includes core features such as poll creation, vote casting, result calculation and a group system. While under active development, the source code is published in a public GitHub repository under the \textbf{MIT License}, ensuring transparency and long-term reusability.\parencite{opensourceinit}
 Created an open source voting web application.\\\\
 Our aim is to provide a website where different organizations can create and publish polls for their members. Since our finished work will be open source, everyone who wants to create polls will benefit from our work. \\
 We chose to accept the LMP as our partner, because they brought up that there isn't a platform that supports all the features they need. Moreover can they give us feedback of the real life application so we can adjust the features to a user organization. During the development of our work we had monthly meetings with the LMP to discuss the progress. Because we decided to develop our software in an agile way the discussions we had with them also helped so we could focus on the more important features first and implement elements of lesser importance later.  
 
 \section{Methodology of the thesis}
-Why did we do it that way?
-Planung und Organisation:
-	- Projektorganisation über Github Projects -> Tasks in Form von Issues und Milestones
-	- grober Plan welcher in Sprint unterteilt war. In jedem Sprint wurden konkrete Teilziele definiert.
-Meetings und Kommunikation:
-	- Wöchentliche Meetings(intern), Lösen von technischen und nicht technischen Problemen, neue Anforderung
-	- alle 2 oder 3 wochen meeting mit auftraggeber
-Vorteile & Herausforderungen:
-
-	Vorteile: Die regelmäßigen Meetings förderten die frühzeitige Identifikation von Problemen und ermöglichten schnelles Reagieren auf Änderungen. GitHub erleichterte die Zusammenarbeit, auch bei verteiltem Arbeiten.
-
-	Herausforderungen: Die Abstimmung zwischen verschiedenen Beteiligten führte gelegentlich zu Missverständnissen bezüglich Anforderungen. Zudem stellte die Integration von Sicherheitsanforderungen (z. B. Datenschutz, Manipulationssicherheit) eine technische Herausforderung dar.
-
-Because the clients said so.\\\\
-At first we had to decide on a tech stack. After careful consideration we decided upon a PostgreSQL database, a backend of node.js, sequelize to perform database operations and express to write APIs so we can connect with our frontend. Our frontend is based on React and we also included a PWA. After this decision we began with a simple input and output from front- to backend so ensure we all understood how each part is connected to each other. The next step was implementing the first features. We split the elements in different components so we could work separately and efficiently, e.g the single choice is split in create the poll, display the poll, vote, and show the results. Reasons we chose this tech stack and a thorough description of each function our work has will be in the main part.  
+This chapter outlines the methodological approach taken during the planning and development of the open-source voting web application. The work was structured around agile software development principles, with a Scrum-inspired workflow that emphasized flexibility, continues feedback and iterative improvement. The development period spanned from early November 2024 to mid-April 2025 with small improvements afterwards, following a planning phase that began in September 2024.\\\\
+\subsection{Planning and organization}
+The organizational backbone of the project was a GitHub Project board, which was used to manage tasks in the form of issues. Each development sprint was aligned with concrete short-term goals, allowing the team to maintain focused and manageable workload. Some issues were assigned to individual team members, while others, especially more complex features, were shared among multiple developers. The initial planning phase also included the design of the database schema and the selection of a suitable technology stack.\\\\
+After carefull evaluation, the team chose a backend architecture based on Node.js, Express and Sequelize in combination with a PostgreSQL database. The frontend was built with React and enhanced with Progressive Web App (PWA) capabilities. Before feature development began, the team implemented a basic end-to-end data flow, from frontend input to backend processing, to establish a shared understanding of the system's architecture. Features were then modularized into distinct components to enable parallel development. For example, the single-choice voting feature was split into poll creation, poll display, vote casting, and result visualization.
+\subsection{Internal and External Communication}
+To support ongoing coordination, the development team held weekly internal meetings via Discord. These meetings served to review current progress, identify technical or organizational blockers and plan subsequent tasks. Each session was doucmented in the form of written meeting protocols ensure traceability and clarity.\\\\
+In addition, the team met with representatives of Liste Madelein Petrovic (LMP) approximately every two to three weeks via Google Meet. These meetings focused on presenting development progress, discussing evolving requirements and jointly prioritizing upcoming tasks. Although the GitHub repository was publicly accessible, the management of the GitHub Project board remained in the hands of the development team. However, during meetings with LMP, open issues were reviewed together and priorities were adapted based on their feedback.
+\subsection{Feedback and testing}
+One member of LMP regularly testeed the application independently and provided direct feedback to the development team. Communication about setup or encountered issues was conducted via a Signal group. This informal yet effective feedback loop allowed the team to adjust functionality in response to real-world usage scenarios. Feedback was especially valuable in evaluating usability and identifying edge cases that might not have been apparent during internal testing.
+\subsection{Benefits and challanges}
+The adopted methodology brought several advantages. The regular meeting schedule allowed the team to detect and resolve issues early and adapt flexibly to changing requirements. The transparent task management vie GitHub facilitated efficient collaboration, even when working remotely or asynchronously.\\\\
+However, the collaborative nature of the project also introduced challenges. In some cases, coordination between the development team and the client led to misunderstandings regarding specific requirements or expectations. These were generally resolved through clarification in subsequent meetings, but they underscored the importance of clear and continuous communication in stakeholder-driven projects. 
 
 % Hauptteil
 \chapter{Tech Stack}
+\section{PostgreSQL}
+\subsection{General}
+PostgreSQL was selected as the relational database management system for this project due to its balance of performance, reliability, and advanced feature support. Unlike alternatives such as MySQL, MariaDB or SQLite, PostgreSQL offers robust support for complex data types, full ACID compliance and extensibility through custom functions and indexing methods\parencite{postgresdocs}\\\\
+While MySQL is widely used, its default configuration prioritizes speed over strict transactional consistency, which may be a drawback for applications requiring high data integrity. SQLite was excluded from consideration because it is more suitable for lightweight or embedded applications and does not support concurrent access by multiple users efficiently.\parencite{postgresvsMysql}\\\\
+The installation was also simple because of the detailed install guide provided by multiple sites like \textbf{w3schools}. To create the first database the SQL shell of PostgreSQL was used in the beginning. But due to its excellent tooling support, the open-source tool \textbf{pgAdmin 4} was later used, because it  provided a powerful and user-friendly interface for managing and visualizing the database. Furthermore, the availability of extensive official documentation and community support made it easier to troubleshoot and adapt the database to the project’s needs.\parencite{pgAdmin} \parencite{pgsinstallation}\\\\
+\subsection{Database Schema}
+The initial design of the database schema evolved significantly during the project as client requirements changed. However, the “Polls” and “Users” tables were identified early on as the foundational entities in the system, with many other tables referencing or depending on them.\\\\
+To design and visualize the schema, tools such as \textbf{draw.io} and \textbf{dbdiagram.io} were used, enabling direct import of SQL scripts for entity-relationship diagrams. The final database structure consists of 13 tables. Among these, ”UserPolls”, “UserAnswers”, “PollGroups”, and “QuestionAnswers” serve as intermediary tables that implement many-to-many relationships between core entities.
+\begin{figure}[H]	
+	\centering	
+	\includegraphics[width=0.8\textwidth]{pics/new_ERD.png}	
+	\caption{New Entity Relationship Diagram}	
+	\label{fig:new_ERD}
+\end{figure}
 \section{PostgreSQL}
 \subsection{General}
 PostgreSQL was chosen as the relational database management system for this project due to its robustness, scalability and strong support for advanced data types and queries. The decision to utilize PostgreSQL was further supported by its user-friendly design, extensive and well-maintained documentation, and its widespread adoption as one of the leading open-source relational databases.\\
