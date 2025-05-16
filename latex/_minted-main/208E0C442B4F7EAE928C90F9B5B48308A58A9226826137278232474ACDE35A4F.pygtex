@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{l+s+s1}{\PYGZsq{}use strict\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{		}\PYG{c+cm}{/** @type \PYGZob{}import(\PYGZsq{}sequelize\PYGZhy{}cli\PYGZsq{}).Migration\PYGZcb{} */}
+\PYG{+w}{		}\PYG{n+nx}{module}\PYG{p}{.}\PYG{n+nx}{exports}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k}{async}\PYG{+w}{ }\PYG{n+nx}{up}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{queryInterface}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{Sequelize}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{},}
+\PYG{+w}{			}\PYG{k}{async}\PYG{+w}{ }\PYG{n+nx}{down}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{queryInterface}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{Sequelize}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{};}
+\end{Verbatim}
