@@ -544,8 +544,17 @@ Figure \ref{fig:singlechoice} shows an example of a single choice question in th
 	\label{fig:singlechoice}
 \end{figure}
 \subsubsection{Multiple Choice}
-Multiple Choice questions, also known as multiple response questions allow users to select one or several answers from a given list of options. This question format offers flexibility in collecting diverse user options, as participants are not restricted to a single choice. It is especially usefull when multiple options may be valid or relevant from a participant's perspective.\\\\
-In contrast to single choice questions, multiple choice provides a richer insight into the perspective of the user when more than one answers can be picked. In the application's voting interface, multiple selections are implemented by enabling checkboxes for each answer option. When this question type is rendered, users can check or uncheck any combination of available responses except unchecking all answers.\\\\
+Multiple Choice questions, also known as multiple response questions allow users to select one or several answers from a predefined list of options. This format offers flexibility in collecting diverse user options, as participants are not restricted to a single choice. It is especially usefull when multiple options may be valid or relevant from a participant's perspective.\\\\
+One key advantage of multiple choice questions is their ability to reflect the complexity of real-world decision-making. Participants are not forced to prioritize a single answer, which can improve satisfaction and reduce frustration in situations wherer limiting to one choice would feel overly restrictive. Additionally, allowing multiple ansers can help surface trends or common combinations of opinions that would be lost in single-choice formats.\parencite{singlevsmultiple}\\\\
+Even so, this question type also introduces certain challenges. From a data analysis standpoint, interpreting multiple selections can be more complex, particularly when attempting to identify the most influential or decisive factors. There is also a risk of over-selection, where users may choose all options to avoid making a decision, which can dilute the clarity of the result. Furthermore, response time may be longer, as users take more time to evaluate all possible answers.\parencite{singlevsmultiple}
+In the application's voting interface, multiple selections are implemented by enabling checkboxes for each answer option. This allows users to select any combination of responses, while still enforcing that at least one option must be selected to proceed.\\\\
+Figure~\ref{fig:multiplechoice} illustrates how multiple choice questions are presented in the voting interface, highlighting the use of checkboxes to support flexible input.
+\begin{figure}[H]	
+	\centering	
+	\includegraphics[width=0.8\textwidth]{pics/Multiple_Choice.png}	
+	\caption{Multiple Choice Vote}	
+	\label{fig:multiplechoice}
+\end{figure}
 \subsubsection{Weighted Choice}
 In weighted choice questions, users select one answer from a set of predefined options and assign an importance level to their choice using a scale from one to nine.\\\\
 This question type gives more insight into preferences than single or multiple choice questions, because poll participants not only select which answer they prefer, but also indicate how important it is for them. As a result, it becomes easier to decide wether an issue should be prioritized or not.\\\\
