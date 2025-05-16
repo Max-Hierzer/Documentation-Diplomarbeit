@@ -292,11 +292,42 @@ The email is then sent using "mailerSend.email.send(mailOptions)".
 Implementing a role-based system with three distinct roles - "Admin," "Poweruser," and "Normal" - is crucial for the functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation and scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
 
 
-This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and manged exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.\\\\
+This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and manged exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.\\
 
-
-%Max (UI behavior)
 \section{Group System}
+
+The group system was implemented to simplify user management. By grouping users together, poll creators can efficiently control access to polls. Instead of managing individual users, a poll owner can assign entire groups to a poll, ensuring that only selected users can participate in voting. \\ \\
+Beyond restricting access, the system also allows assigning different permission levels. Users with elevated privileges—such as power users or administrators—can be granted editing rights, enabling collaborative management of polls. Additionally, poll results are only visible to users belonging to groups that have access to the poll. \\ \\
+To support the group system, a new navigation option was added to the interface. The page for creating groups is shown in Figure~\ref{fig:create_groups}. At the top of the page, a toggle button labeled \textit{Gruppen Bearbeiten} allows switching between group creation and editing. Below that, users can enter a group name and provide a short description explaining the group's purpose and membership.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{pics/create_groups.png}
+	\caption{Create Groups Page}
+	\label{fig:create_groups}
+\end{figure}
+At the bottom of the form, a React Select component is used to assign users to the group. The group editing interface is visually similar to the creation interface, with the addition of a group selection dropdown and a removal option for existing members. An additional feature of the editing interface is the ability to export group members, allowing external tools to be used for planning and organization.
+
+\subsection{Backend}
+
+To support the group functionality on the backend, three new database tables were introduced:
+
+\begin{itemize}
+	\item \textbf{UserGroups}: Represents a many-to-many relationship between \textbf{Users} and \textbf{Groups}. It stores user assignments to groups and is essential for frontend group management.
+	\item \textbf{Groups}: This table is the core of the group system, storing group metadata such as name and description.
+	\item \textbf{PollGroups}: Establishes a many-to-many relationship between \textbf{Groups} and \textbf{Polls}. It defines which groups have access to which polls and is directly used in the poll creation and editing workflows. \\
+\end{itemize}
+When displaying polls to a user, the system queries all groups the currently signed-in user belongs to and checks whether any of those groups are assigned to a poll. This determines the user's access to view or interact with a poll.
+
+\subsection{Frontend}
+The frontend for the group system on the group page includes several key elements already mentioned:
+\begin{itemize}
+	\item \textbf{Toggle Mode:} A button labeled \textit{Gruppen Bearbeiten} allows switching between group creation and editing modes without navigating away from the page.
+	\item \textbf{Form Inputs:} The interface includes input fields for entering the group name and description. These are controlled components in React, ensuring real-time validation and state management.
+	\item \textbf{User Selection:} The user assignment is implemented using a React Select component, which allows searching and selecting users from a dropdown. In editing mode, an additional select dropdown is displayed to remove existing users from the group.
+	\item \textbf{User Export:} In editing mode, an export function is available, allowing the list of group members to be downloaded. This can be useful for external planning or documentation.
+\end{itemize}
+In addition to group management, a React Select component is also integrated into the poll creation and editing sections. Here, users with editing privileges can assign groups to a poll or remove them. This ensures that only selected groups have access to vote or view the poll. \\ \\
+Overall, these features provide a smooth and efficient user experience while significantly reducing the administrative effort required to manage poll access.
 
 \section{Create Polls}
 The \textbf{Create Polls} section represents the poll creation interface of the system. It allows users to create customized polls based on their needs. Customization options include entering a poll name and description, selecting different poll types, assigning the poll to specific groups, defining a start and end date for the voting period, uploading an image and dynamically adding questions with chosen question types and a variable number of answers per question.
