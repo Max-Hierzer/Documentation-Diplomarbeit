@@ -524,7 +524,49 @@ let [createdQuestion, created] = await PublicQuestions.findOrCreate({
 \end{figure}
 
 \section{Edit Polls}
-Max schreiben
+Editing a poll is essential for maintaining a smooth administrative workflow on the platform. Editing is only permitted before the poll is published — the concept of publish time is already described in the creation section. Without this feature, power users and administrators responsible for creating polls would encounter significant limitations. \\ \\
+For instance, simple issues such as typos or unclear instructions could not be corrected, requiring the entire poll to be deleted and recreated. Additionally, the edit functionality enables collaborative poll creation: one user can create the initial poll and assign a group with editing privileges. These users can then revise the poll, allowing for a structured and collaborative workflow. Furthermore, setting the publish time to a future date ensures that the team has ample time to discuss and refine the poll before it goes live.
+\subsection{Backend}
+The backend for editing uses the same structural approach described in the creation section. However, specific logic is implemented to handle operations such as adding, updating, and removing elements of an already created poll. The complete poll data is sent from the frontend via the API, and the backend separates and processes it accordingly. \\ \\
+Before applying any changes, the backend checks whether the poll has any recorded votes to ensure data integrity is preserved. \\ \\
+The process involves the following steps:
+\begin{itemize}
+	\item Validating general poll data (name, description, start and end date).
+	\item Fetching all existing questions from the database and comparing them with the updated data.
+	\item Fetching the associated answers for each question and performing a similar comparison.
+\end{itemize}
+
+\paragraph{Adding}
+To add new questions, the backend compares the existing questions with those in the received data. If a question does not already exist, it is created with its name and type. Then, each answer is added individually, followed by the corresponding \textbf{QuestionAnswers} entries.
+
+\paragraph{Changing}
+For existing questions and answers, the backend uses Sequelize's \textbf{update} functionality on each relevant entry. This ensures that unchanged elements remain untouched, while modified data is accurately updated.
+
+\paragraph{Deleting}
+To remove obsolete questions, the system combines all existing and newly added questions into a single array. This array is then compared against the incoming data. If a question exists in the database but not in the new data, it is deleted using Sequelize’s \textbf{destroy} function.
+
+\subsection{Frontend}
+The frontend for editing polls reuses the layout and structure of the poll creation interface. The key difference is that a poll must first be selected for editing. Once selected, the poll data is fetched and pre-filled into the corresponding input fields. \\ \\
+The data is managed through a poll object, which is dynamically updated using various state manipulation functions depending on the type of edit being performed. Figure~\ref{fig:editing} shows an example where an answer is removed from a question. Depending on whether the poll is public or not, the system updates either the \texttt{publicQuestions} or the standard \texttt{questions} array. The answer is removed using JavaScript’s \texttt{splice} method.
+
+\begin{figure}[H]
+	\begin{code}
+		const deleteAnswer = (questionIndex, answerIndex, isPublic = false) => {
+			if (isPublic) {
+				const newQuestions = [...publicQuestions];
+				newQuestions[questionIndex].PublicAnswers.splice(answerIndex, 1);
+				setPublicQuestions(newQuestions);
+			} else {
+				const newQuestions = [...questions];
+				newQuestions[questionIndex].answers.splice(answerIndex, 1);
+				setQuestions(newQuestions);
+			}
+		};
+	\end{code}
+	\caption{Example of manipulating the poll object in the frontend}
+	\label{fig:editing}
+\end{figure}
+
 \section{Voting}
 Voting is a core feature of any survey application. To provide users with flexibility, the system supports multiple voting modes: disclosed, anonymous, and public voting. The advantages and differences between these modes are explained in the following section.
 \subsection{Disclosed Voting}
