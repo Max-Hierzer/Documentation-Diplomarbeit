@@ -644,8 +644,27 @@ On this platform, however, cookies serve a more specific purpose: to store a boo
 \end{figure}\\ \\
 The cookie is set only after the voting request is successfully processed. This order is crucial, as vote submissions can occasionally result in errors. If the cookie were set before confirmation, users could be wrongly prevented from resubmitting. By storing the cookie only after a successful vote, users can correct and resubmit their answers when needed.\\ \\
 This method is not entirely secure. If someone knows where the cookie is stored and how to access it, they can delete it and vote again. Still, this setup addresses most common threats to the integrity of the poll.
+
 \section{Results}
-Maxschreiben
+Results are arguably the most important feature of the application. Here, the voting data is displayed in a comprehensible way. This section of the platform includes the display of results depending on the different voting types — disclosed and anonymous — as well as an export option for further analysis of the voting data. 
+
+\subsection{Backend}
+The API for results consists of two main components. First, the total number of voters is calculated. This is done by counting the entries in the \textbf{UserPolls} table using Sequelize's \textbf{count} function. This number represents the total number of unique users who have participated in a specific poll. \\ \\
+The second part handles the calculation of votes per question. For each question, the backend first determines the total number of answers submitted using the \textbf{UserAnswers} table. Then, for each answer within the question, it calculates the percentage of total votes that the answer received. These values are stored in an object named \textbf{questionVotes}, where each question id maps to another object containing answer ids and their corresponding vote percentages as strings formatted to two decimal places. \\
+Weighted choice questions are also supported in the database and export. However, since each user can assign different weights to answers, it was not feasible to display this clearly in the frontend. Various methods were considered, such as showing the average or total weight per answer, but these either led to confusion or failed to reflect individual user input accurately. As a result, weight values are excluded from the visual results and are only available in the exported data.
+
+\subsection{Frontend}
+Figure \ref{fig:result} shows an example of a disclosed multiple choice question in the results view. For each question, the results section displays the list of possible answers along with the corresponding voting data. Depending on the poll's settings, the view can either show the percentage of total votes each answer received or a list of the users who voted for each answer.\\ \\
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[width=0.9\textwidth]{pics/Results_example.png} 
+	\caption{Example of result} 
+	\label{fig:result} 
+\end{figure}
+The component uses two asynchronous API calls. The first fetches the overall voting results, using the API described in the backend part. The second fetches a list of voters per answer, if the poll is disclosed. This voter data is stored in an object where the keys are answer IDs and the values are arrays of usernames. \\ \\
+A toggle button allows switching between the two display modes: percentages and voter names. This functionality is controlled by a boolean variable named \textbf{showVotersMode}. When \textbf{showVotersMode} is enabled, the result view shows the vote percentage for each answer. When disabled, it lists the names of the voters for each answer, or displays a fallback message if no one voted for that answer. \\ \\
+The single-choice questions are displayed in the same format. Weighted choice questions are visually identical to multiple-choice ones, but their weight values are not shown due to the reasons mentioned earlier. Additional features include the optional display of the poll's image and description if such data is available. This ensures that the result view remains consistent with the poll's context.
+
 \subsection{CSV-Export}
 To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics such as the number of votes per answer and the average weight for weighted questions.\\ \\
 The logic is handled in the \textbf{csvExportController.js} controller. Upon receiving a request, the system retrieves all relevant data for a given poll by its ID, including associated question, answers, and question types. The raw voting data is processed to count the number of responses per answer and to calculate the average weight if applicable. Special care is taken to distinguish between different types: for instance, "Single Choice" questions ensure that only one answer per user is counted, while "Weighted Choice" questions include the weight vale in the computation.\\ \\
