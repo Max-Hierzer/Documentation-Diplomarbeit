@@ -478,6 +478,7 @@ This function performs the following steps.
 By combining real-time preview functionality with reliable backend integration, the image upload feature significantly improves the overall usability and aesthetic appeal of the application.
 \subsection{Questions}
 \subsubsection{Single Choice}
+Max schreiben
 \subsubsection{Multiple Choice}
 Multiple Choice questions, also known as multiple response questions allow users to select one or several answers from a given list of options. This question format offers flexibility in collecting diverse user options, as participants are not restricted to a single choice. It is especially usefull when multiple options may be valid or relevant from a participant's perspective.\\\\
 In contrast to single choice questions, multiple choice provides a richer insight into the perspective of the user when more than one answers can be picked. In the application's voting interface, multiple selections are implemented by enabling checkboxes for each answer option. When this question type is rendered, users can check or uncheck any combination of available responses except unchecking all answers.\\\\
@@ -513,8 +514,9 @@ let [createdQuestion, created] = await PublicQuestions.findOrCreate({
 \end{figure}
 
 \section{Edit Polls}
-
+Max schreiben
 \section{Voting}
+Voting is a core feature of any survey application. To provide users with flexibility, the system supports multiple voting modes: disclosed, anonymous, and public voting. The advantages and differences between these modes are explained in the following section.
 \subsection{Disclosed Voting}
 In disclosed voting, each voter can see who voted for which option. This level of openness can significantly shape how people vote, as choices are no longer private. As such, poll creators should carefully consider the implications and advantages of this approach.
 \paragraph{Transparency:}
@@ -523,8 +525,6 @@ Can be a powerful tool especially in contexts where open discussion is encourage
 Unlike anonymous voting, disclosed voting provides access to detailed, voter-specific data. This allows for more comprehensive analysis and reporting, making it easier to identify patterns, understand voter behavior, and repurpose the results for future decision making.
 \paragraph{Voter Trust:}
 Disclosed voting can also help increase trust in the voting process. Because individual votes can be traced back to their sources, it becomes much harder to commit fraud or manipulate the outcome. In contrast, anonymous voting may raise concerns about the system’s integrity, since there’s no way to independently verify the authenticity of each vote. \parencite{disvsanon}
-\subsubsection{Frontend}
-\subsubsection{Backend}
 \subsection{Anonymous Voting}
 This voting style keeps individual choices completely hidden, making it impossible to trace votes back to specific participants. While this limits the amount of data available for analysis, it comes with several key advantages that protect voters and promote fairness.
 \paragraph{Voter Freedom:}
@@ -533,8 +533,6 @@ Because votes are not linked to identities, participants can express their opini
 In a disclosed voting system, participants could become targets of pressure, bullying, or even blackmail based on how they vote. Anonymous voting helps mitigate these risks by shielding voters from external influence, creating a safer environment for participation.
 \paragraph{Eliminate "Herd Mentality":}
 Herd mentality refers to the tendency of individuals to follow the majority, sometimes at the expense of their true opinions. While the platform already helps reduce this by showing results only after voting ends, anonymous voting further minimizes this effect. Even if a voter ends up being in the minority, their identity remains protected, encouraging more authentic and independent choices.  \parencite{disvsanon}
-
-\subsubsection{Frontend}
 
 \subsubsection{Backend}
 In an anonymous voting system, preventing the ability to trace votes back to individual users is crucial. In contrast, for disclosed voting, the UserAnswers table stores each answer along with the corresponding user's ID.\\ \\
@@ -595,6 +593,7 @@ On this platform, however, cookies serve a more specific purpose: to store a boo
 The cookie is set only after the voting request is successfully processed. This order is crucial, as vote submissions can occasionally result in errors. If the cookie were set before confirmation, users could be wrongly prevented from resubmitting. By storing the cookie only after a successful vote, users can correct and resubmit their answers when needed.\\ \\
 This method is not entirely secure. If someone knows where the cookie is stored and how to access it, they can delete it and vote again. Still, this setup addresses most common threats to the integrity of the poll.
 \section{Results}
+Maxschreiben
 \subsection{CSV-Export}
 To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics such as the number of votes per answer and the average weight for weighted questions.\\ \\
 The logic is handled in the \textbf{csvExportController.js} controller. Upon receiving a request, the system retrieves all relevant data for a given poll by its ID, including associated question, answers, and question types. The raw voting data is processed to count the number of responses per answer and to calculate the average weight if applicable. Special care is taken to distinguish between different types: for instance, "Single Choice" questions ensure that only one answer per user is counted, while "Weighted Choice" questions include the weight vale in the computation.\\ \\
