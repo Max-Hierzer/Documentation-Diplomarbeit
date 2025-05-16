@@ -154,6 +154,60 @@ Sequelize was selected as the Object-Relational-Mapping(ORM) tool for this proje
 Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness.\parencite{sequelizegit}\\\\
 The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
 When compared to other ORMs like Prisma, Sequelize offers a mature and stable solution with wide database compatibility and a strong community. While Prisma provides a modern, type-safe approach with auto-generated types, Sequelize's straightforward API and extensive features make it a reliable choice for this project, because of its simplicity and flexibility.\parencite{Ormcomparemedium}\parencite{Ormcomparedhiwise}
+\subsection{Sequelize Seeders}
+In Sequelize, seeders (seed files) are scripts usedd to populate database tables with initial or sample data. Each seed file typically exports \textbf{up} and \textbf{down} functions that perform bulk inserts and deletes. Seeders are especially helpful during development and testing phases to ensure consistent and predictable database states.\parencite{sequelizemigrations}\\\\
+In this project, the Sequelize-CLI tool was used to generate and execute seeders. For example, the command \textbf{npx sequelize-cli seed:generate --name demo-user} generates a default seed file as seen in the figure~\ref{fig:generated_seeder}. The file is named using timestamp format like \textbf{20250516163426-demo-user.js} to guarantee the correct execution order. To insert data, the command \textbf{npx sequelize-cli db:seed:all} was used, while \textbf{npx sequelize-cli db:seed:undo:all} removed the data from the database.\\\\
+\begin{figure}[H]
+	\begin{code}
+		'use strict';
+		/** @type {import('sequelize-cli').Migration} */
+		module.exports = {
+			async up (queryInterface, Sequelize) {
+			},
+			async down (queryInterface, Sequelize) {
+			}
+		};
+	\end{code}
+	\caption{Generated seeder structure}
+	\label{fig:generated_seeder}
+\end{figure}
+The seed data was created in the following sequence:
+\begin{enumerate}
+	\item \textbf{Roles:} Three roles were inserted, admin, poweruser and normal, each with a description to reflect different leves of access. These were seeded first to to satisfy foreign key constraints in later data.
+	\item \textbf{Questiontypes:} The types \textbf{Single Choice}, \textbf{Multiple Choice} and \textbf{Weighted Choice} were inserted. These were essential foundational entries required before any question could be created in the database. 
+	\item \textbf{User:} A default administrator user was seeded. The password was securely hashed using bcrypt. and the user was associated with the admin role, allowing login access to the application.
+	\item \textbf{Group:} A single group named \textbf{Admin Group} was created, which could then be associated with polls. The seeder for this data inserted the group in the corresponding table and a entry into the \textbf{UserGroups} table, as shown in Figure~\ref{fig:group_seeder} to establish the relationship to the admin user.
+	\begin{figure}[H]
+	\begin{code}
+	// seeders/20250317-seed-group.js
+	module.exports = {
+	up: async (queryInterface, Sequelize) => {
+		const group = await queryInterface.bulkInsert('Groups', [{
+		name: 'Admin Group',
+		description: 'This is a test group created by Seeder',
+		createdAt: new Date(),
+		updatedAt: new Date()
+		}], { returning: true });
+		const groupId = group[0].id;
+		await queryInterface.bulkInsert('UserGroups', [{
+		groupId: groupId,
+		userId: 1,
+		createdAt: new Date(),
+		updatedAt: new Date()
+		}]);
+	},
+	down: async (queryInterface, Sequelize) => {
+		await queryInterface.bulkDelete('UserGroups', null, {});
+		await queryInterface.bulkDelete('Groups', null, {});
+	}
+	};
+	\end{code}
+	\caption{Seeder for groups and user-group assignment}
+	\label{fig:group_seeder}
+	\end{figure}
+	\item \textbf{Test Poll:} One sample poll was created, including metadata such as publication dates and visibility settings. This poll featured six questions covering all seeded question types. Each question had associated answers. Additionally, the intermediate tables \textbf{QuestionAnswers} and \textbf{PollGroups} were populated to establish the correct relationship between questions, answers and groups.
+\end{enumerate}
+The purpose of this seeded data was to simulate realistic application scenarios, support frontend development and allow for consistent testing. Automating the seeding process improved reproducibility across development environments and enabled immediate access to meaningful application data during testing and debugging.
 
 \section{Express.js}
 Express.js is a flexible web framework for Node.js which is widely used for building RESTful APIs. It provides a middleware-based architecture that allows for clear routing, request handling, and modular code organization. In this application. Express serves as the backend framework that handles HTTP requests to handle communication between the frontend and the database. \cite{expr-base} \\ \\
@@ -290,7 +344,6 @@ To use the MailerSend API, a transporter is created with "new MailerSend" and th
 The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
 Implementing a role-based system with three distinct roles - "Admin", "Poweruser", and "Normal" - is crucial for the functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation and scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
-
 
 This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and managed exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.\\
 
@@ -773,7 +826,7 @@ Some areas of the web application required additional styling efforts beyond the
 
 Max Register
 
-\paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in the \textbf{register.css} file for modularity and maintainability.\\\\ 
+\paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in a seperat \textbf{register.css} stylesheet for modularity and maintainability.\\\\ 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{pics/register_view.jpg}
