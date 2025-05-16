@@ -114,12 +114,12 @@ Our aim is to provide a website where different organizations can create and pub
 This chapter outlines the methodological approach taken during the planning and development of the open-source voting web application. The work was structured around agile software development principles, with a Scrum-inspired workflow that emphasized flexibility, continues feedback and iterative improvement. The development period spanned from early November 2024 to mid-April 2025 with small improvements afterwards, following a planning phase that began in September 2024.\\\\
 \subsection{Planning and organization}
 The organizational backbone of the project was a GitHub Project board, which was used to manage tasks in the form of issues. Each development sprint was aligned with concrete short-term goals, allowing the team to maintain focused and manageable workload. Some issues were assigned to individual team members, while others, especially more complex features, were shared among multiple developers. The initial planning phase also included the design of the database schema and the selection of a suitable technology stack.\\\\
-After careful evaluation, the team chose a backend architecture based on Node.js, Express and Sequelize in combination with a PostgreSQL database. The frontend was built with React and enhanced with Progressive Web App (PWA) capabilities. Before feature development began, the team implemented a basic end-to-end data flow, from frontend input to backend processing, to establish a shared understanding of the system's architecture. Features were then modularized into distinct components to enable parallel development. For example, the single-choice voting feature was split into poll creation, poll display, vote casting, and result visualization.
+After careful evaluation, the team chose a backend architecture based on Node.js, Express and Sequelize in combination with a PostgreSQL database. The frontend was built with React and enhanced with Progressive Web App (PWA) capabilities. Before feature development began, the team implemented a basic end-to-end data flow, from frontend input to backend processing, to establish a shared understanding of the system's architecture. Features were then modularized into distinct components to enable parallel development. For example, the single-choice voting feature was split into poll creation, poll display, voting, and result visualization.
 \subsection{Internal and External Communication}
-To support ongoing coordination, the development team held weekly internal meetings via Discord. These meetings served to review current progress, identify technical or organizational blockers and plan subsequent tasks. Each session was documented in the form of written meeting protocols ensure traceability and clarity.\\\\
+To support ongoing coordination, the development team held weekly internal meetings via Discord. These meetings served to review current progress, identify technical or organizational blockades and plan subsequent tasks. Each session was documented in the form of written meeting protocols ensure traceability and clarity.\\\\
 In addition, the team met with representatives of Liste Madelein Petrovic (LMP) approximately every two to three weeks via Google Meet. These meetings focused on presenting development progress, discussing evolving requirements and jointly prioritizing upcoming tasks. Although the GitHub repository was publicly accessible, the management of the GitHub Project board remained in the hands of the development team. However, during meetings with LMP, open issues were reviewed together and priorities were adapted based on their feedback.
 \subsection{Feedback and testing}
-One member of LMP regularly tested the application independently and provided direct feedback to the development team. Communication about setup or encountered issues was conducted via a Signal group. This informal yet effective feedback loop allowed the team to adjust functionality in response to real-world usage scenarios. Feedback was especially valuable in evaluating usability and identifying edge cases that might not have been apparent during internal testing.
+One member of LMP regularly tested the application independently and provided direct feedback to the development team. Communication about setup or encountered issues was conducted via a Signal group. This informal yet effective feedback loop allowed the team to adjust functionality in response to user stories. Feedback was especially valuable in evaluating usability and identifying edge cases that might not have been apparent during internal testing.
 \subsection{Benefits and challenges}
 The adopted methodology brought several advantages. The regular meeting schedule allowed the team to detect and resolve issues early and adapt flexibly to changing requirements. The transparent task management via GitHub facilitated efficient collaboration, even when working remotely or asynchronously.\\\\
 However, the collaborative nature of the project also introduced challenges. In some cases, coordination between the development team and the client led to misunderstandings regarding specific requirements or expectations. These were generally resolved through clarification in subsequent meetings, but they underscored the importance of clear and continuous communication in stakeholder-driven projects. 
@@ -133,13 +133,15 @@ While MySQL is widely used, its default configuration prioritizes speed over str
 The installation was also simple because of the detailed install guide provided by multiple sites like \textbf{w3schools}. To create the first database the SQL shell of PostgreSQL was used in the beginning. But due to its excellent tooling support, the open-source tool \textbf{pgAdmin 4} was later used, because it  provided a powerful and user-friendly interface for managing and visualizing the database. Furthermore, the availability of extensive official documentation and community support made it easier to troubleshoot and adapt the database to the project’s needs.\parencite{pgAdmin} \parencite{pgsinstallation}\\\\
 \subsection{Database Schema}
 The initial design of the database schema evolved significantly during the project as client requirements changed. However, the “Polls” and “Users” tables were identified early on as the foundational entities in the system, with many other tables referencing or depending on them.\\\\
-To design and visualize the schema, tools such as \textbf{draw.io} and \textbf{dbdiagram.io} were used, enabling direct import of SQL scripts for entity-relationship diagrams. The final database structure consists of 13 tables. Among these, ”UserPolls”, “UserAnswers”, “PollGroups”, and “QuestionAnswers” serve as intermediary tables that implement many-to-many relationships between core entities.
-\begin{figure}[H]	
-	\centering	
-	\includegraphics[width=0.8\textwidth]{pics/new_ERD.png}	
-	\caption{New Entity Relationship Diagram}	
-	\label{fig:new_ERD}
+To design and visualize the schema, tools such as \textbf{draw.io} and \textbf{dbdiagram.io} were used, enabling direct import of SQL scripts for entity-relationship diagrams. The final database structure consists of 18 tables. Among these, ”UserPolls”, “UserAnswers”, “PollGroups”, and “QuestionAnswers” serve as intermediary tables that implement many-to-many relationships between core entities.
+\clearpage 
+\begin{figure}[!htb]  
+    \centering
+    \includegraphics[width=0.9\textwidth]{pics/ERD_NEW.png}
+    \caption{New Entity Relationship Diagram}
+    \label{fig:new_ERD}
 \end{figure}
+\clearpage 
 
 \section{Node.js}
 For the backend \textbf{Node.js} was used. It is a \textbf{JavaScript} runtime environment, that allows the programming language to run on a server instead of the browser. \textbf{Node.js} is based on the V8 engine developed by Google, which compiles \textbf{JavaScript} into machine code for faster execution.\parencite{nodejs-intro}\\\\
@@ -344,8 +346,7 @@ To use the MailerSend API, a transporter is created with "new MailerSend" and th
 \end{figure}
 The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
-Implementing a role-based system with three distinct roles - "Admin", "Poweruser", and "Normal" - is crucial for the functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation and scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
-
+Implementing a role-based system with three distinct roles, "Admin", "Poweruser", and "Normal", is crucial for the functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation and scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
 This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and managed exclusively within the database, with the following ID assignments: 1 for administrators, 2 for powerusers and 3 for standard users. Role-based access is determined solely based on these database-level associations.\\
 
 \section{Group System}
@@ -833,9 +834,6 @@ To ensure responsiveness in each section of the application, "@media CSS at-rule
 \end{figure}
 \subsection{Individual styling}
 Some areas of the web application required additional styling efforts beyond the general layout to enhance usability, visual clarity and the overall aesthetic appearance. These areas were identified based on both internal testing and feedback from the client and were adapted to meet specific functional and visual needs.\\\\
-
-Max Register
-
 \paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in a seperat \textbf{register.css} stylesheet for modularity and maintainability.\\\\ 
 \begin{figure}[H]
 \centering
