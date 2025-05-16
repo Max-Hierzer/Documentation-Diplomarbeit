@@ -477,8 +477,18 @@ This function performs the following steps.
 \end{enumerate}
 By combining real-time preview functionality with reliable backend integration, the image upload feature significantly improves the overall usability and aesthetic appeal of the application.
 \subsection{Questions}
+To support a variety of survey use cases, the system offers three types of questions: single choice, multiple choice, and weighted choice. Each type serves different purposes and allows for more flexible poll creation depending on the information being collected. The differences and use cases for each question type are described in the following section.
 \subsubsection{Single Choice}
-Max schreiben
+Single choice questions are the simplest type of question in the system. They allow users to select exactly one option from a list of possible answers. One major benefit of this question type is the minimal time required to answer. Deciding on a single option is usually faster than selecting multiple answers or assigning weights. \\ \\
+Another advantage is the simplicity of data analysis. Since each user provides only one answer, the resulting data is easier to aggregate and interpret compared to other question types. This format is particularly effective when the poll creator wants to highlight the most important user preferences. A single choice question forces participants to choose the most relevant option, thereby focusing the collected data on the most impactful areas. \\ \\
+However, limiting users to one response can also lead to incomplete or skewed data, especially in cases where the question is ambiguous or multiple answers would apply. In such scenarios, forcing a single choice may result in user frustration or less accurate feedback. \cite{singlevsmultiple} \\ \\
+Figure \ref{fig:singlechoice} shows an example of a single choice question in the voting section. The options are presented using radio buttons, ensuring that only one answer can be selected at a time.
+\begin{figure}[H]	
+	\centering	
+	\includegraphics[width=0.8\textwidth]{pics/Single_Choice.png}	
+	\caption{Single Choice Vote}	
+	\label{fig:singlechoice}
+\end{figure}
 \subsubsection{Multiple Choice}
 Multiple Choice questions, also known as multiple response questions allow users to select one or several answers from a given list of options. This question format offers flexibility in collecting diverse user options, as participants are not restricted to a single choice. It is especially usefull when multiple options may be valid or relevant from a participant's perspective.\\\\
 In contrast to single choice questions, multiple choice provides a richer insight into the perspective of the user when more than one answers can be picked. In the application's voting interface, multiple selections are implemented by enabling checkboxes for each answer option. When this question type is rendered, users can check or uncheck any combination of available responses except unchecking all answers.\\\\
@@ -518,7 +528,7 @@ Max schreiben
 \section{Voting}
 Voting is a core feature of any survey application. To provide users with flexibility, the system supports multiple voting modes: disclosed, anonymous, and public voting. The advantages and differences between these modes are explained in the following section.
 \subsection{Disclosed Voting}
-In disclosed voting, each voter can see who voted for which option. This level of openness can significantly shape how people vote, as choices are no longer private. As such, poll creators should carefully consider the implications and advantages of this approach.
+In disclosed voting, each voter can see who voted for which option. The votes are stored in the \textbf{UserAnswers} table in the database. Here the corresponding answerId, questionId and userId are stored. This level of openness can significantly shape how people vote, as choices are no longer private. As such, poll creators should carefully consider the implications and advantages of this approach.
 \paragraph{Transparency:}
 Can be a powerful tool especially in contexts where open discussion is encouraged. When voters are aware that their choices will be visible, and everyone has access to the same information, it creates a shared starting point for meaningful discussion.
 \paragraph{Analytics and Reporting:}
