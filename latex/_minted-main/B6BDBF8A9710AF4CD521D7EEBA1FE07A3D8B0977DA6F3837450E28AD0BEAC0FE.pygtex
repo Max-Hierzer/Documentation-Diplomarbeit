@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		\PYG{k+kd}{const} \PYG{n+nx}{deleteAnswer} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{questionIndex}\PYG{p}{,} \PYG{n+nx}{answerIndex}\PYG{p}{,} \PYG{n+nx}{isPublic} \PYG{o}{=} \PYG{k+kc}{false}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{isPublic}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{k+kd}{const} \PYG{n+nx}{newQuestions} \PYG{o}{=} \PYG{p}{[...}\PYG{n+nx}{publicQuestions}\PYG{p}{];}
+				\PYG{n+nx}{newQuestions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{PublicAnswers}\PYG{p}{.}\PYG{n+nx}{splice}\PYG{p}{(}\PYG{n+nx}{answerIndex}\PYG{p}{,} \PYG{l+m+mf}{1}\PYG{p}{);}
+				\PYG{n+nx}{setPublicQuestions}\PYG{p}{(}\PYG{n+nx}{newQuestions}\PYG{p}{);}
+			\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+				\PYG{k+kd}{const} \PYG{n+nx}{newQuestions} \PYG{o}{=} \PYG{p}{[...}\PYG{n+nx}{questions}\PYG{p}{];}
+				\PYG{n+nx}{newQuestions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{answers}\PYG{p}{.}\PYG{n+nx}{splice}\PYG{p}{(}\PYG{n+nx}{answerIndex}\PYG{p}{,} \PYG{l+m+mf}{1}\PYG{p}{);}
+				\PYG{n+nx}{setQuestions}\PYG{p}{(}\PYG{n+nx}{newQuestions}\PYG{p}{);}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{};}
+	
+\end{Verbatim}

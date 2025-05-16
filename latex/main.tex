@@ -262,18 +262,53 @@ React.js is based on a component oriented architecture, where the user interface
 React components receive configuration and data through props, which are passed from the parent component. They can also manage they internal state using React's "Hooks API", such as "useState" and "useEffect" for handling effects like data fetching. \cite{react-docs} \cite{mdn-react}
 
 \section{PWA}
-The application is \textbf{PWA}, \textbf{Progressive Web App}, compatible.
-\subsection{Function}
-“A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.”
-This makes it possible to combine the best features of both websites and platform-specific apps.\parencite{mdn-pwa}\\\\
-\subsection{Function Platform-Specific}
-These types of applications are developed only for a particular operating system, which means that the code written can not be, at least not all of it, reused for other systems. The biggest target platforms for those applications are \textbf{Android} and \textbf{IOS}.\\\\
-Because they are tailored to the system they provide several advantages:
+“A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.”\parencite{mdn-pwa}
+This application is \textbf{PWA}, \textbf{Progressive Web App}, compatible. /textbf{PWAs} combine the best features of both websites and platform-specific applications.\parencite{mdn-pwa}\\\\
+\subsection{Platform-Specific}
+Platform-Specific applications are developed only for one particular operating system, which means that most of the code cannot be reused for other systems. The most common target platforms for such applications are \textbf{Android} and \textbf{IOS}.\\\\
+Because these applications are tailored to a specific operating system, they can fully utilize the device’s hardware and software capabilities. This increases the applications performance and user experience as well as enabling more customization and personalization.\parencite{native-apps}\\\\
+Additionally, platform-specific applications can also run in the background, when they are not being interacted with. This enables them to perform tasks such as automatic updates or background synchronization. This helps to keep the application up to date, even when the device is offline.\parencite{mdn-pwa}\\\\
+\subsection{Websites}
+Unlike platform-specific applications, websites are not restricted to a single operating system. They are accessed through a browser and not installed on the device. Therefore they appear and function the same across all platforms.\parencite{mdn-pwa}\\\\
+However, websites have limited access to platform-specific features and also do not showcase the same level of performance. They also do not provide offline functionality, but rely heavily on network connectivity.
+\subsection{Function PWA}
+\textbf{PWAs} are essentially websites, but they also offer important features typically unique to platform-specific applications. They can be installed to the device directly on a device from the browser and can even be published to the native app store. Once installed, they appear like native applications as they have an app name and icon, and can run in a standalone display. This is made possible through the manifest. \textbf{PWAs} can also provide offline functionalities through the service worker, however this feature is not a major focus in this project.\parencite{mdn-pwa}
+\subsubsection{Manifest}
+The manifest makes it possible to install the \textbf{PWA} from the browser. It must contain information about the name, icon, starting url and display, but it includes many additional configuration options like the background color and theme color.\parencite{mdn-pwa-installation}
+\begin{figure}[H]
+	\begin{code}
+		{
+			"short_name": "Survey-Tool",
+			"name": "Survey-Tool - LMP",
+			"icons": [
+			{
+				"src": "favicon.ico",
+				"sizes": "64x64 32x32 24x24 16x16",
+				"type": "image/x-icon"
+			},
+			{
+				"src": "logo192.png",
+				"type": "image/png",
+				"sizes": "192x192"
+			},
+			{
+				"src": "logo512.png",
+				"type": "image/png",
+				"sizes": "512x512"
+			}
+			],
+			"start_url": ".",
+			"display": "standalone",
+			"theme_color": "#000000",
+			"background_color": "#ffffff"
+		}
+	\end{code}
+	\caption{This is our manifest.json file}
+	\label{fig:example-maifest}
+\end{figure}
 
-Therefore \textbf{PWAs} can run on multiple platforms just like websites, but also retain the ability to run offline and in the background like platform-specific apps.
 
 \chapter{Features}
-
 \section{Login}
 The login feature is essential for our application, as users need a secure and reliable way to authenticate themselves and gain access to their accounts. It consists of two main functionalities: the login itself and also the logout. Additionally, we have implemented user-friendly error handling to enhance user experience as well as security.
 \subsection{Frontend}
@@ -314,7 +349,7 @@ The first approach uses "nodemailer" to send emails over SMTP. Firstly a transpo
 		});
 	\end{code}
 	\caption{This is an example for the transporter using mailersend as the SMTP server}
-	\label{fig:beispielcode}
+	\label{fig:example-transporter}
 \end{figure}
 After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and general content of the email.
 \begin{figure}[H]
@@ -327,7 +362,7 @@ After setting up the transporter, the email options are defined. These include t
 		};
 	\end{code}
 	\caption{This is an example for the email options}
-	\label{fig:beispielcode1}
+	\label{fig:example-mail-options-smtp}
 \end{figure}
 Finally the email is sent using "transporter.sendMail(mailOptions)".
 \subsubsection{MailerSend API}
@@ -342,7 +377,7 @@ To use the MailerSend API, a transporter is created with "new MailerSend" and th
 		.setText("Hello this is your invitation.");
 	\end{code}
 	\caption{This is an example for the email options for MailerSend}
-	\label{fig:beispielcode2}
+	\label{fig:example-mail-options-mailersend}
 \end{figure}
 The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
@@ -407,7 +442,7 @@ In the frontend, validation is handled by the \textbf{validatePollData} function
 		}
 	\end{code}
 	\caption{Frontend validation function for poll creation}
-	\label{fig:beispielcode2}
+	\label{fig:validate-poll-data}
 \end{figure}
 
 \subsubsection{Backend}
@@ -428,7 +463,7 @@ A transaction is created and used for all data operations involved in poll creat
 		}
 	\end{code}
 	\caption{This is an example for the transaction usage}
-	\label{fig:beispielcode2}
+	\label{fig:example-transaction}
 \end{figure} 
 \subsection{Start-/ Endtime}
 To make Polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
@@ -863,7 +898,7 @@ To run the backend of the application on the server, we used \textbf{PM2}, a \te
 \subsubsection{Nginx- Web Server and Reverse Proxy}
 To handle incoming traffic and route it properly, we used \textbf{Nginx} as a reverse proxy server. All requests to our domain are forwarded to the backend server running on \textbf{http://localhost:5000}.\\\\
 Nginx also improves performance by efficiently managing multiple connections and reducing load on the backend. Additionally, it helps separate concerns by allowing us to manage routing, SSL, and load balancing in one place, while keeping the backend focused on application logic.
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{terminal}
 		server {
 			listen 80;
@@ -880,7 +915,7 @@ Nginx also improves performance by efficiently managing multiple connections and
 		}
 	\end{terminal}
 	\caption{Example Nginx setup}
-	\label{fig:user_defined_characteristics}
+	\label{fig:nginx-config}
 \end{figure}
 
 \subsection{Certbot}

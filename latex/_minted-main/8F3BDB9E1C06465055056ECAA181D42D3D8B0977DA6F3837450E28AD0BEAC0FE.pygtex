@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{c+c1}{// seeders/20250317\PYGZhy{}seed\PYGZhy{}group.js}
+	\PYG{n+nx}{module}\PYG{p}{.}\PYG{n+nx}{exports} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+	\PYG{n+nx}{up}\PYG{o}{:} \PYG{k}{async} \PYG{p}{(}\PYG{n+nx}{queryInterface}\PYG{p}{,} \PYG{n+nx}{Sequelize}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+		\PYG{k+kd}{const} \PYG{n+nx}{group} \PYG{o}{=} \PYG{k}{await} \PYG{n+nx}{queryInterface}\PYG{p}{.}\PYG{n+nx}{bulkInsert}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Groups\PYGZsq{}}\PYG{p}{,} \PYG{p}{[\PYGZob{}}
+		\PYG{n+nx}{name}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}Admin Group\PYGZsq{}}\PYG{p}{,}
+		\PYG{n+nx}{description}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}This is a test group created by Seeder\PYGZsq{}}\PYG{p}{,}
+		\PYG{n+nx}{createdAt}\PYG{o}{:} \PYG{o+ow}{new} \PYG{n+nb}{Date}\PYG{p}{(),}
+		\PYG{n+nx}{updatedAt}\PYG{o}{:} \PYG{o+ow}{new} \PYG{n+nb}{Date}\PYG{p}{()}
+		\PYG{p}{\PYGZcb{}],} \PYG{p}{\PYGZob{}} \PYG{n+nx}{returning}\PYG{o}{:} \PYG{k+kc}{true} \PYG{p}{\PYGZcb{});}
+		\PYG{k+kd}{const} \PYG{n+nx}{groupId} \PYG{o}{=} \PYG{n+nx}{group}\PYG{p}{[}\PYG{l+m+mf}{0}\PYG{p}{].}\PYG{n+nx}{id}\PYG{p}{;}
+		\PYG{k}{await} \PYG{n+nx}{queryInterface}\PYG{p}{.}\PYG{n+nx}{bulkInsert}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}UserGroups\PYGZsq{}}\PYG{p}{,} \PYG{p}{[\PYGZob{}}
+		\PYG{n+nx}{groupId}\PYG{o}{:} \PYG{n+nx}{groupId}\PYG{p}{,}
+		\PYG{n+nx}{userId}\PYG{o}{:} \PYG{l+m+mf}{1}\PYG{p}{,}
+		\PYG{n+nx}{createdAt}\PYG{o}{:} \PYG{o+ow}{new} \PYG{n+nb}{Date}\PYG{p}{(),}
+		\PYG{n+nx}{updatedAt}\PYG{o}{:} \PYG{o+ow}{new} \PYG{n+nb}{Date}\PYG{p}{()}
+		\PYG{p}{\PYGZcb{}]);}
+	\PYG{p}{\PYGZcb{},}
+	\PYG{n+nx}{down}\PYG{o}{:} \PYG{k}{async} \PYG{p}{(}\PYG{n+nx}{queryInterface}\PYG{p}{,} \PYG{n+nx}{Sequelize}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+		\PYG{k}{await} \PYG{n+nx}{queryInterface}\PYG{p}{.}\PYG{n+nx}{bulkDelete}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}UserGroups\PYGZsq{}}\PYG{p}{,} \PYG{k+kc}{null}\PYG{p}{,} \PYG{p}{\PYGZob{}\PYGZcb{});}
+		\PYG{k}{await} \PYG{n+nx}{queryInterface}\PYG{p}{.}\PYG{n+nx}{bulkDelete}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Groups\PYGZsq{}}\PYG{p}{,} \PYG{k+kc}{null}\PYG{p}{,} \PYG{p}{\PYGZob{}\PYGZcb{});}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{};}
+	
+\end{Verbatim}
