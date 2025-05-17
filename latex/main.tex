@@ -245,6 +245,7 @@ In the Express.js backend, the error handling for the application is integrated 
 	\caption{Example of error handling in controller}
 	\label{fig:controller-err}
 \end{figure}
+\noindent
 In the code above, the updatePoll function attempts to handle errors using a try/catch. When an error occurs during the execution of the updatePoll service function, the error is caught in the catch block. The server then responds with a 500 Internal Server Error status, including the error message in the response body. This ensures that the client is informed about the failure. This is the most basic form of error handling and can be improved in the future e.g. by using specific errors like "400 Bad Request" or "404 Not Found" instead of the simple "500 Internal Server Error" to give a more detailed description to the client. 
 \subsection{CORS}
 In the application, Cross-Origin Resource Sharing (CORS) is managed using the cors middleware in Express.js. CORS is a security feature implemented by web browsers that controls how web pages from one domain can make requests to a backend server hosted on another domain. It is particularly important when the frontend and backend are hosted on different origins, such as when they are running on different ports during development or on different subdomains in production. \\ \\
@@ -351,6 +352,7 @@ The first approach uses "nodemailer" to send emails over SMTP. Firstly a transpo
 	\caption{This is an example for the transporter using mailersend as the SMTP server}
 	\label{fig:example-transporter}
 \end{figure}
+\noindent
 After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and general content of the email.
 \begin{figure}[H]
 	\begin{code}
@@ -364,6 +366,7 @@ After setting up the transporter, the email options are defined. These include t
 	\caption{This is an example for the email options}
 	\label{fig:example-mail-options-smtp}
 \end{figure}
+\noindent
 Finally the email is sent using "transporter.sendMail(mailOptions)".
 \subsubsection{MailerSend API}
 The second approach uses the MailerSend API to send the invitation emails. This method was implemented because our deployment host blocks all SMTP ports.\\\\
@@ -379,6 +382,7 @@ To use the MailerSend API, a transporter is created with "new MailerSend" and th
 	\caption{This is an example for the email options for MailerSend}
 	\label{fig:example-mail-options-mailersend}
 \end{figure}
+\noindent
 The email is then sent using "mailerSend.email.send(mailOptions)".
 \subsection{Roles}
 Implementing a role-based system with three distinct roles, "Admin", "Poweruser", and "Normal", is crucial for the functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. Admins are granted full control over the application, while Poweruser enjoy extended privileges for managing polls. Normal users can seamlessly participate in polls and view results without jeopardizing sensitive functionalities. This structure facilitates efficient task delegation and scalability, allowing the application to be easily expanded with additional roles  in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
@@ -395,6 +399,7 @@ To support the group system, a new navigation option was added to the interface.
 	\caption{Create Groups Page}
 	\label{fig:create_groups}
 \end{figure}
+\noindent \\
 At the bottom of the form, a React Select component is used to assign users to the group. The group editing interface is visually similar to the creation interface, with the addition of a group selection dropdown and a removal option for existing members. An additional feature of the editing interface is the ability to export group members, allowing external tools to be used for planning and organization.
 
 \subsection{Backend}
@@ -514,6 +519,7 @@ On the backend, the image upload is handled using the \textbf{multer} middleware
 	\caption{Custom storage engine configuration for multer}
 	\label{fig:multer_config}
 \end{figure}
+\noindent
 The route \textbf{/api/upload-image} is exposed via the Express router and returns the public URL of the uploaded image on success. The image can later be used as part of the poll metadata.\\
 In \textbf{app.js}, static file serving is enabled for the \textbf{uploads} directory to make the images accessible to the frontend:
 \begin{figure}[H]
@@ -555,6 +561,7 @@ On the frontend, the image upload is handled within the \textbf{CreatePolls.js} 
 	\caption{handleImageUpload function}
 	\label{fig:handleImageUpload}
 \end{figure}
+\noindent
 This function performs the following steps.
 \begin{enumerate}
 	\item A local preview of the selected image is created using the browser's \textbf{URL.createObjectURL()} method. This provides immediate feedback to the user by displaying the image in the form before it is uploaded.
@@ -755,6 +762,7 @@ Figure \ref{fig:result} shows an example of a disclosed multiple choice question
 	\caption{Example of result} 
 	\label{fig:result} 
 \end{figure}
+\noindent
 The component uses two asynchronous API calls. The first fetches the overall voting results, using the API described in the backend part. The second fetches a list of voters per answer, if the poll is disclosed. This voter data is stored in an object where the keys are answer IDs and the values are arrays of usernames. \\ \\
 A toggle button allows switching between the two display modes: percentages and voter names. This functionality is controlled by a boolean variable named \textbf{showVotersMode}. When \textbf{showVotersMode} is enabled, the result view shows the vote percentage for each answer. When disabled, it lists the names of the voters for each answer, or displays a fallback message if no one voted for that answer. \\ \\
 The single-choice questions are displayed in the same format. Weighted choice questions are visually identical to multiple-choice ones, but their weight values are not shown due to the reasons mentioned earlier. Additional features include the optional display of the poll's image and description if such data is available. This ensures that the result view remains consistent with the poll's context.
@@ -811,6 +819,7 @@ The deletion logic performs the following steps
 \caption{Example for a Sequelize transaction}
 \label{fig:delete_poll_code}
 \end{figure} 
+\noindent
 Using Sequelize’s transaction mechanism not only helps to avoid data inconsistency, but also ensures that no information is accidentally deleted once users have participated in a poll. This feature is particularly important in environments where transparency and trust are key, such as in political or organizational voting systems.
 
 
