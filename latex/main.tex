@@ -466,22 +466,20 @@ A transaction is created and used for all data operations involved in poll creat
 	\label{fig:example-transaction}
 \end{figure} 
 \subsection{Start-/ Endtime}
-To make Polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
+To make polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
 \subsubsection{Setting The Times}
-The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \textbf{datetime-local} was used. However it was not fully supported by every browser, including Firefox which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
-When a user clicks on the input field, a graphical selector appears, which allows the user to select both the date and time easily.\\\\
+The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \textbf{datetime-local} was used. However it was not fully supported by every browser including Firefox, which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
+When a user clicks on the input field, a graphical selector appears, which allows the user to select both ,the date and time, easily.\\\\
 Once the poll is submitted, the selected start and end times are sent to the \textbf{createPoll} function in the backend via a POST request. There, the received times are converted to JavaScript \textbf{Date} objects before being inserted into the database.
 \subsubsection{Utilizing The Times}
-These time-based conditions are the core feature used to differentiate between the various states of a poll: edit, voting, and results. To apply these conditions, three arrays are created—each corresponding to one of the states—and passed as props to their respective React components.  
-Figure~\ref{fig:timeuti} shows the code that performs this classification. The \texttt{data} variable contains all polls retrieved from the database via an API call. The \texttt{current\_datetime} is set using \texttt{new Date().toISOString()}. The function iterates through each poll, comparing its \texttt{publish\_date} and \texttt{end\_date} to the current time.
-
+These time-based conditions are the core feature used to differentiate between the various states of a poll: edit, voting, and results. To apply these conditions, three arrays are created - each corresponding to one of the states - and passed as props to their respective React components.  
+Figure~\ref{fig:timeuti} shows the code that performs this classification. The \texttt{data} variable contains all polls retrieved from the database via an API call. The \texttt{current\_datetime} is set using \texttt{new Date().toISOString()}. The function iterates through each poll, comparing its \texttt{publish\_date} and \texttt{end\_date} to the current time. \\ \\
 A poll is:
 \begin{itemize}
 	\item pushed into the \texttt{edit} array if the current time is earlier than its \texttt{publish\_date},
 	\item added to the \texttt{vote} array if the current time is between \texttt{publish\_date} and \texttt{end\_date} and the poll is not public,
 	\item moved to the \texttt{results} array if it is public and its \texttt{end\_date} has already passed.
 \end{itemize}
-
 An important detail is how \textit{public polls} are handled. Since they are not intended to appear in the standard voting view, they are excluded from the vote array. In contrast, public polls may appear in the results view even before their end date, allowing creators and interested parties to observe the vote development in real time.
 
 
@@ -499,7 +497,7 @@ An important detail is how \textit{public polls} are handled. Since they are not
 	\label{fig:timeuti}
 \end{figure}
 \subsection{Poll Image}
-In response to client requirements, a feature was implemented allowing users to upload a title image for each poll. This image serves a purely atmospheric and aesthetic purpose, aiming to enhance the visual appeal of the poll and provide users with a more engaging and intuitive introduction to the survey topic. By incorporating visual context, the feature helps draw user attention and encourages participation, particularly in cases where the subject matter benefits from visual reinforcement.\\\\
+In response to client requirements, a feature was implemented allowing users to upload a title image for each poll. This image serves a purely atmospheric and aesthetic purpose, aiming to enhance the visual appeal of the poll and provide users with a more engaging and intuitive introduction to the survey topic. By incorporating visual context, the feature helps draw user attention and encourages participation, particularly in cases where the subject matter benefits from visual reinforcement.
 \subsubsection{Backend Implementation}
 On the backend, the image upload is handled using the \textbf{multer} middleware in the \textbf{imageRoutes.js} file. The storage engine is configured to save uploaded files in the \textbf{uploads} directory with a unique filename based on a timestamp and the original file extension. The file types are restricted to JPEG, PNG and GIF formats through a custom file filter to ensure consistency and security.\parencite{expressmulter}
 \begin{figure}[H]
@@ -596,7 +594,7 @@ In weighted choice questions, users select one answer from a set of predefined o
 This question type gives more insight into preferences than single or multiple choice questions, because poll participants not only select which answer they prefer, but also indicate how important it is for them. As a result, it becomes easier to decide wether an issue should be prioritized or not.\\\\
 The importance scale is implemented as a custom designed component consisting of nine buttons, each representing a value from one (least important) to nine (most important). If the question type is weighted choice, this scale is displayed along with the standard single choice option.\\\\
 \subsection{Demographic Questions}
-To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls since the created user would be part of the organization using our project and therefore have the data already. If the users is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections, with the difference that weighted is not an option, since demographic data is more like a fact less an opinion.
+To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls, since the created user would be part of the organization using our project and therefore the polls creator would have the data already. If the user is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system, where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections, with the difference that weighted is not an option, since demographic data is more like a fact less an opinion.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.65\textwidth]{pics/demographic_question_create.jpg}
@@ -604,11 +602,11 @@ To gather the data of our public voters, the implementation of demographic quest
 	\label{fig:create_dem_que}
 \end{figure}
 \\
-The new part for this feature is the search bar. For this the "Select" component of "react-select" is used. The components' controllable state props and modular architecture allows  "isMulti" to select multiple options or "isSearchable" to search. These features, allow easy implementation and an already styled search bar in the project. \parencite{reactselect}
+The new part for this feature is the search bar. For this the "Select" component of "react-select" is used. The components' controllable state props and modular architecture allows  "isMulti" to select multiple options or "isSearchable" to search. These features allow easy implementation and an already styled search bar in the project. \parencite{reactselect}
 \\ \\
 The database structure for the demographic questions is similar to the standard ones. The table "PublicQuestions" is used to store the question specific data like name and type. To enable the reuse of questions on different polls "PublicQuestions" is in an many-to-many relationship with "Polls" through "PublicPollQuestions". Answers are stored within the table "PublicAnswers", which is connected to "PublicQuestions" via "PublicQuestionAnswers. This relation is also many-to-many since the options yes or no for example would be used in multiple questions. 
 \\ \\
-For the select every existing question with its answers is fetched from the database and stored within an array. The options are then mapped with the value being id and the label as name of each element. To display the selected options they are mapped through and use the same functions as the standard ones used for the poll. When saving these questions a problem arises, as the selected ones are already stored in the database and possibly changed. To handle this a findOrCreate \ref{fig:publicQuestions} is used to get the existing questions and answers or create new ones. This function also returns each instance found or the created one. With this the question and answer ids can be used for the many-to-many relationship. \parencite{sequelizedoku} 
+For the select every existing question with its answers is fetched from the database and stored within an array. The options are then mapped with the value being id and the label as name of each element. To display the selected options they are mapped through and use the same functions as the standard ones used for the poll. When saving these questions a problem arises, as the selected ones are already stored in the database and possibly changed. To handle this, a findOrCreate \ref{fig:publicQuestions} is used to get the existing questions and answers or create new ones. This function also returns each instance found or the created one. With this the question and answer ids can be used for the many-to-many relationship. \parencite{sequelizedoku} 
 \begin{figure}[h!]
 \begin{code}
 let [createdQuestion, created] = await PublicQuestions.findOrCreate({
@@ -691,18 +689,18 @@ To support anonymous voting, it's important that the user's ID is not traceable.
 To solve this, a many-to-many relationship is introduced between the Polls and Users tables, using an intermediate table that includes a hasVoted boolean field with a default value of true. When a user submits a vote, an entry is created in this table with hasVoted set to true. This allows the system to track whether a user has already voted in a specific poll without linking their vote to their identity.
 
 \subsection{Public Voting}
-The public voting allows users without an account to vote. With this feature a wide range of people can be questioned in street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. Römermann mentions trust, benefits of the demographic data and the ability to abstain. All of these factors have to be taken into ones account when creating these questions. The article also mentions, that at the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the author states it is best to put these questions at the end. \cite{demographicdata}
+The public voting allows users without an account to vote. With this feature a wide range of people can be questioned in street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. Trust, benefits of the demographic data and the ability to abstain are important to a poll. All of these factors have to be taken into ones account when creating these questions. At the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the it is best to put these questions at the end. \cite{demographicdata}
 
 \subsubsection{Poll Questions}
-In public voting, since users cannot select a poll themselves, it's important to handle cases where the poll is accessed via a direct link outside the allowed time frame. To keep things simple, a short message — "Poll not available" — is displayed in such cases. If the site is accessed within the designated start and end dates, the questions are shown, similar to those in disclosed and anonymous voting. The main difference in this voting method lies in the submit button. Its function is only to change the display so that demographic questions are shown.
+In public voting, since users cannot select a poll themselves, it's important to handle cases where the poll is accessed via a direct link outside the allowed time frame. To keep things simple, a short message "Poll not available" is displayed in such cases. If the site is accessed within the designated start and end dates, the questions are shown, similar to those in disclosed and anonymous voting. The main difference in this voting method lies in the submit button. Its function is only to change the display so that demographic questions are shown.
 
 \subsubsection{Demographic Questions}
-After the poll is completed, the demographic questions linked to it are displayed. These questions follow the same visual style as those in the other sections. Once submitted, the submit button becomes greyed out and disabled. A short thank-you message, along with a link to the organization's website, is then shown. Similar to the poll questions, the key difference here lies in how the submit button behaves. Before sending the data, the system checks whether the user has already voted. If not, the responses to both the poll and demographic questions are sent to the backend API via a POST request. The service processes these answers and inserts them into the corresponding database tables.
+After the poll is completed, the demographic questions linked to it, are displayed. These questions follow the same visual style as those in the other sections. Once submitted, the submit button becomes greyed out and disabled. A short thank-you message, along with a link to the organization's website, is then shown. Similar to the poll questions, the key difference here lies in how the submit button behaves. Before sending the data, the system checks whether the user has already voted. If not, the responses to both the poll and demographic questions are sent to the backend API via a POST request. The service processes these answers and inserts them into the corresponding database tables.
 
 \subsubsection{Vote Integrity}
 A major problem when having anonymity and no accounts is the data integrity. Without the ability to store information about a voter in the database to check for multiple votes, it is important to prevent them from voting multiple times. Completely avoiding this problem is nearly impossible, but to ensure no problems arise we chose two different security measures. \\ \\
-To prevent fraudulent activity, spam, and abuse with bots, Google reCAPTCHA is integrated into the application. To implement this a key pair is generated, one for the site and a secret key. The site key is used to integrate the reCAPTCHA service into the frontend. The secret key facilitates secure communication between the backend server and the reCAPTCHA system to validate user responses. To maintain security the keys are stored in an env file. For this whole process the invisible option is checked to prevent the flow of the voting being disturbed.\parencite{recaptcha} \\ \\
-\ref{fig:recaptcha} shows how the backend handles the CAPTCHA request. The token, the site key, is sent from the frontend through the request body, while the secretKey is accessed via the prossess.env environment variable. To maintain readability, the URL is defined and the query string includes both keys. Then these parameters are sent to Googles endpoint to validate the user interaction. The score in Google’s response indicates how likely a user is human. Therefore, before returning a successful response to the frontend, the score is checked. The code also handles the cases where the request results in an error or the score is too low. \parencite{recaptcha}
+To prevent fraudulent activity, spam and abuse with bots, Google reCAPTCHA is integrated into the application. To implement this a key pair is generated, one for the site and a secret key. The site key is used to integrate the reCAPTCHA service into the frontend. The secret key facilitates secure communication between the backend server and the reCAPTCHA system to validate user responses. To maintain security the keys are stored in an env file. For this whole process the invisible option is checked to prevent the flow of the voting being disturbed.\parencite{recaptcha} \\ \\
+Figure \ref{fig:recaptcha} shows how the backend handles the CAPTCHA request. The token, the site key, is sent from the frontend through the request body, while the secretKey is accessed via the prossess.env environment variable. To maintain readability, the URL is defined and the query string includes both keys. Then these parameters are sent to Googles endpoint to validate the user interaction. The score in Google’s response indicates how likely a user is human. Therefore, before returning a successful response to the frontend, the score is checked. The code also handles the cases where the request results in an error or the score is too low. \parencite{recaptcha}
 \begin{figure}[h!]
 	\begin{code}
 app.post('/verify-recaptcha', async (req, res) => {
@@ -720,9 +718,6 @@ app.post('/verify-recaptcha', async (req, res) => {
 		} else {
 			res.json({ success: false, message: 'Verification failed' });
 		}
-	} catch (error) {
-		console.error('Error verifying reCAPTCHA:', error);
-		res.status(500).json({ success: false, message: 'Server error' });
 	}
 });
 	\end{code}
@@ -741,11 +736,11 @@ On this platform, however, cookies serve a more specific purpose: to store a boo
 	\caption{Cookie stored in the browser} 
 	\label{fig:cookie} 
 \end{figure}\\ \\
-The cookie is set only after the voting request is successfully processed. This order is crucial, as vote submissions can occasionally result in errors. If the cookie were set before confirmation, users could be wrongly prevented from resubmitting. By storing the cookie only after a successful vote, users can correct and resubmit their answers when needed.\\ \\
+The cookie is set only after the voting request is successfully processed. This order is crucial, as vote submissions can occasionally result in errors. If the cookie was set before confirmation, users could be wrongly prevented from resubmitting. By storing the cookie only after a successful vote, users can correct and resubmit their answers when needed.\\ \\
 This method is not entirely secure. If someone knows where the cookie is stored and how to access it, they can delete it and vote again. Still, this setup addresses most common threats to the integrity of the poll.
 
 \section{Results}
-Results are arguably the most important feature of the application. Here, the voting data is displayed in a comprehensible way. This section of the platform includes the display of results depending on the different voting types — disclosed and anonymous — as well as an export option for further analysis of the voting data. 
+Results are arguably the most important feature of the application. Here, the voting data is displayed in a comprehensible way. This section of the platform includes the display of results depending on the different voting types, disclosed and anonymous, as well as an export option for further analysis of the voting data. 
 
 \subsection{Backend}
 The API for results consists of two main components. First, the total number of voters is calculated. This is done by counting the entries in the \textbf{UserPolls} table using Sequelize's \textbf{count} function. This number represents the total number of unique users who have participated in a specific poll. \\ \\
@@ -765,23 +760,21 @@ A toggle button allows switching between the two display modes: percentages and 
 The single-choice questions are displayed in the same format. Weighted choice questions are visually identical to multiple-choice ones, but their weight values are not shown due to the reasons mentioned earlier. Additional features include the optional display of the poll's image and description if such data is available. This ensures that the result view remains consistent with the poll's context.
 
 \subsection{CSV-Export}
-To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics such as the number of votes per answer and the average weight for weighted questions.\\ \\
+To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics, such as the number of votes per answer and the average weight for weighted questions.\\ \\
 The logic is handled in the \textbf{csvExportController.js} controller. Upon receiving a request, the system retrieves all relevant data for a given poll by its ID, including associated question, answers, and question types. The raw voting data is processed to count the number of responses per answer and to calculate the average weight if applicable. Special care is taken to distinguish between different types: for instance, "Single Choice" questions ensure that only one answer per user is counted, while "Weighted Choice" questions include the weight vale in the computation.\\ \\
-The processed data is then converted into a structured CSV format using the json2csv library. The final file includes columns such as Poll Name, Question, Question Type, Answer, Vote Count and Average Weight, and can be downloaded directly by the user. This feature ensures transparency and enables further statistical evaluation using external tools like Excel.\parencite{json2csv}
+The processed data is then converted into a structured CSV format using the json2csv library. The final file includes columns such as Poll Name, Question, Question Type, Answer, Vote Count and Average Weight, and can be downloaded directly by the user. This feature ensures transparency and enables further statistical evaluation using external tools like Microsoft Excel.\parencite{json2csv}
 
 \section{MyPolls}
 \subsection{Purpose}
 The "MyPolls" section is a central location in which users can view and manage all polls they have created. It provides access to the links for the polls as well as a delete option for them.
 \subsection{Poll Link}
-The link used for sharing the polls is generated by encoding key information into a hash. This is done using the "btoa" function, which creates a Base64-encoded string. In order to ensure compatibility with the browser URLs, the hash is also encoded using the "encodeURIComponent" function. The generated hash contains information about wether the poll is public, wether it is anonymous, the poll's mode and its ID.\parencite{mdn-btoa}\parencite{mdn-encodeUriComponent}\\\\
+The link used for sharing the polls is generated by encoding key information into a hash. This is done using the "btoa" function, which creates a Base64-encoded string. In order to ensure compatibility with the browser URLs, the hash is also encoded using the "encodeURIComponent" function. The generated hash contains information about whether the poll is public or anonymous, the poll's mode and its ID.\parencite{mdn-btoa}\parencite{mdn-encodeUriComponent}\\\\
 When a poll link is opened, the hash is first decoded using "decodeUriComponent" and then "atob". Depending on the mode specified in the url, the corresponding section in the dashboard is opened and the poll with the matching ID is loaded. Should the poll ID not exist in this specific mode, or in general, the system still opens the correct mode but in the default state without any poll selected.\parencite{mdn-atob}\parencite{mdn-decodeUriComponent}\\\\
 To make sharing of the Surveys easier, a QR code generation was implemented. This was done using the React component "qrcode.react" which requires the link to the poll.\parencite{qrcode}
 \subsection{Delete Polls}
 The deletion of polls is crucial for two main reasons: first, to ensure that all associated data of a survey can be safely removed when necessary and second, to determine when a poll is still eligible for deletion. In this case, the deletion of polls is strictly limited to those that have not yet received any user votes. \\ \\
 This constraint ensures the integrity of the data and avoids loss of user-generated information, which could distort statistical analysis or transparency within the system.\\ \\
-To maintain data consistency, the deletion process is implemented as a transaction. This guarantees atomicity, meaning that either all steps of the deletion process succeed or none do - preventing partial data deletion and potential corruption. Sequelize's transaction management is used here to wrap the entire process in a rollback-safe structure. \parencite{sequelizedoku}
-
-\paragraph{}
+To maintain data consistency, the deletion process is implemented as a transaction. This guarantees atomicity, meaning that either all steps of the deletion process succeed or none do - preventing partial data deletion and potential corruption. Sequelize's transaction management is used here to wrap the entire process in a rollback-safe structure. \parencite{sequelizedoku} \\ \\
 The deletion logic performs the following steps
 \begin{enumerate}
 	\item Validate that the poll exists.
@@ -817,18 +810,14 @@ The deletion logic performs the following steps
 \end{code}
 \caption{Example for a Sequelize transaction}
 \label{fig:delete_poll_code}
-\end{figure}
+\end{figure} 
 Using Sequelize’s transaction mechanism not only helps to avoid data inconsistency, but also ensures that no information is accidentally deleted once users have participated in a poll. This feature is particularly important in environments where transparency and trust are key, such as in political or organizational voting systems.
 
 
 \section{Accessibility}
 \subsection{Tooltips}
-To enhance the usability and user experience of the application, tooltips were integrated into all input field, providing users with contextual guidance and reducing the likelihood of input errors. For this purpose, the React library \textbf{react-tooltips} was utilized, offering a high degree of customizability in both design and behavior. This allowed for the implementation of consistent and informative tooltip elements throughout the interface.\parencite{tooltips}\\\\
-
-
-Each from element is assigned a unique \textbf{data-tool-id}, which serves as a reference key within the central \textbf{Tooltips.js} configuration file. This file defines the content, styling, and interaction logic for each tooltip, ensuring that the visual presentation and timing behavior are consistent across the application. To prevent the tooltips from becoming distracting during regular use, a delay of 1500 milliseconds was introduced before displaying the tooltip on hover.\\\\
-
-
+To enhance the usability and user experience of the application, tooltips were integrated into all input fields, providing users with contextual guidance and reducing the likelihood of input errors. For this purpose, the React library \textbf{react-tooltips} was utilized, offering a high degree of customizability in both design and behavior. This allowed for the implementation of consistent and informative tooltip elements throughout the interface.\parencite{tooltips} \\ \\
+Each from element is assigned a unique \textbf{data-tool-id}, which serves as a reference key within the central \textbf{Tooltips.js} configuration file. This file defines the content, styling, and interaction logic for each tooltip, ensuring that the visual presentation and timing behavior are consistent across the application. To prevent the tooltips from becoming distracting during regular use, a delay of 1500 milliseconds was introduced before displaying the tooltip on hover.\\ \\
 The overall purpose of this component was, to improve the intuitiveness of the application, especially for first-time users or those unfamiliar with specific input requirements.
 \subsection{Screenreader}
 \section{Styling}
