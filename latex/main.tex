@@ -144,11 +144,11 @@ To design and visualize the schema, tools such as \textbf{draw.io} and \textbf{d
 \clearpage 
 
 \section{Node.js}
-For the backend \textbf{Node.js} was used. It is a \textbf{JavaScript} runtime environment, that allows the programming language to run on a server instead of the browser. \textbf{Node.js} is based on the V8 engine developed by Google, which compiles \textbf{JavaScript} into machine code for faster execution.\parencite{nodejs-intro}\\\\
+For the backend Node.js was used. It is a JavaScript runtime environment, that allows the programming language to run on a server instead of the browser. Node.js is based on the V8 engine developed by Google, which compiles JavaScript into machine code for faster execution. \parencite{nodejs-intro} \\\\
 \subsection{Advantages}  
-One of the main advantages of \textbf{Node.js} is its non-blocking I/O model. This means it does not wait for certain processes, such as reading from a file or a database, to finish before continuing with other operations. Instead, it starts a process and immediately listens for the next event. When the initial process finishes, a callback function is executed. This makes it possible for \textbf{Node.js} to handle multiple operations concurrently, even though it is inherently single threaded. This results in high performance and responsiveness.\parencite{nodejs-nonblocking}\\\\
-Another advantage of \textbf{Node.js} is that it creates a unified language environment because both the frontend and the backend can be programmed in \textbf{JavaScript}. This simplifies the development process, improves code reusability, and reduces the learning curve, since developers do not need to learn an entirely different programming language for the backend.\\\\
-\textbf{Node.js} also has the \textbf{Node Package Manager} (\textbf{npm}) which provides access to a vast collection of reusable packages and modules. These include pre-built code solutions to simplify common requirements like encryption and also sending emails, both of which where used in this project.\parencite{mdn-express-nodejs}
+One of the main advantages of Node.js is its non-blocking I/O model. This means it does not wait for certain processes, such as reading from a file or database, to finish before continuing with other operations. Instead, it starts a process and immediately listens for the next event. When the initial process finishes, a callback function is executed. This makes it possible for Node.js to handle multiple operations concurrently, even though it is inherently single threaded. This results in high performance and responsiveness. \parencite{nodejs-nonblocking}\\\\
+Another advantage of Node.js is that it creates a unified language environment because both the frontend and the backend can be programmed in JavaScript. This simplifies the development process, improves code reusability, and reduces the learning curve, since developers do not need to learn a new programming language for the backend.\\\\
+Node.js also has the npm (Node Package Manager) which provides access to a vast collection of reusable packages and modules. These include pre-built code solutions to simplify common requirements like encryption and also sending emails, both of which where used in this project. \parencite{mdn-express-nodejs} \\\\
 
 
 \section{Sequelize}
@@ -263,19 +263,19 @@ React.js is based on a component oriented architecture, where the user interface
 React components receive configuration and data through props, which are passed from the parent component. They can also manage they internal state using React's "Hooks API", such as "useState" and "useEffect" for handling effects like data fetching. \cite{react-docs} \cite{mdn-react}
 
 \section{PWA}
-“A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.”\parencite{mdn-pwa}
-This application is \textbf{PWA}, \textbf{Progressive Web App}, compatible. /textbf{PWAs} combine the best features of both websites and platform-specific applications.\parencite{mdn-pwa}\\\\
+“A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.” \parencite{mdn-pwa} \\\\
+This application is PWA, compatible. PWAs combine the best features of both websites and platform-specific applications. \parencite{mdn-pwa} \\\\
 \subsection{Platform-Specific}
-Platform-Specific applications are developed only for one particular operating system, which means that most of the code cannot be reused for other systems. The most common target platforms for such applications are \textbf{Android} and \textbf{IOS}.\\\\
-Because these applications are tailored to a specific operating system, they can fully utilize the device’s hardware and software capabilities. This increases the applications performance and user experience as well as enabling more customization and personalization.\parencite{native-apps}\\\\
-Additionally, platform-specific applications can also run in the background, when they are not being interacted with. This enables them to perform tasks such as automatic updates or background synchronization. This helps to keep the application up to date, even when the device is offline.\parencite{mdn-pwa}\\\\
+Platform-Specific applications are developed only for one particular operating system in one the supported programming languages, which means that most of the code cannot be reused for other systems, because they most likely require a different programming language. The most common target platforms for such applications are Android and IOS. \\\\
+Because these applications are tailored to a specific operating system, they can fully utilize the device’s hardware and software capabilities. This increases the applications performance and user experience as well as enabling more customization and personalization. \parencite{native-apps} \\\\
+Additionally, platform-specific applications can also run in the background, when they are not being interacted with. This enables them to perform tasks such as automatic updates or background synchronization. This helps to keep the application up to date, even when the device is offline. \parencite{mdn-pwa} \\\\
 \subsection{Websites}
-Unlike platform-specific applications, websites are not restricted to a single operating system. They are accessed through a browser and not installed on the device. Therefore they appear and function the same across all platforms.\parencite{mdn-pwa}\\\\
-However, websites have limited access to platform-specific features and also do not showcase the same level of performance. They also do not provide offline functionality, but rely heavily on network connectivity.
+Unlike platform-specific applications, websites are not restricted to a single operating system. They are accessed through a browser and not installed on the device. Therefore they appear and function the same across all platforms. \parencite{mdn-pwa} \\\\
+However, websites have limited access to platform-specific features and also do not showcase the same level of performance. They also do not provide offline functionality, but rely heavily on network connectivity. \\\\
 \subsection{Function PWA}
-\textbf{PWAs} are essentially websites, but they also offer important features typically unique to platform-specific applications. They can be installed to the device directly on a device from the browser and can even be published to the native app store. Once installed, they appear like native applications as they have an app name and icon, and can run in a standalone display. This is made possible through the manifest. \textbf{PWAs} can also provide offline functionalities through the service worker, however this feature is not a major focus in this project.\parencite{mdn-pwa}
+PWAs are essentially websites, but they also offer important features typically unique to platform-specific applications. They can be installed to the device directly on a device from the browser and can even be published to the native app store. Once installed, they appear like native applications as they have an app name and icon, and can run in a standalone display. This is made possible with the manifest. PWAs can also provide offline functionalities through a service worker, however this feature is not a major focus in this project. \parencite{mdn-pwa}
 \subsubsection{Manifest}
-The manifest makes it possible to install the \textbf{PWA} from the browser. It must contain information about the name, icon, starting url and display, but it includes many additional configuration options like the background color and theme color.\parencite{mdn-pwa-installation}
+The manifest makes it possible to install the PWA from the browser. It is a json file and must contain information about the name, icon, starting url and display. It can also include many additional configuration options like the background color and theme color. \parencite{mdn-pwa-installation}
 \begin{figure}[H]
 	\begin{code}
 		{
@@ -304,39 +304,38 @@ The manifest makes it possible to install the \textbf{PWA} from the browser. It 
 			"background_color": "#ffffff"
 		}
 	\end{code}
-	\caption{This is our manifest.json file}
+	\caption{This project's manifest file}
 	\label{fig:example-maifest}
-\end{figure}
-
+\end{figure} 
 
 \chapter{Features}
 \section{Login}
-The login feature is essential for our application, as users need a secure and reliable way to authenticate themselves and gain access to their accounts. It consists of two main functionalities: the login itself and also the logout. Additionally, we have implemented user-friendly error handling to enhance user experience as well as security.
+The login feature is essential for the application, as users need a secure and reliable way to authenticate themselves and gain access to their accounts. It consists of two main functionalities: the login itself and also the logout. Additionally, user-friendly error handling was implemented to enhance user experience as well as security. \\\\
 \subsection{Frontend}
-The frontend component of the login feature uses React's built-in useState hook in order to manage the input username and password and store them in the component's state temporarily. After submitting the login form, the input data is sent to the backend API via a POST request.\\\\
-The password is sent to the backend in plaintext over HTTPS. It is not encrypted on the client side, because HTTPS already provides built-in encryption and also protects against interception or man-in-the-middle attacks.
+The frontend component of the login feature uses React's built-in useState hook in order to manage the input username and password, and store them in the component's state temporarily. After submitting the login form, the input data is sent to the backend API via a \texttt{POST} request. \\\\
+The password is sent to the backend in plaintext over HTTPS. It is not encrypted on the client side, because HTTPS already provides built-in encryption and also protects against interception or man-in-the-middle attacks. \\\\
 \subsection{Backend}
-The backend receives the login request through a predefined API route that forwards the data to the handleFetchLogin function in the user controller. It extracts the username and password from the request body and passes them to the fetchLogin function in the user service.\\\\
-This function first checks if a user with the provided username even exists in the database. If no user is found, it returns an error message stating that either the username or password is invalid. We intentionally chose to not specify which of the two parts is incorrect in order to prevent attackers from being able to determine whether a username exists in the system. This provides protection against user enumeration attacks.\\\\
-If a user is found, the provided password is then compared to the hashed password stored in the database using bcrypt's comparison method, bcrypt.compare(). In case the passwords do not match, the same error message mentioned above is returned to the frontend.\\\\
-However, if the password is correct, the backend returns a response containing a success indicator, the user's unique ID (userId), their username, the assigned role ID (roleId), and the name of the role (roleName).
-\subsection{Error Handling and Security}
+The backend receives the login request through the \texttt{/api/login} API route that forwards the data to the \textbf{handleFetchLogin} function in the \texttt{userController.js}. It extracts the username and password from the request body and passes them to the \textbf{fetchLogin} function in the user service. \\\\
+This function first checks if a user with the provided username even exists in the database. If no user is found, it returns an error message stating that either the username or password is invalid. It was intentionally chosen not to specify which of the two parts is incorrect in order to prevent attackers from being able to determine whether a username exists in the system. This provides protection against user enumeration attacks. \\\\
+If a user is found, the provided password is then compared to the hashed password stored in the database using bcrypt's comparison method, \textbf{bcrypt.compare()}. In case the passwords do not match, the same error message mentioned above is returned to the frontend. \\\\
+However, if the password is correct, the backend returns a response containing a success indicator, the user's unique ID ("userId"), their username, the assigned role ID ("roleId"), and the name of the role ("roleName"). \\\\
+\subsection{Error Handling}
 Error handling is implemented consistently across both frontend and backend to ensure security and user-friendliness. If a login attempt fails, whether due to an incorrect username, password, or both, the system always returns the same general error message. This prevents attackers from determining whether a specific username exists in the system.\\\\
-Sensitive data like passwords is handled securely. Passwords are not stored in plain text. Instead they are hashed using bcrypt before being inserted into the database. Furthermore, communication between frontend and backend is encrypted through HTTPS. This ensures that all transmitted data remains private and protected from unauthorized access.
+Sensitive data like passwords is handled securely. They are not stored in plain text. Instead they are hashed using bcrypt before being inserted into the database. Furthermore, communication between frontend and backend is encrypted through HTTPS. This ensures that all transmitted data remains private and protected from unauthorized access.
 
 \section{Registration}
-The application features a controlled and secure registration. In order for users to be able to join the system, they first have to be invited. The registration consists of two main functionalities.
+The application features a controlled and secure registration. In order for users to be able to join the system, they first have to be invited. The registration consists of the following two main functionalities. \\\\
 \subsection{Admin Registration Process}
-Only administrators are allowed to invite new users. They start the process by navigating to the registration tab and entering the user's email as well as their intended role. After submitting, the data gets sent to the "sendEmail" function in the backend through a POST request.\\\\
-The function checks if a user with the provided email address already exists in the database. If so, it returns a message indicating exactly that. In case the email is not found, an invitation email is sent and a new user entry with the provided email, role ID and a randomly generated token is created. The token is later used for verifying the legitimacy of the registration. If the process is successful the administrator is informed that the email was sent and the user was created successfully.
+Only administrators are allowed to invite new users. They start the process by navigating to the registration tab and entering the user's email as well as their intended role. After submitting, the data gets routed to the \textbf{sendEmail} function in the backend through the \texttt{/api/email} API route using a POST request. \\\\
+The function checks if a user with the provided email address already exists in the database. If so, it returns a message indicating exactly that. In case the email is not found, an invitation email is sent and a new user entry with the provided email, role ID and a randomly generated token is created. The token is later used for verifying the legitimacy of the registration. If the process is successful the administrator is informed that the email was sent and the user was created successfully. \\\\
 \subsection{User Registration Process}
-The email sent to the user contains a registration link consisting of the URL of the application and the previously mentioned token. By clicking the link, the user is redirected to a registration page on which they can enter a username and password.\\\\
-The page contains three fields. One for the username, one for the password and one for password validation. This approach was chosen in order to ensure a correct password input. If the contents of the two password fields do not match, an error message telling them about the mismatch is displayed. Similarly, if any of the fields are left blank, submission is disabled and the user is notified of the problem. If all inputs are valid the token extracted from the link, as well as username and password are sent to the backend using a PUT request. The password is sent in plain text over HTTPS, as explained in the login section above.\\\\
-The backend then passes the data to the "createUser" function. It first checks whether the token exists in the database and also if the username is already being used. In both cases, no token or existing username, the user receives an error message telling them the specific problem. If the username is the issue they can just change it and try again, but if it is the token it will never work no matter how often they retry. If both checks pass, the password is hashed using bcrypt's hash function. The database is then updated with the new username and hashed password. The token is set to null to prevent reuse. If everything is successful the function returns a success message is returned telling the user that the registration is complete. After five seconds they are redirected to the login page, where they can then log in and use the application.
+The email sent to the user contains a registration link consisting of the URL of the application and the previously mentioned token. By clicking the link, the user is redirected to a registration page on which they can enter a username and password. \\\\
+The page contains three fields. One for the username, one for the password and one for password validation. This approach was chosen in order to ensure a correct password input. If the contents of the two password fields do not match, an error message telling them about the mismatch is displayed. Similarly, if any of the fields are left blank, submission is disabled and the user is notified of the problem. If all inputs are valid, the token extracted from the link, as well as username and password are sent to the backend \texttt{userController.js} file via the \texttt{/api/user} API route using a PUT request. The password is sent in plain text over HTTPS, as explained in the login section above. \\\\
+The controller then passes the data to the \textbf{createUser} function. It first checks whether the token exists in the database and also if the username is already being used. In both cases, no token or existing username, the user receives an error message telling them the specific problem. If the username is the issue they can just change it and try again, but if it is the token it will never work no matter how often they retry. If both checks pass, the password is hashed using bcrypt's hash function. The database is then updated with the new username and hashed password. The token is set to null to prevent reuse. If everything is successful a success message is returned telling the user that the registration is complete. After five seconds they are redirected to the login page, where they can then log in and use the application. \\\\
 \subsection{Sending Invitation Emails}
-For automatic sending of the invitation emails, we implemented two different approaches. Therefore both will be explained below.
+For automatic sending of the invitation emails, two different approaches were implemented. Therefore both will be explained below.
 \subsubsection{Nodemailer (SMTP)}
-The first approach uses "nodemailer" to send emails over SMTP. Firstly a transporter is created using nodemailer's "createTransport" function. There several options can be defined including the host, like gmail or a custom SMTP server, the port, secure option and also authentication credentials. 
+The first approach uses \textbf{nodemailer} to send emails over SMTP. Firstly a transporter is created using nodemailer's \textbf{createTransport} function. There several options can be defined including the host, like gmail or a custom SMTP server, the port, the secure option and also authentication credentials. 
 \begin{figure}[H]
 	\begin{code}
 		let transporter = nodemailer.createTransport({
@@ -349,11 +348,11 @@ The first approach uses "nodemailer" to send emails over SMTP. Firstly a transpo
 			}
 		});
 	\end{code}
-	\caption{This is an example for the transporter using mailersend as the SMTP server}
+	\caption{Example transporter using mailersend as the SMTP server}
 	\label{fig:example-transporter}
 \end{figure}
 \noindent
-After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and general content of the email.
+After setting up the transporter, the email options are defined. These include the sender and recipient addresses along with the subject and the emails general content, as shown in Figure \ref{fig:example-mail-options-smtp}. Finally the email is sent using \textbf{transporter.sendMail(mailOptions)}.
 \begin{figure}[H]
 	\begin{code}
 		const mailOptions = {
@@ -363,14 +362,21 @@ After setting up the transporter, the email options are defined. These include t
 			text: "Hello this is your invitation."
 		};
 	\end{code}
-	\caption{This is an example for the email options}
+	\caption{Example email options for transporter}
 	\label{fig:example-mail-options-smtp}
 \end{figure}
-\noindent
-Finally the email is sent using "transporter.sendMail(mailOptions)".
 \subsubsection{MailerSend API}
-The second approach uses the MailerSend API to send the invitation emails. This method was implemented because our deployment host blocks all SMTP ports.\\\\
-To use the MailerSend API, a transporter is created with "new MailerSend" and the API key. Just like int the first method mail options are created specifying the sender, recipient, subject and message.
+The second approach uses the MailerSend API to send the invitation emails. This method was implemented because the deployment host blocks all SMTP ports to prevent email spamming. \\\\
+To use the MailerSend API, a transporter is created with, like in Figure \ref{fig:example-mailersend-transporter-creation}. Just like int the first method mail options are created specifying the sender, recipient, subject and message, as shown in Figure \ref{fig:example-mail-options-mailersend}. Then the email is sent using \textbf{mailerSend.email.send(mailOptions)}.
+\begin{figure}[H]
+	\begin{code}
+		const mailerSend = new MailerSend({
+			apiKey: process.env.MAILERSEND_API_KEY,
+		});
+	\end{code}
+	\caption{Example MailerSend transporter}
+	\label{fig:example-mailersend-transporter-creation}
+\end{figure}
 \begin{figure}[H]
 	\begin{code}
 		const mailOptions = new EmailParams()
@@ -379,11 +385,10 @@ To use the MailerSend API, a transporter is created with "new MailerSend" and th
 		.setSubject("Polling tool")
 		.setText("Hello this is your invitation.");
 	\end{code}
-	\caption{This is an example for the email options for MailerSend}
+	\caption{Example MailerSend email options}
 	\label{fig:example-mail-options-mailersend}
 \end{figure}
-\noindent
-The email is then sent using "mailerSend.email.send(mailOptions)".
+
 \subsection{Roles}
 In the application, each user record includes a \textit{roleId} that indicates the user's assigned role. This reflects the Role-Based Access Control model in which "each user is assigned one or more roles, and each role is assigned one or more privileges".\parencite{rbac}\\\\
 In this project three roles with increasingly broader permissions were defined:

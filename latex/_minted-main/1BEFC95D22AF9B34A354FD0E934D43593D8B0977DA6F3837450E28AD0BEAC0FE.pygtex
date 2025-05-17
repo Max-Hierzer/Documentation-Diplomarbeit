@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		\PYG{k+kd}{const} \PYG{n+nx}{mailerSend} \PYG{o}{=} \PYG{o+ow}{new} \PYG{n+nx}{MailerSend}\PYG{p}{(\PYGZob{}}
+			\PYG{n+nx}{apiKey}\PYG{o}{:} \PYG{n+nx}{process}\PYG{p}{.}\PYG{n+nx}{env}\PYG{p}{.}\PYG{n+nx}{MAILERSEND\PYGZus{}API\PYGZus{}KEY}\PYG{p}{,}
+		\PYG{p}{\PYGZcb{});}
+	
+\end{Verbatim}
