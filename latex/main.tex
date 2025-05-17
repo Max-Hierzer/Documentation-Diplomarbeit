@@ -874,7 +874,20 @@ Some areas of the web application required additional styling efforts beyond the
 \end{figure}
 \paragraph{Create Polls} allows users to configure and launch customized surveys. Due to the flexibility and number of inputs required, the styling and layout needed careful design considerations. The whole page has been divided into smaller parts, which are the metadata of the poll, survey type and group selection, image upload and the questions at the very end as a separate section. The Styling also had to be modular to support reusability in both the creation and editing interfaces.\\\\
 \paragraph{Public and disclosed voting} Gernot Tobias
-\paragraph{Results} Tobias
+\paragraph{Voting} is the section where users can submit their votes on polls they have permission to participate in. As shown in Figure \ref{fig:voting_view}, the selected poll's name is displayed below the section's heading and the poll selection dropdown, highlighted using the site's primary color. Each question is presented in a separate block, labeled with the question type (e.g. Single Choice, Multiple Choice, Weighted Choice) in the top right corner. Within each block, the question title is emphasized and all answer options are listed along with radio boxes for Single Choice and Weighted Choice questions, and check boxes for multiple choice questions. Weighted Choice questions also include an importance scale, which consists of multiple buttons that users must interact with to assign an importance value to their answer.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pics/voting_view.png}
+	\caption{Registration form}
+	\label{fig:voting_view}
+\end{figure}
+\paragraph{Results} allows users to see the outcome of completed polls they have access to. As illustrated in Figure \ref{fig:results_view}, the interface follows the same layout as the voting section. The number of participants is displayed beneath the poll title. Inside each question block, the title is again highlighted and the answer options are listed with the percentage of votes they received.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pics/results_view.png}
+	\caption{Registration form}
+	\label{fig:results_view}
+\end{figure}
 \paragraph{The Pollimage} enables users to create surveys with a title picture. It was styled to maintain visual harmony and responsiveness across Create, Voting, and Results views. The image container uses a flexbox layout to center the image horizontally, ensuring it looks balanced on all screen sizes. The image itself is limited to a maximum width of 90 percent of its container and a maximum height of 300 pixel to prevent oversized images from disrupting the layout. To preserve the original aspect ratio and avoid distortion, the \textbf{object-fit: contain} property is applied.\parencite{cssobjectfit}
 
 \section{Deployment}
