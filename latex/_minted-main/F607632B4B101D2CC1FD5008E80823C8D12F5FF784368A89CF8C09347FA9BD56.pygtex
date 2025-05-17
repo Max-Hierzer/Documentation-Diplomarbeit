@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		\PYG{l+s+s2}{\PYGZdq{}production\PYGZdq{}}: \PYG{o}{\PYGZob{}}
+			\PYG{l+s+s2}{\PYGZdq{}username\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}username\PYGZdq{}},
+			\PYG{l+s+s2}{\PYGZdq{}password\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}password\PYGZdq{}},
+			\PYG{l+s+s2}{\PYGZdq{}database\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}db\PYGZus{}name\PYGZdq{}},
+			\PYG{l+s+s2}{\PYGZdq{}host\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}1.2.3.4\PYGZdq{}},
+			\PYG{l+s+s2}{\PYGZdq{}dialect\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}postgres\PYGZdq{}}
+		\PYG{o}{\PYGZcb{}}
+	
+\end{Verbatim}

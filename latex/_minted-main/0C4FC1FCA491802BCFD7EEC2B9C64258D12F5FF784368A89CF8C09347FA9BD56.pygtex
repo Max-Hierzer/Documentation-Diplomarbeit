@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		sudo apt update \PYG{o}{\PYGZam{}\PYGZam{}} sudo apt upgrade \PYGZhy{}y
+	
+\end{Verbatim}

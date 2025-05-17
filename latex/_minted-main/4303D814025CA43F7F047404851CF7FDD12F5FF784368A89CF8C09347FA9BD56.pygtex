@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		ssh \PYGZhy{}i \PYGZti{}/.ssh/id\PYGZus{}rsa\PYGZus{}digitalocean root@1.2.3.4
+	
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		sudo \PYGZhy{}u postgres psql
+		CREATE DATABASE db\PYGZus{}name\PYG{p}{;}
+		CREATE USER username WITH PASSWORD \PYG{l+s+s1}{\PYGZsq{}password\PYGZsq{}}\PYG{p}{;}
+		GRANT ALL PRIVILEGES ON DATABASE db\PYGZus{}name TO username\PYG{p}{;}
+		\PYG{l+s+se}{\PYGZbs{}q}
+	
+\end{Verbatim}

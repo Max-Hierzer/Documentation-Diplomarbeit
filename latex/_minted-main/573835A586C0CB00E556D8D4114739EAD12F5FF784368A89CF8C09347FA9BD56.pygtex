@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		\PYG{n+nv}{NODE\PYGZus{}ENV}\PYG{o}{=}production pm2 start app.js \PYGZhy{}\PYGZhy{}name backend\PYGZhy{}app
+		pm2 startup
+		pm2 save
+	
+\end{Verbatim}

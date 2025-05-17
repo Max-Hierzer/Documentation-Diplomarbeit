@@ -878,22 +878,80 @@ Some areas of the web application required additional styling efforts beyond the
 \paragraph{The Pollimage} enables users to create surveys with a title picture. It was styled to maintain visual harmony and responsiveness across Create, Voting, and Results views. The image container uses a flexbox layout to center the image horizontally, ensuring it looks balanced on all screen sizes. The image itself is limited to a maximum width of 90 percent of its container and a maximum height of 300 pixel to prevent oversized images from disrupting the layout. To preserve the original aspect ratio and avoid distortion, the \textbf{object-fit: contain} property is applied.\parencite{cssobjectfit}
 
 \section{Deployment}
-This project was deployed to test how it behaves in a live environment and to ensure that the setup can be easily replicated on other systems. Deployment also helps to verify that all components work together correctly outside of the development environment 
+This project was deployed to test how it behaves in a live environment and to ensure that the setup can be easily replicated on other systems. The deployment also helped to verify that all components work together correctly outside of the development environment.
 \subsection{Deployment Host}
-For hosting the deployment, DigitalOcean was chosen. It allows you to create "droplets", which are virtual machines that can be configured with custom storage, RAM and other specifications. These droplets behave like personal servers but are hosted on the cloud and can be accessed publicly.
-\subsubsection{Setup}
-In our case, we used Ubuntu 22.04 LTS as the operating system. The server was configured with 25 GB of storage and 1 GB of RAM. After creating the "droplet", DigitalOcean assigned ab IP address to it, which makes it reachable over the internet. To configure and manage the server, we used SSH, allowing us to execute commands and install the necessary software remotely.
+For hosting the deployment, \textbf{DigitalOcean} was chosen. It allows the creation of so-called "droplets", which are virtual machines that can be configured with custom storage, RAM and other specifications. These droplets function like personal servers but are hosted on the cloud and can be accessed publicly.
+\subsubsection{Configuration}
+In our case, Ubuntu 22.04 LTS was used as the operating system. The server was configured with 25 GB of storage and 1 GB of RAM. After creating the "droplet", \textbf{DigitalOcean} assigned an IP address to it. Through this IP the server is publicly reachable. To connect to the "droplet", SSH was used, allowing for safe configuration and management over the \textbf{Terminal}.
+\begin{figure}[H]
+	\begin{terminal}
+		ssh -i ~/.ssh/id_rsa_digitalocean root@1.2.3.4
+	\end{terminal}
+	\caption{SSH connection to "droplet" with example IP}
+\end{figure}
 \subsection{Domain}
-To enable HTTPS we decided to use a domain. We eventually aquired the domain “togema.eu” from the provider Namecheap.\\\\
-On the Namecheap dashboard, a DNS record was added to point the domain name to the IP address of the "droplet" from DigitalOcean. After this configuration, the server is publicly accessible in any browser by using the domain name.
-\subsection{Main Components}
-Several core components were used to ensure that the server runs reliably, securely and efficiently. These components handle backend execution, traffic routing and HTTPS configuring.
+In order for the application to be reachable over \textbf{HTTPS}, a domain was needed. After careful consideration the domain “togema.eu” was acquired from the provider \textbf{Namecheap}.
+\subsubsection{Configuration}
+On the Namecheap dashboard, a DNS record was added to point the domain name to the IP address of the "droplet" from DigitalOcean. With this configuration, all internet traffic directed to the domain “togema.eu”, is redirected to the IP address of the \textbf{DigitalOcean} “droplet”.
+\subsection{Deployment Process}
+This section describes the deployment process for this application. It is composed of multiple components, including \textbf{PostgreSQL}, the \textbf{Node.js} backend, the \textbf{React} frontend, as well as additional tools such as \textbf{Nginx}, \textbf{PM2} and \textbf{Certbot}. All steps are executed with the terminal, which is connected to the “droplet” using \textbf{SSH}. The setup is done step by step to ensure everything is configured correctly.\\\\
+First the server is updated using the standard update and upgrade command.
+\begin{figure}[H]
+	\begin{terminal}
+		sudo apt update && sudo apt upgrade -y
+	\end{terminal}
+	\caption{Ubuntu update command}
+\end{figure}
+\subsubsection{Project Cloning}
+Before setting up the individual components, the project should be cloned from the \textbf{Github} repository, https://github.com/Max-Hierzer/Development-Diplomarbeit.
+\subsubsection{PostgreSQL}
+\textbf{PostgreSQL} is installed using the system package manager. After successful installation, a database as well as a user are created manually.
+\begin{figure}[H]
+	\begin{terminal}
+		sudo -u postgres psql
+		CREATE DATABASE db_name;
+		CREATE USER username WITH PASSWORD 'password';
+		GRANT ALL PRIVILEGES ON DATABASE db_name TO username;
+		\q
+	\end{terminal}
+	\caption{Example PostgreSQL database and user creation}
+\end{figure}
+
+When the database as well as the user are created, the production configuration in the \textbf{config.json} file in the backend needs to be adjusted to the correct values.
+\begin{figure}[H]
+	\begin{terminal}
+		"production": {
+			"username": "username",
+			"password": "password",
+			"database": "db_name",
+			"host": "1.2.3.4",
+			"dialect": "postgres"
+		}
+	\end{terminal}
+	\caption{Example config.json}
+\end{figure}
+\subsubsection{Backend and Frontend}
+\textbf{Node.js} needs to be installed and all dependencies in the backend and frontend are installed using \textbf{npm}. Then a \textbf{.env} file is created to store sensitive data like credentials. Once all dependencies are installed, a production build is created in the frontend.
+\begin{figure}[H]
+	\begin{terminal}
+		npm install
+		npm run build
+	\end{terminal}
+	\caption{Dependencies installation and production build creation commands}
+\end{figure}
 \subsubsection{PM2 - Backend Process Manager}
-To run the backend of the application on the server, we used \textbf{PM2}, a \textbf{Node.js} process manager. \textbf{PM2} ensures that the backend application continues running in the background even after the SSH session is closed, which is crucial for a web application, as you do not want to have to always maintain the session.\\\\
-\textbf{PM2} also offers automatic restarts in case of crashes due to errors or unexpected shutdowns. It can log errors and process information, making it easier to monitor and maintain the server over time.
-\subsubsection{Nginx- Web Server and Reverse Proxy}
-To handle incoming traffic and route it properly, we used \textbf{Nginx} as a reverse proxy server. All requests to our domain are forwarded to the backend server running on \textbf{http://localhost:5000}.\\\\
-Nginx also improves performance by efficiently managing multiple connections and reducing load on the backend. Additionally, it helps separate concerns by allowing us to manage routing, SSL, and load balancing in one place, while keeping the backend focused on application logic.
+To run the backend of the application on the server \textbf{PM2}, a \textbf{Node.js} process manager was used. \textbf{PM2} ensures that the backend application continues running in the background even after the \textbf{SSH} session is closed, which is crucial for a web application, as it needs to stay online. \textbf{PM2} also offers automatic restarts in case of crashes due to errors or unexpected shutdowns.\\\\
+\textbf{PM2} is installed and then used to run the backend with the production configuration.
+\begin{figure}[H]
+	\begin{terminal}
+		NODE_ENV=production pm2 start app.js --name backend-app
+		pm2 startup
+		pm2 save
+	\end{terminal}
+	\caption{PM2 commands}
+\end{figure}
+\subsubsection{Nginx - Web Server and Reverse Proxy}
+To handle incoming web traffic and route it properly, \textbf{Nginx} is used as a reverse proxy server. It is configured to listen on port 80 and forward all incoming \textbf{HTTP} requests to the backend service running on localhost.
 \begin{figure}[H]
 	\begin{terminal}
 		server {
@@ -910,13 +968,17 @@ Nginx also improves performance by efficiently managing multiple connections and
 			}
 		}
 	\end{terminal}
-	\caption{Example Nginx setup}
-	\label{fig:nginx-config}
+	\caption{Example Nginx configuration}
 \end{figure}
 
-\subsection{Certbot}
-To enable HTTPS and secure data transmission, we used Certbot in combination with Nginx. Certbot is a tool provided by "Let's Encrypt" that automatically generates and installs SSL certificates on the server.\\\\
-Once configured, Certbot not only sets up the SSL certificate but also updates the Nginx configuration to redirect HTTP traffic to HTTPS. This ensures that all communication between the client and the server is encrypted, improving both privacy and security for users accessing the application through the domain.
+\subsubsection{HTTPS Setup with Certbot}
+To enable \textbf{HTTPS}, \textbf{Certbot} was used in combination with \textbf{Nginx}. It automatically requests and installs \textbf{SSL} certificates from \textbf{Let’s Encrypt} and configures Nginx to use them. Additionally, \textbf{Certbot} configures \textbf{Nginx} to redirect all incoming \textbf{HTTP} traffic to \textbf{HTTPS}. This ensures that all traffic between the client and the server is encrypted and secure.
+\begin{figure}[H]
+	\begin{terminal}
+		certbot --nginx -d togema.eu -d www.togema.eu
+	\end{terminal}
+	\caption{Certbot command}
+\end{figure}
 
 \chapter{Summary}
 
