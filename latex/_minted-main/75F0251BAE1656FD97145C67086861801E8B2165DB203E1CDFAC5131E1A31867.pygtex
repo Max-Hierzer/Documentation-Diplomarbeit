@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}production\PYGZdq{}}:\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{			}\PYG{l+s+s2}{\PYGZdq{}username\PYGZdq{}}:\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}username\PYGZdq{}},
+\PYG{+w}{			}\PYG{l+s+s2}{\PYGZdq{}password\PYGZdq{}}:\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}password\PYGZdq{}},
+\PYG{+w}{			}\PYG{l+s+s2}{\PYGZdq{}database\PYGZdq{}}:\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}db\PYGZus{}name\PYGZdq{}},
+\PYG{+w}{			}\PYG{l+s+s2}{\PYGZdq{}host\PYGZdq{}}:\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}1.2.3.4\PYGZdq{}},
+\PYG{+w}{			}\PYG{l+s+s2}{\PYGZdq{}dialect\PYGZdq{}}:\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}postgres\PYGZdq{}}
+\PYG{+w}{		}\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

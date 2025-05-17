@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{n+nv}{NODE\PYGZus{}ENV}\PYG{o}{=}production\PYG{+w}{ }pm2\PYG{+w}{ }start\PYG{+w}{ }app.js\PYG{+w}{ }\PYGZhy{}\PYGZhy{}name\PYG{+w}{ }backend\PYGZhy{}app
+\PYG{+w}{		}pm2\PYG{+w}{ }startup
+\PYG{+w}{		}pm2\PYG{+w}{ }save
+\end{Verbatim}

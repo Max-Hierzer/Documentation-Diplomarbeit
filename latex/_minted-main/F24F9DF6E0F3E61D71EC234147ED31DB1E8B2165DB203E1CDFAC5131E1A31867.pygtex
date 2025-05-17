@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}ssh\PYG{+w}{ }\PYGZhy{}i\PYG{+w}{ }\PYGZti{}/.ssh/id\PYGZus{}rsa\PYGZus{}digitalocean\PYG{+w}{ }root@1.2.3.4
+\end{Verbatim}

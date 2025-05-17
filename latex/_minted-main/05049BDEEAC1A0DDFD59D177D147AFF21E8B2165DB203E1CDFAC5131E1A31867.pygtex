@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}sudo\PYG{+w}{ }\PYGZhy{}u\PYG{+w}{ }postgres\PYG{+w}{ }psql
+\PYG{+w}{		}CREATE\PYG{+w}{ }DATABASE\PYG{+w}{ }db\PYGZus{}name\PYG{p}{;}
+\PYG{+w}{		}CREATE\PYG{+w}{ }USER\PYG{+w}{ }username\PYG{+w}{ }WITH\PYG{+w}{ }PASSWORD\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}password\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{		}GRANT\PYG{+w}{ }ALL\PYG{+w}{ }PRIVILEGES\PYG{+w}{ }ON\PYG{+w}{ }DATABASE\PYG{+w}{ }db\PYGZus{}name\PYG{+w}{ }TO\PYG{+w}{ }username\PYG{p}{;}
+\PYG{+w}{		}\PYG{l+s+se}{\PYGZbs{}q}
+\end{Verbatim}
