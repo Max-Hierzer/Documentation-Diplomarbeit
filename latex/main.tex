@@ -893,15 +893,23 @@ To ensure responsiveness in each section of the application, \textbf{@media CSS 
 \end{figure}
 \subsection{Individual styling}
 Some areas of the web application required additional styling efforts beyond the general layout to enhance usability, visual clarity and the overall aesthetic appearance. These areas were identified based on both internal testing and feedback from the client and were adapted to meet specific functional and visual needs.
-\paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in a seperat \texttt{register.css} stylesheet for modularity and maintainability.\\\\ 
+\paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in a separate \texttt{register.css} stylesheet for modularity and maintainability.\\\\ 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{pics/register_view.jpg}
 \caption{Registration form}
 \label{fig:register_view}
 \end{figure}
-\paragraph{Create Polls} allows users to configure and launch customized surveys. Due to the flexibility and number of inputs required, the styling and layout needed careful design considerations. The whole page has been divided into smaller parts, which are the metadata of the poll, survey type and group selection, image upload and the questions at the very end as a separate section. The Styling also had to be modular to support reusability in both the creation and editing interfaces.\\\\
-\paragraph{Voting} is the section where users can submit their votes on polls they have permission to participate in. As shown in Figure \ref{fig:voting_view}, the selected poll's name is displayed below the section's heading and the poll selection dropdown, highlighted using the site's primary color. Each question is presented in a separate block, labeled with the question type (e.g. Single Choice, Multiple Choice, Weighted Choice) in the top right corner. Within each block, the question title is emphasized and all answer options are listed along with radio boxes for Single Choice and Weighted Choice questions, and check boxes for multiple choice questions. Weighted Choice questions also include an importance scale, which consists of multiple buttons that users must interact with to assign an importance value to their answer.
+\paragraph{Create Polls} allows users to configure and launch customized polls. Due to the flexibility and number of inputs required, the styling and layout needed careful design considerations. As shown in Figure \ref{fig:create_view} the page is divided into two main sections. \\\\
+The first section contains general information about the poll, including its title, description, poll type, group selection, start and end t´imes and image upload. The poll type is controlled by two selectors, which define whether the poll is public and anonymous. \\\\ 
+The second section is dedicated to composing the poll questions. Each question block includes a selector for the question type and fields for the corresponding answer options. When an additional question is added using the button below the block, a new instance of the default question block displayed in Figure \ref{fig:create_view} is appended. Similarly, new answer fields can be added by using the button on the bottom within each question block. Additionally both questions and answer options can be removed by clicking the red cross next to the respective element.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pics/create_view.png}
+	\caption{Registration form}
+	\label{fig:create_view}
+\end{figure}
+\paragraph{Voting} is the section where users can submit their votes on polls they have permission to participate in. As shown in Figure \ref{fig:voting_view}, the selected poll's name is displayed below the section's heading and the poll selection dropdown, highlighted using the site's primary color. Each question is presented in a separate block, labeled with the question type in the top right corner. Within each block, the question title is emphasized and all answer options are listed along with radio boxes for \texttt{Single Choice} and \texttt{Weighted Choice} questions, and check boxes for \texttt{Multiple Choice} questions. \texttt{Weighted Choice} questions also include an importance scale, which consists of multiple buttons that users must interact with to assign an importance value to their answer.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pics/voting_view.png}
