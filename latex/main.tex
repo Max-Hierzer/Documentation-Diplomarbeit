@@ -438,7 +438,7 @@ Overall, these features provide a smooth and efficient user experience while sig
 \section{Create Polls}
 The Create Polls section represents the poll creation interface of the system. It allows users to create customized polls based on their needs. Customization options include entering a poll name and description, selecting different poll types, assigning the poll to specific groups, defining a start and end date for the voting period, uploading an image and dynamically adding questions with chosen question types and a variable number of answers per question. \\
 \subsection{Error Handling}
-To ensure that polls are created correctly and without missing information, the \textbf{Create Polls} section includes validation in the frontend and transaction in the backend.
+To ensure that polls are created correctly and without missing information, the Create Polls section includes validation in the frontend and transaction in the backend.
 \subsubsection{Frontend}
 In the frontend, validation is handled by the \textbf{validatePollData} function located in a separate file, \texttt{ValidatePolls.js}. This function checks wether any required input fields are left empty. If a required field is empty, a specific message about which field is afflicted is returned, which is then displayed to the user. This improves the user experience and also prevents unnecessary API calls to the backend.
 \begin{figure}[H]
@@ -457,7 +457,7 @@ In the frontend, validation is handled by the \textbf{validatePollData} function
 			return null;
 		}
 	\end{code}
-	\caption{Frontend validation function for poll creation}
+	\caption{Frontend validation}
 	\label{fig:validate-poll-data}
 \end{figure}
 
@@ -478,14 +478,14 @@ A transaction is created and used for all data operations involved in poll creat
 			await transaction.rollback();
 		}
 	\end{code}
-	\caption{This is an example for the transaction usage}
+	\caption{Example backend validation}
 	\label{fig:example-transaction}
 \end{figure} 
 \subsection{Start-/ Endtime}
 To make polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
 \subsubsection{Setting The Times}
-The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \verb|datetime-local| was used. However it was not fully supported by every browser including Firefox, which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
-When a user clicks on the input field, a graphical selector appears, which allows the user to select both ,the date and time, easily.\\\\
+The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \textt{datetime-local} was used. However it was not fully supported by every browser including Firefox, which could only depict the date but not the time selection. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
+When a user clicks on the input field, a graphical selector appears, which allows the user to select both the date and time easily.\\\\
 Once the poll is submitted, the selected start and end times are sent to the \textbf{createPoll} function in the backend via a POST request. There, the received times are converted to JavaScript \textbf{Date} objects before being inserted into the database.
 \subsubsection{Utilizing The Times}
 These time-based conditions are the core feature used to differentiate between the various states of a poll: edit, voting, and results. To apply these conditions, three arrays are created - each corresponding to one of the states - and passed as props to their respective React components.  
