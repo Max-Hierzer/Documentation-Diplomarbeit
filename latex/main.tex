@@ -181,7 +181,9 @@ The seed data was created in the following sequence:
 	\item \textbf{Questiontypes:} The types \texttt{Single Choice}, \texttt{Multiple Choice} and \texttt{Weighted Choice} were inserted. These were essential foundational entries required before any question could be created in the database. 
 	\item \textbf{User:} A default administrator user was seeded. The password was securely hashed using bcrypt. and the user was associated with the admin role, allowing login access to the application.
 	\item \textbf{Group:} A single group named \textit{Admin Group} was created, which could then be associated with polls. The seeder for this data inserted the group in the corresponding table and a entry into the "UserGroups" table, as shown in Figure~\ref{fig:group_seeder} to establish the relationship to the admin user.
-	\begin{figure}[H]
+	\item \textbf{Test Poll:} One sample poll was created, including metadata such as publication dates and visibility settings. This poll featured six questions covering all seeded question types. Each question had associated answers. Additionally, the intermediate tables "QuestionAnswers" and "PollGroups" were populated to establish the correct relationship between questions, answers and groups.
+\end{enumerate}
+\begin{figure}[H]
 	\begin{code}
 	// seeders/20250317-seed-group.js
 	module.exports = {
@@ -206,11 +208,9 @@ The seed data was created in the following sequence:
 	}
 	};
 	\end{code}
-	\caption{Seeder for groups and user-group assignment}
-	\label{fig:group_seeder}
-	\end{figure}
-	\item \textbf{Test Poll:} One sample poll was created, including metadata such as publication dates and visibility settings. This poll featured six questions covering all seeded question types. Each question had associated answers. Additionally, the intermediate tables "QuestionAnswers" and "PollGroups" were populated to establish the correct relationship between questions, answers and groups.
-\end{enumerate}
+\caption{Seeder for groups and user-group assignment}
+\label{fig:group_seeder}
+\end{figure}
 The purpose of this seeded data was to simulate realistic application scenarios, support frontend development and allow for consistent testing. Automating the seeding process improved reproducibility across development environments and enabled immediate access to meaningful application data during testing and debugging. \\ \\
 
 \section{Express.js}
@@ -559,15 +559,8 @@ On the frontend, the image upload is handled within the \texttt{CreatePolls.js} 
 				const data = await res.json();
 				if (res.ok) {
 					setImageUrl(data.imageUrl); 
-				} else {
-					setResponse('Error uploading image');
 				}
-			} catch (error) {
-				console.error('Error uploading image:', error);
-				setResponse('Error uploading image');
-			}
-		};
-		
+		}};
 	\end{code}
 	\caption{handleImageUpload function}
 	\label{fig:handleImageUpload}
@@ -865,12 +858,6 @@ To ensure responsiveness in each section of the application, \textbf{@media CSS 
 	\caption{Navigation}
 	\label{fig:navigation}
 \end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.3\textwidth]{pics/burger_menu.png}
-	\caption{Burger menu}
-	\label{fig:burger_menu}
-\end{figure}
 \subsection{Individual styling}
 Some areas of the web application required additional styling efforts beyond the general layout to enhance usability, visual clarity and the overall aesthetic appearance. These areas were identified based on both internal testing and feedback from the client and were adapted to meet specific functional and visual needs.
 \paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in a seperat \texttt{register.css} stylesheet for modularity and maintainability.\\\\ 
@@ -881,7 +868,6 @@ Some areas of the web application required additional styling efforts beyond the
 \label{fig:register_view}
 \end{figure}
 \paragraph{Create Polls} allows users to configure and launch customized surveys. Due to the flexibility and number of inputs required, the styling and layout needed careful design considerations. The whole page has been divided into smaller parts, which are the metadata of the poll, survey type and group selection, image upload and the questions at the very end as a separate section. The Styling also had to be modular to support reusability in both the creation and editing interfaces.\\\\
-\paragraph{Public and disclosed voting} Gernot Tobias
 \paragraph{Voting} is the section where users can submit their votes on polls they have permission to participate in. As shown in Figure \ref{fig:voting_view}, the selected poll's name is displayed below the section's heading and the poll selection dropdown, highlighted using the site's primary color. Each question is presented in a separate block, labeled with the question type (e.g. Single Choice, Multiple Choice, Weighted Choice) in the top right corner. Within each block, the question title is emphasized and all answer options are listed along with radio boxes for Single Choice and Weighted Choice questions, and check boxes for multiple choice questions. Weighted Choice questions also include an importance scale, which consists of multiple buttons that users must interact with to assign an importance value to their answer.
 \begin{figure}[H]
 	\centering
@@ -889,6 +875,8 @@ Some areas of the web application required additional styling efforts beyond the
 	\caption{Registration form}
 	\label{fig:voting_view}
 \end{figure}
+\\
+\paragraph{Public voting} enables anonymous users to participate in designated public polls. The layout mirrors the sturcture of the standard voting interface. But after submitting their responses, a follow-upp section automatically appears, prompting users to complete a set predefined of demographic questions. These are presented in a similar format ensuring a consistent and user-friendly experience throughout the public voting process.\\\\
 \paragraph{Results} allows users to see the outcome of completed polls they have access to. As illustrated in Figure \ref{fig:results_view}, the interface follows the same layout as the voting section. The number of participants is displayed beneath the poll title. Inside each question block, the title is again highlighted and the answer options are listed with the percentage of votes they received.
 \begin{figure}[H]
 	\centering
