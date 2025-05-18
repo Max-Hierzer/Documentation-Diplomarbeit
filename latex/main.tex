@@ -104,7 +104,7 @@ Diese Diplomarbeit beschreibt die Konzeption und Entwicklung einer Open-Source-W
 \section{Description of performed work}
 The aim of this thesis project was to develop an open-source web application that enables organizations to create and mange secure online polls for their members. The platform is designed to be flexible and reusable, so that any group or association interested in running online votes, can benefit from the developed system.\\\\
 The Authors of the thesis partnered with Liste Madelein Petrovic(LMP), a political party in Austria, who expressed the need for a platform that offers features not currently available in existing solutions. Their input was especially valuable, as it allowed the team to tailor the application to the real-world needs of a user organization.\\\\
-The application includes core features such as poll creation, vote casting, result calculation and a group system. While under active development, the source code is published in a public GitHub repository under the \textbf{MIT License}, ensuring transparency and long-term reusability. \parencite{opensourceinit} Created an open source voting web application.\\\\
+The application includes core features such as poll creation, vote casting, result calculation and a group system. While under active development, the source code is published in a public GitHub repository under the MIT License, ensuring transparency and long-term reusability. \parencite{opensourceinit} Created an open source voting web application.\\\\
 Our aim is to provide a website where different organizations can create and publish polls for their members. Since our finished work will be open source, everyone who wants to create polls will benefit from our work. \\ \\
 
 \section{Methodology of the thesis}
@@ -131,10 +131,10 @@ However, the collaborative nature of the project also introduced challenges. In 
 \subsection{General}
 PostgreSQL was selected as the relational database management system for this project due to its balance of performance, reliability, and advanced feature support. Unlike alternatives such as MySQL, MariaDB or SQLite, PostgreSQL offers robust support for complex data types, full ACID compliance and extensibility through custom functions and indexing methods. \parencite{postgresdocs}\\\\
 While MySQL is widely used, its default configuration prioritizes speed over strict transactional consistency, which may be a drawback for applications requiring high data integrity. SQLite was excluded from consideration because it is more suitable for lightweight or embedded applications and does not support concurrent access by multiple users efficiently. \parencite{postgresvsMysql}\\\\
-The installation was also simple because of the detailed install guide provided by multiple sites like \textbf{w3schools}. To create the first database the SQL shell of PostgreSQL was used in the beginning. But due to its excellent tooling support, the open-source tool \textbf{pgAdmin 4} was later used, because it  provided a powerful and user-friendly interface for managing and visualizing the database. Furthermore, the availability of extensive official documentation and community support made it easier to troubleshoot and adapt the database to the project’s needs. \parencite{pgAdmin} \parencite{pgsinstallation} \\
+The installation was also simple because of the detailed install guide provided by multiple sites like 'w3schools.com'. To create the first database the SQL shell of PostgreSQL was used in the beginning. But due to its excellent tooling support, the open-source tool pgAdmin 4 was later used, because it  provided a powerful and user-friendly interface for managing and visualizing the database. Furthermore, the availability of extensive official documentation and community support made it easier to troubleshoot and adapt the database to the project’s needs. \parencite{pgAdmin} \parencite{pgsinstallation} \\
 \subsection{Database Schema}
 The initial design of the database schema evolved significantly during the project as client requirements changed. However, the “Polls” and “Users” tables were identified early on as the foundational entities in the system, with many other tables referencing or depending on them.\\\\
-To design and visualize the schema, tools such as \textbf{draw.io} and \textbf{dbdiagram.io} were used, enabling direct import of SQL scripts for entity-relationship diagrams. The final database structure consists of 18 tables. Among these, ”UserPolls”, “UserAnswers”, “PollGroups”, and “QuestionAnswers” serve as intermediary tables that implement many-to-many relationships between core entities. \\ \\
+To design and visualize the schema, tools such as 'draw.io' and 'dbdiagram.io' were used, enabling direct import of SQL scripts for entity-relationship diagrams. The final database structure consists of 17 tables. Among these, ”UserPolls”, “UserAnswers”, “PollGroups”, and “QuestionAnswers” serve as intermediary tables that implement many-to-many relationships between core entities. \\ \\
 \begin{figure}[!htb]  
     \centering
     \includegraphics[width=1.1\textwidth]{pics/ERD_NEW.png}
@@ -149,17 +149,17 @@ For the backend Node.js was used. It is a JavaScript runtime environment, that a
 \subsection{Advantages}  
 One of the main advantages of Node.js is its non-blocking I/O model. This means it does not wait for certain processes, such as reading from a file or database, to finish before continuing with other operations. Instead, it starts a process and immediately listens for the next event. When the initial process finishes, a callback function is executed. This makes it possible for Node.js to handle multiple operations concurrently, even though it is inherently single threaded. This results in high performance and responsiveness. \parencite{nodejs-nonblocking}\\\\
 Another advantage of Node.js is that it creates a unified language environment because both the frontend and the backend can be programmed in JavaScript. This simplifies the development process, improves code reusability, and reduces the learning curve, since developers do not need to learn a new programming language for the backend.\\\\
-Node.js also has the npm (Node Package Manager) which provides access to a vast collection of reusable packages and modules. These include pre-built code solutions to simplify common requirements like encryption and also sending emails, both of which where used in this project. \parencite{mdn-express-nodejs} \\ \\
+Node.js also has the npm (Node Package Manager) which provides access to a vast collection of reusable packages and modules. These include pre-built code solutions to simplify common requirements like encryption and also sending emails, both of which were used in this project. \parencite{mdn-express-nodejs} \\ \\
 
 \section{Sequelize}
-Sequelize was selected as the Object-Relational-Mapping(ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in a project with complex data relationships and evolving schema requirements.\\\\
+Sequelize was selected as the Object-Relational-Mapping (ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in a project with complex data relationships and evolving schema requirements.\\\\
 Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness. \parencite{sequelizegit}\\\\
 The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
 When compared to other ORMs like Prisma, Sequelize offers a mature and stable solution with wide database compatibility and a strong community. While Prisma provides a modern, type-safe approach with auto-generated types, Sequelize's straightforward API and extensive features make it a reliable choice for this project, because of its simplicity and flexibility. \parencite{Ormcomparemedium} \parencite{Ormcomparedhiwise} \\
 
 \subsection{Sequelize Seeders}
-In Sequelize, seeders (seed files) are scripts usedd to populate database tables with initial or sample data. Each seed file typically exports \textbf{up} and \textbf{down} functions that perform bulk inserts and deletes. Seeders are especially helpful during development and testing phases to ensure consistent and predictable database states. \parencite{sequelizemigrations}\\\\
-In this project, the Sequelize-CLI tool was used to generate and execute seeders. For example, the command \textbf{npx sequelize-cli seed:generate --name demo-user} generates a default seed file as seen in the figure~\ref{fig:generated_seeder}. The file is named using timestamp format like \textbf{20250516163426-demo-user.js} to guarantee the correct execution order. To insert data, the command \textbf{npx sequelize-cli db:seed:all} was used, while \textbf{npx sequelize-cli db:seed:undo:all} removed the data from the database.\\\\
+In Sequelize, seeders (seed files) are scripts used to populate database tables with initial or sample data. Each seed file typically exports \textbf{up} and \textbf{down} functions that perform bulk inserts and deletes. Seeders are especially helpful during development and testing phases to ensure consistent and predictable database states. \parencite{sequelizemigrations}\\\\
+In this project, the Sequelize-CLI tool was used to generate and execute seeders. For example, the command \textbf{npx sequelize-cli seed:generate --name demo-user} generates a default seed file as seen in the figure~\ref{fig:generated_seeder}. The file is named using timestamp format like \texttt{20250516163426-demo-user.js} to guarantee the correct execution order. To insert data, the command \textbf{npx sequelize-cli db:seed:all} was used, while \textbf{npx sequelize-cli db:seed:undo:all} removed the data from the database.
 \begin{figure}[H]
 	\begin{code}
 		'use strict';
@@ -178,9 +178,9 @@ In this project, the Sequelize-CLI tool was used to generate and execute seeders
 The seed data was created in the following sequence:
 \begin{enumerate}
 	\item \textbf{Roles:} Three roles were inserted, admin, poweruser and normal, each with a description to reflect different leves of access. These were seeded first to to satisfy foreign key constraints in later data.
-	\item \textbf{Questiontypes:} The types \textbf{Single Choice}, \textbf{Multiple Choice} and \textbf{Weighted Choice} were inserted. These were essential foundational entries required before any question could be created in the database. 
+	\item \textbf{Questiontypes:} The types \texttt{Single Choice}, \texttt{Multiple Choice} and \texttt{Weighted Choice} were inserted. These were essential foundational entries required before any question could be created in the database. 
 	\item \textbf{User:} A default administrator user was seeded. The password was securely hashed using bcrypt. and the user was associated with the admin role, allowing login access to the application.
-	\item \textbf{Group:} A single group named \textbf{Admin Group} was created, which could then be associated with polls. The seeder for this data inserted the group in the corresponding table and a entry into the \textbf{UserGroups} table, as shown in Figure~\ref{fig:group_seeder} to establish the relationship to the admin user.
+	\item \textbf{Group:} A single group named \textit{Admin Group} was created, which could then be associated with polls. The seeder for this data inserted the group in the corresponding table and a entry into the "UserGroups" table, as shown in Figure~\ref{fig:group_seeder} to establish the relationship to the admin user.
 	\begin{figure}[H]
 	\begin{code}
 	// seeders/20250317-seed-group.js
@@ -209,7 +209,7 @@ The seed data was created in the following sequence:
 	\caption{Seeder for groups and user-group assignment}
 	\label{fig:group_seeder}
 	\end{figure}
-	\item \textbf{Test Poll:} One sample poll was created, including metadata such as publication dates and visibility settings. This poll featured six questions covering all seeded question types. Each question had associated answers. Additionally, the intermediate tables \textbf{QuestionAnswers} and \textbf{PollGroups} were populated to establish the correct relationship between questions, answers and groups.
+	\item \textbf{Test Poll:} One sample poll was created, including metadata such as publication dates and visibility settings. This poll featured six questions covering all seeded question types. Each question had associated answers. Additionally, the intermediate tables "QuestionAnswers" and "PollGroups" were populated to establish the correct relationship between questions, answers and groups.
 \end{enumerate}
 The purpose of this seeded data was to simulate realistic application scenarios, support frontend development and allow for consistent testing. Automating the seeding process improved reproducibility across development environments and enabled immediate access to meaningful application data during testing and debugging. \\ \\
 
@@ -225,11 +225,11 @@ There are multiple alternative frameworks that were evaluated in the selection p
 \subsection{Architecture}
 The backend is organized into the following layers:
 \begin{itemize}
-	\item \textbf{Routing Layer:} This layer defines the application's HTTP endpoints and maps incoming requests to the appropriate controller functions. Routes are grouped thematically using \verb|express.Router| (e.g., \verb|/api/users|) to maintain modularity and logical organization.
+	\item \textbf{Routing Layer:} This layer defines the application's HTTP endpoints and maps incoming requests to the appropriate controller functions. Routes are grouped thematically using \textbf{express.Router} to maintain modularity and logical organization.
 	
 	\item \textbf{Controller Layer:} Controllers serve as intermediaries between the routing layer and the business logic. They are responsible for extracting relevant data from incoming requests, invoking the necessary service functions, and constructing structured responses. This ensures that request handling remains concise and focused.
 	
-	\item \textbf{Service Layer:} This layer contains the main application logic and performs database operations using \texttt{Sequelize}. Each service function handles one use case, such as creating a user or poll. Data access is performed directly within the service layer. \\
+	\item \textbf{Service Layer:} This layer contains the main application logic and performs database operations using Sequelize. Each service function handles one use case, such as creating a user or poll. Data access is performed directly within the service layer. \\
 \end{itemize}
 \subsection{Error Handling}
 In the Express.js backend, the error handling for the application is integrated directly into the controllers. The controller interacts with the service layer and handles HTTP requests. 
@@ -250,21 +250,20 @@ In the Express.js backend, the error handling for the application is integrated 
 	\label{fig:controller-err}
 \end{figure}
 \noindent
-In the code above, the updatePoll function attempts to handle errors using a try/catch. When an error occurs during the execution of the updatePoll service function, the error is caught in the catch block. The server then responds with a 500 Internal Server Error status, including the error message in the response body. This ensures that the client is informed about the failure. This is the most basic form of error handling and can be improved in the future e.g. by using specific errors like "400 Bad Request" or "404 Not Found" instead of the simple "500 Internal Server Error" to give a more detailed description to the client. \\
+In the code above, \textbf{updatePoll} attempts to handle errors using a try/catch. When an error occurs during the execution of the updatePoll service function, the error is caught in the catch block. The server then responds with a \texttt{500 Internal Server Error} status, including the error message in the response body. This ensures that the client is informed about the failure. This is the most basic form of error handling and can be improved in the future e.g. by using specific errors like \texttt{400 Bad Request} or \texttt{404 Not Found} instead of the inaccurate \texttt{500 Internal Server Error} to give a more detailed description to the client. \\
 \subsection{CORS}
 In the application, Cross-Origin Resource Sharing (CORS) is managed using the cors middleware in Express.js. CORS is a security feature implemented by web browsers that controls how web pages from one domain can make requests to a backend server hosted on another domain. It is particularly important when the frontend and backend are hosted on different origins, such as when they are running on different ports during development or on different subdomains in production. \\ \\
 In this case, CORS is configured with the default settings, meaning that the backend allows cross-origin requests from any domain. This default setup permits all HTTP methods (like GET, POST, PUT, DELETE, etc.) and headers from any origin, making it very permissive. This configuration is helpful during the development phase, as it avoids the need for specifying which domains or methods are allowed. \\ \\
 However, while the default configuration is useful in development, it is not recommended for production environments due to security concerns. Allowing any origin to interact with the backend can expose the server to potentially malicious requests from untrusted sources. It is generally better to restrict CORS to specific trusted domains and limit the allowed HTTP methods and headers to only those necessary for the application. Therefore, this should be improved in the future. \cite{mdn-cors} \\ \\
 \section{React.js}
-React.js is a declarative. component-based JavaScript library, which is widely adopted in modern web development due to its modular structure and virtual DOM optimization. In this application, React is used as the frontend framework responsible for rendering the user interface, managing local and global state, and communicating with the backend API. \cite{react-docs}\\
-Several alternative frameworks were taken into consideration during the selection process:
-\paragraph{Vue.js} offers a simple and intuitive syntax that would lower the learning curve for new developers. However, since React has a larger ecosystem, widespread community support and a better compatibility with third-party libraries, it was chosen over Vue. \cite{react-docs} \cite{vue-docs} \\ \\
-\paragraph{Angular} is a comprehensive frontend framework with built-in support for routing and forms. While powerful, Angular is way more complex and is harder to learn which is why React was preferred for the scope of this project. \cite{angular-docs} \\
-Besides these two, smaller frameworks like Svelte were also considered, but due to smaller communities and less comprehensive documentation they were not chosen. Another reason why React was the preferred framework is because the developers were already familiar with the Syntax and used it for small exercises on various platforms like "freecodecamp.org". \\
+React.js is a declarative. component-based JavaScript library, which is widely adopted in modern web development due to its modular structure and virtual DOM optimization. In this application, React is used as the frontend framework responsible for rendering the user interface, managing local and global state, and communicating with the backend API. Several alternative frameworks were taken into consideration during the selection process. \cite{react-docs}
+\paragraph{Vue.js} offers a simple and intuitive syntax that would lower the learning curve for new developers. However, since React has a larger ecosystem, widespread community support and a better compatibility with third-party libraries, it was chosen over Vue. \cite{react-docs} \cite{vue-docs}
+\paragraph{Angular} is a comprehensive frontend framework with built-in support for routing and forms. While powerful, Angular is way more complex and is harder to learn which is why React was preferred for the scope of this project. \cite{angular-docs} \\ \\
+Besides these two, smaller frameworks like Svelte were also considered, but due to smaller communities and less comprehensive documentation they were not chosen. Another reason why React was the preferred framework is because the developers were already familiar with the Syntax and used it for small exercises on various platforms like 'freecodecamp.org'. \\
 \subsection{Architecture}
 React.js is based on a component oriented architecture, where the user interface is broken down into small, reusable building blocks called components. Each of these is typically a function that returns a declarative description of how the UI should look like, using JavaScript XML (JSX). Every component also manages its own internal logic and state, responds to user interaction and renders the content dynamically. \\ \\
-React components receive configuration and data through props, which are passed from their parent components. This allows for a unidirectional data flow and promotes component reusability. In addition to props, components can manage internal dynamic data using React’s Hooks API. Hooks are special functions that enable state management and side effect handling in functional components—capabilities that were previously only available in class components. \cite{react-docs} \cite{mdn-react} \\ \\
-The most commonly used hooks are useState and useEffect. The useState hook allows components to declare and update local state variables, while useEffect lets developers perform side effects such as data fetching, DOM manipulation, or setting up subscriptions. For example, useEffect can be configured to run after the component mounts or whenever specific values change. Beyond these, React provides a range of built-in hooks such as useContext for accessing context values, useReducer for complex state logic, and useRef for referencing DOM elements or persisting values across renders without causing re-renders. Overall, hooks offer a more expressive and modular approach to handling component logic, encouraging better separation of concerns and improved code maintainability. \cite{react-hooks} \\ \\
+React components receive configuration and data through props, which are passed from their parent components. This allows for a unidirectional data flow and promotes component reusability. In addition to props, components can manage internal dynamic data using React’s Hooks API. Hooks are special functions that enable state management and side effect handling in functional components capabilities that were previously only available in class components. \cite{react-docs} \cite{mdn-react} \\ \\
+The most commonly used hooks are \textbf{useState} and \textbf{useEffect}. The \textbf{useState} hook allows components to declare and update local state variables, while \textbf{useEffect} lets developers perform side effects such as data fetching, DOM manipulation, or setting up subscriptions. For example, \textbf{useEffect} can be configured to run after the component mounts or whenever specific values change. Beyond these, React provides a range of built-in hooks such as \textbf{useContext} for accessing context values, \textbf{useReducer} for complex state logic, and \textbf{useRef} for referencing DOM elements or persisting values across renders without causing re-renders. Overall, hooks offer a more expressive and modular approach to handling component logic, encouraging better separation of concerns and improved code maintainability. \cite{react-hooks}
 
 \section{PWA}
 “A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.” \parencite{mdn-pwa} \\\\
@@ -285,23 +284,19 @@ The manifest makes it possible to install the PWA from the browser. It is a json
 		{
 			"short_name": "Survey-Tool",
 			"name": "Survey-Tool - LMP",
-			"icons": [
-			{
+			"icons": [{
 				"src": "favicon.ico",
 				"sizes": "64x64 32x32 24x24 16x16",
 				"type": "image/x-icon"
-			},
-			{
+			},{
 				"src": "logo192.png",
 				"type": "image/png",
 				"sizes": "192x192"
-			},
-			{
+			},{
 				"src": "logo512.png",
 				"type": "image/png",
 				"sizes": "512x512"
-			}
-			],
+			}],
 			"start_url": ".",
 			"display": "standalone",
 			"theme_color": "#000000",
