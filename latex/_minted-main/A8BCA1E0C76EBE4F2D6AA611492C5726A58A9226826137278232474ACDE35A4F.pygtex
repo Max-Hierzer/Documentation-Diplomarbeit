@@ -7,7 +7,8 @@
 \PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{formData}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{FormData}\PYG{p}{();}
 \PYG{+w}{			}\PYG{n+nx}{formData}\PYG{p}{.}\PYG{n+nx}{append}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}image\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{file}\PYG{p}{);}
 \PYG{+w}{			}\PYG{k}{try}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
-\PYG{+w}{				}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{res}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{fetch}\PYG{p}{(}\PYG{l+s+sb}{`}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{process}\PYG{p}{.}\PYG{n+nx}{env}\PYG{p}{.}\PYG{n+nx}{REACT\PYGZus{}APP\PYGZus{}API\PYGZus{}URL}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{/api/upload\PYGZhy{}image`}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{res}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{fetch}\PYG{p}{(}
+\PYG{+w}{					}\PYG{l+s+sb}{`}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{process}\PYG{p}{.}\PYG{n+nx}{env}\PYG{p}{.}\PYG{n+nx}{REACT\PYGZus{}APP\PYGZus{}API\PYGZus{}URL}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{/api/upload\PYGZhy{}image`}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{					}\PYG{n+nx}{method}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}POST\PYGZsq{}}\PYG{p}{,}
 \PYG{+w}{					}\PYG{n+nx}{body}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{formData}\PYG{p}{,}
 \PYG{+w}{				}\PYG{p}{\PYGZcb{});}

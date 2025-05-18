@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{ImportanceScale}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{questionId}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{onImportanceChange}\PYG{+w}{ }\PYG{p}{\PYGZcb{})}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nx}{importance}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{setImportance}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{useState}\PYG{p}{(}\PYG{k+kc}{null}\PYG{p}{);}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{scaleValues}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{7}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{8}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{9}\PYG{p}{];}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{handleSelectImportance}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{value}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{setImportance}\PYG{p}{(}\PYG{n+nx}{value}\PYG{p}{);}
+\PYG{+w}{				}\PYG{n+nx}{onImportanceChange}\PYG{p}{(}\PYG{n+nx}{questionId}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{value}\PYG{p}{);}
+\PYG{+w}{				}\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{value}\PYG{p}{);}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{};}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{return}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{			}\PYG{o}{\PYGZlt{}}\PYG{n+nx}{div}\PYG{+w}{ }\PYG{n+nx}{className}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}scale\PYGZhy{}container\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+\PYG{+w}{			}\PYG{o}{\PYGZlt{}}\PYG{n+nx}{div}\PYG{+w}{ }\PYG{n+nx}{className}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}button\PYGZhy{}container\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+\PYG{+w}{			}\PYG{p}{\PYGZob{}}\PYG{n+nx}{scaleValues}\PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{((}\PYG{n+nx}{value}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{				}\PYG{o}{\PYGZlt{}}\PYG{n+nx}{button}
+\PYG{+w}{				}\PYG{n+nx}{key}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nx}{value}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{				}\PYG{n+nx}{onClick}\PYG{o}{=}\PYG{p}{\PYGZob{}()}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{handleSelectImportance}\PYG{p}{(}\PYG{n+nx}{value}\PYG{p}{)\PYGZcb{}}
+\PYG{+w}{				}\PYG{n+nx}{className}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nx}{importance}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{n+nx}{value}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}scale\PYGZhy{}button\PYGZhy{}selected\PYGZsq{}}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}scale\PYGZhy{}button\PYGZsq{}}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{				}\PYG{o}{\PYGZgt{}}
+\PYG{+w}{				}\PYG{p}{\PYGZob{}}\PYG{n+nx}{value}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{				}\PYG{o}{\PYGZlt{}}\PYG{err}{/button\PYGZgt{}}
+\PYG{+w}{				}\PYG{p}{))\PYGZcb{}}
+\PYG{+w}{			}\PYG{o}{\PYGZlt{}}\PYG{err}{/div\PYGZgt{}}
+\PYG{+w}{			}\PYG{o}{\PYGZlt{}}\PYG{err}{/div\PYGZgt{}}
+\PYG{+w}{			}\PYG{p}{);}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{};}
+\end{Verbatim}
