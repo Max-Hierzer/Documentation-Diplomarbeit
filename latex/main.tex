@@ -552,7 +552,8 @@ On the frontend, the image upload is handled within the \texttt{CreatePolls.js} 
 			const formData = new FormData();
 			formData.append("image", file);
 			try {
-				const res = await fetch(`${process.env.REACT_APP_API_URL}/api/upload-image`, {
+				const res = await fetch(
+					`${process.env.REACT_APP_API_URL}/api/upload-image`, {
 					method: 'POST',
 					body: formData,
 				});
