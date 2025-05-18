@@ -84,11 +84,13 @@
 % Abstract
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
+This thesis details the design and development of an open-source web application for secure and flexible online voting, developed in collaboration with the Austrian political party Liste Madeleine Petrovic (LMP). The application’s backend is built using Node.js, Express, and Sequelize, with a PostgreSQL database, while the frontend is implemented with React and enhanced with Progressive Web App (PWA) functionality for cross-platform compatibility. The project was developed using agile methodologies, with continuous feedback loops through regular meetings with the LMP to ensure the system met real-world requirements. Key features include a secure role-based login system, email-based user registration, poll creation with customizable question types - including single, multiple, and weighted choice - demographic data collection, and multiple voting modes such as anonymous, disclosed, and public voting. Additionally, accessibility and responsive design were prioritized to support a broad user base. The platform is published under the MIT license to promote transparency, reusability, and further development by other organizations in need of digital voting solutions.
 \newpage
 
 % Abstract
 \chapter*{Kurzfassung}
 \addcontentsline{toc}{chapter}{Kurzfassung}
+Diese Diplomarbeit beschreibt die Konzeption und Entwicklung einer Open-Source-Webanwendung für sicheres und flexibles Online-Voting, die in Zusammenarbeit mit der österreichischen politischen Partei Liste Madeleine Petrovic (LMP) realisiert wurde. Das Backend der Anwendung basiert auf Node.js, Express und Sequelize in Kombination mit einer PostgreSQL-Datenbank, während das Frontend mit React umgesetzt und durch Progressive-Web-App-Funktionalität (PWA) für plattformübergreifende Kompatibilität erweitert wurde. Die Entwicklung erfolgte nach agilen Methoden mit kontinuierlichem Feedback durch regelmäßige Meetings mit der LMP, um sicherzustellen, dass das System realen Anforderungen gerecht wird. Zu den zentralen Funktionen zählen ein sicheres, rollenbasiertes Login-System, eine benutzerfreundliche Registrierung per E-Mail, die Erstellung von Umfragen mit anpassbaren Fragetypen – darunter Single-, Multiple- und Weighted-Choice-Fragen –, die Erhebung demografischer Daten sowie verschiedene Wahlmodi wie anonyme, offene und öffentliche Abstimmungen. Darüber hinaus wurden Barrierefreiheit und responsives Design gezielt berücksichtigt, um eine breite Nutzerbasis zu unterstützen. Die Plattform wird unter der MIT-Lizenz veröffentlicht, um Transparenz, Wiederverwendbarkeit und Weiterentwicklung durch andere Organisationen zu fördern, die eine digitale Abstimmungsplattform benötigen.
 \newpage
 
 % Inhaltsverzeichnis
@@ -215,9 +217,12 @@ The purpose of this seeded data was to simulate realistic application scenarios,
 \section{Express.js}
 Express.js is a flexible web framework for Node.js which is widely used for building RESTful APIs. It provides a middleware-based architecture that allows for clear routing, request handling, and modular code organization. In this application. Express serves as the backend framework that handles HTTP requests to handle communication between the frontend and the database. \cite{expr-base} \\ \\
 There are multiple alternative frameworks that were evaluated in the selection process:
-\paragraph{NestJS} provides a structured and scalable framework based on TypeScript. The ideal use for NestJS would be a large enterprise project, which this thesis is not. This adds complexity and a way steeper learning curve, which is why this option was not chosen. \cite{expr-comp}\cite{expr-comp2}\cite{nest-js}
-\paragraph{Fastify} is a performance-orientated alternative to Express.js, which even outperforms it. However, since this framework is less mature, there is less documentation and a smaller community for support in comparison to what Express.js is offering. Since the developers of this thesis had no real experience with APIs the more developer-friendly Express was chosen over Fastify. \cite{expr-comp} \cite{expr-comp2} \\ \\
-Another option is Hono, which is a new ultra-lightweight framework, but is still niche and lacks in support and documentation, which is why Express was favored. FeatherJS is built on Express, designed for real-time applications. Since real-time features were not needed for this platform, FeatherJS was not chosen. \cite{expr-comp} \cite{expr-comp2}
+\begin{itemize}
+	\item \textbf{NestJS} provides a structured and scalable framework based on TypeScript. The ideal use for NestJS would be a large enterprise project, which this thesis is not. This adds complexity and a way steeper learning curve, which is why this option was not chosen. \cite{expr-comp} \cite{expr-comp2} \cite{nest-js}
+	\item \textbf{Fastify} is a performance-orientated alternative to Express.js, which even outperforms it. However, since this framework is less mature, there is less documentation and a smaller community for support in comparison to what Express.js is offering. Since the developers of this thesis had no real experience with APIs the more developer-friendly Express was chosen over Fastify. \cite{expr-comp} \cite{expr-comp2}
+	\item Other options were the following two. Hono, which is a new ultra-lightweight framework, but is still niche and lacks in support and documentation, which is why Express was favored. FeatherJS is built on Express, designed for real-time applications. Since real-time features were not needed for this platform, FeatherJS was not chosen. \cite{expr-comp} \cite{expr-comp2}
+\end{itemize}
+
 \subsection{Architecture}
 The backend is organized into the following layers:
 \begin{itemize}
