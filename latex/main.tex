@@ -566,6 +566,7 @@ On the frontend, the image upload is handled within the \texttt{CreatePolls.js} 
 	\label{fig:handleImageUpload}
 \end{figure}
 \noindent
+
 This function performs the following steps.
 \begin{enumerate}
 	\item A local preview of the selected image is created using the browser's \textbf{URL.createObjectURL()} method. This provides immediate feedback to the user by displaying the image in the form before it is uploaded.
@@ -601,9 +602,41 @@ Figure~\ref{fig:multiplechoice} illustrates how multiple choice questions are pr
 	\label{fig:multiplechoice}
 \end{figure}
 \subsubsection{Weighted Choice}
-In weighted choice questions, users select one answer from a set of predefined options and assign an importance level to their choice using a scale from one to nine.\\\\
-This question type gives more insight into preferences than single or multiple choice questions, because poll participants not only select which answer they prefer, but also indicate how important it is for them. As a result, it becomes easier to decide wether an issue should be prioritized or not.\\\\
-The importance scale is implemented as a custom designed component consisting of nine buttons, each representing a value from one (least important) to nine (most important). If the question type is weighted choice, this scale is displayed along with the standard single choice option.\\
+The \texttt{Weighted Choice} question type implemented in this application is a variation of the Likert scale. It combines a basic \texttt{Single Choice} question with an additional importance scale. This way users can assign a weight to the answers they have given. \\\\
+Likert scales are commonly used to measure opinions or attitudes by offering a range of answer options from “strongly disagree” to “strongly agree”. This type of question lets people show not just what they think, but also how strongly they feel. The Likert scale is helpful because it turns personal opinions into numbers that can be analyzed. As a result, it becomes easier to decide whether an issue should be prioritized or not.\parencite{likert-scale}
+In this application, the importance scale is implemented as a custom-designed component consisting of nine buttons, each representing a value from one (least important) to nine (most important). When a button is clicked, the selected value is passed to the parent component via the \texttt{handleSelectImportance} function, and the visual style of the selected button is updated to reflect the user’s choice.
+\begin{figure}[H]
+	\begin{code}
+		const ImportanceScale = ({ questionId, onImportanceChange }) => {
+			const [importance, setImportance] = useState(null);
+			const scaleValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+			
+			const handleSelectImportance = (value) => {
+				setImportance(value);
+				onImportanceChange(questionId, value);
+				console.log(value);
+			};
+			
+			return (
+			<div className="scale-container">
+			<div className="button-container">
+			{scaleValues.map((value) => (
+				<button
+				key={value}
+				onClick={() => handleSelectImportance(value)}
+				className={importance === value ? 'scale-button-selected' : 'scale-button'}
+				>
+				{value}
+				</button>
+				))}
+			</div>
+			</div>
+			);
+		};
+	\end{code}
+	\caption{Importance scale implementation}
+	\label{fig:importance-scale}
+\end{figure} 
 \subsection{Demographic Questions}
 To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls, since the created user would be part of the organization using our project and therefore the polls creator would have the data already. If the user is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system, where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections, with the difference that \texttt{weighted-choice} is not an option, since demographic data is more like a fact less an opinion.
 \begin{figure}[h!]
@@ -875,7 +908,6 @@ Some areas of the web application required additional styling efforts beyond the
 	\caption{Registration form}
 	\label{fig:voting_view}
 \end{figure}
-\\
 \paragraph{Public voting} enables anonymous users to participate in designated public polls. The layout mirrors the sturcture of the standard voting interface. But after submitting their responses, a follow-upp section automatically appears, prompting users to complete a set predefined of demographic questions. These are presented in a similar format ensuring a consistent and user-friendly experience throughout the public voting process.\\\\
 \paragraph{Results} allows users to see the outcome of completed polls they have access to. As illustrated in Figure \ref{fig:results_view}, the interface follows the same layout as the voting section. The number of participants is displayed beneath the poll title. Inside each question block, the title is again highlighted and the answer options are listed with the percentage of votes they received.
 \begin{figure}[H]
