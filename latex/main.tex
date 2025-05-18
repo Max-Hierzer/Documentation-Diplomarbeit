@@ -484,7 +484,7 @@ A transaction is created and used for all data operations involved in poll creat
 \subsection{Start-/ Endtime}
 To make polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
 \subsubsection{Setting The Times}
-The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \textt{datetime-local} was used. However it was not fully supported by every browser including Firefox, which could only depict the date but not the time selection. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
+The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \texttt{datetime-local} was used. However it was not fully supported by every browser including Firefox, which could only depict the date but not the time selection. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
 When a user clicks on the input field, a graphical selector appears, which allows the user to select both the date and time easily.\\\\
 Once the poll is submitted, the selected start and end times are sent to the \textbf{createPoll} function in the backend via a POST request. There, the received times are converted to JavaScript \textbf{Date} objects before being inserted into the database.
 \subsubsection{Utilizing The Times}
