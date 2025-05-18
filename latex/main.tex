@@ -225,7 +225,7 @@ There are multiple alternative frameworks that were evaluated in the selection p
 \subsection{Architecture}
 The backend is organized into the following layers:
 \begin{itemize}
-	\item \textbf{Routing Layer:} This layer defines the application's HTTP endpoints and maps incoming requests to the appropriate controller functions. Routes are grouped thematically using \textbf{express.Router} to maintain modularity and logical organization.
+	\item \textbf{Routing Layer:} This layer defines the application's HTTP endpoints and maps incoming requests to the appropriate controller functions. Routes are grouped thematically using \textbf{express.Router()} to maintain modularity and logical organization.
 	
 	\item \textbf{Controller Layer:} Controllers serve as intermediaries between the routing layer and the business logic. They are responsible for extracting relevant data from incoming requests, invoking the necessary service functions, and constructing structured responses. This ensures that request handling remains concise and focused.
 	
@@ -317,7 +317,7 @@ The password is sent to the backend in plaintext over HTTPS. It is not encrypted
 The backend receives the login request through the \texttt{/api/login} API route that forwards the data to the \textbf{handleFetchLogin} function in the \texttt{userController.js}. It extracts the username and password from the request body and passes them to the \textbf{fetchLogin} function in the user service. \\\\
 This function first checks if a user with the provided username even exists in the database. If no user is found, it returns an error message stating that either the username or password is invalid. It was intentionally chosen not to specify which of the two parts is incorrect in order to prevent attackers from being able to determine whether a username exists in the system. This provides protection against user enumeration attacks. \\\\
 If a user is found, the provided password is then compared to the hashed password stored in the database using bcrypt's comparison method, \textbf{bcrypt.compare()}. In case the passwords do not match, the same error message mentioned above is returned to the frontend. \\\\
-However, if the password is correct, the backend returns a response containing a success indicator, the user's unique ID ("userId"), their username, the assigned role ID ("roleId"), and the name of the role ("roleName"). \\
+However, if the password is correct, the backend returns a response containing a success indicator, the user's unique ID \textit{userId}, their username, the assigned role ID \textit{roleId}, and the name of the role \textit{roleName}. \\
 \subsection{Error Handling}
 Error handling is implemented consistently across both frontend and backend to ensure security and user-friendliness. If a login attempt fails, whether due to an incorrect username, password, or both, the system always returns the same general error message. This prevents attackers from determining whether a specific username exists in the system.\\\\
 Sensitive data like passwords is handled securely. They are not stored in plain text. Instead they are hashed using bcrypt before being inserted into the database. Furthermore, communication between frontend and backend is encrypted through HTTPS. This ensures that all transmitted data remains private and protected from unauthorized access. \\ \\
@@ -388,7 +388,7 @@ To use the MailerSend API, a transporter is created with, like in Figure \ref{fi
 \end{figure}
 
 \subsection{Roles}
-In the application, each user record includes a \textit{roleId} that indicates the user's assigned role. This reflects the Role-Based Access Control model in which "each user is assigned one or more roles, and each role is assigned one or more privileges". \parencite{rbac}\\\\
+In the application, each user record includes a \textit{roleId} that indicates the user's assigned role. This reflects the Role-Based Access Control (RBAC) model in which "each user is assigned one or more roles, and each role is assigned one or more privileges". \parencite{rbac}\\\\
 In this project three roles with increasingly broader permissions were defined:
 \begin{enumerate}
 	\item \textbf{Admin (roleId 1:)} Can register users, create and manage polls and view all results.
@@ -397,12 +397,12 @@ In this project three roles with increasingly broader permissions were defined:
 \end{enumerate}
 The React front-end uses conditional rendering so that UI components appear only if the current user's role permits them. For instance, an Admin user will see the navigation element for registration that are hidden from Powerusers and Normals. Similarly, a Normal user will only see the voting and result option and not the administrative views. In this way the UI dynamically enforces the role permissions stored in the database, aligning with the RBAC principle of tying access decisions to user roles. \parencite{rbac}\\\\
 Implementing a role-based system with three distinct roles is crucial for the functionality and security of the application. By assigning permissions flexibly, a clear hierarchy is established, enhancing both user experience and data integrity. This structure facilitates efficient task delegation and scalability, allowing the application to be easily expanded with additional roles in the future. The role system thus significantly contributes to the security, organization, and user-friendliness of the polling application.\\\\
-This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textbf{roleId}. The roles are defined and managed exclusively within the database. Role-based access is determined solely based on these database-level associations.\\\\
+This functionality was implemented by introducing a "Roles" table, which maintains a one-to-many relationship with the "Users" table. Each user is associated with a specific role through the foreign key \textit{roleId}. The roles are defined and managed exclusively within the database. Role-based access is determined solely based on these database-level associations.\\\\
 \paragraph{Advantages and Limitations of RBAC:} RBAC is widely adopted because it simplifies access management in large systems. By aggregating permissions into organizational roles, RBAC "provides a powerful mechanism for reducing the complexity, cost and potential for error" in assigning user privileges. In practice, studies have shown that RBAC can yield significant efficiency and security benefits: a NIST analysis found that implementing RBAC led to savings from reduced downtime and more efficient provisioning and policy administration, in addition to the security gains. At the same time, RBAC has recognized limitations. In particular, defining a good set of roles up front can be difficult, especially in dynamic enviroments. Researchers note that a pure RBAC scheme may be inflexible to context-dependent rules and may suffer a "role explosion" if many narrowly-scoped roles must be created to cover all cases.. Consequently, purely role-based systems can struggle with fine-grained or rapidly changing access requirements. For these reasons, practitioners sometimes augment RBAC with additional models when highly dynamic or context-sensitive policies are needed. In this project, however, a group-based model was sufficient to meet the applications requirements.\\\\For these reasons, practitioners sometimes augment RBAC with additional models (such as attribute-based controls) when highly dynamic or context-sensitive policies are needed. In this project, however, a group-based model was sufficient to meet the application's access control requirements. \parencite{rbac} \\ \\
 
 \section{Group System}
 The group system was implemented to simplify user management. By grouping users together, poll creators can efficiently control access to polls. Instead of managing individual users, a poll owner can assign entire groups to a poll, ensuring that only selected users can participate in voting. \\\\
-Beyond restricting access, the system also allows assigning different permission levels. Users with elevated privileges—such as power users or administrators—can be granted editing rights, enabling collaborative management of polls. Additionally, poll results are only visible to users belonging to groups that have access to the poll. \\\\
+Beyond restricting access, the system also allows assigning different permission levels. Users with elevated privileges, such as power users or administrators, can be granted editing rights, enabling collaborative management of polls. Additionally, poll results are only visible to users belonging to groups that have access to the poll. \\\\
 To support the group system, a new navigation option was added to the interface. The page for creating groups is shown in Figure~\ref{fig:create_groups}. At the top of the page, a toggle button labeled \textit{Gruppen Bearbeiten} allows switching between group creation and editing. Below that, users can enter a group name and provide a short description explaining the group's purpose and membership.
 \begin{figure}[H]
 	\centering
@@ -418,9 +418,9 @@ At the bottom of the form, a React Select component is used to assign users to t
 To support the group functionality on the backend, three new database tables were introduced:
 
 \begin{itemize}
-	\item \textbf{UserGroups}: Represents a many-to-many relationship between \textbf{Users} and \textbf{Groups}. It stores user assignments to groups and is essential for frontend group management.
-	\item \textbf{Groups}: This table is the core of the group system, storing group metadata such as name and description.
-	\item \textbf{PollGroups}: Establishes a many-to-many relationship between \textbf{Groups} and \textbf{Polls}. It defines which groups have access to which polls and is directly used in the poll creation and editing workflows. \\
+	\item "UserGroups": Represents a many-to-many relationship between "Users" and "Groups". It stores user assignments to groups and is essential for frontend group management.
+	\item "Groups": This table is the core of the group system, storing group metadata such as name and description.
+	\item "PollGroups": Establishes a many-to-many relationship between "Groups" and "Polls". It defines which groups have access to which polls and is directly used in the poll creation and editing workflows. \\
 \end{itemize}
 When displaying polls to a user, the system queries all groups the currently signed-in user belongs to and checks whether any of those groups are assigned to a poll. This determines the user's access to view or interact with a poll. \\
 
@@ -436,11 +436,11 @@ In addition to group management, a React Select component is also integrated int
 Overall, these features provide a smooth and efficient user experience while significantly reducing the administrative effort required to manage poll access. \\ \\
 
 \section{Create Polls}
-The \textbf{Create Polls} section represents the poll creation interface of the system. It allows users to create customized polls based on their needs. Customization options include entering a poll name and description, selecting different poll types, assigning the poll to specific groups, defining a start and end date for the voting period, uploading an image and dynamically adding questions with chosen question types and a variable number of answers per question. \\
+The Create Polls section represents the poll creation interface of the system. It allows users to create customized polls based on their needs. Customization options include entering a poll name and description, selecting different poll types, assigning the poll to specific groups, defining a start and end date for the voting period, uploading an image and dynamically adding questions with chosen question types and a variable number of answers per question. \\
 \subsection{Error Handling}
 To ensure that polls are created correctly and without missing information, the \textbf{Create Polls} section includes validation in the frontend and transaction in the backend.
 \subsubsection{Frontend}
-In the frontend, validation is handled by the \textbf{validatePollData} function located in a separate file, \textbf{ValidatePolls.js}. This function checks wether any required input fields are left empty. If a required field is empty, a specific message about which field is afflicted is returned, which is then displayed to the user. This improves the user experience and also prevents unnecessary API calls to the backend.
+In the frontend, validation is handled by the \textbf{validatePollData} function located in a separate file, \texttt{ValidatePolls.js}. This function checks wether any required input fields are left empty. If a required field is empty, a specific message about which field is afflicted is returned, which is then displayed to the user. This improves the user experience and also prevents unnecessary API calls to the backend.
 \begin{figure}[H]
 	\begin{code}
 		validatePollData(poll, publishDate, endDate, questions) {
@@ -484,19 +484,19 @@ A transaction is created and used for all data operations involved in poll creat
 \subsection{Start-/ Endtime}
 To make polls more manageable, users can define a voting period by setting a start and end time during poll creation. This feature consists of two main parts.
 \subsubsection{Setting The Times}
-The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \textbf{datetime-local} was used. However it was not fully supported by every browser including Firefox, which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
+The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \verb|datetime-local| was used. However it was not fully supported by every browser including Firefox, which could only depict the date but not the time. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
 When a user clicks on the input field, a graphical selector appears, which allows the user to select both ,the date and time, easily.\\\\
 Once the poll is submitted, the selected start and end times are sent to the \textbf{createPoll} function in the backend via a POST request. There, the received times are converted to JavaScript \textbf{Date} objects before being inserted into the database.
 \subsubsection{Utilizing The Times}
 These time-based conditions are the core feature used to differentiate between the various states of a poll: edit, voting, and results. To apply these conditions, three arrays are created - each corresponding to one of the states - and passed as props to their respective React components.  
-Figure~\ref{fig:timeuti} shows the code that performs this classification. The \texttt{data} variable contains all polls retrieved from the database via an API call. The \texttt{current\_datetime} is set using \texttt{new Date().toISOString()}. The function iterates through each poll, comparing its \texttt{publish\_date} and \texttt{end\_date} to the current time. \\ \\
+Figure~\ref{fig:timeuti} shows the code that performs this classification. The \texttt{data} variable contains all polls retrieved from the database via an API call. The \texttt{current\_datetime} is set using \textbf{new Date().toISOString()}. The function iterates through each poll, comparing its \texttt{publish\_date} and \texttt{end\_date} to the current time. \\ \\
 A poll is:
 \begin{itemize}
 	\item pushed into the \texttt{edit} array if the current time is earlier than its \texttt{publish\_date},
 	\item added to the \texttt{vote} array if the current time is between \texttt{publish\_date} and \texttt{end\_date} and the poll is not public,
 	\item moved to the \texttt{results} array if it is public and its \texttt{end\_date} has already passed.
 \end{itemize}
-An important detail is how \textit{public polls} are handled. Since they are not intended to appear in the standard voting view, they are excluded from the vote array. In contrast, public polls may appear in the results view even before their end date, allowing creators and interested parties to observe the vote development in real time.
+An important detail is how public polls are handled. Since they are not intended to appear in the standard voting view, they are excluded from the vote array. In contrast, public polls may appear in the results view even before their end date, allowing creators and interested parties to observe the vote development in real time.
 
 
 \begin{figure}[H]
@@ -515,7 +515,7 @@ An important detail is how \textit{public polls} are handled. Since they are not
 \subsection{Poll Image}
 In response to client requirements, a feature was implemented allowing users to upload a title image for each poll. This image serves a purely atmospheric and aesthetic purpose, aiming to enhance the visual appeal of the poll and provide users with a more engaging and intuitive introduction to the survey topic. By incorporating visual context, the feature helps draw user attention and encourages participation, particularly in cases where the subject matter benefits from visual reinforcement.
 \subsubsection{Backend Implementation}
-On the backend, the image upload is handled using the \textbf{multer} middleware in the \textbf{imageRoutes.js} file. The storage engine is configured to save uploaded files in the \textbf{uploads} directory with a unique filename based on a timestamp and the original file extension. The file types are restricted to JPEG, PNG and GIF formats through a custom file filter to ensure consistency and security. \parencite{expressmulter}
+On the backend, the image upload is handled using the "multer" middleware in the \texttt{imageRoutes.js} file. The storage engine is configured to save uploaded files in the \texttt{uploads} directory with a unique filename based on a timestamp and the original file extension. The file types are restricted to JPEG, PNG and GIF formats through a custom file filter to ensure consistency and security. \parencite{expressmulter}
 \begin{figure}[H]
 	\begin{code}
 		const storage = multer.diskStorage({
@@ -531,8 +531,8 @@ On the backend, the image upload is handled using the \textbf{multer} middleware
 	\label{fig:multer_config}
 \end{figure}
 \noindent
-The route \textbf{/api/upload-image} is exposed via the Express router and returns the public URL of the uploaded image on success. The image can later be used as part of the poll metadata.\\
-In \textbf{app.js}, static file serving is enabled for the \textbf{uploads} directory to make the images accessible to the frontend:
+The route \texttt{/api/upload-image} is exposed via the Express router and returns the public URL of the uploaded image on success. The image can later be used as part of the poll metadata.\\
+In \texttt{app.js}, static file serving is enabled for the \texttt{uploads} directory to make the images accessible to the frontend:
 \begin{figure}[H]
 	\begin{code}
 		app.use('/uploads', express.static('uploads'));
@@ -541,7 +541,7 @@ In \textbf{app.js}, static file serving is enabled for the \textbf{uploads} dire
 	\label{fig:static_file_serving}
 \end{figure}
 \subsubsection{Frontend Integration}
-On the frontend, the image upload is handled within the \textbf{CreatePolls.js} component. When a user selects an image file, the \textbf{handleImageUpload} function is triggered. 
+On the frontend, the image upload is handled within the \texttt{CreatePolls.js} component. When a user selects an image file, the \textbf{handleImageUpload} function is triggered. 
 \begin{figure}[H]
 	\begin{code}
 		const handleImageUpload = async (event) => {
@@ -576,8 +576,8 @@ On the frontend, the image upload is handled within the \textbf{CreatePolls.js} 
 This function performs the following steps.
 \begin{enumerate}
 	\item A local preview of the selected image is created using the browser's \textbf{URL.createObjectURL()} method. This provides immediate feedback to the user by displaying the image in the form before it is uploaded.
-	\item To prepare the image for upload to the server, a new instance of the \textbf{FormData} object is created. This object is specifically designed to handle form submissions that include binary data such as files. The use of \textbf{FormData} is necessary because standard JSON-based payloads \textbf{application/json} do not support file transfers. The browser automatically sets the \textbf{Content-Type} to \textbf{multipart/form-data} when \textbf{FormData} is used, which is the appropriate MIME type for file uploads.
-	\item The image is uploaded to the backend by making a \textbf{POST} request to the endpoint \textbf{api/upload-image}. If the upload is successful, the backend responds with the relative path to the stored image, which is then saved in the component state \textbf{imageUrl} for use in the final poll submission.
+	\item To prepare the image for upload to the server, a new instance of the \textit{FormData} object is created. This object is specifically designed to handle form submissions that include binary data such as files. The use of \textit{FormData} is necessary because standard JSON-based payloads \texttt{application/json} do not support file transfers. The browser automatically sets the Content-Type to \texttt{multipart/form-data} when \textit{FormData} is used, which is the appropriate MIME type for file uploads.
+	\item The image is uploaded to the backend by making a POST request to the endpoint \texttt{api/upload-image}. If the upload is successful, the backend responds with the relative path to the stored image, which is then saved in the component state \textit{imageUrl} for use in the final poll submission.
 	\item The uploaded images's URL is included as part of the final poll payload when the user submits the form. This allows the backend to store the image reference in the database alongside the poll data.
 	\item Upon successful poll creation, the image preview, image URL and file input are all reset to ensure a clean state for subsequent poll creation actions.
 \end{enumerate}
@@ -612,7 +612,7 @@ In weighted choice questions, users select one answer from a set of predefined o
 This question type gives more insight into preferences than single or multiple choice questions, because poll participants not only select which answer they prefer, but also indicate how important it is for them. As a result, it becomes easier to decide wether an issue should be prioritized or not.\\\\
 The importance scale is implemented as a custom designed component consisting of nine buttons, each representing a value from one (least important) to nine (most important). If the question type is weighted choice, this scale is displayed along with the standard single choice option.\\
 \subsection{Demographic Questions}
-To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls, since the created user would be part of the organization using our project and therefore the polls creator would have the data already. If the user is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system, where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections, with the difference that weighted is not an option, since demographic data is more like a fact less an opinion.
+To gather the data of our public voters, the implementation of demographic questions was crucial. This feature is only available for public polls, since the created user would be part of the organization using our project and therefore the polls creator would have the data already. If the user is not part of the organization there is still the option to contact them via the e-mail used for the registration. Since most of these questions are similar for every poll, a modular system, where questions can be created, added, removed and changed is the best solution. Figure \ref{fig:create_dem_que} shows the demographic question in create polls. The options and functionality of these questions are the like ones described in the previous sections, with the difference that \texttt{weighted-choice} is not an option, since demographic data is more like a fact less an opinion.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.65\textwidth]{pics/demographic_question_create.jpg}
@@ -620,11 +620,11 @@ To gather the data of our public voters, the implementation of demographic quest
 	\label{fig:create_dem_que}
 \end{figure}
 \\
-The new part for this feature is the search bar. For this the "Select" component of "react-select" is used. The components' controllable state props and modular architecture allows  "isMulti" to select multiple options or "isSearchable" to search. These features allow easy implementation and an already styled search bar in the project. \parencite{reactselect}
+The new part for this feature is the search bar. For this the Select component of "react-select" is used. The components controllable state props and modular architecture allows \textit{isMulti} to select multiple options or \textit{isSearchable} to search. These features allow easy implementation and an already styled search bar in the project. \parencite{reactselect}
 \\ \\
-The database structure for the demographic questions is similar to the standard ones. The table "PublicQuestions" is used to store the question specific data like name and type. To enable the reuse of questions on different polls "PublicQuestions" is in an many-to-many relationship with "Polls" through "PublicPollQuestions". Answers are stored within the table "PublicAnswers", which is connected to "PublicQuestions" via "PublicQuestionAnswers. This relation is also many-to-many since the options yes or no for example would be used in multiple questions. 
+The database structure for the demographic questions is similar to the standard ones. The table "PublicQuestions" is used to store the question specific data like name and type. To enable the reuse of questions on different polls "PublicQuestions" is in an many-to-many relationship with "Polls" through "PublicPollQuestions". Answers are stored within the table "PublicAnswers", which is connected to "PublicQuestions" via "PublicQuestionAnswers". This relation is also many-to-many since the options yes or no for example would be used in multiple questions. 
 \\ \\
-For the select every existing question with its answers is fetched from the database and stored within an array. The options are then mapped with the value being id and the label as name of each element. To display the selected options they are mapped through and use the same functions as the standard ones used for the poll. When saving these questions a problem arises, as the selected ones are already stored in the database and possibly changed. To handle this, a findOrCreate \ref{fig:publicQuestions} is used to get the existing questions and answers or create new ones. This function also returns each instance found or the created one. With this the question and answer ids can be used for the many-to-many relationship. \parencite{sequelizedoku} 
+For the select every existing question with its answers is fetched from the database and stored within an array. The options are then mapped with the value being id and the label as name of each element. To display the selected options they are mapped through and use the same functions as the standard ones used for the poll. When saving these questions a problem arises, as the selected ones are already stored in the database and possibly changed. To handle this, a \textbf{findOrCreate} \ref{fig:publicQuestions} is used to get the existing questions and answers or create new ones. This function also returns each instance found or the created one. With this the question and answer ids can be used for the many-to-many relationship. \parencite{sequelizedoku} 
 \begin{figure}[h!]
 \begin{code}
 let [createdQuestion, created] = await PublicQuestions.findOrCreate({
@@ -639,7 +639,7 @@ let [createdQuestion, created] = await PublicQuestions.findOrCreate({
 \end{figure}
 
 \section{Edit Polls}
-Editing a poll is essential for maintaining a smooth administrative workflow on the platform. Editing is only permitted before the poll is published — the concept of publish time is already described in the creation section. Without this feature, power users and administrators responsible for creating polls would encounter significant limitations. \\ \\
+Editing a poll is essential for maintaining a smooth administrative workflow on the platform. Editing is only permitted before the poll is published, the publish time is already described in the creation section. Without this feature, power users and administrators responsible for creating polls would encounter significant limitations. \\ \\
 For instance, simple issues such as typos or unclear instructions could not be corrected, requiring the entire poll to be deleted and recreated. Additionally, the edit functionality enables collaborative poll creation: one user can create the initial poll and assign a group with editing privileges. These users can then revise the poll, allowing for a structured and collaborative workflow. Furthermore, setting the publish time to a future date ensures that the team has ample time to discuss and refine the poll before it goes live. \\
 \subsection{Backend}
 The backend for editing uses the same structural approach described in the creation section. However, specific logic is implemented to handle operations such as adding, updating, and removing elements of an already created poll. The complete poll data is sent from the frontend via the API, and the backend separates and processes it accordingly. \\ \\
@@ -652,7 +652,7 @@ The process involves the following steps:
 \end{itemize}
 
 \paragraph{Adding}
-To add new questions, the backend compares the existing questions with those in the received data. If a question does not already exist, it is created with its name and type. Then, each answer is added individually, followed by the corresponding \textbf{QuestionAnswers} entries.
+To add new questions, the backend compares the existing questions with those in the received data. If a question does not already exist, it is created with its name and type. Then, each answer is added individually, followed by the corresponding "QuestionAnswers" entries.
 
 \paragraph{Changing}
 For existing questions and answers, the backend uses Sequelize's \textbf{update} functionality on each relevant entry. This ensures that unchanged elements remain untouched, while modified data is accurately updated.
@@ -662,7 +662,7 @@ To remove obsolete questions, the system combines all existing and newly added q
 
 \subsection{Frontend}
 The frontend for editing polls reuses the layout and structure of the poll creation interface. The key difference is that a poll must first be selected for editing. Once selected, the poll data is fetched and pre-filled into the corresponding input fields. \\ \\
-The data is managed through a poll object, which is dynamically updated using various state manipulation functions depending on the type of edit being performed. Figure~\ref{fig:editing} shows an example where an answer is removed from a question. Depending on whether the poll is public or not, the system updates either the \texttt{publicQuestions} or the standard \texttt{questions} array. The answer is removed using JavaScript’s \texttt{splice} method.
+The data is managed through a poll object, which is dynamically updated using various state manipulation functions depending on the type of edit being performed. Figure~\ref{fig:editing} shows an example where an answer is removed from a question. Depending on whether the poll is public or not, the system updates either the \textit{publicQuestions} or the standard \textit{questions} array. The answer is removed using JavaScript’s \textbf{splice} method.
 
 \begin{figure}[H]
 	\begin{code}
@@ -685,7 +685,7 @@ The data is managed through a poll object, which is dynamically updated using va
 \section{Voting}
 Voting is a core feature of any survey application. To provide users with flexibility, the system supports multiple voting modes: disclosed, anonymous, and public voting. The advantages and differences between these modes are explained in the following section. \\
 \subsection{Disclosed Voting}
-In disclosed voting, each voter can see who voted for which option. The votes are stored in the \textbf{UserAnswers} table in the database. Here the corresponding answerId, questionId and userId are stored. This level of openness can significantly shape how people vote, as choices are no longer private. As such, poll creators should carefully consider the implications and advantages of this approach.
+In disclosed voting, each voter can see who voted for which option. The votes are stored in the "UserAnswers" table in the database. Here the corresponding \textit{answerId}, \textit{questionId} and \textit{userId} are stored. This level of openness can significantly shape how people vote, as choices are no longer private. As such, poll creators should carefully consider the implications and advantages of this approach.
 \paragraph{Transparency:}
 Can be a powerful tool especially in contexts where open discussion is encouraged. When voters are aware that their choices will be visible, and everyone has access to the same information, it creates a shared starting point for meaningful discussion.
 \paragraph{Analytics and Reporting:}
@@ -702,9 +702,9 @@ In a disclosed voting system, participants could become targets of pressure, bul
 Herd mentality refers to the tendency of individuals to follow the majority, sometimes at the expense of their true opinions. While the platform already helps reduce this by showing results only after voting ends, anonymous voting further minimizes this effect. Even if a voter ends up being in the minority, their identity remains protected, encouraging more authentic and independent choices. \parencite{disvsanon}
 
 \subsubsection{Backend}
-In an anonymous voting system, preventing the ability to trace votes back to individual users is crucial. In contrast, for disclosed voting, the UserAnswers table stores each answer along with the corresponding user's ID.\\ \\
-To support anonymous voting, it's important that the user's ID is not traceable. Therefore, the userId field is configured with "allowNull: true". However, this creates a challenge: the system cannot verify whether a user has already submitted a vote.\\ \\
-To solve this, a many-to-many relationship is introduced between the Polls and Users tables, using an intermediate table that includes a hasVoted boolean field with a default value of true. When a user submits a vote, an entry is created in this table with hasVoted set to true. This allows the system to track whether a user has already voted in a specific poll without linking their vote to their identity. \\
+In an anonymous voting system, preventing the ability to trace votes back to individual users is crucial. In contrast, for disclosed voting, the "UserAnswers" table stores each answer along with the corresponding user's ID.\\ \\
+To support anonymous voting, it's important that the user's ID is not traceable. Therefore, the \textit{userId} field is configured with \textit{allowNull: true}. However, this creates a challenge: the system cannot verify whether a user has already submitted a vote.\\ \\
+To solve this, a many-to-many relationship is introduced between the "Polls" and "Users" tables, using an intermediate table that includes a \textit{hasVoted} boolean field with a default value of true. When a user submits a vote, an entry is created in this table with \textit{hasVoted} set to true. This allows the system to track whether a user has already voted in a specific poll without linking their vote to their identity. \\
 
 \subsection{Public Voting}
 The public voting allows users without an account to vote. With this feature a wide range of people can be questioned in street surveys or through a shared link. This poll type has two section, the normal and demographic questions. The order of these play a major role. Trust, benefits of the demographic data and the ability to abstain are important to a poll. All of these factors have to be taken into ones account when creating these questions. At the beginning of a survey the motivation is high and the demographic data are answered, but the trust in full anonymity is decreased. Therefore the it is best to put these questions at the end. \cite{demographicdata}
@@ -717,8 +717,8 @@ After the poll is completed, the demographic questions linked to it, are display
 
 \subsubsection{Vote Integrity}
 A major problem when having anonymity and no accounts is the data integrity. Without the ability to store information about a voter in the database to check for multiple votes, it is important to prevent them from voting multiple times. Completely avoiding this problem is nearly impossible, but to ensure no problems arise we chose two different security measures. \\ \\
-To prevent fraudulent activity, spam and abuse with bots, Google reCAPTCHA is integrated into the application. To implement this a key pair is generated, one for the site and a secret key. The site key is used to integrate the reCAPTCHA service into the frontend. The secret key facilitates secure communication between the backend server and the reCAPTCHA system to validate user responses. To maintain security the keys are stored in an env file. For this whole process the invisible option is checked to prevent the flow of the voting being disturbed. \parencite{recaptcha} \\ \\
-Figure \ref{fig:recaptcha} shows how the backend handles the CAPTCHA request. The token, the site key, is sent from the frontend through the request body, while the secretKey is accessed via the prossess.env environment variable. To maintain readability, the URL is defined and the query string includes both keys. Then these parameters are sent to Googles endpoint to validate the user interaction. The score in Google’s response indicates how likely a user is human. Therefore, before returning a successful response to the frontend, the score is checked. The code also handles the cases where the request results in an error or the score is too low. \parencite{recaptcha}
+To prevent fraudulent activity, spam and abuse with bots, Google reCAPTCHA is integrated into the application. To implement this a key pair is generated, one for the site and a secret key. The site key is used to integrate the reCAPTCHA service into the frontend. The secret key facilitates secure communication between the backend server and the reCAPTCHA system to validate user responses. To maintain security the keys are stored in an \textbf{.env} file. For this whole process the invisible option is checked to prevent the flow of the voting being disturbed. \parencite{recaptcha} \\ \\
+Figure \ref{fig:recaptcha} shows how the backend handles the CAPTCHA request. The token, the site key, is sent from the frontend through the request body, while the secret Key is accessed via the \textit{prossess.env} environment variable. To maintain readability, the URL is defined and the query string includes both keys. Then these parameters are sent to Googles endpoint to validate the user interaction. The score in Googles response indicates how likely a user is human. Therefore, before returning a successful response to the frontend, the score is checked. The code handles the cases where the request results in an error or the score is too low. \parencite{recaptcha}
 \begin{figure}[h!]
 	\begin{code}
 app.post('/verify-recaptcha', async (req, res) => {
@@ -761,12 +761,12 @@ This method is not entirely secure. If someone knows where the cookie is stored 
 Results are arguably the most important feature of the application. Here, the voting data is displayed in a comprehensible way. This section of the platform includes the display of results depending on the different voting types, disclosed and anonymous, as well as an export option for further analysis of the voting data. \\
 
 \subsection{Backend}
-The API for results consists of two main components. First, the total number of voters is calculated. This is done by counting the entries in the \textbf{UserPolls} table using Sequelize's \textbf{count} function. This number represents the total number of unique users who have participated in a specific poll. \\ \\
-The second part handles the calculation of votes per question. For each question, the backend first determines the total number of answers submitted using the \textbf{UserAnswers} table. Then, for each answer within the question, it calculates the percentage of total votes that the answer received. These values are stored in an object named \textbf{questionVotes}, where each question id maps to another object containing answer ids and their corresponding vote percentages as strings formatted to two decimal places. \\
+The API for results consists of two main components. First, the total number of voters is calculated. This is done by counting the entries in the "UserPolls" table using Sequelize's \textbf{count} function. This number represents the total number of unique users who have participated in a specific poll. \\ \\
+The second part handles the calculation of votes per question. For each question, the backend first determines the total number of answers submitted using the "UserAnswers" table. Then, for each answer within the question, it calculates the percentage of total votes that the answer received. These values are stored in an object named \textit{questionVotes}, where each question id maps to another object containing answer ids and their corresponding vote percentages as strings formatted to two decimal places. \\
 Weighted choice questions are also supported in the database and export. However, since each user can assign different weights to answers, it was not feasible to display this clearly in the frontend. Various methods were considered, such as showing the average or total weight per answer, but these either led to confusion or failed to reflect individual user input accurately. As a result, weight values are excluded from the visual results and are only available in the exported data. \\
 
 \subsection{Frontend}
-Figure \ref{fig:result} shows an example of a disclosed multiple choice question in the results view. For each question, the results section displays the list of possible answers along with the corresponding voting data. Depending on the poll's settings, the view can either show the percentage of total votes each answer received or a list of the users who voted for each answer.\\ \\
+Figure \ref{fig:result} shows an example of a disclosed multiple choice question in the results view. For each question, the results section displays the list of possible answers along with the corresponding voting data. Depending on the polls settings, the view can either show the percentage of total votes each answer received or a list of the users who voted for each answer.\\ \\
 \begin{figure}[H] 
 	\centering 
 	\includegraphics[width=0.9\textwidth]{pics/Results_example.png} 
@@ -775,12 +775,12 @@ Figure \ref{fig:result} shows an example of a disclosed multiple choice question
 \end{figure}
 \noindent
 The component uses two asynchronous API calls. The first fetches the overall voting results, using the API described in the backend part. The second fetches a list of voters per answer, if the poll is disclosed. This voter data is stored in an object where the keys are answer IDs and the values are arrays of usernames. \\ \\
-A toggle button allows switching between the two display modes: percentages and voter names. This functionality is controlled by a boolean variable named \textbf{showVotersMode}. When \textbf{showVotersMode} is enabled, the result view shows the vote percentage for each answer. When disabled, it lists the names of the voters for each answer, or displays a fallback message if no one voted for that answer. \\ \\
-The single-choice questions are displayed in the same format. Weighted choice questions are visually identical to multiple-choice ones, but their weight values are not shown due to the reasons mentioned earlier. Additional features include the optional display of the poll's image and description if such data is available. This ensures that the result view remains consistent with the poll's context. \\
+A toggle button allows switching between the two display modes: percentages and voter names. This functionality is controlled by a boolean variable named \textit{showVotersMode}. When \textit{showVotersMode} is enabled, the result view shows the vote percentage for each answer. When disabled, it lists the names of the voters for each answer, or displays a fallback message if no one voted for that answer. \\ \\
+The single-choice questions are displayed in the same format. Weighted choice questions are visually identical to multiple-choice ones, but their weight values are not shown due to the reasons mentioned earlier. Additional features include the optional display of the polls image and description if such data is available. This ensures that the result view remains consistent with the polls context. \\
 
 \subsection{CSV-Export}
 To allow for the further analysis and documentation of the poll results, a CSV export functionality was implemented. This export privides a structured overview of all user responses, including additional metrics, such as the number of votes per answer and the average weight for weighted questions.\\ \\
-The logic is handled in the \textbf{csvExportController.js} controller. Upon receiving a request, the system retrieves all relevant data for a given poll by its ID, including associated question, answers, and question types. The raw voting data is processed to count the number of responses per answer and to calculate the average weight if applicable. Special care is taken to distinguish between different types: for instance, "Single Choice" questions ensure that only one answer per user is counted, while "Weighted Choice" questions include the weight vale in the computation.\\ \\
+The logic is handled in the \texttt{csvExportController.js} controller. Upon receiving a request, the system retrieves all relevant data for a given poll by its ID, including associated question, answers, and question types. The raw voting data is processed to count the number of responses per answer and to calculate the average weight if applicable. Special care is taken to distinguish between different types: for instance, "Single Choice" questions ensure that only one answer per user is counted, while "Weighted Choice" questions include the weight vale in the computation.\\ \\
 The processed data is then converted into a structured CSV format using the json2csv library. The final file includes columns such as Poll Name, Question, Question Type, Answer, Vote Count and Average Weight, and can be downloaded directly by the user. This feature ensures transparency and enables further statistical evaluation using external tools like Microsoft Excel. \parencite{json2csv} \\ \\
 
 \section{MyPolls}
