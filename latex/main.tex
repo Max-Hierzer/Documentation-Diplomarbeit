@@ -145,11 +145,10 @@ To design and visualize the schema, tools such as 'draw.io' and 'dbdiagram.io' w
 
 \section{Node.js}
 For the backend Node.js was used. It is a JavaScript runtime environment, that allows the programming language to run on a server instead of the browser. Node.js is based on the V8 engine developed by Google, which compiles JavaScript into machine code for faster execution. \parencite{nodejs-intro} \\
-
 \subsection{Advantages}  
-One of the main advantages of Node.js is its non-blocking I/O model. This means it does not wait for certain processes, such as reading from a file or database, to finish before continuing with other operations. Instead, it starts a process and immediately listens for the next event. When the initial process finishes, a callback function is executed. This makes it possible for Node.js to handle multiple operations concurrently, even though it is inherently single threaded. This results in high performance and responsiveness. \parencite{nodejs-nonblocking}\\\\
-Another advantage of Node.js is that it creates a unified language environment because both the frontend and the backend can be programmed in JavaScript. This simplifies the development process, improves code reusability, and reduces the learning curve, since developers do not need to learn a new programming language for the backend.\\\\
-Node.js also has the npm (Node Package Manager) which provides access to a vast collection of reusable packages and modules. These include pre-built code solutions to simplify common requirements like encryption and also sending emails, both of which were used in this project. \parencite{mdn-express-nodejs} \\ \\
+Node.js offers several advantages compared to other backend frameworks such as Django (Python) or Lavarel (PHP). The biggest advantage is that it creates a unified language environment because both the frontend and the backend can be programmed in JavaScript. This simplifies the development process, improves code reusability, and reduces the learning curve, because developers do not need to learn a new programming language for the backend. \\\\
+Another advantage of Node.js is its non-blocking I/O model. This means it does not wait for certain processes, such as reading from a file or database, to finish before continuing with other operations. Instead, it starts a process and immediately listens for the next event. When the initial process finishes, a callback function is executed. This makes it possible for Node.js to handle multiple operations concurrently, even though it is inherently single threaded. This results in high performance and responsiveness. \parencite{nodejs-nonblocking} \\\\
+Node.js also has the npm (Node Package Manager) which provides access to a vast collection of reusable packages and modules. These include pre-built code solutions to simplify common requirements like encryption and also sending emails, both of which were used in this project. \parencite{mdn-express-nodejs} \\\\
 
 \section{Sequelize}
 Sequelize was selected as the Object-Relational-Mapping (ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in a project with complex data relationships and evolving schema requirements.\\\\
@@ -255,6 +254,7 @@ In the code above, \textbf{updatePoll} attempts to handle errors using a try/cat
 In the application, Cross-Origin Resource Sharing (CORS) is managed using the cors middleware in Express.js. CORS is a security feature implemented by web browsers that controls how web pages from one domain can make requests to a backend server hosted on another domain. It is particularly important when the frontend and backend are hosted on different origins, such as when they are running on different ports during development or on different subdomains in production. \\ \\
 In this case, CORS is configured with the default settings, meaning that the backend allows cross-origin requests from any domain. This default setup permits all HTTP methods (like GET, POST, PUT, DELETE, etc.) and headers from any origin, making it very permissive. This configuration is helpful during the development phase, as it avoids the need for specifying which domains or methods are allowed. \\ \\
 However, while the default configuration is useful in development, it is not recommended for production environments due to security concerns. Allowing any origin to interact with the backend can expose the server to potentially malicious requests from untrusted sources. It is generally better to restrict CORS to specific trusted domains and limit the allowed HTTP methods and headers to only those necessary for the application. Therefore, this should be improved in the future. \cite{mdn-cors} \\ \\
+
 \section{React.js}
 React.js is a declarative. component-based JavaScript library, which is widely adopted in modern web development due to its modular structure and virtual DOM optimization. In this application, React is used as the frontend framework responsible for rendering the user interface, managing local and global state, and communicating with the backend API. Several alternative frameworks were taken into consideration during the selection process. \cite{react-docs}
 \paragraph{Vue.js} offers a simple and intuitive syntax that would lower the learning curve for new developers. However, since React has a larger ecosystem, widespread community support and a better compatibility with third-party libraries, it was chosen over Vue. \cite{react-docs} \cite{vue-docs}
@@ -604,7 +604,7 @@ Figure~\ref{fig:multiplechoice} illustrates how multiple choice questions are pr
 \end{figure}
 \subsubsection{Weighted Choice}
 The \texttt{Weighted Choice} question type implemented in this application is a variation of the Likert scale. It combines a basic \texttt{Single Choice} question with an additional importance scale. This way users can assign a weight to the answers they have given. \\\\
-Likert scales are commonly used to measure opinions or attitudes by offering a range of answer options from “strongly disagree” to “strongly agree”. This type of question lets people show not just what they think, but also how strongly they feel. The Likert scale is helpful because it turns personal opinions into numbers that can be analyzed. As a result, it becomes easier to decide whether an issue should be prioritized or not.\parencite{likert-scale}
+Likert scales are commonly used to measure opinions or attitudes by offering a range of answer options from “strongly disagree” to “strongly agree”. This type of question lets people show not just what they think, but also how strongly they feel. The Likert scale is helpful because it turns personal opinions into numbers that can be analyzed. As a result, it becomes easier to decide whether an issue should be prioritized or not. \parencite{likert-scale} \\\\
 In this application, the importance scale is implemented as a custom-designed component consisting of nine buttons, each representing a value from one (least important) to nine (most important). When a button is clicked, the selected value is passed to the parent component via the \texttt{handleSelectImportance} function, and the visual style of the selected button is updated to reflect the user’s choice.
 \begin{figure}[H]
 	\begin{code}
@@ -937,12 +937,12 @@ In our case, Ubuntu 22.04 LTS was used as the operating system. The server was c
 	\begin{terminal}
 		ssh -i ~/.ssh/id_rsa_digitalocean root@1.2.3.4
 	\end{terminal}
-	\caption{SSH connection to "droplet" with example IP}
+	\caption{Example SSH connection to droplet}
 \end{figure}
 \subsection{Domain}
 In order for the application to be reachable over HTTPS, a domain was needed. After careful consideration the domain “togema.eu” was acquired from the provider Namecheap.
 \subsubsection{Configuration}
-On the Namecheap dashboard, a DNS record was added to point the domain name to the IP address of the "droplet" from DigitalOcean. With this configuration, all internet traffic directed to the domain “togema.eu”, is redirected to the IP address of the DigitalOcean droplet. \\
+On the Namecheap dashboard, a DNS record was added to point the domain name to the IP address of the droplet from DigitalOcean. With this configuration, all internet traffic directed to the domain “togema.eu”, is redirected to the IP address of the DigitalOcean droplet. \\
 \subsection{Deployment Process}
 This section describes the deployment process for this application. It is composed of multiple components, including PostgreSQL, the Node.js backend, the React frontend, as well as additional tools such as Nginx, PM2 and Certbot. All steps are executed with the terminal, which is connected to the droplet using SSH. The setup is done step by step to ensure everything is configured correctly.\\\\
 First the server is updated using the standard update and upgrade command.
@@ -987,7 +987,7 @@ Node.js needs to be installed and all dependencies in the backend and frontend a
 		npm install
 		npm run build
 	\end{terminal}
-	\caption{Dependencies installation and production build creation commands}
+	\caption{Dependencies installation and production build creation}
 \end{figure}
 \subsubsection{PM2 - Backend Process Manager}
 To run the backend of the application on the server PM2, a Node.js process manager was used. PM2 ensures that the backend application continues running in the background even after SSH session is closed, which is crucial for a web application, as it needs to stay online. PM2 also offers automatic restarts in case of crashes due to errors or unexpected shutdowns.\\\\
@@ -1031,6 +1031,11 @@ To enable HTTPS, Certbot was used in combination with Nginx. It automatically re
 \end{figure}
 
 \chapter{Summary}
+The objective of this project was to develop a user-friendly, open-source web application for online voting that supports customizable voting methods and ensures a transparent, accessible, and secure voting process. The implementation focused on providing ease of use for voters, and flexibility and effective tools for administrators. \\\\
+The finished application offers role-based access control, a group management feature for targeted poll distribution, clearly defined user permissions, and a responsive design that supports both desktop and mobile usage. Key administrative tools include user invitation, dynamic poll creation with multiple question types, and the ability to export poll results in CSV format. \\\\
+During development, several challenges arose, including the correct calculation and display of vote percentages, implementing the user invitation process via automated emails, and supporting public polls with proper access handling. These difficulties were resolved through iterative testing and continuous feedback from the LMP, which played a key role in refining and validating the solutions. \\\\
+Overall, the developed system fulfills the intended goals and provides a solid foundation for secure and flexible online voting. Future extensions could include graphical visualization of results beyond simple percentages and the addition of multilingual support. Thanks to its modular design and open-source nature, the application is well-suited for continued development and adaptation.
+
 
 % Literaturverzeichnis
 \cleardoublepage
