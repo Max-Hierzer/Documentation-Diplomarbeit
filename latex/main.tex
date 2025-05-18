@@ -906,14 +906,14 @@ The second section is dedicated to composing the poll questions. Each question b
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pics/create_view.png}
-	\caption{Registration form}
+	\caption{Poll creation form}
 	\label{fig:create_view}
 \end{figure}
 \paragraph{Voting} is the section where users can submit their votes on polls they have permission to participate in. As shown in Figure \ref{fig:voting_view}, the selected poll's name is displayed below the section's heading and the poll selection dropdown, highlighted using the site's primary color. Each question is presented in a separate block, labeled with the question type in the top right corner. Within each block, the question title is emphasized and all answer options are listed along with radio boxes for \texttt{Single Choice} and \texttt{Weighted Choice} questions, and check boxes for \texttt{Multiple Choice} questions. \texttt{Weighted Choice} questions also include an importance scale, which consists of multiple buttons that users must interact with to assign an importance value to their answer.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pics/voting_view.png}
-	\caption{Registration form}
+	\caption{Voting view}
 	\label{fig:voting_view}
 \end{figure}
 \paragraph{Public voting} enables anonymous users to participate in designated public polls. The layout mirrors the sturcture of the standard voting interface. But after submitting their responses, a follow-upp section automatically appears, prompting users to complete a set predefined of demographic questions. These are presented in a similar format ensuring a consistent and user-friendly experience throughout the public voting process.\\\\
@@ -921,7 +921,7 @@ The second section is dedicated to composing the poll questions. Each question b
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pics/results_view.png}
-	\caption{Registration form}
+	\caption{Results view}
 	\label{fig:results_view}
 \end{figure}
 \paragraph{The Pollimage} enables users to create surveys with a title picture. It was styled to maintain visual harmony and responsiveness across Create, Voting, and Results views. The image container uses a flexbox layout to center the image horizontally, ensuring it looks balanced on all screen sizes. The image itself is limited to a maximum width of 90 percent of its container and a maximum height of 300 pixel to prevent oversized images from disrupting the layout. To preserve the original aspect ratio and avoid distortion, the \textit{object-fit: contain} property is applied. \parencite{cssobjectfit} \\ \\
@@ -929,9 +929,9 @@ The second section is dedicated to composing the poll questions. Each question b
 \section{Deployment}
 This project was deployed to test how it behaves in a live environment and to ensure that the setup can be easily replicated on other systems. The deployment also helped to verify that all components work together correctly outside of the development environment. \\
 \subsection{Deployment Host}
-For hosting the deployment, DigitalOcean was chosen. It allows the creation of so-called "droplets", which are virtual machines that can be configured with custom storage, RAM and other specifications. These droplets function like personal servers but are hosted on the cloud and can be accessed publicly.
+For hosting the deployment, DigitalOcean was chosen. It allows the creation of so-called droplets, which are virtual machines that can be configured with custom storage, RAM and other specifications. These droplets function like personal servers but are hosted on the cloud and can be accessed publicly.
 \subsubsection{Configuration}
-In our case, Ubuntu 22.04 LTS was used as the operating system. The server was configured with 25 GB of storage and 1 GB of RAM. After creating the "droplet", DigitalOcean assigned an IP address to it. Through this IP the server is publicly reachable. To connect to the "droplet", SSH was used, allowing for safe configuration and management over the Terminal.
+In our case, Ubuntu 22.04 LTS was used as the operating system. The server was configured with 25 GB of storage and 1 GB of RAM. After creating the droplet, DigitalOcean assigned an IP address to it. Through this IP the server is publicly reachable. To connect to the droplet, SSH was used, allowing for safe configuration and management over the Terminal.
 \begin{figure}[H]
 	\begin{terminal}
 		ssh -i ~/.ssh/id_rsa_digitalocean root@1.2.3.4
@@ -941,9 +941,9 @@ In our case, Ubuntu 22.04 LTS was used as the operating system. The server was c
 \subsection{Domain}
 In order for the application to be reachable over HTTPS, a domain was needed. After careful consideration the domain “togema.eu” was acquired from the provider Namecheap.
 \subsubsection{Configuration}
-On the Namecheap dashboard, a DNS record was added to point the domain name to the IP address of the "droplet" from DigitalOcean. With this configuration, all internet traffic directed to the domain “togema.eu”, is redirected to the IP address of the DigitalOcean “droplet”. \\
+On the Namecheap dashboard, a DNS record was added to point the domain name to the IP address of the "droplet" from DigitalOcean. With this configuration, all internet traffic directed to the domain “togema.eu”, is redirected to the IP address of the DigitalOcean droplet. \\
 \subsection{Deployment Process}
-This section describes the deployment process for this application. It is composed of multiple components, including PostgreSQL, the Node.js backend, the React frontend, as well as additional tools such as Nginx, PM2 and Certbot. All steps are executed with the terminal, which is connected to the “droplet” using SSH. The setup is done step by step to ensure everything is configured correctly.\\\\
+This section describes the deployment process for this application. It is composed of multiple components, including PostgreSQL, the Node.js backend, the React frontend, as well as additional tools such as Nginx, PM2 and Certbot. All steps are executed with the terminal, which is connected to the droplet using SSH. The setup is done step by step to ensure everything is configured correctly.\\\\
 First the server is updated using the standard update and upgrade command.
 \begin{figure}[H]
 	\begin{terminal}
@@ -952,7 +952,7 @@ First the server is updated using the standard update and upgrade command.
 	\caption{Ubuntu update command}
 \end{figure}
 \subsubsection{Project Cloning}
-Before setting up the individual components, the project should be cloned from the Github repository, 'https://github.com/Max-Hierzer/Development-Diplomarbeit'.
+Before setting up the individual components, the project should be cloned from the Github repository, "https://github.com/Max-Hierzer/Development-Diplomarbeit".
 \subsubsection{PostgreSQL}
 PostgreSQL is installed using the system package manager. After successful installation, a database as well as a user are created manually.
 \begin{figure}[H]
