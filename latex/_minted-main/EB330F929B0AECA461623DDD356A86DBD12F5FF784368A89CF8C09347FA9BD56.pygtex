@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+		sudo apt install \PYGZhy{}y postgresql
+		sudo systemctl start postgresql
+		sudo systemctl \PYG{n+nb}{enable} postgresql
+	
+\end{Verbatim}

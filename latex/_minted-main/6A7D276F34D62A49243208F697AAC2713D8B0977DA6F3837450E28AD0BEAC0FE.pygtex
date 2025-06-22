@@ -1,7 +1,7 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 		\PYG{k+kd}{const} \PYG{n+nx}{mailOptions} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-			\PYG{k+kr}{from}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Tool\PYGZdq{}} \PYG{o}{\PYGZlt{}}\PYG{n+nx}{test}\PYG{p}{.}\PYG{n+nx}{email}\PYG{err}{@}\PYG{n+nx}{domain}\PYG{p}{.}\PYG{n+nx}{at}\PYG{o}{\PYGZgt{}}\PYG{p}{,}
-			\PYG{n+nx}{to}\PYG{o}{:} \PYG{n+nx}{user}\PYG{err}{@}\PYG{n+nx}{email}\PYG{p}{.}\PYG{n+nx}{at}\PYG{p}{,}
+			\PYG{k+kr}{from}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Tool\PYGZdq{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}test.email@domain.at\PYGZgt{}\PYGZdq{}}\PYG{p}{,}
+			\PYG{n+nx}{to}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}user@email.at\PYGZdq{}}\PYG{p}{,}
 			\PYG{n+nx}{subject}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Polling tool\PYGZdq{}}\PYG{p}{,}
 			\PYG{n+nx}{text}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello this is your invitation.\PYGZdq{}}
 		\PYG{p}{\PYGZcb{};}
