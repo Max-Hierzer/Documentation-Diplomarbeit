@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{n+nx}{validatePollData}\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{,} \PYG{n+nx}{publishDate}\PYG{p}{,} \PYG{n+nx}{endDate}\PYG{p}{,} \PYG{n+nx}{questions}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{poll}\PYG{p}{)} \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}Poll name is required\PYGZdq{}}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{publishDate}\PYG{p}{)} \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}Publish date is required\PYGZdq{}}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{endDate}\PYG{p}{)} \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}End date is required\PYGZdq{}}\PYG{p}{;}
+		
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kd}{let} \PYG{n+nx}{questionIndex} \PYG{o+ow}{in} \PYG{n+nx}{questions}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{questions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{name}\PYG{p}{)}
+				\PYG{k}{return} \PYG{l+s+sb}{`Question }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{o}{+}\PYG{n+nx}{questionIndex} \PYG{o}{+} \PYG{l+m+mf}{1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{ requires text`}\PYG{p}{;}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kd}{let} \PYG{n+nx}{answerIndex} \PYG{o+ow}{in} \PYG{n+nx}{questions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{answers}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{questions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{answers}\PYG{p}{[}\PYG{n+nx}{answerIndex}\PYG{p}{].}\PYG{n+nx}{name}\PYG{p}{)}
+					\PYG{k}{return} \PYG{l+s+sb}{`Answer }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{o}{+}\PYG{n+nx}{answerIndex} \PYG{o}{+} \PYG{l+m+mf}{1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{ in Question }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{o}{+}\PYG{n+nx}{questionIndex} \PYG{o}{+} \PYG{l+m+mf}{1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{ requires text`}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{return} \PYG{k+kc}{null}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+\end{Verbatim}

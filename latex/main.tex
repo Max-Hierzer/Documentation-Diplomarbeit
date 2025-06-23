@@ -443,19 +443,21 @@ To ensure that polls are created correctly and without missing information, the 
 In the frontend, validation is handled by the \textbf{validatePollData} function located in a separate file, \texttt{ValidatePolls.js}. This function checks wether any required input fields are left empty. If a required field is empty, a specific message about which field is afflicted is returned, which is then displayed to the user. This improves the user experience and also prevents unnecessary API calls to the backend.
 \begin{figure}[H]
 	\begin{code}
-		validatePollData(poll, publishDate, endDate, questions) {
-			if (!poll) return `Poll name is required`;
-			if (!publishDate) return `Publish date is required`;
-			if (!endDate) return `End date is required`;
-			
-			for (let questionIndex = 0; questionIndex < questions.length; questionIndex++) {
-				if (!questions[questionIndex].name) return `Question ${questionIndex + 1} requires text`;
-				for (let answerIndex = 0; answerIndex < questions[questionIndex].answers.length; answerIndex++) {
-					if (!questions[questionIndex].answers[answerIndex].name) return `Answer ${answerIndex + 1} in Question ${questionIndex + 1} requires text`;
-				}
+	validatePollData(poll, publishDate, endDate, questions) {
+		if (!poll) return "Poll name is required";
+		if (!publishDate) return "Publish date is required";
+		if (!endDate) return "End date is required";
+		
+		for (let questionIndex in questions) {
+			if (!questions[questionIndex].name)
+				return `Question ${+questionIndex + 1} requires text`;
+			for (let answerIndex in questions[questionIndex].answers) {
+				if (!questions[questionIndex].answers[answerIndex].name)
+					return `Answer ${+answerIndex + 1} in Question ${+questionIndex + 1} requires text`;
 			}
-			return null;
 		}
+		return null;
+	}
 	\end{code}
 	\caption{Frontend validation}
 	\label{fig:validate-poll-data}
@@ -466,17 +468,17 @@ Even though validation already occurs in the frontend, the backend still needs t
 A transaction is created and used for all data operations involved in poll creation, including inserting the poll, its questions and all corresponding answers. Once all operations are completed successfully, the transaction is committed. If any error occurs during the process, the transaction is rolled back, undoing all previous changes made during that transaction. This ensures that no incomplete data is saved to the database.
 \begin{figure}[H]
 	\begin{code}
-		try {
-			const transaction = await sequelize.transaction();
-			const createdQuestion = await Question.create({
-				name: question.name,
-				pollId: createdPoll.id,
-				typeId: questionType.id,
-			}, { transaction });
-			await transaction.commit();
-		} catch (error) {
-			await transaction.rollback();
-		}
+	try {
+		const transaction = await sequelize.transaction();
+		const createdQuestion = await Question.create({
+			name: question.name,
+			pollId: createdPoll.id,
+			typeId: questionType.id,
+		}, { transaction });
+		await transaction.commit();
+	} catch (error) {
+		^await transaction.rollback();
+	}
 	\end{code}
 	\caption{Example backend validation}
 	\label{fig:example-transaction}
