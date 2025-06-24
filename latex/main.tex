@@ -324,6 +324,7 @@ However, if the password is correct, the backend returns a response containing a
 \subsection{Error Handling}
 Error handling is implemented consistently across both frontend and backend to ensure security and user-friendliness. If a login attempt fails, whether due to an incorrect username, password, or both, the system always returns the same general error message. This prevents attackers from determining whether a specific username exists in the system.\\\\
 Sensitive data like passwords is handled securely. They are not stored in plain text. Instead they are hashed using bcrypt before being inserted into the database. Furthermore, communication between frontend and backend is encrypted through HTTPS. This ensures that all transmitted data remains private and protected from unauthorized access. \\ \\
+
 \section{Registration}
 The application features a controlled and secure registration. In order for users to be able to join the system, they first have to be invited. The registration consists of the following two main functionalities. \\
 \subsection{Admin Registration Process}
@@ -368,7 +369,8 @@ After setting up the transporter, the email options are defined. These include t
 \end{figure}
 \subsubsection{MailerSend API}
 The second approach uses the MailerSend API to send the invitation emails. This method was implemented because the deployment host blocks all SMTP ports to prevent email spamming. \\\\
-To use the MailerSend API, a transporter is created like in Figure \ref{fig:example-mailersend-transporter-creation}. Just like in the first method mail options are created specifying the sender, recipient, subject and message, as shown in Figure \ref{fig:example-mail-options-mailersend}. Then the email is sent using \textbf{mailerSend.email.send(mailOptions)}.
+MailerSend is a transactional email service that allows applications to send emails through an API instead of SMTP. In order to gain access to the API, a domain must be added in the MailerSend dashboard. Once the domain is verified via DNS records, an API token can be generated. This token is then saved in the environment variables of the backend and used for requests to the API. \\\\
+Once the token is set up, to start sending emails a transporter, like in Figure \ref{fig:example-mailersend-transporter-creation}, needs to be created. Just like in the first method mail options are created specifying the sender, recipient, subject and message, as shown in Figure \ref{fig:example-mail-options-mailersend}. At last the email is sent using \textbf{mailerSend.email.send(mailOptions)}.
 \begin{figure}[H]
 	\begin{code}
 		const mailerSend = new MailerSend({

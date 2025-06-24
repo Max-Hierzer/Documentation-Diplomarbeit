@@ -8,7 +8,7 @@
 		\PYG{p}{\PYGZcb{},} \PYG{p}{\PYGZob{}} \PYG{n+nx}{transaction} \PYG{p}{\PYGZcb{});}
 		\PYG{k}{await} \PYG{n+nx}{transaction}\PYG{p}{.}\PYG{n+nx}{commit}\PYG{p}{();}
 	\PYG{p}{\PYGZcb{}} \PYG{k}{catch} \PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-		\PYG{k}{await} \PYG{n+nx}{transaction}\PYG{p}{.}\PYG{n+nx}{rollback}\PYG{p}{();}
+		\PYG{o}{\PYGZca{}}\PYG{k}{await} \PYG{n+nx}{transaction}\PYG{p}{.}\PYG{n+nx}{rollback}\PYG{p}{();}
 	\PYG{p}{\PYGZcb{}}
 	
 \end{Verbatim}
