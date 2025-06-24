@@ -270,7 +270,7 @@ The most commonly used hooks are \textbf{useState} and \textbf{useEffect}. The \
 This application is a PWA. PWAs combine the best features of both websites and platform-specific applications. \parencite{mdn-pwa} \\
 \subsection{Platform-Specific}
 Platform-Specific applications are developed only for one particular operating system in one of the supported programming languages, which means that most of the code cannot be reused for other systems, because they most likely require a different programming language. The most common target platforms for such applications are Android and IOS. \\\\
-Because these applications are tailored to a specific operating system, they can fully utilize the device’s hardware and software capabilities. This increases the applications performance and user experience as well as enabling more customization and personalization. \parencite{native-apps} \\\\
+Because these applications are tailored to a specific operating system, they can fully utilize the device’s hardware and software capabilities. This increases the application's performance and user experience as well as enabling more customization and personalization. \parencite{native-apps} \\\\
 Additionally, platform-specific applications can also run in the background, when they are not being interacted with. This enables them to perform tasks such as automatic updates or background synchronization. This helps to keep the application up to date, even when the device is offline. \parencite{mdn-pwa} \\
 \subsection{Websites}
 Unlike platform-specific applications, websites are not restricted to a single operating system. They are accessed through a browser and not installed on the device. Therefore they appear and function the same across all platforms. \parencite{mdn-pwa} \\\\
@@ -305,7 +305,10 @@ The manifest makes it possible to install the PWA from the browser. It is a json
 	\end{code}
 	\caption{This project's manifest file}
 	\label{fig:example-maifest}
-\end{figure} 
+\end{figure}
+\subsection{Limitations}
+Even though PWAs combine essential features of both websites and native applications, they often cannot replicate them with the same depth or efficiency. \\
+PWAs have limited access to a device's hardware compared to native apps, and they also may not achieve the same level of performance. Additionally, because PWAs are designed to work on multiple platforms, they cannot offer the same level of customization as native applications. Another limitation is inconsistent browser support, as not all PWA features are fully supported across all browsers. \parencite{dailydev-pwa-comparison}
 
 \chapter{Features}
 \section{Login}
