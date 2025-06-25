@@ -4,8 +4,8 @@
 \PYG{+w}{			}\PYG{n+nx}{port}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{587}\PYG{p}{,}
 \PYG{+w}{			}\PYG{n+nx}{secure}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{,}
 \PYG{+w}{			}\PYG{n+nx}{auth}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
-\PYG{+w}{				}\PYG{n+nx}{user}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{test}\PYG{p}{.}\PYG{n+nx}{email}\PYG{err}{@}\PYG{n+nx}{domain}\PYG{p}{.}\PYG{n+nx}{at}\PYG{p}{,}
-\PYG{+w}{				}\PYG{n+nx}{pass}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{Password1}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{user}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}test.email@domain.at\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{pass}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Password1\PYGZdq{}}\PYG{p}{,}
 \PYG{+w}{			}\PYG{p}{\PYGZcb{}}
 \PYG{+w}{		}\PYG{p}{\PYGZcb{});}
 \end{Verbatim}

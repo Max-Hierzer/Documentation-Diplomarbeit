@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{	}\PYG{n+nx}{validatePollData}\PYG{p}{(}\PYG{n+nx}{poll}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{publishDate}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{endDate}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{questions}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{poll}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Poll name is required\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{		}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{publishDate}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Publish date is required\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{		}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{endDate}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}End date is required\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{		}
+\PYG{+w}{		}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{questionIndex}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n+nx}{questions}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{questions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{name}\PYG{p}{)}
+\PYG{+w}{				}\PYG{k}{return}\PYG{+w}{ }\PYG{l+s+sb}{`Question }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{o}{+}\PYG{n+nx}{questionIndex}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{ requires text`}\PYG{p}{;}
+\PYG{+w}{			}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{answerIndex}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n+nx}{questions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{answers}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{questions}\PYG{p}{[}\PYG{n+nx}{questionIndex}\PYG{p}{].}\PYG{n+nx}{answers}\PYG{p}{[}\PYG{n+nx}{answerIndex}\PYG{p}{].}\PYG{n+nx}{name}\PYG{p}{)}
+\PYG{+w}{					}\PYG{k}{return}\PYG{+w}{ }\PYG{l+s+sb}{`Answer }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{o}{+}\PYG{n+nx}{answerIndex}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{ in Question }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{o}{+}\PYG{n+nx}{questionIndex}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{ requires text`}\PYG{p}{;}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{k}{return}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{;}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
