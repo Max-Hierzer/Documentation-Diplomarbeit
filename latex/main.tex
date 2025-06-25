@@ -35,6 +35,25 @@
 }
 
 
+% Custom JSX code box with black border
+\newtcblisting{jsx}{
+	listing engine=minted,
+	listing only,
+	minted language=jsx,
+	minted style=colorful,
+	minted options={
+		linenos,
+		fontsize=\small,
+		breaklines,
+		tabsize=2,
+		bgcolor=lightgray!25,
+	},
+	boxrule=0pt,
+	top=0pt, bottom=0pt, left=2pt, right=2pt,
+	colback=lightgray!25,
+}
+
+
 % Custom css code box with black border
 \newtcblisting{csscode}{
 	listing engine=minted,
@@ -482,10 +501,10 @@ A transaction is created and used for all data operations involved in poll creat
 		}, { transaction });
 		await transaction.commit();
 	} catch (error) {
-		^await transaction.rollback();
+		await transaction.rollback();
 	}
 	\end{code}
-	\caption{Example backend validation}
+	\caption{Example backend transactions}
 	\label{fig:example-transaction}
 \end{figure} 
 \subsection{Start-/ Endtime}
@@ -493,7 +512,7 @@ To make polls more manageable, users can define a voting period by setting a sta
 \subsubsection{Setting the Times}
 The first part involves setting the start and end time in the poll creation interface. Initially, the HTML native input type \texttt{datetime-local} was used. However, it was not fully supported by all browsers. For example, Firefox could only display the date picker and not a time selection interface when the component was clicked. For this reason, after some consideration, the "react-datetime" component was chosen instead.\\\\
 When a user clicks on the input field, a graphical selector appears, which allows the user to select both the date and time easily.\\\\
-Once the poll is submitted, the selected start and end times are sent to the \textbf{createPoll} function in the backend via a POST request. There, the received times are converted to JavaScript \textbf{Date} objects before being inserted into the database.
+Once the poll is submitted, the selected start and end times are sent to the \textbf{createPoll} function in the backend via a POST request. There, the received times are converted to JavaScript \textbf{Date} objects before being inserted into the database. This conversion ensures that the times are interpreted correctly, handled consistently across time zones, and stored in a format compatible with PostgreSQL.
 \subsubsection{Utilizing the Times}
 These time-based conditions are the core feature used to differentiate between the various states of a poll: edit, voting, and results. To apply these conditions, three arrays are created - each corresponding to one of the states - and passed as props to their respective React components.  
 Figure~\ref{fig:timeuti} shows the code that performs this classification. The \texttt{data} variable contains all polls retrieved from the database via an API call. The \texttt{current\_datetime} is set using \textbf{new Date().toISOString()}. The function iterates through each poll, comparing its \texttt{publish\_date} and \texttt{end\_date} to the current time. \\ \\
@@ -612,34 +631,34 @@ The \texttt{Weighted Choice} question type implemented in this application is a 
 Likert scales are commonly used to measure opinions or attitudes by offering a range of answer options from “strongly disagree” to “strongly agree”. This type of question lets people show not just what they think, but also how strongly they feel. The Likert scale is helpful because it turns personal opinions into numbers that can be analyzed. As a result, it becomes easier to decide whether an issue should be prioritized or not. \parencite{likert-scale} \\\\
 In this application, the importance scale is implemented as a custom-designed component consisting of nine buttons, each representing a value from one (least important) to nine (most important). When a button is clicked, the selected value is passed to the parent component via the \texttt{handleSelectImportance} function, and the visual style of the selected button is updated to reflect the user’s choice.
 \begin{figure}[H]
-	\begin{code}
-		const ImportanceScale = ({ questionId, onImportanceChange }) => {
-			const [importance, setImportance] = useState(null);
-			const scaleValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+	\begin{jsx}
+	const ImportanceScale = ({ questionId, onImportanceChange }) => {
+		const [importance, setImportance] = useState(null);
+		const scaleValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 			
-			const handleSelectImportance = (value) => {
-				setImportance(value);
-				onImportanceChange(questionId, value);
-				console.log(value);
-			};
+		const handleSelectImportance = (value) => {
+			setImportance(value);
+			onImportanceChange(questionId, value);
+			console.log(value);
+		};
 			
-			return (
-			<div className="scale-container">
+		return (
+		<div className="scale-container">
 			<div className="button-container">
-			{scaleValues.map((value) => (
-				<button
-				key={value}
-				onClick={() => handleSelectImportance(value)}
-				className={importance === value ? 'scale-button-selected' : 'scale-button'}
-				>
-				{value}
-				</button>
+				{scaleValues.map((value) => (
+					<button
+					key={value}
+					onClick={() => handleSelectImportance(value)}
+					className={importance === value ? 'scale-button-selected' : 'scale-button'}
+					>
+					{value}
+					</button>
 				))}
 			</div>
-			</div>
-			);
-		};
-	\end{code}
+		</div>
+		);
+	};
+	\end{jsx}
 	\caption{Importance scale implementation}
 	\label{fig:importance-scale}
 \end{figure} 
@@ -816,7 +835,7 @@ The processed data is then converted into a structured CSV format using the json
 
 \section{MyPolls}
 \subsection{Purpose}
-The MyPolls view is the central location from which users can view and manage all polls they have created. It provides access to the links for the polls as well as a delete option for them. \\
+The MyPolls view is the central location in which users can view and manage all polls they have created. It provides access to the links for the polls as well as a delete option for them. \\
 \subsection{Poll Link}
 The link used for sharing the polls is generated by encoding key information into a hash. This is done using the \textbf{btoa} function, which creates a Base64-encoded string. In order to ensure browser compatibility, the hash is also encoded using the \textbf{encodeURIComponent} function, which escapes characters that are not valid or could be misinterpreted in a URL. The generated hash contains information about whether the poll is public or private, disclosed or anonymous, the poll's mode and its ID. \parencite{mdn-btoa} \parencite{mdn-encodeUriComponent}\\\\
 When a poll link is opened, the hash is first decoded using \textbf{decodeUriComponent} and then \textbf{atob}. Depending on the mode specified in the url, the corresponding section in the dashboard is opened and the poll with the matching ID is loaded. Should the poll ID not exist in this specific mode, or in general, the system still opens the correct mode but in the default state without any poll selected. \parencite{mdn-atob} \parencite{mdn-decodeUriComponent}\\\\
@@ -921,7 +940,7 @@ The second section is dedicated to composing the poll questions. Each question b
 	\caption{Voting view}
 	\label{fig:voting_view}
 \end{figure}
-\paragraph{Public voting} enables anonymous users to participate in designated public polls. The layout mirrors the sturcture of the standard voting interface. But after submitting their responses, a follow-upp section automatically appears, prompting users to complete a set predefined of demographic questions. These are presented in a similar format ensuring a consistent and user-friendly experience throughout the public voting process.\\\\
+\paragraph{Public voting} enables anonymous users to participate in designated public polls. The layout mirrors the structure of the standard voting interface. But after submitting their responses, a follow-up section automatically appears, prompting users to complete a set predefined of demographic questions. These are presented in a similar format ensuring a consistent and user-friendly experience throughout the public voting process.\\\\
 \paragraph{Results} is the page that allows users to see the outcome of completed polls they have access to. As illustrated in Figure \ref{fig:results_view}, the interface follows the same layout as the voting section. The number of participants is displayed beneath the poll title. Inside each question block, the title is again highlighted and the answer options are listed with the percentage of votes they received.
 \begin{figure}[H]
 	\centering
@@ -1047,7 +1066,13 @@ To enable HTTPS, Certbot was used in combination with Nginx. It automatically re
 The objective of this project was to develop a user-friendly, open-source web application for online voting that supports customizable voting methods and ensures a transparent, accessible, and secure voting process. The implementation focused on providing ease of use for voters, and flexibility and effective tools for administrators. \\\\
 The finished application offers role-based access control, a group management feature for targeted poll distribution, clearly defined user permissions, and a responsive design that supports both desktop and mobile usage. Key administrative tools include user invitation, dynamic poll creation with multiple question types, and the ability to export poll results in CSV format. \\\\
 During development, several challenges arose, including the correct calculation and display of vote percentages, implementing the user invitation process via automated emails, and supporting public polls with proper access handling. These difficulties were resolved through iterative testing and continuous feedback from members of the "LMP", which played a key role in refining and validating the solutions. \\\\
-Overall, the developed system fulfills the intended goals and provides a solid foundation for secure and flexible online voting. Future extensions could include graphical visualization of results beyond simple percentages and the addition of multilingual support. Thanks to its modular design and open-source nature, the application is well-suited for continued development and adaptation.
+Overall, the developed system fulfills the intended goals and provides a solid foundation for secure and flexible online voting. \\
+\section{Outlook}
+Thanks to its modular design and open-source nature, the application is well-suited for continued development and adaptation. Several areas offer opportunities for further improvement and expansion. \\\\
+One enhancement could be the graphical visualization of poll results. Currently, results are displayed only as percentages. Introducing visual elements such as bar charts or pie charts would make the data more accessible and easier to interpret for users. \\\\
+Another extension could be multilingual support, as the application is currently available only in german. Adding languages such as English or Spanish would enable the tool to reach a much broader, international audience. \\\\
+Furthermore, a dedicated user settings page could be implemented. This would allow users to manage their personal data, including updating their username, email address and password. This feature would improve the user experience and reduce the administrative workload. \\\\
+These extensions would not only increase the platform's functionality and usability, but also strengthen its adaptability to diverse use cases and user needs.
 
 
 % Literaturverzeichnis
