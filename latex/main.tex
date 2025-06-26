@@ -10,6 +10,8 @@
 
 \usepackage{minted}
 \usepackage{fancyvrb}
+\usepackage{rotating}
+
 \makeatletter
 \def\minted@verb@delim@a{\do\$}
 \makeatother
@@ -141,7 +143,7 @@ In addition, the team met with representatives of LMP approximately every two to
 One member of LMP regularly tested the application independently and provided direct feedback to the development team. Communication about setup or encountered issues was conducted via a Signal group. This informal yet effective feedback loop allowed the team to adjust functionality in response to user stories. Feedback was especially valuable in evaluating usability and identifying edge cases that might not have been apparent during internal testing. \\
 
 \subsection{Benefits and challenges}
-The adopted methodology brought several advantages. The regular meeting schedule allowed the team to detect and resolve issues early and adapt flexibly to changing requirements. This approach aligns well with the Agile Manifesto, which values "responding to change over following a plan," and supports several of the 12 principles of Agile Software Development, particularly those emphasizing continuous delivery and regular reflection on how to become more effective. \parencite{agile-manifesto}\\\\
+The adopted methodology brought several advantages. The regular meeting schedule allowed the team to detect and resolve issues early and adapt flexibly to changing requirements. This approach aligns well with the Agile Manifesto, which values "responding to change over following a plan" and supports several of the 12 principles of Agile Software Development, particularly those emphasizing continuous delivery and regular reflection on how to become more effective. \parencite{agile-manifesto}\\\\
 The transparent task management via GitHub enabled clear structuring and prioritization of tasks, which improved project oversight and goal alignment. The bi-weekly meetings, helped maintain mutual understanding and ensured the project stayed on track with evolving goals.\\\\
 However, the collaborative nature of the project also introduced challenges. In some cases, coordination between the development team and the client led to misunderstandings regarding specific requirements or expectations. These were generally resolved through clarification in subsequent meetings, but they underscored the importance of clear and continuous communication in stakeholder-driven projects. 
 
@@ -150,17 +152,18 @@ However, the collaborative nature of the project also introduced challenges. In 
 \section{PostgreSQL}
 \subsection{General}
 PostgreSQL was selected as the relational database management system for this project due to its balance of performance, reliability, and advanced feature support. Unlike alternatives such as MySQL or SQLite, PostgreSQL offers robust support for complex data types, full ACID compliance and extensibility through custom functions and indexing methods. ACID refers to four key properties of reliable database transactions: Atomicity (ensuring all steps of a transaction are completed or none at all), Consistency (guaranteeing that data remains valid before and after transactions), Isolation (preventing concurrent transactions from interfering with each other) and Durability (ensuring that once a transaction is commited, it remains in the system even in the case of a crash). \parencite{postgresdocs} \parencite{acid}\\\\
-While MySQL is widely used, its default configuration prioritizes speed over strict transactional consistency, which may be a drawback for applications requiring high data integrity. SQLite was excluded from consideration because it is more suitable for lightweight or embedded applications and does not support concurrent access by multiple users efficiently. \parencite{postgresvsMysql}\\\\
-The installation was also simple because of the detailed install guide provided by multiple sites like 'w3schools.com'. To create the first database the SQL shell of PostgreSQL was used in the beginning. But due to its excellent tooling support, the open-source tool pgAdmin 4 was later used, because it  provided a powerful and user-friendly interface for managing and visualizing the database. Furthermore, the availability of extensive official documentation and community support made it easier to troubleshoot and adapt the database to the project’s needs. \parencite{pgAdmin} \parencite{pgsinstallation} \\
+While MySQL is widely used, its default configuration prioritizes speed over strict transactional consistency, which may be a drawback for applications requiring high data integrity. Although both systems claim ACID compliance, this often depends on the storage engine used and may require explicit configuration. SQLite was excluded from consideration because it is more suitable for lightweight or embedded applications and does not support concurrent access by multiple users efficiently. \parencite{postgresvsMysql}\\\\
+The installation was simple because of the detailed install guide provided by multiple sites like 'w3schools.com'. To create the first database the SQL shell of PostgreSQL was used in the beginning. The open-source tool pgAdmin 4 was later used, because it  provided a powerful and user-friendly interface for managing and visualizing the database. Furthermore, the availability of extensive official documentation and community support made it easier to troubleshoot and adapt the database to the project’s needs. \parencite{pgAdmin} \parencite{pgsinstallation} \\
 \subsection{Database Schema}
 The initial design of the database schema evolved significantly during the project as client requirements changed. However, the “Polls” and “Users” tables were identified early on as the foundational entities in the system, with many other tables referencing or depending on them.\\\\
-To design and visualize the schema, tools such as 'draw.io' and 'dbdiagram.io' were used, enabling direct import of SQL scripts for entity-relationship diagrams. The final scheme consists of 17 interrelated tables, designed to support complex relationships between users, polls, quesions and answers. Key intermediary tables such as "UserPolls", "UserAnswers", "PollGroups" and "QuestionAnswers" implement many-to-many associations between core entities. In addition to standard poll-specific questions, the schema includes support for reusable public questions and answers through tables like "PublicQuestions", "PublicAnswers" and their connectors. Group and role management is implemented via the "Groups", "UserGroups" and "Roles" tables, enabling structured access control. The inclusion of metadata fields such as timestamps ensures extensibility and auditability across the entire system.\\ \\
-\begin{figure}[!htb]  
-    \centering
-    \includegraphics[width=1.1\textwidth]{pics/ERD_NEW.png}
-    \caption{Entity Relationship Diagram}
-    \label{fig:new_ERD}
-\end{figure}
+To design and visualize the schema, tools such as 'draw.io' and 'dbdiagram.io' were used. These tools supported the direct import of SQL scripts to generate entity-relationship diagrams. The final scheme consists of 17 interrelated tables, designed to support complex relationships between users, polls, quesions and answers. Key intermediary tables such as "UserPolls", "UserAnswers", "PollGroups" and "QuestionAnswers" implement many-to-many associations between core entities. In addition to standard poll-specific questions, the schema includes support for reusable public questions and answers through tables like "PublicQuestions", "PublicAnswers" and their connectors. Group and role management is implemented via the "Groups", "UserGroups" and "Roles" tables, enabling structured access control. The inclusion of metadata fields such as timestamps ensures extensibility and auditability across the entire system.\\ \\
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=\textheight]{pics/ERD_NEW.png}
+	\caption{Entity Relationship Diagram}
+	\label{fig:new_ERD}
+\end{sidewaysfigure}
+
 \newpage
 
 \section{Node.js}
@@ -172,13 +175,13 @@ Node.js also offers the npm (Node Package Manager) which provides access to a va
 
 \section{Sequelize}
 Sequelize was selected as the Object-Relational-Mapping (ORM) tool for this project due to its seamless integration with Node.js and PostgreSQL, offering a robust and declarative approach to database interaction. By abstracting raw SQL queries into model-based definitions, Sequelize enables a more maintainable and readable codebase, especially in a project with complex data relationships and evolving schema requirements.\\\\
-Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promised-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness. \parencite{sequelizegit}\\\\
+Its support for model associations, transaction management and migrations provides a powerful foundation for implementing scalable and consistent backend logic. Additionally, Sequelize's promise-based architecture aligns well with asynchronous programming paradigms common in modern JavaScript applications, improving performance and responsiveness. \parencite{sequelizegit}\\\\
 The comprehensive documentation, active community support, and compatibility with various SQL dialects, as in our case PostgreSQL, further contributed to the decision to use Sequelize as the ORM in this project.\\\\
 When compared to other ORMs like Prisma, Sequelize offers a mature and stable solution with wide database compatibility and a strong community. While Prisma provides a modern, type-safe approach with auto-generated types, Sequelize's straightforward API and extensive features make it a reliable choice for this project, because of its simplicity and flexibility. \parencite{Ormcomparemedium} \parencite{Ormcomparedhiwise} \\
 
 \subsection{Sequelize Seeders}
 In Sequelize, seeders (seed files) are scripts used to populate database tables with initial or sample data. Each seed file typically exports \textbf{up} and \textbf{down} functions that perform bulk inserts and deletes. Seeders are especially helpful during development and testing phases to ensure consistent and predictable database states. \parencite{sequelizemigrations}\\\\
-In this project, the Sequelize-CLI tool was used to generate and execute seeders. For example, the command \textbf{npx sequelize-cli seed:generate --name demo-user} generates a default seed file as seen in the figure~\ref{fig:generated_seeder}. The file is named using timestamp format like \texttt{20250516163426-demo-user.js} to guarantee the correct execution order. To insert data, the command \textbf{npx sequelize-cli db:seed:all} was used, while \textbf{npx sequelize-cli db:seed:undo:all} removed the data from the database.
+In this project, the Sequelize-CLI tool was used to generate and execute seeders. For example, the command \textbf{npx sequelize-cli seed:generate --name demo-user} generates a default seed file as seen in Figure~\ref{fig:generated_seeder}. The file is named using timestamp format like \texttt{20250516163426-demo-user.js} to guarantee the correct execution order. To insert data, the command \textbf{npx sequelize-cli db:seed:all} was used, while \textbf{npx sequelize-cli db:seed:undo:all} removed the data from the database.
 \begin{figure}[H]
 	\begin{code}
 		'use strict';
@@ -194,11 +197,12 @@ In this project, the Sequelize-CLI tool was used to generate and execute seeders
 	\label{fig:generated_seeder}
 \end{figure}
 \subsection{Used Seeders}
+In the context of this application, roles define a user's level of access or permissions within the system, while groups are used to organize users for the purpose of poll visibility and participation. A user can have one role that determines what they can do and be part of multiple groups that determine which polls they can access or vote in. \\\\
 The seed data was created in the following sequence:
 \begin{enumerate}
-	\item \textbf{Roles:} Three roles were inserted, admin, poweruser and normal, each with a description to reflect different leves of access. These were seeded first to to satisfy foreign key constraints in later data.
-	\item \textbf{Questiontypes:} The types \texttt{Single Choice}, \texttt{Multiple Choice} and \texttt{Weighted Choice} were inserted. These were essential foundational entries required before any question could be created in the database. 
-	\item \textbf{User:} A default administrator user was seeded. The password was securely hashed using bcrypt. and the user was associated with the admin role, allowing login access to the application.
+	\item \textbf{Roles:} Three roles were inserted, admin, poweruser and normaluser, each with a description to reflect different leves of access. These were seeded first to satisfy foreign key constraints in later data.
+	\item \textbf{Question types:} The types \texttt{Single Choice}, \texttt{Multiple Choice} and \texttt{Weighted Choice} were inserted. These were essential foundational entries required before any question could be created in the database. 
+	\item \textbf{User:} A default administrator user was seeded. The password was securely hashed using bcrypt. The admin user was associated with the admin role, allowing login access to the application.
 	\item \textbf{Group:} A single group named \textit{Admin Group} was created, which could then be associated with polls. The seeder for this data inserted the group in the corresponding table and a entry into the "UserGroups" table, as shown in Figure~\ref{fig:group_seeder} to establish the relationship to the admin user.
 	\item \textbf{Test Poll:} One sample poll was created, including metadata such as publication dates and visibility settings. This poll featured six questions covering all seeded question types. Each question had associated answers. Additionally, the intermediate tables "QuestionAnswers" and "PollGroups" were populated to establish the correct relationship between questions, answers and groups.
 \end{enumerate}
