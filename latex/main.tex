@@ -892,14 +892,14 @@ Using Sequelize’s transaction mechanism not only helps to avoid data inconsist
 
 \section{Accessibility}
 \subsection{Tooltips}
-To enhance the usability and user experience of the application, tooltips were integrated into all input fields, providing users with contextual guidance and reducing the likelihood of input errors. For this purpose, the React library "react-tooltips" was utilized, offering a high degree of customizability in both design and behavior. This allowed for the implementation of consistent and informative tooltip elements throughout the interface. \parencite{tooltips} \\ \\
-Each from element is assigned a unique \textit{data-tool-id}, which serves as a reference key within the central \texttt{Tooltips.js} configuration file. This file defines the content, styling, and interaction logic for each tooltip, ensuring that the visual presentation and timing behavior are consistent across the application. To prevent the tooltips from becoming distracting during regular use, a delay of 1500 milliseconds was introduced before displaying the tooltip on hover.\\ \\
+To enhance the usability and user experience of the application, tooltips were attached to all input fields, providing users with contextual guidance and reducing the likelihood of input errors. For this purpose, the React library "react-tooltips" was utilized, offering a high degree of customizability in both design and behavior. This allowed for the implementation of consistent and informative tooltip elements throughout the interface. \parencite{tooltips} \\ \\
+Each element is assigned a unique \textit{data-tool-id}, which serves as a reference key within the central \texttt{Tooltips.js} configuration file. This file defines the content, styling, and interaction logic for each tooltip, ensuring that the visual presentation and timing behavior are consistent across the application. To prevent the tooltips from becoming distracting during regular use, a delay of 1500 milliseconds was introduced before displaying the tooltip on hover.\\ \\
 The overall purpose of this component was, to improve the intuitiveness of the application, especially for first-time users or those unfamiliar with specific input requirements. \\ \\
 \section{Styling}
 \subsection{General styling}
-At the beginning of the development process, a rough design was implemented to help visualize the overall concept of the future application. In order to maintain a clean and organized project structure, general styling files such as \texttt{App.css}, \texttt{dashboard.css}, \texttt{voting.css}, and others were placed within a dedicated styles directory.\\\\
+At the beginning of the development process, a rough design was implemented to help visualize the overall concept of the future application. In order to maintain a clean and organized project structure, general styling files such as \texttt{App.css}, capitalized to match the App component, \texttt{dashboard.css}, \texttt{voting.css}, and others were placed within a dedicated styles directory.\\\\
 The official styling of the application was done later in the making process, because only then it was demanded by the customers. The same applies to the color scheme which has two main colors: "Yellow" and "Blackberry". In addition to the existing project structure, custom components such as the header with navigation and the footer were introduced, each of which can be individually styled. These were integrated to establish a layout that conforms to standard design practices.\\\\
-To ensure consistency of the palette user defined characteristics from CSS where used to assign variables for each main color. \parencite{csscolorvariables}
+To ensure consistency of the palette, user defined characteristics from CSS were used to assign variables for each main color. \parencite{csscolorvariables}
 \begin{figure}[h!]
 	\begin{csscode}
 		:root {
@@ -911,11 +911,11 @@ To ensure consistency of the palette user defined characteristics from CSS where
 	\caption{Variables of the main colors}
 	\label{fig:user_defined_characteristics}
 \end{figure}
-Those variables where then used in each element of where it was needed. Therefore changing the color scheme to a different one is less afford for the end user. \\ \\
-The basic structure of the page is split into three sections: header with navigation, main with content and footer with imprint and privacy policy. The style is based on the client's homepage therefore the standard background is purple but the contents background it still is white to ensure readability. \parencite{lmppage} \\
+Those variables were then used in the appropriate element. Therefore changing the color scheme to a different one is less afford for the developers or maintainers. \\ \\
+The basic structure of the page is split into three sections: header with navigation, main with content and footer with imprint and privacy policy. The default style is based on the client's corporate design. Therefore, the standard background is purple but the content background is still white to ensure readability. \parencite{lmppage} \\
 \subsection{Responsive design}
 Responsive design is essential nowadays because users access websites from a wide variety of devices - phones, tablets, laptops and desktops - each with different screen sizes and resolutions. It ensures a seamless, user-friendly experience across all platforms, which improve engagement and accessibility.\\ \\
-To ensure responsiveness in each section of the application, \textbf{@media CSS at-rule} was used to apply different styles based on the screen size or device characteristics. This approach allows the layout, font sizes and element spacing to adapt dynamically, creating a smoother experience for users on any device. The navigation bar was designed with media queries to transform into so-called "burger menu" when the screen width falls below a certain threshold. This ensures usability on smaller devices like smartphones because the elements within the navigation get displayed in the menu now.
+To ensure responsiveness in each section of the application, \textbf{@media CSS at-rule} was used to apply different styles based on the screen size or device characteristics. This approach allows the layout, font sizes and element spacing to adapt dynamically, creating a smoother experience for users on any device. The navigation bar was designed with media queries to transform into so-called "burger menu" when the screen width falls below a certain threshold. This ensures usability on smaller screens.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\textwidth]{pics/navigation.png}
@@ -923,7 +923,7 @@ To ensure responsiveness in each section of the application, \textbf{@media CSS 
 	\label{fig:navigation}
 \end{figure}
 \subsection{Individual styling}
-Some areas of the web application required additional styling efforts beyond the general layout to enhance usability, visual clarity and the overall aesthetic appearance. These areas were identified based on both internal testing and feedback from the client and were adapted to meet specific functional and visual needs.
+Some areas of the web application required additional styling efforts beyond the general layout to enhance usability, visual clarity and the overall aesthetic appearance. These areas were identified based on both internal testing and feedback from the client and were customized to meet specific functional and visual needs.
 \paragraph{The Register Page} is a dedicated interface accessible exclusively to administrators. As seen in Figure \ref{fig:register_view}, the registration form is designed for clarity and ease of use. It features all necessary input fields to create a new user, alongside a dropdown for role selection. The description of the role is dynamically shown directly below depending on the selection, providing transparency about the permissions and purpose of each role. Styling is handled in a separate \texttt{register.css} stylesheet for modularity and maintainability.\\\\ 
 \begin{figure}[H]
 	\centering
@@ -940,6 +940,7 @@ The second section is dedicated to composing the poll questions. Each question b
 	\caption{Poll creation form}
 	\label{fig:create_view}
 \end{figure}
+
 \paragraph{Voting} is the section where users can submit their votes on polls they have permission to participate in. As shown in Figure \ref{fig:voting_view}, the selected poll's name is displayed below the section's heading and the poll selection dropdown, highlighted using the site's primary color. Each question is presented in a separate block, labeled with the question type in the top right corner. Within each block, the question title is emphasized and all answer options are listed along with radio boxes for \texttt{Single Choice} and \texttt{Weighted Choice} questions, and check boxes for \texttt{Multiple Choice} questions. \texttt{Weighted Choice} questions also include an importance scale, which consists of multiple buttons that users must interact with to assign an importance value to their answer.
 \begin{figure}[H]
 	\centering
@@ -955,7 +956,7 @@ The second section is dedicated to composing the poll questions. Each question b
 	\caption{Results view}
 	\label{fig:results_view}
 \end{figure}
-\paragraph{The Pollimage} enables users to create surveys with a title picture. It was styled to maintain visual harmony and responsiveness across Create, Voting, and Results views. The image container uses a flexbox layout to center the image horizontally, ensuring it looks balanced on all screen sizes. The image itself is limited to a maximum width of 90 percent of its container and a maximum height of 300 pixel to prevent oversized images from disrupting the layout. To preserve the original aspect ratio and avoid distortion, the \textit{object-fit: contain} property is applied. \parencite{cssobjectfit} \\ \\
+\paragraph{The Poll Image} enables users to create surveys with a title picture. It was styled to maintain visual harmony and responsiveness across Create, Voting, and Results views. The image container uses a flexbox layout to center the image horizontally, ensuring it looks balanced on all screen sizes. The image itself is limited to a maximum width of 90 percent of its container and a maximum height of 300 pixel to prevent oversized images from disrupting the layout. To preserve the original aspect ratio and avoid distortion, the \textit{object-fit: contain} property is applied. \parencite{cssobjectfit} \\ \\
 
 \section{Deployment}
 This project was deployed to test how it behaves in a live environment and to ensure that the setup can be easily replicated on other systems. The deployment also helped to verify that all components work together correctly outside of the development environment. \\
