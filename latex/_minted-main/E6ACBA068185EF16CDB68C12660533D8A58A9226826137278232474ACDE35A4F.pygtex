@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{	}\PYG{k}{try}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{transaction}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{sequelize}\PYG{p}{.}\PYG{n+nx}{transaction}\PYG{p}{();}
+\PYG{+w}{		}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{createdQuestion}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{Question}\PYG{p}{.}\PYG{n+nx}{create}\PYG{p}{(\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nx}{name}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{question}\PYG{p}{.}\PYG{n+nx}{name}\PYG{p}{,}
+\PYG{+w}{			}\PYG{n+nx}{pollId}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{createdPoll}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{,}
+\PYG{+w}{			}\PYG{n+nx}{typeId}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{questionType}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{,}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{},}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{transaction}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{		}\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{transaction}\PYG{p}{.}\PYG{n+nx}{commit}\PYG{p}{();}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{catch}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{transaction}\PYG{p}{.}\PYG{n+nx}{rollback}\PYG{p}{();}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
